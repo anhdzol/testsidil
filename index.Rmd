@@ -1,9 +1,8 @@
 --- 
-title: "TEST SIDIL"
-author: "YOUR NAME HERE"
-date: "`r Sys.Date()`"
+title: "Manual SIDIL"
+author: "Secretaría de Trabajo y Previsión Social"
 site: bookdown::bookdown_site
 ---
 
-# Down the rabbit-hole
+# Presentación
 

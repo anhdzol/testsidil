@@ -1,8 +1,11 @@
 bookdown::gitbook:
   css: style.css
   config:
+    sharing: null
+    download: null
     toc:
       before: |
-        <li><a href="./">SHORT TITLE HERE</a></li>
-      after: |
-        <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+        <li><a href="./">MANUAL SIDIL</a></li>
+      scroll_highlight: true
+      collapse: none
+        
