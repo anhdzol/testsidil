@@ -1,6 +1,6 @@
 --- 
-title: "Manual SIDIL"
-author: "Secretaría de Trabajo y Previsión Social"
+title: "SIDIL: Manual del procesamiento y explotación de la información"
+author: "American Institutes for Research"
 site: bookdown::bookdown_site
 output: 
   bookdown::markdown_document2:
