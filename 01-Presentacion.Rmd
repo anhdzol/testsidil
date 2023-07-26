@@ -1,5 +1,12 @@
+---
+output:
+  html_document: default
+---
 # PRESENTACIÓN DEL SIDIL
 >*Aplicación de la analítica de datos para la generación de estrategias inteligentes de selección de empresas para la inspección laboral*
+
+
+PRUEBA VER [Fuentes de informacion que vienen del IMSS](#fuentes_IMSS)
 
 Las inspecciones laborales son el instrumento más importante que utilizan los gobiernos para verificar y garantizar que las empresas adopten las medidas necesarias para cumplir con las normativas en materia de condiciones laborales y de seguridad y salud en el trabajo. No obstante, el efecto de dichas inspecciones depende de diversos factores, siendo un factor fundamental el de los mecanismos de selección de los centros de trabajo a inspeccionar.
 

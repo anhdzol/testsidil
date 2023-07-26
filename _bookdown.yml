@@ -6,4 +6,9 @@ edit: null
 view: null
 language:
   ui:
-    chapter_name: ""
+    chapter_name: "Capítulo "
+    appendix_name: "Anexo "
+  label:
+    fig: 'Ilustración '
+    tab: 'Tabla '
+    box: 'Recuadro '
