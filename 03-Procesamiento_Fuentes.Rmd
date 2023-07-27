@@ -2,8 +2,7 @@
 output:
   html_document: defaulast
 ---
-
-# Procesamiento de las fuentes de información y generación de la MPR
+# Procesamiento de las fuentes de información y generación de la MPR {#procesamiento}
 
 Como ya fue mencionado, en los módulos I y II se procede a la actualización de indicadores a partir de la explotación de las fuentes de información, así como a la consulta del universo de CT, la imputación de indicadores a este universo y la predicción de riesgo que incorpora los resultados del modelo entrenado. En esta sección veremos en detalle cómo funcionan estos dos módulos fundamentales del SIDIL.
 
@@ -27,7 +26,7 @@ Requisitos para la ejecución de este módulo
 
 Para la ejecución de este módulo no es necesario tener instalado Python, porque únicamente se utiliza R y R Studio.
 
-### Desafíos al tratamiento de bases de datos externas
+### Desafíos al tratamiento de bases de datos externas {#procesamientoModIdesafios}
 
 Hay diversos desafíos que se pudieran presentar para la inclusión de bases de datos externas, o para la explotación de indicadores específicos de dichas bases. Aquí se mencionan los principales desafíos y posibles formas de atenderlos:
 
@@ -50,7 +49,7 @@ Recuadro 9 Procedimiento para la inclusión de nuevos indicadores
 
 5)  Ajustes al cálculo de indicadores: Hay que distinguir la necesidad de la inclusión de *nuevos* indicadores que se especificó en el punto y recuadro anterior. Un cambio en la metodología de cálculo de un indicador no requiere mayor modificación que resguardar el script del cálculo del indicador con una fecha de versión posterior a la más reciente hasta entonces. Así el secuenciador de la explotación de la fuente de información detectará que esta es la nueva versión que se debe tomar. Por supuesto, el cálculo debe ser replicado hacia atrás en el tiempo para asegurar la consistencia temporal de la medición de indicadores.
 
-> Recuadro 10 Distinción entre incorporación de nuevos indicadores y actualización de método de cálculo de indicadores preexistentes.
+Recuadro 10 Distinción entre incorporación de nuevos indicadores y actualización de método de cálculo de indicadores preexistentes.
 
 +------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 | A diferencia de la incorporación de nuevos indicadores, solamente actualizar el método de cálculo de un indicador (por ejemplo, incorporar otra categoría de riesgos para el cálculo de cierta tasa) no requiere incluir una nueva carpeta, etc. Lo único que se requiere es |
@@ -66,7 +65,7 @@ Recuadro 9 Procedimiento para la inclusión de nuevos indicadores
 |                                                                                                                                                                                                                                                                              |
 +------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 
-### Sobre niveles de agregación
+### Sobre niveles de agregación {#procesamientoModInivelesagregacion}
 
 Los indicadores calculados con todas las fuentes de información no siempre son atribuibles de manera directa a cada uno de los CT identificados nominativamente. Esto es por la propia naturaleza de los datos (censos y encuestas que por confidencialidad no publican información de las personas físicas y morales que responden a sus reactivos), por la falta de registro del patrón laboral en instancias como el IMSS, así como limitaciones en el procesamiento de la información en el DNE. La consecuencia es que los indicadores calculados a partir de las fuentes de información más diversas deben ser atribuidos a los CT a partir de características observables cuando resulta imposible atribuirlo de manera nominativa.
 
@@ -118,7 +117,7 @@ Recuadro 11 Modificaciones a los niveles de agregación
 |                                                                                                                                                                                                                                                                                                                                                                                              |
 +----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 
-### Sobre estimaciones puntuales nominativas
+### Sobre estimaciones puntuales nominativas {#procesamientoModInominativo}
 
 Los registros administrativos del IMSS permiten generar información específica para un centro de trabajo que es identificado de manera unívoca a través de su clave patronal. Esta información tan específica es de mucha utilidad para la caracterización fidedigna de los CT en el DNE.
 
@@ -174,7 +173,7 @@ Pero, en sentido estricto, cuando un usuario final quiere obtener el valor de un
 
 3)  Finalizado el cálculo de los indicadores, se replican los resultados obtenidos para las categorías 31 y 48 para incluir nuevas observaciones (sólo para los niveles de agregación que incluyen scian2018_2 pero no scian2018_3) con los número 32, 33 y 49, respectivamente.
 
-### Especificaciones por fuente de información
+### Especificaciones por fuente de información {#procesamientoModEspecificaciones}
 
 Esta sección reúne información relevante en dos niveles. Por un lado, se ofrecen detalles de los indicadores que se calculan para cada una de las fuentes de información. Por otro lado, se informan los procedimientos de cálculo de dichos indicadores y aspectos que requieren mayor cautela. A continuación, primero se presenta el resumen de las otras subsecciones que siguen. Se observa que la gran mayoría de las fuentes información son de carácter administrativo. Las excepciones vienen de la ENOE y del CENSO gestionadas por INEGI.
 
@@ -218,7 +217,7 @@ Recuadro 13 Resguardo de las bases originales
 |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  |
 +----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 
-#### La ENOE
+#### La ENOE {#procesamientoModIENOE}
 
 La Encuesta Nacional de Ocupación y Empleo (ENOE y ENOE Nueva Edición) brinda información de manera trimestral sobre el mercado laboral mexicano. Esta encuesta es representativa a nivel entidad federativa.
 
@@ -381,7 +380,7 @@ Los outputs o resultados esperados finales de la aplicación de los scripts de l
 
 Estas estimaciones puntuales coyunturales serán el insumo del matching coyuntural, y serán imputadas a los CT según el nivel de agregación correspondiente a la información disponible de cada centro de trabajo.
 
-#### Registros administrativos del IMSS {#fuentes_IMSS}
+#### Registros administrativos del IMSS {#procesamientoModIIMSS}
 
 La incorporación de las tablas de registros administrativos que el IMSS comparte con la STPS es una muy importante incorporación al SIDIL, dadas las siguientes características de este registro administrativo:
 
@@ -700,7 +699,7 @@ Los outputs o resultados esperados finales de la aplicación de los scripts del 
 
 Estas estimaciones puntuales coyunturales serán el insumo del *matching* coyuntural, y serán imputadas a los centros de trabajo según el nivel de agregación correspondiente a la información disponible de cada centro de trabajo.
 
-#### El Censo económico
+#### El Censo económico {#procesamientoModICenso}
 
 El Censo Económico brinda información sobre los establecimientos productores de bienes, comercializadores y prestadores de servicios de manera quinquenal. Dado que se trata de un censo, la información de las unidades económicas cuenta con gran especificidad geográfica, sectorial y temática.
 
@@ -888,7 +887,7 @@ Tabla 9 Campos comunes en los resultados coyunturales del cálculo de indicadore
 | grupo_calidad_info1                                       | Grupo de calidad de información a 1 dígito                                   | Carácter    |
 +-----------------------------------------------------------+------------------------------------------------------------------------------+-------------+
 
-### Estimaciones puntuales e históricas de indicadores
+### Estimaciones puntuales e históricas de indicadores {#procesamientoModIcoyvshist}
 
 El resultado de realizar las estimaciones puntuales de los diversos indicadores a partir de las diferentes fuentes de información es en realidad un *conjunto de tablas* que se almacenan en la carpeta *3_resultados/coyuntura/...* en las respectivas subcarpetas de cada fuente de información e indicador correspondiente.
 
@@ -4591,7 +4590,7 @@ resultados de modelo Random Forest y de modelo Tabnet.
 
 +\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\--+
 
-## Módulo II: imputación de indicadores y generación de la MPR
+## Módulo II: imputación de indicadores y generación de la MPR {#procesamientoModII}
 
 Propósito principal
 
@@ -4613,7 +4612,7 @@ Acceso a SQL server o recepción del universo del DNE
 
 Este módulo requiere de un acceso al DNE y potencialmente al historial de inspecciones en SIAPI y SIPAS. Sin embargo, conforme dichos sistemas están en rediseño, se han realizado consultas a la última versión disponible, respectivamente, y almacenado a disco. Esto permite leer esta información como si fuera un insumo adicional, aunque también se incluyen los scripts de conexión y query a dichos sistemas.
 
-### Consulta al DNE
+### Consulta al DNE{#procesamientoModIIconsultaDNE}
 
 El propósito de esta primera parte es acceder al universo de CT más reciente, así como está registrado en tablas específicas del DNE, particularmente las tablas *centro_trabajo*, *empresa* y *grupo_empresa.* Cabe destacar que en la consulta de los CT:
 
@@ -4669,7 +4668,7 @@ Frecuencia de actualización y propuesta de calendarización
 
 Se propone que la consulta al universo de CT registrado en el DNE se realice cuando menos cada tres meses, cada vez que se actualiza la ENOE. No sobra decir que, de haber modificaciones sustantivas en el DNE, estas podrían ameritar anticipar dicha consulta para poder reflejar dichos cambios en el universo de CT en la MPR.
 
-### Imputación de indicadores laborales al universo de CT
+### Imputación de indicadores laborales al universo de CT {#procesamientoModIIimputacion}
 
 Este módulo tiene el propósito de explicar el proceso de imputación de los indicadores calculados al universo de centros de trabajo. El objetivo principal de esta imputación o "matching" es que cada uno de los centros de trabajo del DNE cuente con un valor de cada uno de los indicadores, sin importar si se tiene poca o mucha información de dicho centro de trabajo.
 
@@ -4763,7 +4762,7 @@ Frecuencia de actualización y propuesta de calendarización
 
 Se sugiere que la frecuencia de actualización sea cada trimestre, posterior de la actualización de los indicadores y de la consulta al DNE.
 
-### Predicción de riesgo
+### Predicción de riesgo {#procesamientoModIIprediccion}
 
 **­A partir del resultado del matching coyuntural se realiza la predicción del riesgo para cada uno de los centros de trabajo**. Esto se hace mediante la aplicación de un script que, utilizando los resultados del modelo predictivo previamente entrenado, genera la probabilidad de riesgo de incumplimiento de las normativas laborales para determinadas submaterias, además de generar una predicción de riesgo general para cada centro de trabajo.
 
@@ -4813,7 +4812,7 @@ Además, la matriz de predicción de riesgo contiene información adicional pert
 
 Con los datos disponibles a enero 2023la MPR consta de poco más de 600 mil registros y es importante resaltar que para los datos descriptivos a nivel centro de trabajo que pudieran entrar o no al modelo para la predicción del riesgo a nivel submateria o nivel centro de trabajo, se cuenta con una codificación en donde --1 significa valor faltante, esta codificación le permite al modelo discernir de dicho valor. La predicción de riesgo de cada CT para cada submateria es una estimación independiente.
 
-## Módulo I y II: Interfaz de automatización
+## Módulo I y II: Interfaz de automatización {#procesamientoModIyIIinterfazAuto}
 
 En este capítulo se presentan las instrucciones de operación de la interfaz de automatización. La ubicación de esta sección a esta altura del manual no es casualidad, toda vez que la misma únicamente tiene el propósito de simplificar el proceso de actualización de los módulos I y II, sin ser realmente un módulo adicional ya que no genera un contenido distinto al de dichos módulos (a diferencia del capítulo siguiente que, además de tener otro tipo de usuario, la UTD en lugar de la DGIET) sí genera nuevos subconjuntos de la MPR.
 
@@ -4995,7 +4994,7 @@ Ilustración 16. Sección Descarga de información. Pestaña de Estatus y ejecuc
 
 ![](./media/image24.png){width="6.5in" height="0.9055555555555556in"}
 
-## Módulo III: Priorización de los centros de trabajo
+## Módulo III: Priorización de los centros de trabajo {#procesamientoModIIIinterfazConsulta}
 
 **Propósito**
 
@@ -5089,7 +5088,7 @@ La tercer pestaña "indicadores" muestra la información del filtro de indicador
 
 VIDEO DE DEMO A SALAFRANCA
 
-## Módulo IV: Entrenamiento del modelo
+## Módulo IV: Entrenamiento del modelo {#procesamientoModIV}
 
 Propósito principal
 
@@ -5113,7 +5112,7 @@ Se requiere realizar cuatro actividades principales para llevar a cabo el módul
 
 -   Entrenamiento y evaluación del modelo de predicción.
 
-### Construcción de la serie histórica de inspecciones laborales (2012-2022)
+### Construcción de la serie histórica de inspecciones laborales (2012-2022) {#procesamientoModIVSIAPI}
 
 Entradas - Inputs
 
@@ -5185,7 +5184,7 @@ Outputs Productos resultado de la ejecución de actividades
 
 El resultado de este procedimiento de almacena como *historico_inspecciones_v*.Rds
 
-### Construcción de la serie histórica de indicadores laborales
+### Construcción de la serie histórica de indicadores laborales {#procesamientoModIVindicadores}
 
 La segunda parte del módulo IV es la construcción de la serie histórica de los indicadores laborales que harán parte de las características de los centros de trabajo para predecir su probabilidad de encontrar violaciones laborales a nivel submateria.
 
@@ -5195,7 +5194,7 @@ Todos los indicadores que se calculan de manera histórica se pueden identificar
 
 A continuación se detallan los procesos de construcción de las series históricas por fuente de información: ENOE e IMSS.
 
-### Indicadores históricos de la ENOE
+#### Indicadores históricos de la ENOE {#procesamientoModIVENOE .unnumbered}
 
 Entradas - Inputs
 
@@ -5236,7 +5235,7 @@ El script secuenciador genera el resultado final o *output* de esta sección es 
 
 De ser necesario, el script secuenciador generará resultados intermedios por cada indicador, los cuales contienen las estimaciones puntuales de cada indicador para todos los años. Estos resultados intermedios se alojan en la carpeta de resultados históricos de la ENOE (\\3_resultados\\historico\\res_hist_ENOE) en carpetas con el nombre de cada indicador. Es importante resaltar que estos outputs no se producen si se encuentran los inputs ya calculados de manera histórica.
 
-### Indicadores históricos del IMSS
+#### Indicadores históricos del IMSS {#procesamientoModIVIMSS .unnumbered}
 
 En esta sección se ofrecen detalles acerca de la construcción de la serie histórica de indicadores calculados a partir de los registros administrativos del IMSS. Como podrá apreciarse, guarda mucha similitud con la explotación coyuntural de esta fuente de información.
 
@@ -5354,7 +5353,7 @@ Outputs Productos resultado de la ejecución de actividades
 
 El principal resultado de este script son dos tablas con el acumulado histórico de indicadores anuales. Una de ellas es la tabla IMSS_AGREGADO_historico\_ que incluye las estimaciones por nivel de agregación. La otra es la tabla IMSS_NOMINATIVO_historico\_ que contiene el promedio anual a nivel registro patronal. Ambas son tablas en formato Rds que luego explotará el script de matching histórico.
 
-### Matching de las series históricas
+### Matching de las series históricas  {#procesamientoModIVmatching}
 
 Después de generar las tablas de las series históricas de los indicadores y del historial de inspecciones se debe realizar el matching entre los conjuntos de datos. El objetivo del matching histórico es imputar a los centros de trabajo que fueron inspeccionados los indicadores calculados, ya sea a nivel nominativo (para los indicadores del IMSS cuando aplique) o por nivel de agregación, según el año de inspección.
 
@@ -5408,7 +5407,7 @@ Es resultado o output principal es una tabla en formato .Rds con tantas número 
 
 -   Indicadores: Campos de indicadores de la ENOE e IMSS que entran al modelo.
 
-### Entrenamiento y evaluación del modelo de predicción
+### Entrenamiento y evaluación del modelo de predicción  {#procesamientoModIVEntrenamiento}
 
 **Una vez realizado el matching histórico se puede generar el entrenamiento del modelo predictivo y su respectiva evaluación**. El modelo genera una probabilidad de cometer violaciones laborales en cada una de las submaterias seleccionadas, así como una predicción conjunta de riesgo de cometer alguna violación en cualquier submateria, esto para cada uno de los centros de trabajo. Las probabilidades van de 0 a 1 para ser interpretadas en términos porcentuales. El modelo predeterminado que se entrena es un modelo Random Forest, aunque también se deja configurada la opción de que se entrene un modelo Tabnet.
 
