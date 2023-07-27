@@ -5,7 +5,7 @@ bookdown::gitbook:
     download: null
     toc:
       before: |
-        <li><a href="./">MANUAL SIDIL</a></li>
+        <li><a href="./">Manual de procesamiento y explotación de información</a></li>
       scroll_highlight: true
       collapse: none
         

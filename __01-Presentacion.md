@@ -1,18 +1,13 @@
---- 
-title: "SIDIL: Manual del procesamiento y explotación de la información"
-author: "American Institutes for Research"
-site: bookdown::bookdown_site
-output: 
-  bookdown::markdown_document2:
-    number_sections: true
-github-repo: https://anhdzol.github.io/testsidil/
-
 ---
-# Bienvenida {#introapertura}
-<!-- # PRESENTACIÓN DEL SIDIL -->
+output:
+  html_document: default
+---
+# PRESENTACIÓN DEL SIDIL
 
 >*Aplicación de la analítica de datos para la generación de estrategias inteligentes de selección de empresas para la inspección laboral*
 
+
+PRUEBA VER [Fuentes de informacion que vienen del IMSS](#fuentes_IMSS)
 
 Las inspecciones laborales son el instrumento más importante que utilizan los gobiernos para verificar y garantizar que las empresas adopten las medidas necesarias para cumplir con las normativas en materia de condiciones laborales y de seguridad y salud en el trabajo. No obstante, el efecto de dichas inspecciones depende de diversos factores, siendo un factor fundamental el de los mecanismos de selección de los centros de trabajo a inspeccionar.
 
@@ -37,7 +32,7 @@ En los primeros meses de este proyecto el equipo se abocó al entendimiento, des
 En cuanto a los temas técnicos, abordar el reto de seleccionar empresas de alto riesgo mediante el uso de la analítica de datos resulta adecuado para los algoritmos de aprendizaje automático, ya que se cuenta con una masa crítica de información para procesar.  A lo largo de este proyecto el equipo de AIR se avocó al análisis de datos, la incorporación de fuentes de información, su relacionamiento, la definición de indicadores, la generación y entrenamiento de modelos matemáticos para la predicción de riesgo y el desarrollo de un poderoso sistema de información, que se presenta a detalle a lo largo de este documento.
 
 
-## Alineación con la misión y programas de gobierno {#introalineacion}
+## Alineación con la Misión y Programas de Gobierno
 
 En el Programa Sectorial de Trabajo y Previsión Social, en el “Objetivo prioritario 4. Dignificar el trabajo y estimular la productividad mediante la vigilancia al cumplimiento de la normativa laboral”2 se menciona: “La nueva visión de la inspección pretende hacerla más efectiva y lograr mejores resultados reduciendo los procedimientos burocráticos, impulsando reformas integrales para mejorar el marco legal, coordinando y dirigiendo las inspecciones de trabajo con nuevos enfoques, estrategias e instrumentos con una visión de lucha frontal contra la corrupción (...) con el fin de coadyuvar a la mejora de las condiciones del mercado laboral mexicano con un especial interés en materia de Salud y Seguridad en el trabajo y combate a la subcontratación y al subregistro en el IMSS”. En particular, en el análisis del estado actual se menciona: “el uso de bases de datos anticuadas y la falta de mecanismos de coordinación institucional ocasionó que la inspección federal se llevará a cabo en un universo reducido de empresas que eran constantemente visitadas, en muchos casos en materias de escasa relevancia, generando actos de molestia que no resultaron en una mejora de las condiciones laborales del país”.
 
@@ -67,9 +62,7 @@ Es entonces en ese marco, tanto sustantivo en términos de la inspección labora
 
 
 
-## Justificación de la viabilidad del proyecto {#introjustificacion}
-
-
+## Justificación de la viabilidad del proyecto
 La determinación de estrategias inteligentes de inspección basadas en el análisis de datos requiere un volumen suficiente de datos y una serie de herramientas que, en función de determinados criterios de análisis, permitan su procesamiento. La Inspección Federal del Trabajo y más en general la Secretaría del Trabajo (STPS), dispone de una gran cantidad de datos: datos históricos de la inspección, directorio de empresas y centros de trabajo, reportes de accidentes, información de la evolución de sueldos y salarios en los contratos colectivos, entre otros. Así, se cuenta con la información que recopila y almacena el organismo de inspección de trabajo, que en general son datos relacionados con sus objetos de inspección y sus actividades: datos de las empresas como el número de empleados, la antigüedad de la empresa, la rama de actividad, el número de inspecciones previas, el resultado de dichas inspecciones y las notificaciones de accidentes. Asimismo, se cuenta con un importante acervo de información generada por el área de estadística e investigación de la STPS referida a accidentes y contratos colectivos. Además, el número de datos aumenta progresivamente al añadirse nuevas inspecciones y al registrarse más y más nuevos contratos.
 
 Por otro lado, la gran institución en materia de seguridad social de los trabajadores, que es el Instituto Mexicano del Seguro Social (IMSS), dispone de enormes acervos de información de empleados, empleadores, accidentes laborales, etc., que, anonimizados y agrupados, están disponibles (evitando todo problema de confidencialidad de la información) en el marco de la cooperación entre estas instituciones del Estado Mexicano, siendo una realidad que esa información ya fluye como parte del intercambio entre la STPS y el IMSS. 
@@ -79,52 +72,56 @@ Del mismo modo, es de resaltar la importante labor que ha desarrollado por déca
 A estos acervos se podría en un futuro sumar los de otras instituciones públicas como la Secretaría de Economía, la Secretaría de Hacienda, la Secretaría de Gobernación, con las cuales será menester realizar análisis de la información de la que disponen y de las posibilidades de establecer acuerdos y convenios para su intercambio.
 
 
-## Objetivos del SIDIL { #introobjetivos}
+## Objetivos del SIDIL
+
+### General
+El SIDIL tiene como objetivo sistematizar la explotación de fuentes de información internas y externas a la STPS para establecer una herramienta tecnológica que permita a la Secretaría del Trabajo y Previsión Social del Gobierno de México aplicar estrategias de inspección laboral a partir de la generación de subconjuntos de empresas y centros de trabajo con base en criterios preestablecidos que reflejen su perfil de riesgo de incumplimiento de los derechos laborales.
 
 
-**El objetivo general del SIDIL es sistematizar la explotación de fuentes de información internas y externas a la STPS para establecer una herramienta tecnológica que permita a la Secretaría del Trabajo y Previsión Social del Gobierno de México aplicar estrategias de inspección laboral a partir de la generación de subconjuntos de empresas y centros de trabajo con base en criterios preestablecidos que reflejen su perfil de riesgo de incumplimiento de los derechos laborales.**
-
-
-Este objetivo general abarca los siguientes objetivos específicos: 
+### Específicos
 
 * Establecer y reflejar criterios de identificación de riesgos de violaciones laborales que pueden ser medidos con la información actualmente disponible a la STPS.
 * Recuperar de encuestas y registros administrativos datos que permitan construir indicadores de utilidad para la medición del riesgo de incumplimiento laboral.
 * Generar estructuras de información que reflejen indicadores de riesgo asociados a los criterios establecidos.
 * Establecer los coeficientes que fungen como ponderadores de riesgo para conformar una matriz de factores de riesgo que pueda ser asociada al universo de los CT.
-* Imputar predicciones de riesgo a los centros de trabajo que están registrados en el DNE para informar los CT con mayor probabilidad de riesgo.
+* Asociar factores de riesgo a los centros de trabajo que están registrados en el DNE para informar los CT con mayor probabilidad de riesgo.
 * Generar interfaces comprensivas que permitan incorporar, actualizar y consultar los diferentes productos de información relativa a los factores de riesgo.
 * Exportar subconjuntos del universo de centros de trabajo que cumplan con criterios de selección flexibles asociados a los factores de riesgo.
 
-
-## Propuesta de solución { #propuestasolucion}
-
+## Propuesta de solución
 
 Buscando fortalecer el objetivo de que desde la inspección laboral se vigile y promueva el cumplimiento de las condiciones laborales de los trabajadores mexicanos en apego al marco regulatorio, se buscó desarrollar una herramienta que permitiera generar estrategias cada vez más inteligentes de inspección, así como analizar su impacto e incidencia en dichas condiciones. En este componente se trabajaron elementos que corresponden al proceso de análisis e inteligencia de datos previos a la inspección: desde la recopilación y procesamiento de fuentes internas y externas de información para la conformación de un repositorio estructurado, el análisis de criterios para establecer riesgo de violaciones laborales de los patrones y la consulta de estos indicadores para la generación de estrategias inteligentes para la inspección laboral basadas en análisis de riesgos de incumplimiento. 
 
 Para abordar el reto de seleccionar empresas de alto riesgo mediante el uso de la analítica de datos debieron desarrollarse herramientas y actividades para la elaboración de criterios de detección de violaciones y desviaciones de las normas laborales, con la formalización de indicadores que de estos criterios, la gestión y procesamiento de información y el desarrollo y la puesta en funcionamiento de herramientas tecnológicas que permitan el almacenamiento de los datos, su explotación y consulta.
 
 
-**PENDIENTE ELABORAR SOBRE ESTA ILUSTRACIÓN**
-Como muestra la ilustración \@ref(fig:esquemaPPTSalafranca), ....LOREM IPSUM...
 
-```{r esquemaPPTSalafranca,echo=FALSE, fig.cap="Presentación esquematizada de la solución"}
-knitr::include_graphics("images-1/01/esquemaPPTSalafranca.jpg")
+
+PRUEBA INSERCION IMAGEN COMO CHUNK DE R
+
+
+```r
+knitr::include_graphics("images-1/01/Ilustracion1.png")
 ```
 
-**LA IMAGEN ANTERIOR REEMPLAZARÍA ESTA OTRA** 
+![plot of chunk unnamed-chunk-1](/images-1/01/Ilustracion1.png)
 
 
-![Ilustración XXX: ](images-1/01/Ilustracion1.png)
+PRUEBA INSERCION IMAGEN SIN CHUNK R
+
+
+![Ilustración 1: ](images-1/01/Ilustracion1.png)
 
 
 En el esquema anterior se puede observar los componentes básicos de la solución planteada, que tienen que ver con:
 
-* ~~La concentración y procesamiento de la información estadística y los estudios especializados que permiten el análisis de las redes y cadenas productivas, del contexto laboral y su caracterización en materia de actividad económica, ocupación, empleo, evolución de los sueldos y salarios, etc.~~
+* La concentración y procesamiento de la información estadística y los estudios especializados que permiten el análisis de las redes y cadenas productivas, del contexto laboral y su caracterización en materia de actividad económica, ocupación, empleo, evolución de los sueldos y salarios, etc.
 * La limpieza, enriquecimiento y relacionamiento de información que se pudo integrar en bases de datos para su análisis. Esta información, como ya se mencionó, proviene tanto de fuentes internas como externas, a través de convenios de colaboración.
 * La determinación de los criterios de análisis que buscaron identificar las principales violaciones y que reflejen las prioridades en materia de política pública que deben guiar la inspección del trabajo.
 * El desarrollo de las herramientas que, a partir del establecimiento de los criterios mencionados y su descomposición en indicadores, permitieron llevar a cabo análisis basados en algoritmos de analítica, minería de datos y aprendizaje de máquina.
 
-##  Alcance {#introalcance}
+
+## Alcance
 
 El SIDIL tiene como alcance:
 
@@ -133,3 +130,4 @@ El SIDIL tiene como alcance:
 * La implementación de un repositorio de información y un ambiente de analítica de datos con las bases de datos procesadas y listas para su incorporación.
 * Una serie de interfaces y servicios de información que permitan la consulta del repositorio de datos a través de los indicadores y criterios definidos para la generación de estrategias inteligentes para la inspección.
 *	La transferencia del conocimiento y de las herramientas necesarias para asegurar la sostenibilidad del proyecto en el mediano plazo.
+

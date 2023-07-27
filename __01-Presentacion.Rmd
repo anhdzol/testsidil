@@ -3,6 +3,7 @@ output:
   html_document: default
 ---
 # PRESENTACIÓN DEL SIDIL
+
 >*Aplicación de la analítica de datos para la generación de estrategias inteligentes de selección de empresas para la inspección laboral*
 
 
@@ -94,7 +95,20 @@ Buscando fortalecer el objetivo de que desde la inspección laboral se vigile y 
 Para abordar el reto de seleccionar empresas de alto riesgo mediante el uso de la analítica de datos debieron desarrollarse herramientas y actividades para la elaboración de criterios de detección de violaciones y desviaciones de las normas laborales, con la formalización de indicadores que de estos criterios, la gestión y procesamiento de información y el desarrollo y la puesta en funcionamiento de herramientas tecnológicas que permitan el almacenamiento de los datos, su explotación y consulta.
 
 
-![Ilustración 1: ](images-1/Ilustracion1.png)
+
+
+PRUEBA INSERCION IMAGEN COMO CHUNK DE R
+
+```{r}
+knitr::include_graphics("images-1/01/Ilustracion1.png")
+
+```
+
+
+PRUEBA INSERCION IMAGEN SIN CHUNK R
+
+
+![Ilustración 1: ](images-1/01/Ilustracion1.png)
 
 
 En el esquema anterior se puede observar los componentes básicos de la solución planteada, que tienen que ver con:
