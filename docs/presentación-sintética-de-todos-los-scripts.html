@@ -1,0 +1,694 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Capítulo 5 Presentación sintética de todos los scripts | SIDIL: Manual del procesamiento y explotación de la información</title>
+  <meta name="description" content="Capítulo 5 Presentación sintética de todos los scripts | SIDIL: Manual del procesamiento y explotación de la información" />
+  <meta name="generator" content="bookdown 0.32 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Capítulo 5 Presentación sintética de todos los scripts | SIDIL: Manual del procesamiento y explotación de la información" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta name="github-repo" content="https://anhdzol.github.io/testsidil/" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Capítulo 5 Presentación sintética de todos los scripts | SIDIL: Manual del procesamiento y explotación de la información" />
+  
+  
+  
+
+<meta name="author" content="American Institutes for Research" />
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="procesamiento.html"/>
+<link rel="next" href="r-rstudio-y-python.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+
+
+
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Manual de procesamiento y explotación de información</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Bienvenida</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#introalineacion"><i class="fa fa-check"></i><b>1.1</b> Alineación con la misión y programas de gobierno</a></li>
+<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#introjustificacion"><i class="fa fa-check"></i><b>1.2</b> Justificación de la viabilidad del proyecto</a></li>
+<li class="chapter" data-level="1.3" data-path="index.html"><a href="index.html#introobjetivos"><i class="fa fa-check"></i><b>1.3</b> Objetivos del SIDIL</a></li>
+<li class="chapter" data-level="1.4" data-path="index.html"><a href="index.html#propuestasolucion"><i class="fa fa-check"></i><b>1.4</b> Propuesta de solución</a></li>
+<li class="chapter" data-level="1.5" data-path="index.html"><a href="index.html#introalcance"><i class="fa fa-check"></i><b>1.5</b> Alcance</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="estructura-y-flujos-de-trabajo-del-sidil.html"><a href="estructura-y-flujos-de-trabajo-del-sidil.html"><i class="fa fa-check"></i><b>2</b> Estructura y flujos de trabajo del SIDIL</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="estructura-y-flujos-de-trabajo-del-sidil.html"><a href="estructura-y-flujos-de-trabajo-del-sidil.html#elementos-básicos-del-sidil"><i class="fa fa-check"></i><b>2.1</b> Elementos básicos del SIDIL</a></li>
+<li class="chapter" data-level="2.2" data-path="estructura-y-flujos-de-trabajo-del-sidil.html"><a href="estructura-y-flujos-de-trabajo-del-sidil.html#modulosqueconformanSIDIL"><i class="fa fa-check"></i><b>2.2</b> Módulos que conforman el SIDIL</a>
+<ul>
+<li class="chapter" data-level="" data-path="estructura-y-flujos-de-trabajo-del-sidil.html"><a href="estructura-y-flujos-de-trabajo-del-sidil.html#moduloIexplicaciongeneral"><i class="fa fa-check"></i>Módulo I: actualización de indicadores</a></li>
+<li class="chapter" data-level="" data-path="estructura-y-flujos-de-trabajo-del-sidil.html"><a href="estructura-y-flujos-de-trabajo-del-sidil.html#moduloIIexplicaciongeneral"><i class="fa fa-check"></i>Módulo II: Consulta al universo de CT, imputación de indicadores y predicción de riesgo</a></li>
+<li class="chapter" data-level="" data-path="estructura-y-flujos-de-trabajo-del-sidil.html"><a href="estructura-y-flujos-de-trabajo-del-sidil.html#moduloIyIIexplicaciongeneral"><i class="fa fa-check"></i>Módulos I y II: operables desde la interfaz de automatización</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="elementosgenerales.html"><a href="elementosgenerales.html"><i class="fa fa-check"></i><b>3</b> Elementos generales del procesamiento de datos</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="elementosgenerales.html"><a href="elementosgenerales.html#estructurascripts"><i class="fa fa-check"></i><b>3.1</b> Estructura de Scripts</a>
+<ul>
+<li class="chapter" data-level="3.1.1" data-path="elementosgenerales.html"><a href="elementosgenerales.html#configinicial"><i class="fa fa-check"></i><b>3.1.1</b> Script de configuración inicial y script de funciones y catálogos</a></li>
+<li class="chapter" data-level="3.1.2" data-path="elementosgenerales.html"><a href="elementosgenerales.html#secuenciadores"><i class="fa fa-check"></i><b>3.1.2</b> Scripts secuenciadores</a></li>
+</ul></li>
+<li class="chapter" data-level="3.2" data-path="elementosgenerales.html"><a href="elementosgenerales.html#estructuracarpetas"><i class="fa fa-check"></i><b>3.2</b> Estructura de carpetas y sintaxis de archivos</a></li>
+<li class="chapter" data-level="3.3" data-path="elementosgenerales.html"><a href="elementosgenerales.html#temporalidad"><i class="fa fa-check"></i><b>3.3</b> Sobre la temporalidad</a></li>
+<li class="chapter" data-level="3.4" data-path="elementosgenerales.html"><a href="elementosgenerales.html#trazabilidad"><i class="fa fa-check"></i><b>3.4</b> Sobre trazabilidad: bitácora, log y parámetros</a></li>
+<li class="chapter" data-level="3.5" data-path="elementosgenerales.html"><a href="elementosgenerales.html#mensajesGeneral"><i class="fa fa-check"></i><b>3.5</b> Mensajes al usuario</a>
+<ul>
+<li class="chapter" data-level="3.5.1" data-path="elementosgenerales.html"><a href="elementosgenerales.html#mensajesError"><i class="fa fa-check"></i><b>3.5.1</b> Mensajes de error</a></li>
+<li class="chapter" data-level="3.5.2" data-path="elementosgenerales.html"><a href="elementosgenerales.html#mensajesAdvertencia"><i class="fa fa-check"></i><b>3.5.2</b> Mensajes de advertencia</a></li>
+<li class="chapter" data-level="3.5.3" data-path="elementosgenerales.html"><a href="elementosgenerales.html#mensajesConfirmacion"><i class="fa fa-check"></i><b>3.5.3</b> Mensajes de información o de confirmación</a></li>
+</ul></li>
+<li class="chapter" data-level="3.6" data-path="elementosgenerales.html"><a href="elementosgenerales.html#software-para-el-procesamiento-de-datos"><i class="fa fa-check"></i><b>3.6</b> Software para el procesamiento de datos</a></li>
+<li class="chapter" data-level="3.7" data-path="elementosgenerales.html"><a href="elementosgenerales.html#catalogos"><i class="fa fa-check"></i><b>3.7</b> Catálogos de información</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="procesamiento.html"><a href="procesamiento.html"><i class="fa fa-check"></i><b>4</b> Procesamiento de las fuentes de información y generación de la MPR</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="procesamiento.html"><a href="procesamiento.html#procesamientoModI"><i class="fa fa-check"></i><b>4.1</b> Módulo I: actualización de indicadores</a>
+<ul>
+<li class="chapter" data-level="4.1.1" data-path="procesamiento.html"><a href="procesamiento.html#procesamientoModIdesafios"><i class="fa fa-check"></i><b>4.1.1</b> Desafíos al tratamiento de bases de datos externas</a></li>
+<li class="chapter" data-level="4.1.2" data-path="procesamiento.html"><a href="procesamiento.html#procesamientoModInivelesagregacion"><i class="fa fa-check"></i><b>4.1.2</b> Sobre niveles de agregación</a></li>
+<li class="chapter" data-level="4.1.3" data-path="procesamiento.html"><a href="procesamiento.html#procesamientoModInominativo"><i class="fa fa-check"></i><b>4.1.3</b> Sobre estimaciones puntuales nominativas</a></li>
+<li class="chapter" data-level="4.1.4" data-path="procesamiento.html"><a href="procesamiento.html#procesamientoModEspecificaciones"><i class="fa fa-check"></i><b>4.1.4</b> Especificaciones por fuente de información</a></li>
+<li class="chapter" data-level="4.1.5" data-path="procesamiento.html"><a href="procesamiento.html#procesamientoModIcoyvshist"><i class="fa fa-check"></i><b>4.1.5</b> Estimaciones puntuales e históricas de indicadores</a></li>
+</ul></li>
+<li class="chapter" data-level="4.2" data-path="procesamiento.html"><a href="procesamiento.html#procesamientoModII"><i class="fa fa-check"></i><b>4.2</b> Módulo II: imputación de indicadores y generación de la MPR</a>
+<ul>
+<li class="chapter" data-level="4.2.1" data-path="procesamiento.html"><a href="procesamiento.html#procesamientoModIIconsultaDNE"><i class="fa fa-check"></i><b>4.2.1</b> Consulta al DNE</a></li>
+<li class="chapter" data-level="4.2.2" data-path="procesamiento.html"><a href="procesamiento.html#procesamientoModIIimputacion"><i class="fa fa-check"></i><b>4.2.2</b> Imputación de indicadores laborales al universo de CT</a></li>
+<li class="chapter" data-level="4.2.3" data-path="procesamiento.html"><a href="procesamiento.html#procesamientoModIIprediccion"><i class="fa fa-check"></i><b>4.2.3</b> Predicción de riesgo</a></li>
+</ul></li>
+<li class="chapter" data-level="4.3" data-path="procesamiento.html"><a href="procesamiento.html#procesamientoModIyIIinterfazAuto"><i class="fa fa-check"></i><b>4.3</b> Módulo I y II: Interfaz de automatización</a></li>
+<li class="chapter" data-level="4.4" data-path="procesamiento.html"><a href="procesamiento.html#procesamientoModIIIinterfazConsulta"><i class="fa fa-check"></i><b>4.4</b> Módulo III: Priorización de los centros de trabajo</a></li>
+<li class="chapter" data-level="4.5" data-path="procesamiento.html"><a href="procesamiento.html#procesamientoModIV"><i class="fa fa-check"></i><b>4.5</b> Módulo IV: Entrenamiento del modelo</a>
+<ul>
+<li class="chapter" data-level="4.5.1" data-path="procesamiento.html"><a href="procesamiento.html#procesamientoModIVSIAPI"><i class="fa fa-check"></i><b>4.5.1</b> Construcción de la serie histórica de inspecciones laborales (2012-2022)</a></li>
+<li class="chapter" data-level="4.5.2" data-path="procesamiento.html"><a href="procesamiento.html#procesamientoModIVindicadores"><i class="fa fa-check"></i><b>4.5.2</b> Construcción de la serie histórica de indicadores laborales</a></li>
+<li class="chapter" data-level="4.5.3" data-path="procesamiento.html"><a href="procesamiento.html#procesamientoModIVmatching"><i class="fa fa-check"></i><b>4.5.3</b> Matching de las series históricas</a></li>
+<li class="chapter" data-level="4.5.4" data-path="procesamiento.html"><a href="procesamiento.html#procesamientoModIVEntrenamiento"><i class="fa fa-check"></i><b>4.5.4</b> Entrenamiento y evaluación del modelo de predicción</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="presentación-sintética-de-todos-los-scripts.html"><a href="presentación-sintética-de-todos-los-scripts.html"><i class="fa fa-check"></i><b>5</b> Presentación sintética de todos los scripts</a></li>
+<li class="chapter" data-level="6" data-path="r-rstudio-y-python.html"><a href="r-rstudio-y-python.html"><i class="fa fa-check"></i><b>6</b> R, RStudio y Python</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="r-rstudio-y-python.html"><a href="r-rstudio-y-python.html#r-y-rstudio"><i class="fa fa-check"></i><b>6.1</b> R y RStudio</a></li>
+<li class="chapter" data-level="6.2" data-path="r-rstudio-y-python.html"><a href="r-rstudio-y-python.html#el-entorno-de-rstudio"><i class="fa fa-check"></i><b>6.2</b> El entorno de RStudio</a></li>
+<li class="chapter" data-level="6.3" data-path="r-rstudio-y-python.html"><a href="r-rstudio-y-python.html#procedimiento-para-ejecutar-proyectos-y-scripts-en-rstudio"><i class="fa fa-check"></i><b>6.3</b> Procedimiento para ejecutar proyectos y scripts en RStudio</a></li>
+<li class="chapter" data-level="6.4" data-path="r-rstudio-y-python.html"><a href="r-rstudio-y-python.html#tipos-de-errores-que-se-pudieran-presentar"><i class="fa fa-check"></i><b>6.4</b> Tipos de errores que se pudieran presentar</a></li>
+<li class="chapter" data-level="6.5" data-path="r-rstudio-y-python.html"><a href="r-rstudio-y-python.html#python"><i class="fa fa-check"></i><b>6.5</b> Python</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="especificaciones-del-servidor.html"><a href="especificaciones-del-servidor.html"><i class="fa fa-check"></i><b>7</b> Especificaciones del servidor</a></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">SIDIL: Manual del procesamiento y explotación de la información</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="presentación-sintética-de-todos-los-scripts" class="section level1 hasAnchor" number="5">
+<h1><span class="header-section-number">Capítulo 5</span> Presentación sintética de todos los scripts<a href="presentación-sintética-de-todos-los-scripts.html#presentación-sintética-de-todos-los-scripts" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>A continuación se presentan de manera sintética todos los scripts que constituyen el SIDIL.</p>
+<table style="width:99%;">
+<colgroup>
+<col width="5%" />
+<col width="1%" />
+<col width="25%" />
+<col width="21%" />
+<col width="2%" />
+<col width="18%" />
+<col width="23%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="left"><strong>Nombre (sin incluir versionado)</strong></th>
+<th align="left"><strong>Módulo</strong></th>
+<th align="left"><strong>Objetivo</strong></th>
+<th align="left"><strong>Observaciones</strong></th>
+<th align="left"><strong>Lenguaje</strong></th>
+<th align="left"><strong>Principales insumos</strong></th>
+<th align="left"><strong>Principales outputs</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">0_config_inicial</td>
+<td align="left">I a IV</td>
+<td align="left">Carga de paqueterías para ambiente R;<br />
+Define parámetros de explotación de información</td>
+<td align="left">Es ejecutado por prácticamente todos los scripts secuenciadores</td>
+<td align="left">R</td>
+<td align="left">NA</td>
+<td align="left">Parámetros cargados en la memoria RAM</td>
+</tr>
+<tr class="even">
+<td align="left">0_funciones_catalogos</td>
+<td align="left">I a IV</td>
+<td align="left">Define funciones</td>
+<td align="left">A excepción del script 9_envio_MPR, este script siempre es llamado por 0_config_inicial</td>
+<td align="left">R</td>
+<td align="left">Catálogos de información</td>
+<td align="left">Catálogos cargados y funciones definidas en la RAM.</td>
+</tr>
+<tr class="odd">
+<td align="left">1_secuenciador_ENOE</td>
+<td align="left">I</td>
+<td align="left">Ejecuta toda la rutina para generar los indicadores coyunturales de la ENOE</td>
+<td align="left">Es el único script que se debe ejecutar, ya que este llama a los otros scripts</td>
+<td align="left">R</td>
+<td align="left">Script de configuración inicial; catálogos; script de extracción; scripts de generación de indicadores</td>
+<td align="left">Una tabla por cada indicador calculado con las estimaciones puntuales de dicho indicador. Una tabla con los valores de referencia de cada indicador.</td>
+</tr>
+<tr class="even">
+<td align="left">1_extraccion_ENOE</td>
+<td align="left">I</td>
+<td align="left">Construye la base de insumo para el cálculo de los indicadores de la ENOE a partir de las bases originales en formato .dbf</td>
+<td align="left">Se ejecuta automáticamente desde el script secuenciador</td>
+<td align="left">R</td>
+<td align="left">Tablas originales de la ENOE en formato .dbf</td>
+<td align="left">Una tabla unificada de la ENOE en formato .dbf con la población subordinada y reumunerada</td>
+</tr>
+<tr class="odd">
+<td align="left">1_brecha_gen_ENOE</td>
+<td align="left">I</td>
+<td align="left">Genera las estimaciones puntuales coyunturales del indicador “brecha de género” de la ENOE</td>
+<td align="left">Se ejecuta automáticamente desde el script secuenciador</td>
+<td align="left">R</td>
+<td align="left">La tabla resultado del script de extracción</td>
+<td align="left">Una tabla con las estimaciones puntuales del respectivo indicador.</td>
+</tr>
+<tr class="even">
+<td align="left">1_contrato_escrito_ENOE</td>
+<td align="left">I</td>
+<td align="left">Genera las estimaciones puntuales coyunturales del indicador “contrato escrito” de la ENOE</td>
+<td align="left">Se ejecuta automáticamente desde el script secuenciador</td>
+<td align="left">R</td>
+<td align="left">La tabla resultado del script de extracción</td>
+<td align="left"></td>
+</tr>
+<tr class="odd">
+<td align="left">1_dias_trab_ENOE</td>
+<td align="left">I</td>
+<td align="left">Genera las estimaciones puntuales coyunturales del indicador “días trabajados” de la ENOE</td>
+<td align="left">Se ejecuta automáticamente desde el script secuenciador</td>
+<td align="left">R</td>
+<td align="left">La tabla resultado del script de extracción</td>
+<td align="left"></td>
+</tr>
+<tr class="even">
+<td align="left">1_hrs_trab_ENOE</td>
+<td align="left">I</td>
+<td align="left">Genera las estimaciones puntuales coyunturales del indicador horas trabajadas” de la ENOE</td>
+<td align="left">Se ejecuta automáticamente desde el script secuenciador</td>
+<td align="left">R</td>
+<td align="left">La tabla resultado del script de extracción</td>
+<td align="left"></td>
+</tr>
+<tr class="odd">
+<td align="left">1_ing_min_ENOE</td>
+<td align="left">I</td>
+<td align="left">Genera las estimaciones puntuales coyunturales del indicador “ingreso mínimo” de la ENOE</td>
+<td align="left">Se ejecuta automáticamente desde el script secuenciador</td>
+<td align="left">R</td>
+<td align="left">La tabla resultado del script de extracción</td>
+<td align="left"></td>
+</tr>
+<tr class="even">
+<td align="left">1_ing_x_hrs_ENOE</td>
+<td align="left">I</td>
+<td align="left">Genera las estimaciones puntuales coyunturales del indicador “ingreso por hraso” de la ENOE</td>
+<td align="left">Se ejecuta automáticamente desde el script secuenciador</td>
+<td align="left">R</td>
+<td align="left">La tabla resultado del script de extracción</td>
+<td align="left"></td>
+</tr>
+<tr class="odd">
+<td align="left">1_ing_x_mes_ENOE</td>
+<td align="left">I</td>
+<td align="left">Genera las estimaciones puntuales coyunturales del indicador “ingreso por mes” de la ENOE</td>
+<td align="left">Se ejecuta automáticamente desde el script secuenciador</td>
+<td align="left">R</td>
+<td align="left">La tabla resultado del script de extracción</td>
+<td align="left"></td>
+</tr>
+<tr class="even">
+<td align="left">1_presta_soc_ENOE</td>
+<td align="left">I</td>
+<td align="left">Genera las estimaciones puntuales coyunturales del indicador “prestaciones sociales” de la ENOE</td>
+<td align="left">Se ejecuta automáticamente desde el script secuenciador</td>
+<td align="left">R</td>
+<td align="left">La tabla resultado del script de extracción</td>
+<td align="left"></td>
+</tr>
+<tr class="odd">
+<td align="left">1_seg_soc_ENOE</td>
+<td align="left">I</td>
+<td align="left">Genera las estimaciones puntuales coyunturales del indicador “seguridad social” de la ENOE</td>
+<td align="left">Se ejecuta automáticamente desde el script secuenciador</td>
+<td align="left">R</td>
+<td align="left">La tabla resultado del script de extracción</td>
+<td align="left"></td>
+</tr>
+<tr class="even">
+<td align="left">1_sindicato_ENOE</td>
+<td align="left">I</td>
+<td align="left">Genera las estimaciones puntuales coyunturales del indicador “sindicato” de la ENOE</td>
+<td align="left">Se ejecuta automáticamente desde el script secuenciador</td>
+<td align="left">R</td>
+<td align="left">La tabla resultado del script de extracción</td>
+<td align="left"></td>
+</tr>
+<tr class="odd">
+<td align="left">1_tipo_contrato_ENOE</td>
+<td align="left">I</td>
+<td align="left">Genera las estimaciones puntuales coyunturales del indicador “tipo contrato” de la ENOE</td>
+<td align="left">Se ejecuta automáticamente desde el script secuenciador</td>
+<td align="left">R</td>
+<td align="left">La tabla resultado del script de extracción</td>
+<td align="left">Una tabla con las estimaciones puntuales del indicador.</td>
+</tr>
+<tr class="even">
+<td align="left">1_secuenciador_CENSO2019</td>
+<td align="left">I</td>
+<td align="left">Ejecuta toda la rutina para generar los indicadores del Censo Económico</td>
+<td align="left">Es el único script del Censo Económico</td>
+<td align="left">R</td>
+<td align="left">Tabla de datos de las 3 empresas más grandes a nivel municipal y rama (SCIAN 2 dígitos), producto de la colaboración INEGI-STPS</td>
+<td align="left">Una tabla por cada indicador calculado con las estimaciones puntuales de dicho indicador.</td>
+</tr>
+<tr class="odd">
+<td align="left">1_secuenciador_IMSS</td>
+<td align="left">I</td>
+<td align="left">Ejecuta toda la rutina para generar los indicadores del IMSS</td>
+<td align="left">Es el único script que se debe ejecutar, ya que este llama a los otros scripts</td>
+<td align="left">R</td>
+<td align="left">Script de configuración inicial; catálogos; script de extracción; scripts de generación de indicadores</td>
+<td align="left">Una tabla por cada indicador calculado con las estimaciones puntuales de dicho indicador. Una tabla con los valores de referencia de cada indicador.</td>
+</tr>
+<tr class="even">
+<td align="left">1_extraccion_IMSS</td>
+<td align="left">I</td>
+<td align="left">Construye la base de insumo para el cálculo de los indicadores del IMSS</td>
+<td align="left">Se ejecuta automáticamente desde el script secuenciador</td>
+<td align="left">R</td>
+<td align="left">Insumos originales del IMSS: accidenes (riesgos), patrones y puestos (asegurados)</td>
+<td align="left">Una tabla para cada insumo original por mes, además para puestos, una tabla adicional con los NSS de las personas aseguradas, también por mes.</td>
+</tr>
+<tr class="odd">
+<td align="left">1_brecha_imss</td>
+<td align="left">I</td>
+<td align="left">Genera las estimaciones puntuales coyunturales del indicador “brecha salarial de género” del IMSS</td>
+<td align="left">Se ejecuta automáticamente desde el script secuenciador</td>
+<td align="left">R</td>
+<td align="left">Insumos procesados, combinados selectivamente desde el secuenciador.</td>
+<td align="left">Estimaciones puntuales en dos tablas: por nivel de agregación y nominativo, para cada mes.</td>
+</tr>
+<tr class="even">
+<td align="left">1_concen_mercado_imss</td>
+<td align="left">I</td>
+<td align="left">Genera las estimaciones puntuales coyunturales del indicador “concentración de mercado” del IMSS</td>
+<td align="left">Se ejecuta automáticamente desde el script secuenciador</td>
+<td align="left">R</td>
+<td align="left">Insumos procesados, combinados selectivamente desde el secuenciador.</td>
+<td align="left"></td>
+</tr>
+<tr class="odd">
+<td align="left">1_rot_lab</td>
+<td align="left">I</td>
+<td align="left">Genera las estimaciones puntuales coyunturales del indicador “rotación laboral” del IMSS</td>
+<td align="left">Se ejecuta automáticamente desde el script secuenciador</td>
+<td align="left">R</td>
+<td align="left">Insumos procesados, combinados selectivamente desde el secuenciador.</td>
+<td align="left"></td>
+</tr>
+<tr class="even">
+<td align="left">1_salario_minimo</td>
+<td align="left">I</td>
+<td align="left">Genera las estimaciones puntuales coyunturales del indicador “rotación laboral” del IMSS</td>
+<td align="left">Se ejecuta automáticamente desde el script secuenciador</td>
+<td align="left">R</td>
+<td align="left">Insumos procesados, combinados selectivamente desde el secuenciador.</td>
+<td align="left"></td>
+</tr>
+<tr class="odd">
+<td align="left">1_tasa_acc</td>
+<td align="left">I</td>
+<td align="left">Genera las estimaciones puntuales coyunturales del indicador “rotación laboral” del IMSS</td>
+<td align="left">Se ejecuta automáticamente desde el script secuenciador</td>
+<td align="left">R</td>
+<td align="left">Insumos procesados, combinados selectivamente desde el secuenciador.</td>
+<td align="left"></td>
+</tr>
+<tr class="even">
+<td align="left">1_tasa_dias</td>
+<td align="left">I</td>
+<td align="left">Genera las estimaciones puntuales coyunturales del indicador “rotación laboral” del IMSS</td>
+<td align="left">Se ejecuta automáticamente desde el script secuenciador</td>
+<td align="left">R</td>
+<td align="left">Insumos procesados, combinados selectivamente desde el secuenciador.</td>
+<td align="left"></td>
+</tr>
+<tr class="odd">
+<td align="left">2_consulta_DNE_</td>
+<td align="left">II</td>
+<td align="left">Organiza la consulta al DNE (como secuenciador) y enriquece la categoría de tamaño con base en los patrones registrados ante el IMSS.</td>
+<td align="left"></td>
+<td align="left">R</td>
+<td align="left">DNE y Patrones del IMSS</td>
+<td align="left">DNE_plus: universo de CT consultado del DNE.</td>
+</tr>
+<tr class="even">
+<td align="left">2_conexion</td>
+<td align="left">II</td>
+<td align="left">Establece la conexión al SQL Server.</td>
+<td align="left">Se ejecuta automáticamente desde 2_consulta_DNE</td>
+<td align="left">R</td>
+<td align="left">Credenciales de acceso a SQL Server</td>
+<td align="left">Conexión a DNE en la RAM</td>
+</tr>
+<tr class="odd">
+<td align="left">2_extraccion_DNE</td>
+<td align="left">II</td>
+<td align="left">Formula y envía queries para extraer tablas del SQL Server</td>
+<td align="left">Se ejecuta automáticamente desde 2_consulta_DNE</td>
+<td align="left">R</td>
+<td align="left">Catálogo de campos del DNE</td>
+<td align="left">Tablas consultadas al DNE, en la RAM</td>
+</tr>
+<tr class="even">
+<td align="left">2_matching_coyuntural_</td>
+<td align="left">II</td>
+<td align="left">Imputa de manera nominativa y por nivel de agregación los indicadores coyunturales al DNE_plus</td>
+<td align="left"></td>
+<td align="left">Python</td>
+<td align="left">DNE_plus</td>
+<td align="left">Universo CT con indicadores coyunturales imputados</td>
+</tr>
+<tr class="odd">
+<td align="left">2_prediccion_modelo_</td>
+<td align="left">II</td>
+<td align="left">Genera predicción de riesgos por submateria y general</td>
+<td align="left"></td>
+<td align="left">Python</td>
+<td align="left">Universo CT con indicadores coyunturales imputados</td>
+<td align="left">Matriz de predicción de riesgos</td>
+</tr>
+<tr class="even">
+<td align="left">automatizacion/app.R</td>
+<td align="left">I y II</td>
+<td align="left">Es la app de la interfaz de automatización que organiza la actualización de fuentes de información, carga de catálogos y la ejecución de los scripts en los módulos I y II.</td>
+<td align="left">La interfaz únicamente permite la realización de procesos del módulo I y II.</td>
+<td align="left">R</td>
+<td align="left">Todos los scripts y fuentes de información de los módulos I y II</td>
+<td align="left">Todos los outputs de los módulos I y II</td>
+</tr>
+<tr class="odd">
+<td align="left">consulta/app.R</td>
+<td align="left">III</td>
+<td align="left">Es la app de la interfaz de consulta que permite priorizar los CT con base en sus predicciones de riesgo, atributos e indicadores</td>
+<td align="left"></td>
+<td align="left">R</td>
+<td align="left">Matriz de predicción de riesgos</td>
+<td align="left">Universo de CT que satisfacen criterios de inspección</td>
+</tr>
+<tr class="even">
+<td align="left">4_query_violaciones_inspecciones_</td>
+<td align="left">IV</td>
+<td align="left">Organiza la consulta al SIAPI-SIPAS</td>
+<td align="left">Incluye la consulta al universo de CT para recuperar atributos de los mismos</td>
+<td align="left">R</td>
+<td align="left">Credenciales de acceso a SQL Server</td>
+<td align="left">Historico de inspecciones por submateria incluyendo si se encontraron violaciones que proceden</td>
+</tr>
+<tr class="odd">
+<td align="left">4_secuenciador_ENOE</td>
+<td align="left">IV</td>
+<td align="left">Ejecuta toda la rutina para generar los indicadores coyunturales de la ENOE</td>
+<td align="left">Es el único script que se debe ejecutar, ya que este llama a los otros scripts</td>
+<td align="left">R</td>
+<td align="left">Script de configuración inicial; catálogos; script de extracción; scripts de generación de indicadores</td>
+<td align="left">enoe_historico_v.Rds: una sola tabla con todos los indicadores para todos los años.</td>
+</tr>
+<tr class="even">
+<td align="left">4_extraccion_ENOE</td>
+<td align="left">IV</td>
+<td align="left">Construye la base de insumo para el cálculo de los indicadores de la ENOE a partir de las bases originales en formato .dbf</td>
+<td align="left">La unica diferencia respecto a este script del módulo I es que en el módulo IV se incluye el año.</td>
+<td align="left">R</td>
+<td align="left">Tablas originales de la ENOE en formato .dbf</td>
+<td align="left">Una tabla unificada de la ENOE en formato .dbf con la población subordinada y reumunerada, con el año</td>
+</tr>
+<tr class="odd">
+<td align="left">4_brecha_gen_ENOE</td>
+<td align="left">IV</td>
+<td align="left">Genera las estimaciones puntuales coyunturales del indicador “brecha de género” de la ENOE</td>
+<td align="left"></td>
+<td align="left">R</td>
+<td align="left">La tabla resultado del script de extracción.</td>
+<td align="left">El cálculo por año para cada indicador, mismo que luego el secuenciador “apila” para conformar una sola tabla con todos los indicadores.</td>
+</tr>
+<tr class="even">
+<td align="left">4_contrato_escrito_ENOE</td>
+<td align="left">IV</td>
+<td align="left">Genera las estimaciones puntuales coyunturales del indicador “contrato escrito” de la ENOE</td>
+<td align="left"></td>
+<td align="left">R</td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr class="odd">
+<td align="left">4_dias_trab_ENOE</td>
+<td align="left">IV</td>
+<td align="left">Genera las estimaciones puntuales coyunturales del indicador “días trabajados” de la ENOE</td>
+<td align="left"></td>
+<td align="left">R</td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr class="even">
+<td align="left">4_hrs_trab_ENOE</td>
+<td align="left">IV</td>
+<td align="left">Genera las estimaciones puntuales coyunturales del indicador horas trabajadas” de la ENOE</td>
+<td align="left"></td>
+<td align="left">R</td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr class="odd">
+<td align="left">4_ing_x_hrs_ENOE</td>
+<td align="left">IV</td>
+<td align="left">Genera las estimaciones puntuales coyunturales del indicador “ingreso por hraso” de la ENOE</td>
+<td align="left"></td>
+<td align="left">R</td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr class="even">
+<td align="left">4_ing_x_mes_ENOE</td>
+<td align="left">IV</td>
+<td align="left">Genera las estimaciones puntuales coyunturales del indicador “ingreso por mes” de la ENOE</td>
+<td align="left"></td>
+<td align="left">R</td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr class="odd">
+<td align="left">4_presta_soc_ENOE</td>
+<td align="left">IV</td>
+<td align="left">Genera las estimaciones puntuales coyunturales del indicador “prestaciones sociales” de la ENOE</td>
+<td align="left"></td>
+<td align="left">R</td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr class="even">
+<td align="left">4_seg_soc_ENOE</td>
+<td align="left">IV</td>
+<td align="left">Genera las estimaciones puntuales coyunturales del indicador “seguridad social” de la ENOE</td>
+<td align="left"></td>
+<td align="left">R</td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr class="odd">
+<td align="left">4_sindicato_ENOE</td>
+<td align="left">IV</td>
+<td align="left">Genera las estimaciones puntuales coyunturales del indicador “sindicato” de la ENOE</td>
+<td align="left"></td>
+<td align="left">R</td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr class="even">
+<td align="left">4_tipo_contrato_ENOE</td>
+<td align="left">IV</td>
+<td align="left">Genera las estimaciones puntuales coyunturales del indicador “tipo contrato” de la ENOE</td>
+<td align="left"></td>
+<td align="left">R</td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr class="odd">
+<td align="left">1_secuenciador_IMSS</td>
+<td align="left">IV</td>
+<td align="left">Ejecuta toda la rutina para generar los indicadores del IMSS</td>
+<td align="left">La unica diferencia respecto a este script del módulo I es en la configuración de parámetros</td>
+<td align="left">R</td>
+<td align="left">Script de configuración inicial; catálogos; script de extracción; scripts de generación de indicadores</td>
+<td align="left">Una tabla por cada indicador calculado con las estimaciones puntuales de dicho indicador. Una tabla con los valores de referencia de cada indicador.</td>
+</tr>
+<tr class="even">
+<td align="left">4_matching_historico</td>
+<td align="left">IV</td>
+<td align="left">Imputa de manera nominativa y por nivel de agregación los indicadores históricos de IMSS y ENOE al histórico de inspecciones</td>
+<td align="left"></td>
+<td align="left">Python</td>
+<td align="left">Tablas de indicadores históricos del IMSS y de la ENOE; histórico de inspecciones por submateria que incluye atributos del DNE</td>
+<td align="left">UniversoInspeccionesInd_v.Rds: una tabla que a cada inspección y submateria le asocia los valores históricos del IMSS y ENOE, además de los atributos del DNE.</td>
+</tr>
+<tr class="odd">
+<td align="left">4_entrenamiento_modelo</td>
+<td align="left">IV</td>
+<td align="left">Entrena el modelo random forest con base en el histórico de inspecciones.</td>
+<td align="left">Se pueden entrenar dos modelos, actualmente predefinido para que sea Random Forest. La alternativa es el Tabnet (red neuronal para datos tabulares)</td>
+<td align="left">Python</td>
+<td align="left">UniversoInspeccionesInd_v.Rds</td>
+<td align="left">Modelo entrenado, exportado a archivos pkl, un txt con las variables de entrada del modelo, score y submateria con la métrica de ajuste de las predicciones (MAE).</td>
+</tr>
+<tr class="even">
+<td align="left">4_eval_modelo</td>
+<td align="left">IV</td>
+<td align="left">Genera métricas de performance del modelo y análisis Shapley (medición de contribución relativa de variables de entrada).</td>
+<td align="left"></td>
+<td align="left">Python.</td>
+<td align="left">El modelo entrenado y la base histórica de inspecciones por submateria.</td>
+<td align="left">Dos tablas reportadas en el log con las métricas de performance.<br />
+Imágenes (png) con el análisis Shapley, mismas que además conforman un html.</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="procesamiento.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="r-rstudio-y-python.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": null,
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": null,
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "none",
+"scroll_highlight": true
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>
