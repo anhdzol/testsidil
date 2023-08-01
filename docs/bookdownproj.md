@@ -26,10 +26,10 @@ laboral de las empresas.
 
 En ese marco, este componente busca apoyar a la Secretaría de Trabajo y
 Previsión Social (STPS) en la generación de herramientas y mecanismos
-que permitan seleccionar centros de trabajo en función de un enfoque
-basado en el **análisis de los factores de riesgo** de que cada una de
-las empresas incumplan determinada normatividad en materia laboral.
-Suponemos que este enfoque resultará en una mayor eficiencia de la
+que permitan seleccionar centros de trabajo en función de **un enfoque
+basado en evidencia, en particular, a partir de la estimación de riesgos
+de incumplimiento a determinada normatividad en materia laboral**. El
+potencial de este enfoque es que se alcance una mayor eficiencia de la
 inspección. Para ello se requirió el desarrollo de métodos de análisis
 que permitieran la priorización en función del riesgo, basándose en que
 la STPS dispone de grandes volúmenes de datos derivados de la inspección
@@ -91,9 +91,9 @@ En cuanto a los temas técnicos, abordar el reto de seleccionar empresas
 de alto riesgo mediante el uso de la analítica de datos resulta adecuado
 para los algoritmos de aprendizaje automático, ya que se cuenta con una
 masa crítica de información para procesar. A lo largo de este proyecto
-el equipo de AIR se avocó al análisis de datos, la incorporación de
+el equipo de AIR se abocó al análisis de datos, la incorporación de
 fuentes de información, su relacionamiento, la definición de
-indicadores, la generación y entrenamiento de modelos matemáticos para
+indicadores, la generación y entrenamiento de modelos estadísticos para
 la predicción de riesgo y el desarrollo de un poderoso sistema de
 información, que se presenta a detalle a lo largo de este documento.
 
@@ -193,16 +193,16 @@ La determinación de estrategias inteligentes de inspección basadas en el
 análisis de datos requiere un volumen suficiente de datos y una serie de
 herramientas que, en función de determinados criterios de análisis,
 permitan su procesamiento. La Inspección Federal del Trabajo y más en
-general la Secretaría del Trabajo (STPS), dispone de una gran cantidad
-de datos: datos históricos de la inspección, directorio de empresas y
-centros de trabajo, reportes de accidentes, información de la evolución
-de sueldos y salarios en los contratos colectivos, entre otros. Así, se
-cuenta con la información que recopila y almacena el organismo de
-inspección de trabajo, que en general son datos relacionados con sus
-objetos de inspección y sus actividades: datos de las empresas como el
-número de empleados, la antigüedad de la empresa, la rama de actividad,
-el número de inspecciones previas, el resultado de dichas inspecciones y
-las notificaciones de accidentes. Asimismo, se cuenta con un importante
+general la STPS, dispone de una gran cantidad de datos: datos históricos
+de la inspección, directorio de empresas y centros de trabajo, reportes
+de accidentes, información de la evolución de sueldos y salarios en los
+contratos colectivos, entre otros. Así, se cuenta con la información que
+recopila y almacena el organismo de inspección de trabajo, que en
+general son datos relacionados con sus objetos de inspección y sus
+actividades: datos de las empresas como el número de empleados, la
+antigüedad de la empresa, la rama de actividad, el número de
+inspecciones previas, el resultado de dichas inspecciones y las
+notificaciones de accidentes. Asimismo, se cuenta con un importante
 acervo de información generada por el área de estadística e
 investigación de la STPS referida a accidentes y contratos colectivos.
 Además, el número de datos aumenta progresivamente al añadirse nuevas
@@ -407,9 +407,9 @@ hallazgos de todas las inspecciones laborales realizadas por la UTD con
 todos los indicadores laborales calculados de manera histórica, según la
 disponibilidad temporal de las fuentes de información.
 
-<img src="images-1/02/image2_alternativaTD.jpg" alt="Pipelinse ilustrativo del SIDIL  (versión simplificada)" width="1280" />
+<img src="images-1/02/image2_alternativaTD.jpg" alt="Pipeline simplificado del SIDIL  (versión simplificada)" width="1280" />
 <p class="caption">
-Ilustración 2.1: Pipelinse ilustrativo del SIDIL (versión simplificada)
+Ilustración 2.1: Pipeline simplificado del SIDIL (versión simplificada)
 </p>
 
 ## 2.1 Elementos básicos del SIDIL
@@ -551,6 +551,11 @@ para la predicción del modelo sobre el universo de CT enriquecido con
 los indicadores. A continuación, se ofrecen las principales
 características de estos módulos.
 
+<!-- Recuadro 1:  -->
+<!-- >El SIDIL está compuesto por diferentes módulos. Adicional a las ventajas mencionadas, conviene enfatizar que el SIDIL permite a los usuarios actualizar los diferentes módulos por separado. Esto es, diferentes usuarios (supongamos, especializados por fuentes de información) pueden, en distintos momentos del tiempo, actualizar un módulo sin necesidad de realizar la actualización de los demás módulos en el mismo momento. Esto, si bien no se reflejará en una actualización de la matriz de predicción de riesgos a menos que se actualice el módulo II, permite dividir las tareas entre diferentes personas. -->
+<!-- >En ese sentido, una situación que podría ocurrir es la siguiente: el módulo I se actualiza cada tres meses. Pero en el caso del módulo II, al depender del universo de CT registrado en el DNE, puede ameritar actualizarse con mayor frecuencia, toda vez que dicho registro administrativo está en constante cambio (nuevos CT que se incorporan o modificaciones que se realizan a CT preexistentes). No es necesario (ni abonaría nuevos indicadores) volver a correr el módulo I porque el DNE haya sufrido cambios. La información sería la misma. -->
+<!-- >De la misma manera, la modularización permite aislar la tarea más compleja del SIDIL: la actualización del módulo IV de entrenamiento del modelo. Esta tarea es la más intensiva en tiempo, toma de decisiones y acceso a información a la vez que, de mantenerse el mismo modelo, no resultaría en sustantivas diferencias si la actualización se realizara con elevada frecuencia. -->
+
 Recuadro 1: Modularización del SIDIL
 
 <table>
@@ -672,7 +677,7 @@ no tenga a ningún CT con dichas características.^\[De manera análoga,
 dado que el SIDIL explota registros administrativos del IMSS y calcula
 ciertos indicadores a nivel *registro* patronal, cabe observar que los
 indicadores se calculan para todos los registros patronales,
-independientemente de que éstos sean "encontrados" en el DNE.\] De esta
+independientemente de que éstos sean “encontrados” en el DNE.\] De esta
 manera, dada la posibilidad de que en cualquier momento se incorporen
 nuevos CT al DNE con esta o cualquier otra combinación de información,
 se tiene a disposición la información en todos los niveles de agregación
@@ -849,64 +854,30 @@ del IMSS
 
 <table>
 <colgroup>
-<col style="width: 101%" />
+<col style="width: 100%" />
 </colgroup>
+<thead>
+<tr class="header">
+<th>Actualmente el SIDIL consulta al DNE y al SIAPI/SIPAS. Al
+realizarlo, se encuentra que en el DNE el campo número de trabajadores
+tiene aproximadamente un 80% de observaciones nulas (sin valor válido).
+Este campo es enriquecido con el campo que se completa durante en las
+inspecciones registradas en SIAPI SIPAS. Si es posible enriquecerlo
+entonces ese campo ya se considera completo y no se realiza la
+imputación de enriquecimiento con base en el IMSS patronal. Si en cambio
+no hay un dato derivado de las inspecciones, entonces sí se busca el
+enriquecimiento con los datos del IMSS. Por supuesto, se reconocen
+obvias limitaciones derivadas de que en el IMSS se registra únicamente
+el empleo formal mientras que en las inspecciones se registra todo tipo
+de trabajadores, estén o no registrados ante el IMSS.</th>
+</tr>
+</thead>
 <tbody>
 <tr class="odd">
-<td style="text-align: left;">Actualmente el SIDIL consulta al DNE y al
-SIAPI/SIPAS. Al realizarlo,</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">se encuentra que en el DNE el campo número
-de trabajadores tiene</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">aproximadamente un 80% de observaciones
-nulas (sin valor válido). Este</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">campo es enriquecido con el campo que se
-completa durante en las</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">inspecciones registradas en SIAPI SIPAS.
-Si es posible enriquecerlo</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">entonces ese campo ya se considera
-completo y no se realiza la</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">imputación de enriquecimiento con base en
-el IMSS patronal. Si en</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">cambio no hay un dato derivado de las
-inspecciones, entonces sí se</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">busca el enriquecimiento con los datos del
-IMSS. Por supuesto, se</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">reconocen obvias limitaciones derivadas de
-que en el IMSS se registra</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">únicamente el empleo formal mientras que
-en las inspecciones se</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">registra todo tipo de trabajadores, estén
-o no registrados ante el</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">IMSS.</td>
+<td></td>
 </tr>
 </tbody>
 </table>
-
-------------------------------------------------------------------------
 
 En resumen, el proceso de imputación o “matching” tiene tres etapas, en
 dos scripts diferentes:
@@ -942,9 +913,11 @@ indicadores, para cada uno de los CT del universo, se utiliza como
 insumo para el cálculo de factores que permitirán la predicción del
 riesgo de incumplimiento en cada una de las submaterias de las
 Condiciones Generales de Trabajo a través de la **aplicación del
-modelo** (previamente entrenado\[^2\]) para predecir y atribuir un
-factor de riesgo de incumplimiento a cada centro de trabajo para cada
-submateria.
+modelo** (previamente entrenado^\[Conviene enfatizar que no es en este
+módulo donde se entrena el modelo, ya que eso forma parte del módulo IV,
+en este caso sólo se aplica el modelo previamente entrenado.) para
+predecir y atribuir un factor de riesgo de incumplimiento a cada centro
+de trabajo para cada submateria.
 
 El resultado final de este módulo es la **Matriz de Predicción de
 Riesgos** (MPR), misma que se analiza en mucho más detalle en la
@@ -956,10 +929,11 @@ geografía, clasificación industrial y tamaño) y del número de
 submaterias sobre las cuales se realiza una predicción de riesgo, como
 muestra la Ilustración 3 a continuación.
 
-Ilustración 3 Tipos de columnas que componen la Matriz de Predicción de
-Riesgos (MPR)
-
-<img src="./media/image5.png" style="width:6.5in;height:2.9in" />
+<img src="images-1/02/MPR_simplificada.png" alt="Matriz de predicción de riesgos (ilustración simplificada)" width="836" />
+<p class="caption">
+Ilustración 2.4: Matriz de predicción de riesgos (ilustración
+simplificada)
+</p>
 
 ### Módulos I y II: operables desde la interfaz de automatización
 
@@ -1022,6 +996,8 @@ nivel código para encontrar la solución a dicho error de cálculo.
 Recuadro 6: la utilización de la interfaz de automatización
 
 <table>
+<caption>### Módulo III: Consulta de la MPR para priorización de CT a
+inspeccionar {.unnumbered #interfazConsultaexplicaciongeneral}</caption>
 <colgroup>
 <col style="width: 100%" />
 </colgroup>
@@ -1068,7 +1044,7 @@ consola.</p></th>
 </tbody>
 </table>
 
-\###Módulo III: Consulta de la MPR para priorización de CT a
+\### Módulo III: Consulta de la MPR para priorización de CT a
 inspeccionar {.unnumbered \#interfazConsultaexplicaciongeneral}
 
 En el módulo de consulta se explota la información contenida en la
@@ -1194,6 +1170,14 @@ está evaluando y, a través de una serie de preguntas, clasifica el
 centro de trabajo en una de las dos categorías: violación o no violación
 procedente en la submateria en cuestión.
 
+<span class="mark"><span class="mark">Placeholder imagen pixelada
+pendiente mejora</span></span>
+
+<img src="images-1/02/arbol_decision.png" alt="Ejemplo de un árbol de decisión" width="379" />
+<p class="caption">
+Ilustración 2.5: Ejemplo de un árbol de decisión
+</p>
+
 **En lugar de utilizar un solo árbol de decisión, el modelo RF utiliza
 múltiples árboles de decisión para mejorar la precisión de las
 predicciones.** Cada árbol se entrena con diferentes subconjuntos de los
@@ -1285,7 +1269,7 @@ constante.
 
 <!--chapter:end:01-Estructura.Rmd-->
 
-# 3 ELEMENTOS GENERALES DEL PROCESAMIENTO DE DATOS
+# 3 Elementos generales del procesamiento de datos
 
 ## 3.1 Estructura de Scripts
 
@@ -1406,10 +1390,11 @@ identifican en la siguiente imagen con los tres puntos (…)).
 
 Ilustración 4 Presentación genérica de un script secuenciador
 
-<img src="./media/image6.png"
-style="width:2.50764in;height:2.59653in" />
-
-*Fuente: Elaboración propia*
+<img src="images-1/02/scriptsecuenciador.png" alt="Presentación esquematizada del funcionamiento de un script secuenciador" width="393" />
+<p class="caption">
+Ilustración 3.1: Presentación esquematizada del funcionamiento de un
+script secuenciador
+</p>
 
 ¿Cuántos scripts secuenciadores existen? El número total asciende a once
 porque actualmente hay un script secuenciador para la actualización de
@@ -1437,7 +1422,7 @@ Módulo IV
 
 1.  Script secuenciador para ENOE
 
-2.  Script secuenciador para IMSS\[^3\]
+2.  Script secuenciador para IMSS[1]
 
 3.  Script secuenciador de consulta de histórico de inspecciones
 
@@ -1453,6 +1438,19 @@ objetivos) realmente no tienen esta característica específica de
 “llamar” a otros scripts, sin embargo, a fines de presentación se
 simplifica su sistematización llamándolos como tal.
 
+Así, uniendo los conceptos descritos en este y el anterior apartado, se
+puede presentar la ilustración <a href="#fig:secConfigInicial">3.2</a>
+en la que se observa cómo un script secuenciador llama al script de
+configuración inicial, éste a su vez llama al *0\_funciones\_catalogos*
+para luego a partir de un script de extracción se lamen los inputs para
+su transformación, y luego, cuando aplique, los scripts del cálculo de
+los indicadores, para dar con el output final.
+
+<img src="images-1/02/sec_config_inicial.png" alt="Presentación esquematizada de la relación " width="1048" />
+<p class="caption">
+Ilustración 3.2: Presentación esquematizada de la relación
+</p>
+
 ## 3.2 Estructura de carpetas y sintaxis de archivos
 
 Dada la división de instrucciones en los diferentes scripts que fueron
@@ -1467,7 +1465,7 @@ funcionen, toda vez que los nombres de las carpetas son parte sustantiva
 de la identificación de inputs, scripts y outputs que se deben correr.
 De la misma manera, el cambio en el nombre de algunos archivos,
 particularmente los catálogos que no llevan una versión en el nombre del
-archivo, puede requerir ajustes en el código.\[^4\]
+archivo, puede requerir ajustes en el código.[2]
 
 En algunas carpetas específicas, particularmente las de la subcarpeta de
 insumos, la estructura ramificada incluye una subcarpeta final llamada
@@ -1484,9 +1482,10 @@ alguna de estas.
 Hay cuatro grandes carpetas: 1\_insumos, 2\_codigos, 3\_resultados,
 4\_reportes.
 
-((aqui imagen organizacion catalogos))
-<img src="./images-1/03/organizacion_catalogos"
-style="width:3.46875in;height:3.67708in" />
+<img src="images-1/03/organizacion_catalogos.png" alt="Organización básica de las principales carpetas" width="333" />
+<p class="caption">
+Ilustración 3.3: Organización básica de las principales carpetas
+</p>
 
 Al interior de 1\_insumos se encuentran tres subcarpetas:
 
@@ -1596,9 +1595,18 @@ referencia al primer trimestre de 2022. En cambio, para el IMSS; cuya
 información original es de frecuencia mensual, la referencia es 2022131
 (que representa la fecha de corte al 31 de enero de 2022).
 
-Recuadro 7: Versionado de elementos
+Recuadro 6: Versionado de elementos
 
 <table>
+<caption>El versionado de los archivos no solo permite la trazabilidad
+(ver subsección siguiente) sino que además es indispensable para el
+funcionamiento adecuado del SIDIL. Dos ejemplos: primero, la lectura de
+scripts de cálculo de indicadores en el módulo I requiere la
+identificación de fecha (tan solo para poder aplicarlo, pero además para
+identificar la versión más reciente). De la misma manera, la interfaz de
+explotación de datos requiere del adecuado versionado de la MPR para
+poder identificar la versión más reciente y ofrecer la predicción de
+riesgos más actualizada.</caption>
 <colgroup>
 <col style="width: 100%" />
 </colgroup>
@@ -1612,10 +1620,10 @@ como se guarda en las carpetas referidas) se debe incluir la fecha.</p>
 la versión únicamente será el siguiente: <em>aaaa_mm_dd_hhmm</em>, es
 decir, cuatro dígitos para el año, seguido de un guion bajo, luego dos
 dígitos para el mes, otro guion bajo, luego dos dígitos para el día,
-otro guion bajo, y dos dígitos de la hora y dos de la hora juntos. Notar
-que la hora es en formato 24 horas. Por ejemplo: 2022_11_03_0901 (año
-2022, mes noviembre, día 03, 09 horas con 01 minutos). Este versionado
-se actualiza y genera automáticamente mediante el script de
+otro guion bajo, y dos dígitos de la hora  y dos de la hora juntos.
+Notar que la hora es en formato 24 horas. Por ejemplo: 2022_11_03_0901
+(año 2022, mes noviembre, día 03, 09 horas con 01 minutos). Este
+versionado se actualiza y genera automáticamente mediante el script de
 configuración inicial. La fecha y hora se obtiene directamente del
 sistema.</p>
 <p>Para los scripts, el versionado también se incluye en el nombre del
@@ -1628,7 +1636,7 @@ cada cambio que se realice al script, se sugiere enfáticamente, debe
 culminar con el guardado de una nueva versión con una fecha posterior
 (al menos un día) a la versión anterior. El SIDIL está configurado para
 que scripts como el secuenciador, busquen la última versión de los
-diferentes scripts. En consecuencia: si hay dos elementos con el mismo
+diferentes scripts. En consecuencia:  si hay dos elementos con el mismo
 nombre, se utiliza el que tenga la fecha de edición más reciente. Esta
 regla aplica para toda lectura de insumos.</p>
 <p>Esto debe distinguirse del periodo de referencia, cuyo formato es
@@ -1782,8 +1790,8 @@ Son mensajes que en la mayoría de las veces sólo informan al usuario el
 inicio o conclusión de algún proceso, mismo que anticipa qué estará
 procesando la computadora. Un ejemplo es:
 
-> “*2022-12-22 12:49:34 INFO: Se comienza lectura de insumo Accidentes:
-> STPS\_RT\_202212.xlsx - periodo: 202212. El archivo pesa: 0.017 Mb*”
+> *2022-12-22 12:49:34 INFO: Se comienza lectura de insumo Accidentes:
+> STPS\_RT\_202212.xlsx - periodo: 202212. El archivo pesa: 0.017 Mb*
 
 En este caso en particular, el peso del archivo puede ser indicativo del
 tiempo esperado para la ejecución completa de esta sección del código.
@@ -1994,8 +2002,8 @@ en paréntesis.
         operando en municipios en la Zona Libre de la Frontera Norte
         tienen estipulado un salario mínimo distinto al del resto del
         país. Este catálogo expresa con una variable indicativa dicha
-        pertenencia. La información original viene de
-        <https://www.gob.mx/se/acciones-y-programas/zona-libre-de-la-frontera-norte>
+        pertenencia. La información original viene de este
+        [enlace](https://www.gob.mx/se/acciones-y-programas/zona-libre-de-la-frontera-norte).
 
     4.  Áreas urbanas (subcarpeta *áreas\_urbanas*, archivo:
         *areasurbanas*): este catálogo identifica los municipios que,
@@ -2020,9 +2028,10 @@ en paréntesis.
         relación entre el código identificador de submaterias y materias
         de inspección con las etiquetas.
 
-Recuadro 8: Versiones de archivos de catálogos
+Recuadro 8: Versiones de archivos de catálogos.
 
 <table>
+<caption>La Matriz de Predicción de Riesgo</caption>
 <colgroup>
 <col style="width: 100%" />
 </colgroup>
@@ -2031,15 +2040,15 @@ Recuadro 8: Versiones de archivos de catálogos
 <th><p>Si se requiere hacer algún cambio sobre la información que abarca
 los catálogos este se debe hacer directamente en los mismos catálogos,
 pero se sugiere sea de la siguiente manera:</p>
-<ul>
-<li><p>Primero, resguardar una copia del catálogo desactualizado en la
-subcarpeta <em>anteriores_descartar</em> que se encuentra en su
-respectiva carpeta. Se sugiere guardarlo con la fecha en la que dicho
-catalogo fue reemplazado.</p></li>
-<li><p>Segundo, modificar y/o reemplazar el catálogo, para que esta sea
-procesada correctamente por los scripts, sin cambiar el nombre del
-archivo del catálogo.</p></li>
-</ul>
+<ol type="1">
+<li><p>Resguardar una copia del catálogo desactualizado en la subcarpeta
+<em>anteriores_descartar</em> que se encuentra en su respectiva carpeta.
+Se sugiere guardarlo con la fecha en la que dicho catalogo fue
+reemplazado.</p></li>
+<li><p>Modificar y/o reemplazar el catálogo, para que esta sea procesada
+correctamente por los scripts, sin cambiar el nombre del archivo del
+catálogo.</p></li>
+</ol>
 <p>Por ejemplo, si se desarrolla un nuevo indicador que quiere ser
 integrado al SIDIL, no solo se deben desarrollar sus códigos y
 guardarlos en las carpetas correspondientes, también debe ser agregado
@@ -2049,7 +2058,7 @@ catálogos (<em>marco_normativo</em>).</p>
 <p>De ser necesario, es posible resguardar la versión anterior del
 catálogo, entonces puede resguardarse en la subcarpeta
 <em>anteriores</em>. Lo importante es que el script de configuración
-inicial, siempre “buscará” el mismo nombre de archivo insumo para cada
+inicial, siempre "buscará" el mismo nombre de archivo insumo para cada
 catálogo, independientemente de su contenido o vigencia.</p>
 <p>Precisando esto último, la carga de los diferentes catálogos será a
 partir de la información resguardada en el catálogo de catálogos, mismo
@@ -2065,7 +2074,7 @@ requiere tomar este archivo en consideración.</p></th>
 </tbody>
 </table>
 
-## 3.8 La Matriz de Predicción de Riesgo
+La Matriz de Predicción de Riesgo
 
 La Matriz de Predicción de Riesgo (MPR) es un producto crítico del
 sistema. La MPR es la tabla que reúne el universo actualizado de centros
@@ -2278,8 +2287,8 @@ requieren definiciones exactas). |</th>
     atrás en el tiempo para asegurar la consistencia temporal de la
     medición de indicadores.
 
-> Recuadro 10 Distinción entre incorporación de nuevos indicadores y
-> actualización de método de cálculo de indicadores preexistentes.
+Recuadro 10 Distinción entre incorporación de nuevos indicadores y
+actualización de método de cálculo de indicadores preexistentes.
 
 <table>
 <colgroup>
@@ -4995,11 +5004,11 @@ El propósito de esta primera parte es acceder al universo de CT más
 
 reciente, así como está registrado en tablas específicas del DNE,
 
-particularmente las tablas \*centro\_trabajo\*, \*empresa\* y
+particularmente las tablas *centro\_trabajo*, *empresa* y
 
-\*grupo\_empresa.\* Cabe destacar que en la consulta de los CT:
+*grupo\_empresa*. Cabe destacar que en la consulta de los CT:
 
-\- Se acceden a atributos tales como la clasificación industrial en el
+-   Se acceden a atributos tales como la clasificación industrial en el
 
 SCIAN o la rama industrial del CT, la presencia ciertas
 
@@ -10051,7 +10060,7 @@ indicador *“ing\_min”* de la ENOE),
 A continuación se detallan los procesos de construcción de las series
 históricas por fuente de información: ENOE e IMSS.
 
-### 4.5.3 Indicadores históricos de la ENOE
+#### Indicadores históricos de la ENOE
 
 Entradas - Inputs
 
@@ -10199,7 +10208,7 @@ alojan en la carpeta de resultados históricos de la ENOE
 cada indicador. Es importante resaltar que estos outputs no se producen
 si se encuentran los inputs ya calculados de manera histórica.
 
-### 4.5.4 Indicadores históricos del IMSS
+#### Indicadores históricos del IMSS
 
 En esta sección se ofrecen detalles acerca de la construcción de la
 serie histórica de indicadores calculados a partir de los registros
@@ -10445,7 +10454,7 @@ agregación. La otra es la tabla IMSS\_NOMINATIVO\_historico\_ que
 contiene el promedio anual a nivel registro patronal. Ambas son tablas
 en formato Rds que luego explotará el script de matching histórico.
 
-### 4.5.5 Matching de las series históricas
+### 4.5.3 Matching de las series históricas
 
 Después de generar las tablas de las series históricas de los
 indicadores y del historial de inspecciones se debe realizar el matching
@@ -10539,7 +10548,7 @@ inspecciones, y con filas de distinto tipo:
 -   Indicadores: Campos de indicadores de la ENOE e IMSS que entran al
     modelo.
 
-### 4.5.6 Entrenamiento y evaluación del modelo de predicción
+### 4.5.4 Entrenamiento y evaluación del modelo de predicción
 
 **Una vez realizado el matching histórico se puede generar el
 entrenamiento del modelo predictivo y su respectiva evaluación**. El
@@ -10981,4 +10990,1272 @@ class="uri">https://shap.readthedocs.io/en/latest/example_notebooks/overviews/An
 </tbody>
 </table>
 
-<!--chapter:end:04-Procesamiento_Fuentes.Rmd-->
+<!--chapter:end:03-Procesamiento_Fuentes.Rmd-->
+
+# 5 Presentación sintética de todos los scripts
+
+A continuación se presentan de manera sintética todos los scripts que
+constituyen el SIDIL.
+
+<table style="width:99%;">
+<colgroup>
+<col style="width: 5%" />
+<col style="width: 1%" />
+<col style="width: 25%" />
+<col style="width: 21%" />
+<col style="width: 2%" />
+<col style="width: 18%" />
+<col style="width: 23%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;"><strong>Nombre (sin incluir
+versionado)</strong></th>
+<th style="text-align: left;"><strong>Módulo</strong></th>
+<th style="text-align: left;"><strong>Objetivo</strong></th>
+<th style="text-align: left;"><strong>Observaciones</strong></th>
+<th style="text-align: left;"><strong>Lenguaje</strong></th>
+<th style="text-align: left;"><strong>Principales insumos</strong></th>
+<th style="text-align: left;"><strong>Principales outputs</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">0_config_inicial</td>
+<td style="text-align: left;">I a IV</td>
+<td style="text-align: left;">Carga de paqueterías para ambiente
+R;<br />
+Define parámetros de explotación de información</td>
+<td style="text-align: left;">Es ejecutado por prácticamente todos los
+scripts secuenciadores</td>
+<td style="text-align: left;">R</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">Parámetros cargados en la memoria RAM</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">0_funciones_catalogos</td>
+<td style="text-align: left;">I a IV</td>
+<td style="text-align: left;">Define funciones</td>
+<td style="text-align: left;">A excepción del script 9_envio_MPR, este
+script siempre es llamado por 0_config_inicial</td>
+<td style="text-align: left;">R</td>
+<td style="text-align: left;">Catálogos de información</td>
+<td style="text-align: left;">Catálogos cargados y funciones definidas
+en la RAM.</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">1_secuenciador_ENOE</td>
+<td style="text-align: left;">I</td>
+<td style="text-align: left;">Ejecuta toda la rutina para generar los
+indicadores coyunturales de la ENOE</td>
+<td style="text-align: left;">Es el único script que se debe ejecutar,
+ya que este llama a los otros scripts</td>
+<td style="text-align: left;">R</td>
+<td style="text-align: left;">Script de configuración inicial;
+catálogos; script de extracción; scripts de generación de
+indicadores</td>
+<td style="text-align: left;">Una tabla por cada indicador calculado con
+las estimaciones puntuales de dicho indicador. Una tabla con los valores
+de referencia de cada indicador.</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">1_extraccion_ENOE</td>
+<td style="text-align: left;">I</td>
+<td style="text-align: left;">Construye la base de insumo para el
+cálculo de los indicadores de la ENOE a partir de las bases originales
+en formato .dbf</td>
+<td style="text-align: left;">Se ejecuta automáticamente desde el script
+secuenciador</td>
+<td style="text-align: left;">R</td>
+<td style="text-align: left;">Tablas originales de la ENOE en formato
+.dbf</td>
+<td style="text-align: left;">Una tabla unificada de la ENOE en formato
+.dbf con la población subordinada y reumunerada</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">1_brecha_gen_ENOE</td>
+<td style="text-align: left;">I</td>
+<td style="text-align: left;">Genera las estimaciones puntuales
+coyunturales del indicador “brecha de género” de la ENOE</td>
+<td style="text-align: left;">Se ejecuta automáticamente desde el script
+secuenciador</td>
+<td style="text-align: left;">R</td>
+<td style="text-align: left;">La tabla resultado del script de
+extracción</td>
+<td style="text-align: left;">Una tabla con las estimaciones puntuales
+del respectivo indicador.</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">1_contrato_escrito_ENOE</td>
+<td style="text-align: left;">I</td>
+<td style="text-align: left;">Genera las estimaciones puntuales
+coyunturales del indicador “contrato escrito” de la ENOE</td>
+<td style="text-align: left;">Se ejecuta automáticamente desde el script
+secuenciador</td>
+<td style="text-align: left;">R</td>
+<td style="text-align: left;">La tabla resultado del script de
+extracción</td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">1_dias_trab_ENOE</td>
+<td style="text-align: left;">I</td>
+<td style="text-align: left;">Genera las estimaciones puntuales
+coyunturales del indicador “días trabajados” de la ENOE</td>
+<td style="text-align: left;">Se ejecuta automáticamente desde el script
+secuenciador</td>
+<td style="text-align: left;">R</td>
+<td style="text-align: left;">La tabla resultado del script de
+extracción</td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">1_hrs_trab_ENOE</td>
+<td style="text-align: left;">I</td>
+<td style="text-align: left;">Genera las estimaciones puntuales
+coyunturales del indicador horas trabajadas” de la ENOE</td>
+<td style="text-align: left;">Se ejecuta automáticamente desde el script
+secuenciador</td>
+<td style="text-align: left;">R</td>
+<td style="text-align: left;">La tabla resultado del script de
+extracción</td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">1_ing_min_ENOE</td>
+<td style="text-align: left;">I</td>
+<td style="text-align: left;">Genera las estimaciones puntuales
+coyunturales del indicador “ingreso mínimo” de la ENOE</td>
+<td style="text-align: left;">Se ejecuta automáticamente desde el script
+secuenciador</td>
+<td style="text-align: left;">R</td>
+<td style="text-align: left;">La tabla resultado del script de
+extracción</td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">1_ing_x_hrs_ENOE</td>
+<td style="text-align: left;">I</td>
+<td style="text-align: left;">Genera las estimaciones puntuales
+coyunturales del indicador “ingreso por hraso” de la ENOE</td>
+<td style="text-align: left;">Se ejecuta automáticamente desde el script
+secuenciador</td>
+<td style="text-align: left;">R</td>
+<td style="text-align: left;">La tabla resultado del script de
+extracción</td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">1_ing_x_mes_ENOE</td>
+<td style="text-align: left;">I</td>
+<td style="text-align: left;">Genera las estimaciones puntuales
+coyunturales del indicador “ingreso por mes” de la ENOE</td>
+<td style="text-align: left;">Se ejecuta automáticamente desde el script
+secuenciador</td>
+<td style="text-align: left;">R</td>
+<td style="text-align: left;">La tabla resultado del script de
+extracción</td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">1_presta_soc_ENOE</td>
+<td style="text-align: left;">I</td>
+<td style="text-align: left;">Genera las estimaciones puntuales
+coyunturales del indicador “prestaciones sociales” de la ENOE</td>
+<td style="text-align: left;">Se ejecuta automáticamente desde el script
+secuenciador</td>
+<td style="text-align: left;">R</td>
+<td style="text-align: left;">La tabla resultado del script de
+extracción</td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">1_seg_soc_ENOE</td>
+<td style="text-align: left;">I</td>
+<td style="text-align: left;">Genera las estimaciones puntuales
+coyunturales del indicador “seguridad social” de la ENOE</td>
+<td style="text-align: left;">Se ejecuta automáticamente desde el script
+secuenciador</td>
+<td style="text-align: left;">R</td>
+<td style="text-align: left;">La tabla resultado del script de
+extracción</td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">1_sindicato_ENOE</td>
+<td style="text-align: left;">I</td>
+<td style="text-align: left;">Genera las estimaciones puntuales
+coyunturales del indicador “sindicato” de la ENOE</td>
+<td style="text-align: left;">Se ejecuta automáticamente desde el script
+secuenciador</td>
+<td style="text-align: left;">R</td>
+<td style="text-align: left;">La tabla resultado del script de
+extracción</td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">1_tipo_contrato_ENOE</td>
+<td style="text-align: left;">I</td>
+<td style="text-align: left;">Genera las estimaciones puntuales
+coyunturales del indicador “tipo contrato” de la ENOE</td>
+<td style="text-align: left;">Se ejecuta automáticamente desde el script
+secuenciador</td>
+<td style="text-align: left;">R</td>
+<td style="text-align: left;">La tabla resultado del script de
+extracción</td>
+<td style="text-align: left;">Una tabla con las estimaciones puntuales
+del indicador.</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">1_secuenciador_CENSO2019</td>
+<td style="text-align: left;">I</td>
+<td style="text-align: left;">Ejecuta toda la rutina para generar los
+indicadores del Censo Económico</td>
+<td style="text-align: left;">Es el único script del Censo
+Económico</td>
+<td style="text-align: left;">R</td>
+<td style="text-align: left;">Tabla de datos de las 3 empresas más
+grandes a nivel municipal y rama (SCIAN 2 dígitos), producto de la
+colaboración INEGI-STPS</td>
+<td style="text-align: left;">Una tabla por cada indicador calculado con
+las estimaciones puntuales de dicho indicador.</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">1_secuenciador_IMSS</td>
+<td style="text-align: left;">I</td>
+<td style="text-align: left;">Ejecuta toda la rutina para generar los
+indicadores del IMSS</td>
+<td style="text-align: left;">Es el único script que se debe ejecutar,
+ya que este llama a los otros scripts</td>
+<td style="text-align: left;">R</td>
+<td style="text-align: left;">Script de configuración inicial;
+catálogos; script de extracción; scripts de generación de
+indicadores</td>
+<td style="text-align: left;">Una tabla por cada indicador calculado con
+las estimaciones puntuales de dicho indicador. Una tabla con los valores
+de referencia de cada indicador.</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">1_extraccion_IMSS</td>
+<td style="text-align: left;">I</td>
+<td style="text-align: left;">Construye la base de insumo para el
+cálculo de los indicadores del IMSS</td>
+<td style="text-align: left;">Se ejecuta automáticamente desde el script
+secuenciador</td>
+<td style="text-align: left;">R</td>
+<td style="text-align: left;">Insumos originales del IMSS: accidenes
+(riesgos), patrones y puestos (asegurados)</td>
+<td style="text-align: left;">Una tabla para cada insumo original por
+mes, además para puestos, una tabla adicional con los NSS de las
+personas aseguradas, también por mes.</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">1_brecha_imss</td>
+<td style="text-align: left;">I</td>
+<td style="text-align: left;">Genera las estimaciones puntuales
+coyunturales del indicador “brecha salarial de género” del IMSS</td>
+<td style="text-align: left;">Se ejecuta automáticamente desde el script
+secuenciador</td>
+<td style="text-align: left;">R</td>
+<td style="text-align: left;">Insumos procesados, combinados
+selectivamente desde el secuenciador.</td>
+<td style="text-align: left;">Estimaciones puntuales en dos tablas: por
+nivel de agregación y nominativo, para cada mes.</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">1_concen_mercado_imss</td>
+<td style="text-align: left;">I</td>
+<td style="text-align: left;">Genera las estimaciones puntuales
+coyunturales del indicador “concentración de mercado” del IMSS</td>
+<td style="text-align: left;">Se ejecuta automáticamente desde el script
+secuenciador</td>
+<td style="text-align: left;">R</td>
+<td style="text-align: left;">Insumos procesados, combinados
+selectivamente desde el secuenciador.</td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">1_rot_lab</td>
+<td style="text-align: left;">I</td>
+<td style="text-align: left;">Genera las estimaciones puntuales
+coyunturales del indicador “rotación laboral” del IMSS</td>
+<td style="text-align: left;">Se ejecuta automáticamente desde el script
+secuenciador</td>
+<td style="text-align: left;">R</td>
+<td style="text-align: left;">Insumos procesados, combinados
+selectivamente desde el secuenciador.</td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">1_salario_minimo</td>
+<td style="text-align: left;">I</td>
+<td style="text-align: left;">Genera las estimaciones puntuales
+coyunturales del indicador “rotación laboral” del IMSS</td>
+<td style="text-align: left;">Se ejecuta automáticamente desde el script
+secuenciador</td>
+<td style="text-align: left;">R</td>
+<td style="text-align: left;">Insumos procesados, combinados
+selectivamente desde el secuenciador.</td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">1_tasa_acc</td>
+<td style="text-align: left;">I</td>
+<td style="text-align: left;">Genera las estimaciones puntuales
+coyunturales del indicador “rotación laboral” del IMSS</td>
+<td style="text-align: left;">Se ejecuta automáticamente desde el script
+secuenciador</td>
+<td style="text-align: left;">R</td>
+<td style="text-align: left;">Insumos procesados, combinados
+selectivamente desde el secuenciador.</td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">1_tasa_dias</td>
+<td style="text-align: left;">I</td>
+<td style="text-align: left;">Genera las estimaciones puntuales
+coyunturales del indicador “rotación laboral” del IMSS</td>
+<td style="text-align: left;">Se ejecuta automáticamente desde el script
+secuenciador</td>
+<td style="text-align: left;">R</td>
+<td style="text-align: left;">Insumos procesados, combinados
+selectivamente desde el secuenciador.</td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">2_consulta_DNE_</td>
+<td style="text-align: left;">II</td>
+<td style="text-align: left;">Organiza la consulta al DNE (como
+secuenciador) y enriquece la categoría de tamaño con base en los
+patrones registrados ante el IMSS.</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">R</td>
+<td style="text-align: left;">DNE y Patrones del IMSS</td>
+<td style="text-align: left;">DNE_plus: universo de CT consultado del
+DNE.</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">2_conexion</td>
+<td style="text-align: left;">II</td>
+<td style="text-align: left;">Establece la conexión al SQL Server.</td>
+<td style="text-align: left;">Se ejecuta automáticamente desde
+2_consulta_DNE</td>
+<td style="text-align: left;">R</td>
+<td style="text-align: left;">Credenciales de acceso a SQL Server</td>
+<td style="text-align: left;">Conexión a DNE en la RAM</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">2_extraccion_DNE</td>
+<td style="text-align: left;">II</td>
+<td style="text-align: left;">Formula y envía queries para extraer
+tablas del SQL Server</td>
+<td style="text-align: left;">Se ejecuta automáticamente desde
+2_consulta_DNE</td>
+<td style="text-align: left;">R</td>
+<td style="text-align: left;">Catálogo de campos del DNE</td>
+<td style="text-align: left;">Tablas consultadas al DNE, en la RAM</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">2_matching_coyuntural_</td>
+<td style="text-align: left;">II</td>
+<td style="text-align: left;">Imputa de manera nominativa y por nivel de
+agregación los indicadores coyunturales al DNE_plus</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">Python</td>
+<td style="text-align: left;">DNE_plus</td>
+<td style="text-align: left;">Universo CT con indicadores coyunturales
+imputados</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">2_prediccion_modelo_</td>
+<td style="text-align: left;">II</td>
+<td style="text-align: left;">Genera predicción de riesgos por
+submateria y general</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">Python</td>
+<td style="text-align: left;">Universo CT con indicadores coyunturales
+imputados</td>
+<td style="text-align: left;">Matriz de predicción de riesgos</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">automatizacion/app.R</td>
+<td style="text-align: left;">I y II</td>
+<td style="text-align: left;">Es la app de la interfaz de automatización
+que organiza la actualización de fuentes de información, carga de
+catálogos y la ejecución de los scripts en los módulos I y II.</td>
+<td style="text-align: left;">La interfaz únicamente permite la
+realización de procesos del módulo I y II.</td>
+<td style="text-align: left;">R</td>
+<td style="text-align: left;">Todos los scripts y fuentes de información
+de los módulos I y II</td>
+<td style="text-align: left;">Todos los outputs de los módulos I y
+II</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">consulta/app.R</td>
+<td style="text-align: left;">III</td>
+<td style="text-align: left;">Es la app de la interfaz de consulta que
+permite priorizar los CT con base en sus predicciones de riesgo,
+atributos e indicadores</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">R</td>
+<td style="text-align: left;">Matriz de predicción de riesgos</td>
+<td style="text-align: left;">Universo de CT que satisfacen criterios de
+inspección</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">4_query_violaciones_inspecciones_</td>
+<td style="text-align: left;">IV</td>
+<td style="text-align: left;">Organiza la consulta al SIAPI-SIPAS</td>
+<td style="text-align: left;">Incluye la consulta al universo de CT para
+recuperar atributos de los mismos</td>
+<td style="text-align: left;">R</td>
+<td style="text-align: left;">Credenciales de acceso a SQL Server</td>
+<td style="text-align: left;">Historico de inspecciones por submateria
+incluyendo si se encontraron violaciones que proceden</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">4_secuenciador_ENOE</td>
+<td style="text-align: left;">IV</td>
+<td style="text-align: left;">Ejecuta toda la rutina para generar los
+indicadores coyunturales de la ENOE</td>
+<td style="text-align: left;">Es el único script que se debe ejecutar,
+ya que este llama a los otros scripts</td>
+<td style="text-align: left;">R</td>
+<td style="text-align: left;">Script de configuración inicial;
+catálogos; script de extracción; scripts de generación de
+indicadores</td>
+<td style="text-align: left;">enoe_historico_v.Rds: una sola tabla con
+todos los indicadores para todos los años.</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">4_extraccion_ENOE</td>
+<td style="text-align: left;">IV</td>
+<td style="text-align: left;">Construye la base de insumo para el
+cálculo de los indicadores de la ENOE a partir de las bases originales
+en formato .dbf</td>
+<td style="text-align: left;">La unica diferencia respecto a este script
+del módulo I es que en el módulo IV se incluye el año.</td>
+<td style="text-align: left;">R</td>
+<td style="text-align: left;">Tablas originales de la ENOE en formato
+.dbf</td>
+<td style="text-align: left;">Una tabla unificada de la ENOE en formato
+.dbf con la población subordinada y reumunerada, con el año</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">4_brecha_gen_ENOE</td>
+<td style="text-align: left;">IV</td>
+<td style="text-align: left;">Genera las estimaciones puntuales
+coyunturales del indicador “brecha de género” de la ENOE</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">R</td>
+<td style="text-align: left;">La tabla resultado del script de
+extracción.</td>
+<td style="text-align: left;">El cálculo por año para cada indicador,
+mismo que luego el secuenciador “apila” para conformar una sola tabla
+con todos los indicadores.</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">4_contrato_escrito_ENOE</td>
+<td style="text-align: left;">IV</td>
+<td style="text-align: left;">Genera las estimaciones puntuales
+coyunturales del indicador “contrato escrito” de la ENOE</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">R</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">4_dias_trab_ENOE</td>
+<td style="text-align: left;">IV</td>
+<td style="text-align: left;">Genera las estimaciones puntuales
+coyunturales del indicador “días trabajados” de la ENOE</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">R</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">4_hrs_trab_ENOE</td>
+<td style="text-align: left;">IV</td>
+<td style="text-align: left;">Genera las estimaciones puntuales
+coyunturales del indicador horas trabajadas” de la ENOE</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">R</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">4_ing_x_hrs_ENOE</td>
+<td style="text-align: left;">IV</td>
+<td style="text-align: left;">Genera las estimaciones puntuales
+coyunturales del indicador “ingreso por hraso” de la ENOE</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">R</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">4_ing_x_mes_ENOE</td>
+<td style="text-align: left;">IV</td>
+<td style="text-align: left;">Genera las estimaciones puntuales
+coyunturales del indicador “ingreso por mes” de la ENOE</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">R</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">4_presta_soc_ENOE</td>
+<td style="text-align: left;">IV</td>
+<td style="text-align: left;">Genera las estimaciones puntuales
+coyunturales del indicador “prestaciones sociales” de la ENOE</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">R</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">4_seg_soc_ENOE</td>
+<td style="text-align: left;">IV</td>
+<td style="text-align: left;">Genera las estimaciones puntuales
+coyunturales del indicador “seguridad social” de la ENOE</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">R</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">4_sindicato_ENOE</td>
+<td style="text-align: left;">IV</td>
+<td style="text-align: left;">Genera las estimaciones puntuales
+coyunturales del indicador “sindicato” de la ENOE</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">R</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">4_tipo_contrato_ENOE</td>
+<td style="text-align: left;">IV</td>
+<td style="text-align: left;">Genera las estimaciones puntuales
+coyunturales del indicador “tipo contrato” de la ENOE</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">R</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">1_secuenciador_IMSS</td>
+<td style="text-align: left;">IV</td>
+<td style="text-align: left;">Ejecuta toda la rutina para generar los
+indicadores del IMSS</td>
+<td style="text-align: left;">La unica diferencia respecto a este script
+del módulo I es en la configuración de parámetros</td>
+<td style="text-align: left;">R</td>
+<td style="text-align: left;">Script de configuración inicial;
+catálogos; script de extracción; scripts de generación de
+indicadores</td>
+<td style="text-align: left;">Una tabla por cada indicador calculado con
+las estimaciones puntuales de dicho indicador. Una tabla con los valores
+de referencia de cada indicador.</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">4_matching_historico</td>
+<td style="text-align: left;">IV</td>
+<td style="text-align: left;">Imputa de manera nominativa y por nivel de
+agregación los indicadores históricos de IMSS y ENOE al histórico de
+inspecciones</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">Python</td>
+<td style="text-align: left;">Tablas de indicadores históricos del IMSS
+y de la ENOE; histórico de inspecciones por submateria que incluye
+atributos del DNE</td>
+<td style="text-align: left;">UniversoInspeccionesInd_v.Rds: una tabla
+que a cada inspección y submateria le asocia los valores históricos del
+IMSS y ENOE, además de los atributos del DNE.</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">4_entrenamiento_modelo</td>
+<td style="text-align: left;">IV</td>
+<td style="text-align: left;">Entrena el modelo random forest con base
+en el histórico de inspecciones.</td>
+<td style="text-align: left;">Se pueden entrenar dos modelos,
+actualmente predefinido para que sea Random Forest. La alternativa es el
+Tabnet (red neuronal para datos tabulares)</td>
+<td style="text-align: left;">Python</td>
+<td style="text-align: left;">UniversoInspeccionesInd_v.Rds</td>
+<td style="text-align: left;">Modelo entrenado, exportado a archivos
+pkl, un txt con las variables de entrada del modelo, score y submateria
+con la métrica de ajuste de las predicciones (MAE).</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">4_eval_modelo</td>
+<td style="text-align: left;">IV</td>
+<td style="text-align: left;">Genera métricas de performance del modelo
+y análisis Shapley (medición de contribución relativa de variables de
+entrada).</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">Python.</td>
+<td style="text-align: left;">El modelo entrenado y la base histórica de
+inspecciones por submateria.</td>
+<td style="text-align: left;">Dos tablas reportadas en el log con las
+métricas de performance.<br />
+Imágenes (png) con el análisis Shapley, mismas que además conforman un
+html.</td>
+</tr>
+</tbody>
+</table>
+
+<!--chapter:end:04-AnexoIndicadores.Rmd-->
+
+# 6 R, RStudio y Python
+
+En este anexo se presentan, fundamentalmente, los conceptos y prácticas
+básicas en la utilización de la interfaz de RStudio. También se
+presentan algunos aspectos relevantes de Python, pero que si bien
+requiere tenerse instalado, desde la perspectiva de SIDIL, no requiere
+ser ejecutado en una interfaz distinta a Rstudio
+
+## 6.1 R y RStudio
+
+La gran mayoría de los algoritmos que constituyen el SIDIL se
+desarrollaron y mantendrán en el lenguaje R.[3] Esto es independiente de
+que a través de una interfaz “paraguas” se pudieran automatizar hasta
+cierto punto la secuencia de los scripts. R es el lenguaje de
+programación de uso libre desarrollado para el análisis estadístico y
+gráfico. Afortunadamente existe un ambiente integrado de desarrollo que
+se llama RStudio (que recientemente cambió su nombre a Posit[4]) y que
+facilita la programación, compilación y visualización de desarrollos en
+el lenguaje R. SIDIL prevé que el usuario procese la información con R
+Studio, y para que este último funcione se requiere tener R instalado. A
+continuación, se ofrecen detalles sobre las principales características
+de R y RStudio.
+
+## 6.2 El entorno de RStudio
+
+El entorno de RStudio está conformado por cuatro partes (ver ilustración
+<a href="#fig:entornoRStudio">6.1</a>):
+
+1.  Scripts: En esta parte se generan o cargan los scripts o archivos de
+    código que se van a ejecutar. Se pueden abrir varios scripts a la
+    vez. Todos los scripts, independientemente de que estén en pestañas
+    separadas, utilizan y cargan objetos del mismo ambiente (a menos que
+    se configure distinto, cosa que no sucede en SIDIL). Para correr una
+    línea de un script se debe poner el cursor sobre la línea que se
+    desee correr y presionar la tecla Control (Ctrl) + Intro o se puede
+    presionar el botón “Run” en la parte izquierda superior de esta
+    sección. Para ejecutar el script completo se debe presionar Ctrl +
+    Shift + Intro. Se pueden seleccionar con el cursor las líneas que se
+    deseen correr y presionar Ctrl+Intro o la tecla Run. Para
+    aquellas/os lectores más familiarizados con Stata, el equivalente a
+    un script en dicho software es el “do file”.
+
+2.  Ambiente (Environment): En el ambiente se muestran todos los objetos
+    generados por los códigos. Es importante mencionar que los objetos
+    que se alojan en el ambiente no están guardados en el disco rígido
+    del equipo de cómputo, únicamente están disponibles en esta sección
+    mientras se ejecutan los scripts. Para el guardado de los elementos
+    se debe generar el comando correspondiente en el script o consola,
+    determinando el cómo se quiere guardar el objeto generado. Para
+    eliminar un objeto del ambiente se utiliza el comando rm(). Por
+    ejemplo, rm(resultados\_analisis). Si se quiere remover todo tipo de
+    objeto en el ambiente, el comando es: “rm(list = ls())”. En el
+    ambiente se encuentran diferentes tipos de objetos:
+
+-   Tabla de datos (data): En primer lugar, se presentan los objetos que
+    son tablas de datos. En el ambiente en R se le conoce como data
+    frame y de aquí en adelante se usará de manera intercambiable.
+-   Listas: son colecciones ordenadas de objetos que pueden ser del
+    mismo tipo o de diferentes tipos.
+-   Vectores: son colecciones de objetos del mismo tipo. o Valores
+    (values): Elementos o conjuntos de elementos que se nombran objetos.
+    Vectores de diferentes tamaños.
+-   Funciones (functions): Las funciones son un conjunto de
+    instrucciones que se establecen y que pueden ser llamadas para ser
+    aplicadas a otros objetos.
+
+En esta sección también se pueden importar manualmente datos, ver,
+establecer conexiones a bases de datos tipo SQL, ajustar el uso de
+memoria y seleccionar y eliminar elementos del ambiente manualmente. A
+su vez, se encuentra un acceso a tutoriales con temas específicos de R.
+
+1.  Consola: La consola muestra los resultados de los códigos ejecutados
+    por los scripts, así como posibles errores y advertencias (o
+    warnings). Es importante la distinción entre estos dos tipos de
+    avisos en la consola: mientras que el error implica que el script no
+    se terminó de ejecutar debido a un error, la advertencia o warning
+    solo es un aviso que brinda el programa, pero no implica que la
+    ejecución del código se detenga. En ambos casos, se mostrará en la
+    consola la información del comando sobre el que se generó el error o
+    el warning. En la consola también se pueden ejecutar códigos que no
+    se quedarán guardados en los scripts. También en la consola, a su
+    izquierda arriba, se observa la versión de R que se tiene instalado
+    en el sistema. Actualmente SIDIL está operando con la versión 4.2.0.
+    La buena práctica sugiere siempre mantener actualizado R y RStudio,
+    para lo cual ambos están preconfigurados para advertir al usuario
+    que existe una nueva versión. Se sugiere enfáticamente aceptar las
+    solicitudes de actualización.
+
+2.  Ubicación de archivos, gráficas, paqueterías, ayuda y visualizador:
+    Esta sección que cuenta con varias pestañas sirve para visualizar
+    distintas herramientas. La primera y la cual es de mayor utilidad
+    para este proyecto es la de ubicación de archivos, en esta se pueden
+    observar las carpetas y archivos que se encuentran en la ruta en la
+    que está alojado el proyecto, es de gran utilidad para monitorear
+    los archivos guardados y generados de ser necesario. Las otras
+    pestañas sirven para visualizar gráficas que generen los scripts,
+    paqueterías cargas, ayuda (online) y otros elementos.
+
+<img src="images-1/06/RStudio.png" alt="Entorno de RStudio" width="1272" />
+<p class="caption">
+Ilustración 6.1: Entorno de RStudio
+</p>
+
+## 6.3 Procedimiento para ejecutar proyectos y scripts en RStudio
+
+Abrir el proyecto SIDIL: Esto es fundamental, porque los proyectos en R
+Studio mantienen de manera ordenada en una misma ruta todos los
+elementos necesarios para que los códigos se ejecuten de manera
+correcta, de igual manera albergan los resultados que se producen de
+dichos códigos.
+
+Lo importante es primero abrir el proyecto SIDIL, sea desde el
+Explorador de Windows o desde RStudio.
+
+-   Si se abre desde el explorador de archivos, se podrá identificar el
+    proyecto por el logo de R y por el tipo de archivo .Rproj. Si se ha
+    abierto con anterioridad el proyecto, este podría desplegar los
+    scripts que se hayan utilizado con anteriormente, si no, será
+    necesario abrir los scripts que se deseen ejecutar o editar en la
+    primera sección de la pantalla (I. Scripts) o seleccionándolos
+    directamente en la sección IV de ubicación de archivos.
+
+-   Si se abre desde el programa RStudio, primero se debe asegurar que
+    no esté ningún proyecto cargado. En la parte superior derecha
+    (sección II de la pantalla), se puede identificar el proyecto en el
+    que se está trabajando. En la ilustración
+    <a href="#fig:RStudioProyectoVacio">6.2</a> se observa que en el
+    ambiente no se muestra ningún proyecto. Al hacer clic sobre la
+    flecha señalando hacia abajo se despliega el menú que permite
+    seleccionar “Open Project…” (ilustración
+    <a href="#fig:RStudioOpenProject">6.3</a>) , navegar hasta la
+    ubicación del proyecto *SIDIL.Rproj* seleccionarlo y abrirlo para.
+
+<img src="images-1/06/proyectoVacio.png" alt="Vista del ambiente sin proyecto" width="479" />
+<p class="caption">
+Ilustración 6.2: Vista del ambiente sin proyecto
+</p>
+
+<img src="images-1/06/openproject.png" alt="Vista del ambiente sin proyecto" width="469" />
+<p class="caption">
+Ilustración 6.3: Vista del ambiente sin proyecto
+</p>
+
+Si hubiera algún proyecto previamente cargado, se debe cerrar
+desplegando el menú del proyecto y seleccionando “Close Project”
+(tercera opción en la ilustración
+<a href="#fig:RStudioOpenProject">6.3</a>).
+
+El siguiente paso es abrir el script que se desea correr o editar, o
+bien, generar un nuevo script: Los archivos de códigos que utiliza el
+proyecto SIDIL en el ambiente RStudio puede ser de dos tipos: R Script
+(tipo. R) o R Markdown (tipo .Rmd). Para abrir un archivo ya existente o
+generar uno nuevo se puede realizar desde la primera sección de la
+pantalla (I. Scripts), donde el primer ícono despliega las opciones de
+nuevos documentos que se quieren creen, y el tercero abre el explorador
+de archivos para seleccionar alguno de los documentos ya existentes. Un
+script ya existente también se puede abrir desde la sección IV del
+programa RStudio, únicamente hace clic sobre el archivo. R o .Rmd que se
+desee abrir.
+
+Una parte primordial para la ejecución de los scripts es la instalación
+y el llamado de las paqueterías que se utilizarán, ya que estas albergan
+los comandos que se utilizan en los archivos de códigos. Si bien R
+Studio cuenta con algunos comandos básicos, la versatilidad del programa
+permite importar y utilizar cientos de paqueterías que facilitan la
+generación de códigos con sus comandos. A continuación, se presentan las
+paqueterías que utiliza el proyecto SIDIL junto con algunos de los
+principales comandos de cada una. Esta lista de principales comandos no
+es exhaustiva y muchas paqueterías pueden contener cientos de comandos.
+
+<table style="width:100%;">
+<caption>Tabla XXX: Principales paquetes usados en R.</caption>
+<colgroup>
+<col style="width: 4%" />
+<col style="width: 35%" />
+<col style="width: 58%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Paquete</th>
+<th>Principal función</th>
+<th>Principales comandos</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>pacman</td>
+<td>Instalar y llamar paqueterías</td>
+<td>p_load()</td>
+</tr>
+<tr class="even">
+<td>here</td>
+<td>Establecer el directorio en el que se trabaja</td>
+<td>here ()</td>
+</tr>
+<tr class="odd">
+<td>tidyverse</td>
+<td>Colección de paqueterías de gramática, estructura de datos,
+gráficas, entre otras.</td>
+<td>operador pipe “%&gt;%” , read_csv(), filter(), group_by(), mutate(),
+rename(), summarise(), str_detect() (y otros str_), as_tibble (),
+pivo()t, gather()</td>
+</tr>
+<tr class="even">
+<td>haven</td>
+<td>Lee archivos sav, dta, entre otros</td>
+<td>read_sav(), read_dta()</td>
+</tr>
+<tr class="odd">
+<td>dbplyr</td>
+<td>Permite trabajar con bases de datos de distinto tipo</td>
+<td>show_query(), collect()</td>
+</tr>
+<tr class="even">
+<td>foreign</td>
+<td>Permite leer y guardar archivos de distinto tipo</td>
+<td>read.dbf ()</td>
+</tr>
+<tr class="odd">
+<td>janitor</td>
+<td>Paquetería de gramática y estructura de datos</td>
+<td>clean_names(), tabyl()</td>
+</tr>
+<tr class="even">
+<td>readxl</td>
+<td>Lee archivos de Excel</td>
+<td>read_excel()</td>
+</tr>
+<tr class="odd">
+<td>survey</td>
+<td>Paquetería para encuestas complejas</td>
+<td>svymean(), svyby()</td>
+</tr>
+<tr class="even">
+<td>srvyr</td>
+<td>Paquetería para encuestas complejas, agrega la sintaxis de tidyverse
+a la paquetería survey</td>
+<td>as_survey_design(), survey_mean(), survey_total()</td>
+</tr>
+<tr class="odd">
+<td>surveycv</td>
+<td>Paquetería para encuestas complejas, permite cálculo de coeficiente
+de variación</td>
+<td>cv.svy()</td>
+</tr>
+<tr class="even">
+<td>tidymodels</td>
+<td>Colección de paqueterías para modelaje y machine learning utilizando
+el lenguaje tidyverse</td>
+<td>Rsample (),training(), prep()</td>
+</tr>
+<tr class="odd">
+<td>crayon</td>
+<td>Cambia el color de los mensajes de la consola</td>
+<td>styles(), crayon()</td>
+</tr>
+<tr class="even">
+<td>data.table</td>
+<td>Herramientas para el manejo de objetos de bases de datos</td>
+<td>fread(), file.exists()</td>
+</tr>
+<tr class="odd">
+<td>stats</td>
+<td>Paquetería para cálculos y herramientas estadísticas</td>
+<td>gl(), glm(),</td>
+</tr>
+<tr class="even">
+<td>scriptName</td>
+<td>Recupera nombres y ubicación de scripts</td>
+<td>current_filename()</td>
+</tr>
+<tr class="odd">
+<td>rstudioapi</td>
+<td>Accede a Rstudio API si está disponible</td>
+<td>isavailable()</td>
+</tr>
+<tr class="even">
+<td>stringi</td>
+<td>Paquetería para procesamiento de lenguaje natural</td>
+<td><p>stri_extract_all(),</p>
+<p>str_detect(),</p></td>
+</tr>
+<tr class="odd">
+<td>beepr</td>
+<td>Genera sonidos de notificación</td>
+<td>beep()</td>
+</tr>
+<tr class="even">
+<td>rlang</td>
+<td>Funciones esenciales para el funcionamiento de Rstudio</td>
+<td>Diversos elementos de funcionamiento interno.</td>
+</tr>
+<tr class="odd">
+<td>tools</td>
+<td>Funciones esenciales para el funcionamiento de Rstudio</td>
+<td>Diversos elementos de funcionamiento interno.</td>
+</tr>
+</tbody>
+</table>
+
+Tabla XXX: Principales paquetes usados en R.
+
+Existen algunos comandos que se usan con más frecuencia y que resultan
+muy importantes para la lectura y procesamiento de la información.
+Algunos de estos son:
+
+-   Comandos read\_excel() y read\_csv(): Estos comandos permite leer y
+    cargar archivos de formato .xlsx y .csv al ambiente de RStudio.
+    Ejemplo:
+
+*correspondencia\_cat\_scianHOGARES&lt;-read\_excel(“I:/CALLE/Data/SIDIL/1\_insumos/catálogos/clasificacion\_industrialcat\_scianHOGARES.xlsx”)*
+
+Notar que en Rstudio los separadores diagonales o slash deben estar
+inclinados a la derecha (/).
+
+-   El comando here(): permite establecer la ruta donde se ejecutarán
+    los archivos, suele ser la misma donde se localiza el proyecto R. Es
+    muy útil para cargar y guardar archivos, ya que únicamente se tendrá
+    que utilizar el comando here() para reemplazar toda la ruta, que de
+    otra manera tendría que ser escrita en su totalidad. Ejemplo:
+
+> *correspondencia\_cat\_scianHOGARES&lt;-read\_excel(here(),
+> “1\_insumos”,“catálogos”,“clasificacion\_industrial”,“cat\_scianHOGARES.xlsx”)*
+
+-   Los comandos paste() y paste0(): Estos comandos funcionan para
+    concatenar elementos. El primero permite determinar un separador
+    entre los elementos. Ejemplo:
+
+*bitacora &lt;-
+read\_csv(paste(here(),“4\_reportes”,“bitacoras”,“bitacora.csv”,sep =
+“/”)*
+
+-   El comando source(): Este comando permite llamar y correr otros
+    archivos script .R y .Rmd desde otro script. En otras palabras, el
+    comando facilita la ejecución de múltiples scripts desde uno solo.
+    Ejemplo:
+
+*source(here(“2\_codigos”,“cod\_config\_inicial”,“0\_config\_inicial.R”))*
+
+-   El operador pipe ” %&gt;% “: este operador permite concatenar
+    diversas líneas de código sobre un mismo objeto, sin necesidad de
+    volverlo a”llamar” o nombrar. Ejemplo:
+
+*enoe &lt;- ENOEN\_sdemycoes %&gt;%
+mutate(contrato\_escrito=ifelse(contrato\_escrito==1,1,0))*
+
+-   Los comandos \_join: comprende left\_join(), right\_join(),
+    full\_join(), semi\_join(), inner\_join() y anti\_join(). Este grupo
+    de comandos se utiliza para unir dos data frames o tablas. Ejemplo:
+
+*ENOEN\_sdemycoes &lt;-left\_join(ENOEN\_sdemycoes,
+correspondencia\_cat\_scianHOGARES,
+by=c(“p4a\_tres”=“scian\_hogares\_2018”)*
+
+-   El comando mutate(): sirve para crear nuevas variables o campos
+    dentro de un data frame o tabla, es muy importante para la
+    transformación de la información. Ejemplo:
+
+*enoe &lt;- ENOEN\_sdemycoes %&gt;%
+mutate(ing\_min=ifelse(ing7c==1,1,0))*
+
+-   El comando filter(): permite filtrar información de una variable o
+    campo excluyendo una o muchas de sus categorías o rangos. Ejemplo:
+
+*ENOEN\_sdemycoes &lt;- ENOEN\_sdemycoes %&gt;% filter(p3h==1)*
+
+-   El comando select(): selecciona una o más variables o campos de un
+    data frame o tabla. Ejemplo:
+
+*ENOEN\_sdemycoes &lt;- ENOEN\_sdemycoes %&gt;% filter(p3h==1)*
+
+-   El comando select(): selecciona una o más variables o campos de un
+    data frame o tabla. Ejemplo:
+
+*ENOEN\_sdemycoes &lt;- ENOEN\_sdemycoes %&gt;% filter(p3h==1)*
+
+-   El comando case\_when(): funciona para clasificar o reclasificar
+    categorías de una variable o campo (cuando a, entonces b; cuando c,
+    entonces (simbolizado por ” ~ “) d; etc.). Este comando permite
+    hacer comparaciones entre categorías de la misma variable o entre
+    diferentes variables utilizando símbolos de igualdad y desigualdad
+    como”=“,”&gt;“,”&lt;“,”!=” (diferente) para crear las nuevas
+    categorías. Ejemplo:
+
+*ENOEN\_sdemycoes&lt;-ENOEN\_sdemycoes %&gt;% mutate(cat\_tamanio=
+as.factor(case\_when(*
+
+*cat\_tamanio&lt;=3~‘1’, cat\_tamanio==4~‘2’, cat\_tamanio&gt;=5 &
+cat\_tamanio&lt;=7~‘3’, cat\_tamanio==8~‘4’, cat\_tamanio==9~‘5’,
+cat\_tamanio&gt;=10~‘6’)))*
+
+Notar que el case\_when clasifica las situaciones con la jerarquía con
+la que sucede la ocurrencia: Es decir, si una observación cumple con dos
+“casos” entonces al evaluarse el primer caso y cumplirse, ya no se
+evalúa el segundo caso.
+
+-   El comando if\_else() o ifelse(): Al igual que el comando anterior,
+    funciona para reclasificar categorías de variables o campos, aunque
+    esta función permite solo dos opciones de clasificación (si sucede
+    x, entonces y). Ejemplo:  
+    *enoe &lt;- ENOEN\_sdemycoes %&gt;%
+    mutate(presta\_soc=ifelse(pre\_asa==1,1,0))*
+
+-   El comando for(): Este comando permite hacer iteraciones de uno o
+    más comandos sobre los elementos declarados, estos elementos pueden
+    ser pertenecientes a un vector o lista. Ejemplo:  
+    *for (i in lista\_indicadores\_enoe){*  
+    *dir.create(paste0(here(“3\_resultados/coyuntura/res\_coy\_ENOE”,
+    i)))*  
+    *ENOE”)) }*
+
+-   Comandos sub(), gsub(), y aquellos que inician con stri\_() o
+    str\_(): Estos comandos sirven para transformar e identificar
+    patrones en cadenas de texto (o procesamiento de lenguaje natural)
+    utilizando diversos códigos. Ejemplo:  
+    *filter(str\_detect(nombre\_archivo,“SDEM”))*
+
+-   Comando as\_survey\_design(): este comando se utiliza para declarar
+    una base de datos como encuesta a partir de sus variables
+    muestrales. Ejemplo:  
+    *enoesvyset &lt;- enoe %&gt;% as\_survey\_design(strata = estrato,
+    weights = peso, id = upm, nest=TRUE)*
+
+-   Comandos que empiezan con svy\_() o survey\_(): Estos comandos toman
+    en cuenta la encuesta declarada para hacer cálculos sobre la misma
+    considerando su diseño muestral. Entre estos podemos encontrar:
+    survey\_mean() y survey\_ratio(). Estos comandos brindan la opción
+    de obtener el error estándar (se), los intervalos de confianza (ci),
+    la varianza (var), y los coeficientes de variación (vi) de las
+    estimaciones calculadas. Ejemplo:  
+    *valor=survey\_mean(ing\_min, vartype = c(“cv”), na.rm=T)*
+
+-   Comando try\_catch(): Este comando permite poner condiciones a la
+    ejecución de otros comandos en R. Suele utilizarse para mostrar
+    errores y warnigs que se deben tener en cuenta, por ejemplo, si no
+    se encontró algún archivo o script. Usualmente el comando impide que
+    se detenga la ejecución del código ante posibles errores, aunque se
+    debe prestar especial atención a los mensajes de error y warnings
+    que se produzcan en la consola. Ejemplo:  
+    *municipios\_frontera\_norte
+    &lt;-tryCatch(suppressMessages(read\_csv(*
+    *paste(path\_a\_marco\_geo,“municipios\_fn”,“municipiosFronteraNorte.csv”,sep=“/”),error=
+    function(e) {cat(crayon::red(“\n”,“\n”,paste(“\*\*\* ERROR \*\*\* No
+    se ha cargado: Catalogo de municipios en la frontera
+    norte.”)),“\n”,“\n”)})*
+
+-   Comando saveRDS(): este comando permite guardar data frames en
+    formato .Rds. Ejemplo: *saveRDS(enoe\_temp,paste0(here(),“/”,
+    “3\_resultados/coyuntura/res\_coy\_ENOE”,“/”
+    ,nombre,“/enoe\_”,nombre,“\_”,periodo,anio,“\_”,v,“.Rds”))*  
+      
+    Existen otros comandos para guardar las bases de datos en otros
+    formatos: write.csv(), write.dta(), entre otros.
+
+Además de estos, se utilizan muchos otros comandos de las paqueterías
+cargadas, no obstante, estos son los que se utilizan con más frecuencia
+ya que son los básicos para la carga, transformación y guardado de la
+información que utiliza el SIDIL. Si surge alguna duda, o si se requiere
+profundizar en estos u otros comandos, existe amplia información en
+internet que incluye explicaciones y ejemplos sobre el uso de los
+diversos comandos en el ambiente de RStudio, dos de las principales
+fuentes de consulta son: www. cran.r-project.org y
+[www.stackoverflow.com](http://www.stackoverflow.com), o bien con el
+comando help(package=“\_\_”), poniendo entre las comillas el nombre de
+la paquetería que se desea buscar. De igual manera, si se desea buscar
+información sobre algún comando, se puede utilizar la línea de código
+help(\_\_, package=“\_\_”), poniendo en el primer argumento el comando
+en cuestión y en el segundo la paquetería al que pertenece.
+
+## 6.4 Tipos de errores que se pudieran presentar
+
+Típicamente se pueden presentar los siguientes errores al trabajar en
+RStudio.
+
+1.  Errores de lectura de información
+
+    1.  Ubicación de los archivos mal escrito: este suele el error más
+        frecuente para la lectura de archivos. Se debe asegurar que la
+        ubicación y el nombre de los archivos se escriba correctamente
+        para su optima apertura.
+
+    2.  Tipo de archivos: De igual manera, se debe asegurar que se esté
+        utilizando el comando correcto para cada tipo de archivo. Es
+        decir, si se quiere abrir un archivo .csv se debe utilizar el
+        comando “read\_csv”, mientras que si se quiere abrir un archivo
+        .Rds se debe utilizar el comando “readRDS”.
+
+2.  Errores de procesamiento de información
+
+    1.  Problemas con los campos
+
+        1.  Campos que no se encuentran: Este error puede estar
+            relacionado con problemas de cambio de los nombres de los
+            campos o que directamente se dejaron de incluir por diversas
+            razones en la fuente de información original
+
+        2.  Problemas con el tipo de variables o campos del data frame:
+            No todas las transformaciones se pueden hacer a todos los
+            tipos de variables o campos, es por esto por lo que primero
+            se debe asegurar que el campo a transformar sea el que
+            deseamos. Para esto, se puede utilizar el comando
+            class(dataframe$campo). Para realizar un cambio en el tipo
+            de un campo se pueden utilizar los comandos que inician
+            as.\_(), por ejemplo: as.double(dataframe$campo),
+            as.character(dataframe$campo), entre otros.
+
+    2.  Insuficiencia de memoria RAM para el procesamiento
+
+        1.  Este es un error que reporta directamente el RStudio con el
+            mensaje *“cannot allocate vector….”*
+
+            1.  Hay dos posibles causas:
+
+                1.  Que en efecto el procesamiento de la información sea
+                    el adecuado, pero quizá, incluso por otros procesos
+                    en curso, la computadora no cuenta con la memoria
+                    suficiente. Para esto se deben finalizar en el
+                    administrador de tareas los programas que no estén
+                    en uso, y desde la consola de RStudio, desplegar el
+                    menú de memoria en uso del ambiente, y liberal
+                    memoria que no esté en uso, como muesta la
+                    ilustración <a href="#fig:memoriaRstudio">6.4</a>.
+
+<img src="images-1/06/memoriaR.png" alt="Liberación de memoria en RStudio" width="456" />
+<p class="caption">
+Ilustración 6.4: Liberación de memoria en RStudio
+</p>
+
+1.  Que el algoritmo no esté procesando la información en la estructura
+    predefinida lo que genera objetos cuyas dimensiones no son las
+    correctas y consumen excesiva memoria. Por ejemplo, duplicidades
+    innecesarias en algunos registros que se pretenden unir entre
+    diferentes bases con la misma información.
+
+> Si el error es debido a lo anterior, se debe asegurar que los insumos
+> utilizados en los procedimientos sean los correctos.
+
+1.  De error en el lenguaje:
+
+    1.  Mal escrito el código: Es muy frecuente que los errores se den
+        porque, al insertar líneas de códigos hay algún error de tipeo.
+
+    2.  La paquetería ya no incluye el comando sugerido
+
+        1.  Pudiera ser un warning, que desde CRAN no se informa la
+            falta de mantenimiento/seguimiento a dicho comando/paquete.
+            Esta advertencia no detendrá el proceso, pero se debe hacer
+            seguimiento a dicho comando en caso de que se deje de
+            incluir definitivamente
+
+        2.  Podría ser un error en el cual, por diversos motivos, ya no
+            se incluye el comando en la paquetería seleccionada.
+            Usualmente cuando esto sucede la propia consola de R muestra
+            los nuevos códigos con los que fue reemplazado el código en
+            desuso
+
+La consola de RStudio siempre mostrará el error y alguna información
+extra, esta debe ser tenida en cuenta ya que muestra la naturaleza del
+error y, algunas veces, la solución, de no ser así, se puede rastrear el
+error y solucionarlo con ayuda de internet.
+
+## 6.5 Python
+
+A continuación, se dará una breve descripción de las principales
+librerías de Python usadas para el SIDIL. Entre paréntesis se indica el
+número de versión que se utiliza de cada librería.
+
+-   Numpy (1.23.4) proporciona soporte para el cálculo numérico y la
+    manipulación de datos en forma de arrays y matrices. Es muy útil
+    para realizar cálculos matemáticos y estadísticos de forma
+    eficiente, y es una de las librerías más utilizadas en el área de la
+    ciencia de datos.
+
+-   Pandas (1.4.4) se utiliza para la manipulación y análisis de datos.
+    Ofrece una serie de herramientas para importar, limpiar, transformar
+    y visualizar datos de forma sencilla y rápida. Es muy útil para el
+    procesamiento y análisis de conjuntos de datos de gran tamaño y
+    complejidad.
+
+-   Scikit-learn (1.1.2) proporciona una amplia gama de algoritmos de
+    aprendizaje automático y herramientas para el análisis de datos.
+    Incluye una gran variedad de modelos de aprendizaje automático, como
+    árboles de decisión, regresión lineal y SVM, y proporciona una
+    interfaz sencilla y consistente para su uso.
+
+-   PyTorch (1.12.1) para el desarrollo de redes neuronales y
+    aprendizaje automático profundo. Ofrece una amplia gama de
+    herramientas y funcionalidades para el diseño y entrenamiento de
+    modelos de aprendizaje automático profundo (*Deep* *learning*).
+    Además esta librería permite acceder al modelo tabnet que es la
+    primera variante al modelo Random forest que resultó ser el esocigod
+    tcon base en las métricas de performance.
+
+-   Matplotlib (3.6.2): se utiliza para crear gráficos y visualizaciones
+    interactivas de datos en 2D y 3D. Matplotlib ofrece una amplia
+    variedad de tipos de gráficos, como líneas, barras, histogramas,
+    dispersión, gráficos de torta, entre otros.
+
+-   Yellowbrick (1.5): se enfoca en la visualización y diagnóstico de
+    modelos de aprendizaje automático. Proporciona una variedad de
+    gráficos y herramientas interactivas para evaluar y entender el
+    rendimiento y el comportamiento de los modelos de aprendizaje
+    automático. Es una herramienta útil para el análisis y mejora de
+    modelos, lo que ayuda a tomar decisiones más informadas en el
+    proceso de desarrollo de algoritmos de aprendizaje automático.
+
+-   Pydotplus (2.0.2): se utiliza para la generación y visualización de
+    gráficos de redes y árboles en Python. Se utiliza principalmente
+    para visualizar estructuras de datos jerárquicas, como árboles de
+    decisión generados por algoritmos de aprendizaje automático.
+
+-   Clean-text (0.6.0): se utiliza en la limpieza y preprocesamiento de
+    datos de texto. Proporciona una variedad de funciones para eliminar
+    caracteres especiales, eliminar stopwords, realizar lematización y
+    más.
+
+-   Pyreadr (0.4.7): es una librería para facilitar la lectura y
+    escritura de archivos en diversos formatos, como CSV, Excel y más.
+    Proporciona funciones para cargar y guardar datos en diferentes
+    formatos, lo que simplifica la manipulación de conjuntos de datos
+    almacenados en archivos externos.
+
+-   Shap (SHapley Additive exPlanations, 0.41.0): se utiliza para
+    explicar las predicciones de modelos de aprendizaje automático. Se
+    basa en la teoría de juegos y proporciona un marco de trabajo para
+    calcular la importancia de cada característica (atributo) en el
+    resultado de un modelo. Shap es una herramienta útil para
+    interpretar y entender el comportamiento de modelos de aprendizaje
+    automático, lo que puede ayudar a aumentar la confianza en sus
+    predicciones y detectar posibles sesgos.
+
+<!--chapter:end:05-AnexoRStudio.Rmd-->
+
+# 7 Especificaciones del servidor
+
+PENDIENTE PEGAR
+
+<!--chapter:end:06-AnexoEspecificacionesServidor.Rmd-->
+
+[1] El lector percibirá que no hay un script secuenciador del censo
+económico histórico. Esto se debe a que dichos indicadores no entran al
+entrenamiento del modelo, como se describe en el módulo IV.
+
+[2] En estos casos, para mantener el control de versiones, al resguardar
+la versión anterior del catálogo, se le agrega la fecha de resguardo de
+dicha versión “anterior” al nombre del archivo. Ver Recuadro 8.
+
+[3] <https://www.r-project.org/about.html>
+
+[4] <https://posit.co/>

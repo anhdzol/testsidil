@@ -1,0 +1,558 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Capítulo 6 R, RStudio y Python | SIDIL: Manual del procesamiento y explotación de la información</title>
+  <meta name="description" content="Capítulo 6 R, RStudio y Python | SIDIL: Manual del procesamiento y explotación de la información" />
+  <meta name="generator" content="bookdown 0.32 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Capítulo 6 R, RStudio y Python | SIDIL: Manual del procesamiento y explotación de la información" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta name="github-repo" content="https://anhdzol.github.io/testsidil/" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Capítulo 6 R, RStudio y Python | SIDIL: Manual del procesamiento y explotación de la información" />
+  
+  
+  
+
+<meta name="author" content="American Institutes for Research" />
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="presentación-sintética-de-todos-los-scripts.html"/>
+<link rel="next" href="especificaciones-del-servidor.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+
+
+
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Manual de procesamiento y explotación de información</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Bienvenida</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#introalineacion"><i class="fa fa-check"></i><b>1.1</b> Alineación con la misión y programas de gobierno</a></li>
+<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#introjustificacion"><i class="fa fa-check"></i><b>1.2</b> Justificación de la viabilidad del proyecto</a></li>
+<li class="chapter" data-level="1.3" data-path="index.html"><a href="index.html#introobjetivos"><i class="fa fa-check"></i><b>1.3</b> Objetivos del SIDIL</a></li>
+<li class="chapter" data-level="1.4" data-path="index.html"><a href="index.html#propuestasolucion"><i class="fa fa-check"></i><b>1.4</b> Propuesta de solución</a></li>
+<li class="chapter" data-level="1.5" data-path="index.html"><a href="index.html#introalcance"><i class="fa fa-check"></i><b>1.5</b> Alcance</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="estructura-y-flujos-de-trabajo-del-sidil.html"><a href="estructura-y-flujos-de-trabajo-del-sidil.html"><i class="fa fa-check"></i><b>2</b> Estructura y flujos de trabajo del SIDIL</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="estructura-y-flujos-de-trabajo-del-sidil.html"><a href="estructura-y-flujos-de-trabajo-del-sidil.html#elementos-básicos-del-sidil"><i class="fa fa-check"></i><b>2.1</b> Elementos básicos del SIDIL</a></li>
+<li class="chapter" data-level="2.2" data-path="estructura-y-flujos-de-trabajo-del-sidil.html"><a href="estructura-y-flujos-de-trabajo-del-sidil.html#modulosqueconformanSIDIL"><i class="fa fa-check"></i><b>2.2</b> Módulos que conforman el SIDIL</a>
+<ul>
+<li class="chapter" data-level="" data-path="estructura-y-flujos-de-trabajo-del-sidil.html"><a href="estructura-y-flujos-de-trabajo-del-sidil.html#moduloIexplicaciongeneral"><i class="fa fa-check"></i>Módulo I: actualización de indicadores</a></li>
+<li class="chapter" data-level="" data-path="estructura-y-flujos-de-trabajo-del-sidil.html"><a href="estructura-y-flujos-de-trabajo-del-sidil.html#moduloIIexplicaciongeneral"><i class="fa fa-check"></i>Módulo II: Consulta al universo de CT, imputación de indicadores y predicción de riesgo</a></li>
+<li class="chapter" data-level="" data-path="estructura-y-flujos-de-trabajo-del-sidil.html"><a href="estructura-y-flujos-de-trabajo-del-sidil.html#moduloIyIIexplicaciongeneral"><i class="fa fa-check"></i>Módulos I y II: operables desde la interfaz de automatización</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="elementosgenerales.html"><a href="elementosgenerales.html"><i class="fa fa-check"></i><b>3</b> Elementos generales del procesamiento de datos</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="elementosgenerales.html"><a href="elementosgenerales.html#estructurascripts"><i class="fa fa-check"></i><b>3.1</b> Estructura de Scripts</a>
+<ul>
+<li class="chapter" data-level="3.1.1" data-path="elementosgenerales.html"><a href="elementosgenerales.html#configinicial"><i class="fa fa-check"></i><b>3.1.1</b> Script de configuración inicial y script de funciones y catálogos</a></li>
+<li class="chapter" data-level="3.1.2" data-path="elementosgenerales.html"><a href="elementosgenerales.html#secuenciadores"><i class="fa fa-check"></i><b>3.1.2</b> Scripts secuenciadores</a></li>
+</ul></li>
+<li class="chapter" data-level="3.2" data-path="elementosgenerales.html"><a href="elementosgenerales.html#estructuracarpetas"><i class="fa fa-check"></i><b>3.2</b> Estructura de carpetas y sintaxis de archivos</a></li>
+<li class="chapter" data-level="3.3" data-path="elementosgenerales.html"><a href="elementosgenerales.html#temporalidad"><i class="fa fa-check"></i><b>3.3</b> Sobre la temporalidad</a></li>
+<li class="chapter" data-level="3.4" data-path="elementosgenerales.html"><a href="elementosgenerales.html#trazabilidad"><i class="fa fa-check"></i><b>3.4</b> Sobre trazabilidad: bitácora, log y parámetros</a></li>
+<li class="chapter" data-level="3.5" data-path="elementosgenerales.html"><a href="elementosgenerales.html#mensajesGeneral"><i class="fa fa-check"></i><b>3.5</b> Mensajes al usuario</a>
+<ul>
+<li class="chapter" data-level="3.5.1" data-path="elementosgenerales.html"><a href="elementosgenerales.html#mensajesError"><i class="fa fa-check"></i><b>3.5.1</b> Mensajes de error</a></li>
+<li class="chapter" data-level="3.5.2" data-path="elementosgenerales.html"><a href="elementosgenerales.html#mensajesAdvertencia"><i class="fa fa-check"></i><b>3.5.2</b> Mensajes de advertencia</a></li>
+<li class="chapter" data-level="3.5.3" data-path="elementosgenerales.html"><a href="elementosgenerales.html#mensajesConfirmacion"><i class="fa fa-check"></i><b>3.5.3</b> Mensajes de información o de confirmación</a></li>
+</ul></li>
+<li class="chapter" data-level="3.6" data-path="elementosgenerales.html"><a href="elementosgenerales.html#software-para-el-procesamiento-de-datos"><i class="fa fa-check"></i><b>3.6</b> Software para el procesamiento de datos</a></li>
+<li class="chapter" data-level="3.7" data-path="elementosgenerales.html"><a href="elementosgenerales.html#catalogos"><i class="fa fa-check"></i><b>3.7</b> Catálogos de información</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="procesamiento.html"><a href="procesamiento.html"><i class="fa fa-check"></i><b>4</b> Procesamiento de las fuentes de información y generación de la MPR</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="procesamiento.html"><a href="procesamiento.html#procesamientoModI"><i class="fa fa-check"></i><b>4.1</b> Módulo I: actualización de indicadores</a>
+<ul>
+<li class="chapter" data-level="4.1.1" data-path="procesamiento.html"><a href="procesamiento.html#procesamientoModIdesafios"><i class="fa fa-check"></i><b>4.1.1</b> Desafíos al tratamiento de bases de datos externas</a></li>
+<li class="chapter" data-level="4.1.2" data-path="procesamiento.html"><a href="procesamiento.html#procesamientoModInivelesagregacion"><i class="fa fa-check"></i><b>4.1.2</b> Sobre niveles de agregación</a></li>
+<li class="chapter" data-level="4.1.3" data-path="procesamiento.html"><a href="procesamiento.html#procesamientoModInominativo"><i class="fa fa-check"></i><b>4.1.3</b> Sobre estimaciones puntuales nominativas</a></li>
+<li class="chapter" data-level="4.1.4" data-path="procesamiento.html"><a href="procesamiento.html#procesamientoModEspecificaciones"><i class="fa fa-check"></i><b>4.1.4</b> Especificaciones por fuente de información</a></li>
+<li class="chapter" data-level="4.1.5" data-path="procesamiento.html"><a href="procesamiento.html#procesamientoModIcoyvshist"><i class="fa fa-check"></i><b>4.1.5</b> Estimaciones puntuales e históricas de indicadores</a></li>
+</ul></li>
+<li class="chapter" data-level="4.2" data-path="procesamiento.html"><a href="procesamiento.html#procesamientoModII"><i class="fa fa-check"></i><b>4.2</b> Módulo II: imputación de indicadores y generación de la MPR</a>
+<ul>
+<li class="chapter" data-level="4.2.1" data-path="procesamiento.html"><a href="procesamiento.html#procesamientoModIIconsultaDNE"><i class="fa fa-check"></i><b>4.2.1</b> Consulta al DNE</a></li>
+<li class="chapter" data-level="4.2.2" data-path="procesamiento.html"><a href="procesamiento.html#procesamientoModIIimputacion"><i class="fa fa-check"></i><b>4.2.2</b> Imputación de indicadores laborales al universo de CT</a></li>
+<li class="chapter" data-level="4.2.3" data-path="procesamiento.html"><a href="procesamiento.html#procesamientoModIIprediccion"><i class="fa fa-check"></i><b>4.2.3</b> Predicción de riesgo</a></li>
+</ul></li>
+<li class="chapter" data-level="4.3" data-path="procesamiento.html"><a href="procesamiento.html#procesamientoModIyIIinterfazAuto"><i class="fa fa-check"></i><b>4.3</b> Módulo I y II: Interfaz de automatización</a></li>
+<li class="chapter" data-level="4.4" data-path="procesamiento.html"><a href="procesamiento.html#procesamientoModIIIinterfazConsulta"><i class="fa fa-check"></i><b>4.4</b> Módulo III: Priorización de los centros de trabajo</a></li>
+<li class="chapter" data-level="4.5" data-path="procesamiento.html"><a href="procesamiento.html#procesamientoModIV"><i class="fa fa-check"></i><b>4.5</b> Módulo IV: Entrenamiento del modelo</a>
+<ul>
+<li class="chapter" data-level="4.5.1" data-path="procesamiento.html"><a href="procesamiento.html#procesamientoModIVSIAPI"><i class="fa fa-check"></i><b>4.5.1</b> Construcción de la serie histórica de inspecciones laborales (2012-2022)</a></li>
+<li class="chapter" data-level="4.5.2" data-path="procesamiento.html"><a href="procesamiento.html#procesamientoModIVindicadores"><i class="fa fa-check"></i><b>4.5.2</b> Construcción de la serie histórica de indicadores laborales</a></li>
+<li class="chapter" data-level="4.5.3" data-path="procesamiento.html"><a href="procesamiento.html#procesamientoModIVmatching"><i class="fa fa-check"></i><b>4.5.3</b> Matching de las series históricas</a></li>
+<li class="chapter" data-level="4.5.4" data-path="procesamiento.html"><a href="procesamiento.html#procesamientoModIVEntrenamiento"><i class="fa fa-check"></i><b>4.5.4</b> Entrenamiento y evaluación del modelo de predicción</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="presentación-sintética-de-todos-los-scripts.html"><a href="presentación-sintética-de-todos-los-scripts.html"><i class="fa fa-check"></i><b>5</b> Presentación sintética de todos los scripts</a></li>
+<li class="chapter" data-level="6" data-path="r-rstudio-y-python.html"><a href="r-rstudio-y-python.html"><i class="fa fa-check"></i><b>6</b> R, RStudio y Python</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="r-rstudio-y-python.html"><a href="r-rstudio-y-python.html#r-y-rstudio"><i class="fa fa-check"></i><b>6.1</b> R y RStudio</a></li>
+<li class="chapter" data-level="6.2" data-path="r-rstudio-y-python.html"><a href="r-rstudio-y-python.html#el-entorno-de-rstudio"><i class="fa fa-check"></i><b>6.2</b> El entorno de RStudio</a></li>
+<li class="chapter" data-level="6.3" data-path="r-rstudio-y-python.html"><a href="r-rstudio-y-python.html#procedimiento-para-ejecutar-proyectos-y-scripts-en-rstudio"><i class="fa fa-check"></i><b>6.3</b> Procedimiento para ejecutar proyectos y scripts en RStudio</a></li>
+<li class="chapter" data-level="6.4" data-path="r-rstudio-y-python.html"><a href="r-rstudio-y-python.html#tipos-de-errores-que-se-pudieran-presentar"><i class="fa fa-check"></i><b>6.4</b> Tipos de errores que se pudieran presentar</a></li>
+<li class="chapter" data-level="6.5" data-path="r-rstudio-y-python.html"><a href="r-rstudio-y-python.html#python"><i class="fa fa-check"></i><b>6.5</b> Python</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="especificaciones-del-servidor.html"><a href="especificaciones-del-servidor.html"><i class="fa fa-check"></i><b>7</b> Especificaciones del servidor</a></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">SIDIL: Manual del procesamiento y explotación de la información</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="r-rstudio-y-python" class="section level1 hasAnchor" number="6">
+<h1><span class="header-section-number">Capítulo 6</span> R, RStudio y Python<a href="r-rstudio-y-python.html#r-rstudio-y-python" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>En este anexo se presentan, fundamentalmente, los conceptos y prácticas básicas en la utilización de la interfaz de RStudio. También se presentan algunos aspectos relevantes de Python, pero que si bien requiere tenerse instalado, desde la perspectiva de SIDIL, no requiere ser ejecutado en una interfaz distinta a Rstudio</p>
+<div id="r-y-rstudio" class="section level2 hasAnchor" number="6.1">
+<h2><span class="header-section-number">6.1</span> R y RStudio<a href="r-rstudio-y-python.html#r-y-rstudio" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>La gran mayoría de los algoritmos que constituyen el SIDIL se desarrollaron y mantendrán en el lenguaje R.<a href="#fn3" class="footnote-ref" id="fnref3"><sup>3</sup></a> Esto es independiente de que a través de una interfaz “paraguas” se pudieran automatizar hasta cierto punto la secuencia de los scripts. R es el lenguaje de programación de uso libre desarrollado para el análisis estadístico y gráfico. Afortunadamente existe un ambiente integrado de desarrollo que se llama RStudio (que recientemente cambió su nombre a Posit<a href="#fn4" class="footnote-ref" id="fnref4"><sup>4</sup></a>) y que facilita la programación, compilación y visualización de desarrollos en el lenguaje R. SIDIL prevé que el usuario procese la información con R Studio, y para que este último funcione se requiere tener R instalado. A continuación, se ofrecen detalles sobre las principales características de R y RStudio.</p>
+</div>
+<div id="el-entorno-de-rstudio" class="section level2 hasAnchor" number="6.2">
+<h2><span class="header-section-number">6.2</span> El entorno de RStudio<a href="r-rstudio-y-python.html#el-entorno-de-rstudio" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>El entorno de RStudio está conformado por cuatro partes (ver ilustración <a href="r-rstudio-y-python.html#fig:entornoRStudio">6.1</a>):</p>
+<ol style="list-style-type: decimal">
+<li><p>Scripts: En esta parte se generan o cargan los scripts o archivos de código que se van a ejecutar. Se pueden abrir varios scripts a la vez. Todos los scripts, independientemente de que estén en pestañas separadas, utilizan y cargan objetos del mismo ambiente (a menos que se configure distinto, cosa que no sucede en SIDIL). Para correr una línea de un script se debe poner el cursor sobre la línea que se desee correr y presionar la tecla Control (Ctrl) + Intro o se puede presionar el botón “Run” en la parte izquierda superior de esta sección. Para ejecutar el script completo se debe presionar Ctrl + Shift + Intro. Se pueden seleccionar con el cursor las líneas que se deseen correr y presionar Ctrl+Intro o la tecla Run. Para aquellas/os lectores más familiarizados con Stata, el equivalente a un script en dicho software es el “do file”.</p></li>
+<li><p>Ambiente (Environment): En el ambiente se muestran todos los objetos generados por los códigos. Es importante mencionar que los objetos que se alojan en el ambiente no están guardados en el disco rígido del equipo de cómputo, únicamente están disponibles en esta sección mientras se ejecutan los scripts. Para el guardado de los elementos se debe generar el comando correspondiente en el script o consola, determinando el cómo se quiere guardar el objeto generado. Para eliminar un objeto del ambiente se utiliza el comando rm(). Por ejemplo, rm(resultados_analisis). Si se quiere remover todo tipo de objeto en el ambiente, el comando es: “rm(list = ls())”. En el ambiente se encuentran diferentes tipos de objetos:</p></li>
+</ol>
+<ul>
+<li>Tabla de datos (data): En primer lugar, se presentan los objetos que son tablas de datos. En el ambiente en R se le conoce como data frame y de aquí en adelante se usará de manera intercambiable.</li>
+<li>Listas: son colecciones ordenadas de objetos que pueden ser del mismo tipo o de diferentes tipos.</li>
+<li>Vectores: son colecciones de objetos del mismo tipo. o Valores (values): Elementos o conjuntos de elementos que se nombran objetos. Vectores de diferentes tamaños.</li>
+<li>Funciones (functions): Las funciones son un conjunto de instrucciones que se establecen y que pueden ser llamadas para ser aplicadas a otros objetos.</li>
+</ul>
+<p>En esta sección también se pueden importar manualmente datos, ver, establecer conexiones a bases de datos tipo SQL, ajustar el uso de memoria y seleccionar y eliminar elementos del ambiente manualmente. A su vez, se encuentra un acceso a tutoriales con temas específicos de R.</p>
+<ol start="3" style="list-style-type: decimal">
+<li><p>Consola: La consola muestra los resultados de los códigos ejecutados por los scripts, así como posibles errores y advertencias (o warnings). Es importante la distinción entre estos dos tipos de avisos en la consola: mientras que el error implica que el script no se terminó de ejecutar debido a un error, la advertencia o warning solo es un aviso que brinda el programa, pero no implica que la ejecución del código se detenga. En ambos casos, se mostrará en la consola la información del comando sobre el que se generó el error o el warning. En la consola también se pueden ejecutar códigos que no se quedarán guardados en los scripts. También en la consola, a su izquierda arriba, se observa la versión de R que se tiene instalado en el sistema. Actualmente SIDIL está operando con la versión 4.2.0. La buena práctica sugiere siempre mantener actualizado R y RStudio, para lo cual ambos están preconfigurados para advertir al usuario que existe una nueva versión. Se sugiere enfáticamente aceptar las solicitudes de actualización.</p></li>
+<li><p>Ubicación de archivos, gráficas, paqueterías, ayuda y visualizador: Esta sección que cuenta con varias pestañas sirve para visualizar distintas herramientas. La primera y la cual es de mayor utilidad para este proyecto es la de ubicación de archivos, en esta se pueden observar las carpetas y archivos que se encuentran en la ruta en la que está alojado el proyecto, es de gran utilidad para monitorear los archivos guardados y generados de ser necesario. Las otras pestañas sirven para visualizar gráficas que generen los scripts, paqueterías cargas, ayuda (online) y otros elementos.</p></li>
+</ol>
+<div class="figure"><span style="display:block;" id="fig:entornoRStudio"></span>
+<img src="images-1/06/RStudio.png" alt="Entorno de RStudio" width="636" />
+<p class="caption">
+Ilustración 6.1: Entorno de RStudio
+</p>
+</div>
+</div>
+<div id="procedimiento-para-ejecutar-proyectos-y-scripts-en-rstudio" class="section level2 hasAnchor" number="6.3">
+<h2><span class="header-section-number">6.3</span> Procedimiento para ejecutar proyectos y scripts en RStudio<a href="r-rstudio-y-python.html#procedimiento-para-ejecutar-proyectos-y-scripts-en-rstudio" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Abrir el proyecto SIDIL: Esto es fundamental, porque los proyectos en R Studio mantienen de manera ordenada en una misma ruta todos los elementos necesarios para que los códigos se ejecuten de manera correcta, de igual manera albergan los resultados que se producen de dichos códigos.</p>
+<p>Lo importante es primero abrir el proyecto SIDIL, sea desde el Explorador de Windows o desde RStudio.</p>
+<ul>
+<li><p>Si se abre desde el explorador de archivos, se podrá identificar el proyecto por el logo de R y por el tipo de archivo .Rproj. Si se ha abierto con anterioridad el proyecto, este podría desplegar los scripts que se hayan utilizado con anteriormente, si no, será necesario abrir los scripts que se deseen ejecutar o editar en la primera sección de la pantalla (I. Scripts) o seleccionándolos directamente en la sección IV de ubicación de archivos.</p></li>
+<li><p>Si se abre desde el programa RStudio, primero se debe asegurar que no esté ningún proyecto cargado. En la parte superior derecha (sección II de la pantalla), se puede identificar el proyecto en el que se está trabajando. En la ilustración <a href="r-rstudio-y-python.html#fig:RStudioProyectoVacio">6.2</a> se observa que en el ambiente no se muestra ningún proyecto. Al hacer clic sobre la flecha señalando hacia abajo se despliega el menú que permite seleccionar “Open Project…” (ilustración <a href="r-rstudio-y-python.html#fig:RStudioOpenProject">6.3</a>) , navegar hasta la ubicación del proyecto <em>SIDIL.Rproj</em> seleccionarlo y abrirlo para.</p></li>
+</ul>
+<div class="figure"><span style="display:block;" id="fig:RStudioProyectoVacio"></span>
+<img src="images-1/06/proyectoVacio.png" alt="Vista del ambiente sin proyecto" width="240" />
+<p class="caption">
+Ilustración 6.2: Vista del ambiente sin proyecto
+</p>
+</div>
+<div class="figure"><span style="display:block;" id="fig:RStudioOpenProject"></span>
+<img src="images-1/06/openproject.png" alt="Vista del ambiente sin proyecto" width="234" />
+<p class="caption">
+Ilustración 6.3: Vista del ambiente sin proyecto
+</p>
+</div>
+<p>Si hubiera algún proyecto previamente cargado, se debe cerrar desplegando el menú del proyecto y seleccionando “Close Project” (tercera opción en la ilustración <a href="r-rstudio-y-python.html#fig:RStudioOpenProject">6.3</a>).</p>
+<p>El siguiente paso es abrir el script que se desea correr o editar, o bien, generar un nuevo script: Los archivos de códigos que utiliza el proyecto SIDIL en el ambiente RStudio puede ser de dos tipos: R Script (tipo. R) o R Markdown (tipo .Rmd). Para abrir un archivo ya existente o generar uno nuevo se puede realizar desde la primera sección de la pantalla (I. Scripts), donde el primer ícono despliega las opciones de nuevos documentos que se quieren creen, y el tercero abre el explorador de archivos para seleccionar alguno de los documentos ya existentes. Un script ya existente también se puede abrir desde la sección IV del programa RStudio, únicamente hace clic sobre el archivo. R o .Rmd que se desee abrir.</p>
+<p>Una parte primordial para la ejecución de los scripts es la instalación y el llamado de las paqueterías que se utilizarán, ya que estas albergan los comandos que se utilizan en los archivos de códigos. Si bien R Studio cuenta con algunos comandos básicos, la versatilidad del programa permite importar y utilizar cientos de paqueterías que facilitan la generación de códigos con sus comandos. A continuación, se presentan las paqueterías que utiliza el proyecto SIDIL junto con algunos de los principales comandos de cada una. Esta lista de principales comandos no es exhaustiva y muchas paqueterías pueden contener cientos de comandos.</p>
+<table style="width:100%;">
+<caption>Tabla XXX: Principales paquetes usados en R.</caption>
+<colgroup>
+<col width="4%" />
+<col width="35%" />
+<col width="58%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Paquete</th>
+<th>Principal función</th>
+<th>Principales comandos</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>pacman</td>
+<td>Instalar y llamar paqueterías</td>
+<td>p_load()</td>
+</tr>
+<tr class="even">
+<td>here</td>
+<td>Establecer el directorio en el que se trabaja</td>
+<td>here ()</td>
+</tr>
+<tr class="odd">
+<td>tidyverse</td>
+<td>Colección de paqueterías de gramática, estructura de datos, gráficas, entre otras.</td>
+<td>operador pipe “%&gt;%” , read_csv(), filter(), group_by(), mutate(), rename(), summarise(), str_detect() (y otros str_), as_tibble (), pivo()t, gather()</td>
+</tr>
+<tr class="even">
+<td>haven</td>
+<td>Lee archivos sav, dta, entre otros</td>
+<td>read_sav(), read_dta()</td>
+</tr>
+<tr class="odd">
+<td>dbplyr</td>
+<td>Permite trabajar con bases de datos de distinto tipo</td>
+<td>show_query(), collect()</td>
+</tr>
+<tr class="even">
+<td>foreign</td>
+<td>Permite leer y guardar archivos de distinto tipo</td>
+<td>read.dbf ()</td>
+</tr>
+<tr class="odd">
+<td>janitor</td>
+<td>Paquetería de gramática y estructura de datos</td>
+<td>clean_names(), tabyl()</td>
+</tr>
+<tr class="even">
+<td>readxl</td>
+<td>Lee archivos de Excel</td>
+<td>read_excel()</td>
+</tr>
+<tr class="odd">
+<td>survey</td>
+<td>Paquetería para encuestas complejas</td>
+<td>svymean(), svyby()</td>
+</tr>
+<tr class="even">
+<td>srvyr</td>
+<td>Paquetería para encuestas complejas, agrega la sintaxis de tidyverse a la paquetería survey</td>
+<td>as_survey_design(), survey_mean(), survey_total()</td>
+</tr>
+<tr class="odd">
+<td>surveycv</td>
+<td>Paquetería para encuestas complejas, permite cálculo de coeficiente de variación</td>
+<td>cv.svy()</td>
+</tr>
+<tr class="even">
+<td>tidymodels</td>
+<td>Colección de paqueterías para modelaje y machine learning utilizando el lenguaje tidyverse</td>
+<td>Rsample (),training(), prep()</td>
+</tr>
+<tr class="odd">
+<td>crayon</td>
+<td>Cambia el color de los mensajes de la consola</td>
+<td>styles(), crayon()</td>
+</tr>
+<tr class="even">
+<td>data.table</td>
+<td>Herramientas para el manejo de objetos de bases de datos</td>
+<td>fread(), file.exists()</td>
+</tr>
+<tr class="odd">
+<td>stats</td>
+<td>Paquetería para cálculos y herramientas estadísticas</td>
+<td>gl(), glm(),</td>
+</tr>
+<tr class="even">
+<td>scriptName</td>
+<td>Recupera nombres y ubicación de scripts</td>
+<td>current_filename()</td>
+</tr>
+<tr class="odd">
+<td>rstudioapi</td>
+<td>Accede a Rstudio API si está disponible</td>
+<td>isavailable()</td>
+</tr>
+<tr class="even">
+<td>stringi</td>
+<td>Paquetería para procesamiento de lenguaje natural</td>
+<td><p>stri_extract_all(),</p>
+<p>str_detect(),</p></td>
+</tr>
+<tr class="odd">
+<td>beepr</td>
+<td>Genera sonidos de notificación</td>
+<td>beep()</td>
+</tr>
+<tr class="even">
+<td>rlang</td>
+<td>Funciones esenciales para el funcionamiento de Rstudio</td>
+<td>Diversos elementos de funcionamiento interno.</td>
+</tr>
+<tr class="odd">
+<td>tools</td>
+<td>Funciones esenciales para el funcionamiento de Rstudio</td>
+<td>Diversos elementos de funcionamiento interno.</td>
+</tr>
+</tbody>
+</table>
+<p>Existen algunos comandos que se usan con más frecuencia y que resultan muy importantes para la lectura y procesamiento de la información. Algunos de estos son:</p>
+<ul>
+<li>Comandos read_excel() y read_csv(): Estos comandos permite leer y cargar archivos de formato .xlsx y .csv al ambiente de RStudio. Ejemplo:</li>
+</ul>
+<p><em>correspondencia_cat_scianHOGARES&lt;-read_excel(“I:/CALLE/Data/SIDIL/1_insumos/catálogos/clasificacion_industrialcat_scianHOGARES.xlsx”)</em></p>
+<p>Notar que en Rstudio los separadores diagonales o slash deben estar inclinados a la derecha (/).</p>
+<ul>
+<li>El comando here(): permite establecer la ruta donde se ejecutarán los archivos, suele ser la misma donde se localiza el proyecto R. Es muy útil para cargar y guardar archivos, ya que únicamente se tendrá que utilizar el comando here() para reemplazar toda la ruta, que de otra manera tendría que ser escrita en su totalidad. Ejemplo:</li>
+</ul>
+<blockquote>
+<p><em>correspondencia_cat_scianHOGARES&lt;-read_excel(here(), “1_insumos”,“catálogos”,“clasificacion_industrial”,“cat_scianHOGARES.xlsx”)</em></p>
+</blockquote>
+<ul>
+<li>Los comandos paste() y paste0(): Estos comandos funcionan para concatenar elementos. El primero permite determinar un separador entre los elementos. Ejemplo:</li>
+</ul>
+<p><em>bitacora &lt;- read_csv(paste(here(),“4_reportes”,“bitacoras”,“bitacora.csv”,sep = “/”)</em></p>
+<ul>
+<li>El comando source(): Este comando permite llamar y correr otros archivos script .R y .Rmd desde otro script. En otras palabras, el comando facilita la ejecución de múltiples scripts desde uno solo. Ejemplo:</li>
+</ul>
+<p><em>source(here(“2_codigos”,“cod_config_inicial”,“0_config_inicial.R”))</em></p>
+<ul>
+<li>El operador pipe ” %&gt;% “: este operador permite concatenar diversas líneas de código sobre un mismo objeto, sin necesidad de volverlo a”llamar” o nombrar. Ejemplo:</li>
+</ul>
+<p><em>enoe &lt;- ENOEN_sdemycoes %&gt;% mutate(contrato_escrito=ifelse(contrato_escrito==1,1,0))</em></p>
+<ul>
+<li>Los comandos _join: comprende left_join(), right_join(), full_join(), semi_join(), inner_join() y anti_join(). Este grupo de comandos se utiliza para unir dos data frames o tablas. Ejemplo:</li>
+</ul>
+<p><em>ENOEN_sdemycoes &lt;-left_join(ENOEN_sdemycoes, correspondencia_cat_scianHOGARES, by=c(“p4a_tres”=“scian_hogares_2018”)</em></p>
+<ul>
+<li>El comando mutate(): sirve para crear nuevas variables o campos dentro de un data frame o tabla, es muy importante para la transformación de la información. Ejemplo:</li>
+</ul>
+<p><em>enoe &lt;- ENOEN_sdemycoes %&gt;% mutate(ing_min=ifelse(ing7c==1,1,0))</em></p>
+<ul>
+<li>El comando filter(): permite filtrar información de una variable o campo excluyendo una o muchas de sus categorías o rangos. Ejemplo:</li>
+</ul>
+<p><em>ENOEN_sdemycoes &lt;- ENOEN_sdemycoes %&gt;% filter(p3h==1)</em></p>
+<ul>
+<li>El comando select(): selecciona una o más variables o campos de un data frame o tabla. Ejemplo:</li>
+</ul>
+<p><em>ENOEN_sdemycoes &lt;- ENOEN_sdemycoes %&gt;% filter(p3h==1)</em></p>
+<ul>
+<li>El comando select(): selecciona una o más variables o campos de un data frame o tabla. Ejemplo:</li>
+</ul>
+<p><em>ENOEN_sdemycoes &lt;- ENOEN_sdemycoes %&gt;% filter(p3h==1)</em></p>
+<ul>
+<li>El comando case_when(): funciona para clasificar o reclasificar categorías de una variable o campo (cuando a, entonces b; cuando c, entonces (simbolizado por ” ~ “) d; etc.). Este comando permite hacer comparaciones entre categorías de la misma variable o entre diferentes variables utilizando símbolos de igualdad y desigualdad como”=“,”&gt;“,”&lt;“,”!=” (diferente) para crear las nuevas categorías. Ejemplo:</li>
+</ul>
+<p><em>ENOEN_sdemycoes&lt;-ENOEN_sdemycoes %&gt;% mutate(cat_tamanio= as.factor(case_when(</em></p>
+<p><em>cat_tamanio&lt;=3~‘1’, cat_tamanio==4~‘2’, cat_tamanio&gt;=5 &amp; cat_tamanio&lt;=7~‘3’, cat_tamanio==8~‘4’, cat_tamanio==9~‘5’, cat_tamanio&gt;=10~‘6’)))</em></p>
+<p>Notar que el case_when clasifica las situaciones con la jerarquía con la que sucede la ocurrencia: Es decir, si una observación cumple con dos “casos” entonces al evaluarse el primer caso y cumplirse, ya no se evalúa el segundo caso.</p>
+<ul>
+<li><p>El comando if_else() o ifelse(): Al igual que el comando anterior, funciona para reclasificar categorías de variables o campos, aunque esta función permite solo dos opciones de clasificación (si sucede x, entonces y). Ejemplo:<br />
+<em>enoe &lt;- ENOEN_sdemycoes %&gt;% mutate(presta_soc=ifelse(pre_asa==1,1,0))</em></p></li>
+<li><p>El comando for(): Este comando permite hacer iteraciones de uno o más comandos sobre los elementos declarados, estos elementos pueden ser pertenecientes a un vector o lista. Ejemplo:<br />
+<em>for (i in lista_indicadores_enoe){</em><br />
+<em>dir.create(paste0(here(“3_resultados/coyuntura/res_coy_ENOE”, i)))</em><br />
+<em>ENOE”)) }</em></p></li>
+<li><p>Comandos sub(), gsub(), y aquellos que inician con stri_() o str_(): Estos comandos sirven para transformar e identificar patrones en cadenas de texto (o procesamiento de lenguaje natural) utilizando diversos códigos. Ejemplo:<br />
+<em>filter(str_detect(nombre_archivo,“SDEM”))</em></p></li>
+<li><p>Comando as_survey_design(): este comando se utiliza para declarar una base de datos como encuesta a partir de sus variables muestrales. Ejemplo:<br />
+<em>enoesvyset &lt;- enoe %&gt;% as_survey_design(strata = estrato, weights = peso, id = upm, nest=TRUE)</em></p></li>
+<li><p>Comandos que empiezan con svy_() o survey_(): Estos comandos toman en cuenta la encuesta declarada para hacer cálculos sobre la misma considerando su diseño muestral. Entre estos podemos encontrar: survey_mean() y survey_ratio(). Estos comandos brindan la opción de obtener el error estándar (se), los intervalos de confianza (ci), la varianza (var), y los coeficientes de variación (vi) de las estimaciones calculadas. Ejemplo:<br />
+<em>valor=survey_mean(ing_min, vartype = c(“cv”), na.rm=T)</em></p></li>
+<li><p>Comando try_catch(): Este comando permite poner condiciones a la ejecución de otros comandos en R. Suele utilizarse para mostrar errores y warnigs que se deben tener en cuenta, por ejemplo, si no se encontró algún archivo o script. Usualmente el comando impide que se detenga la ejecución del código ante posibles errores, aunque se debe prestar especial atención a los mensajes de error y warnings que se produzcan en la consola. Ejemplo:<br />
+<em>municipios_frontera_norte &lt;-tryCatch(suppressMessages(read_csv(</em> <em>paste(path_a_marco_geo,“municipios_fn”,“municipiosFronteraNorte.csv”,sep=“/”),error= function(e) {cat(crayon::red(“\n”,“\n”,paste(“*** ERROR *** No se ha cargado: Catalogo de municipios en la frontera norte.”)),“\n”,“\n”)})</em></p></li>
+<li><p>Comando saveRDS(): este comando permite guardar data frames en formato .Rds. Ejemplo: <em>saveRDS(enoe_temp,paste0(here(),“/”, “3_resultados/coyuntura/res_coy_ENOE”,“/” ,nombre,“/enoe_”,nombre,“_”,periodo,anio,“_”,v,“.Rds”))</em><br />
+<br />
+Existen otros comandos para guardar las bases de datos en otros formatos: write.csv(), write.dta(), entre otros.</p></li>
+</ul>
+<p>Además de estos, se utilizan muchos otros comandos de las paqueterías cargadas, no obstante, estos son los que se utilizan con más frecuencia ya que son los básicos para la carga, transformación y guardado de la información que utiliza el SIDIL. Si surge alguna duda, o si se requiere profundizar en estos u otros comandos, existe amplia información en internet que incluye explicaciones y ejemplos sobre el uso de los diversos comandos en el ambiente de RStudio, dos de las principales fuentes de consulta son: www. cran.r-project.org y <a href="http://www.stackoverflow.com">www.stackoverflow.com</a>, o bien con el comando help(package=“__”), poniendo entre las comillas el nombre de la paquetería que se desea buscar. De igual manera, si se desea buscar información sobre algún comando, se puede utilizar la línea de código help(__, package=“__”), poniendo en el primer argumento el comando en cuestión y en el segundo la paquetería al que pertenece.</p>
+</div>
+<div id="tipos-de-errores-que-se-pudieran-presentar" class="section level2 hasAnchor" number="6.4">
+<h2><span class="header-section-number">6.4</span> Tipos de errores que se pudieran presentar<a href="r-rstudio-y-python.html#tipos-de-errores-que-se-pudieran-presentar" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Típicamente se pueden presentar los siguientes errores al trabajar en RStudio.</p>
+<ol style="list-style-type: decimal">
+<li><p>Errores de lectura de información</p>
+<ol style="list-style-type: lower-alpha">
+<li><p>Ubicación de los archivos mal escrito: este suele el error más frecuente para la lectura de archivos. Se debe asegurar que la ubicación y el nombre de los archivos se escriba correctamente para su optima apertura.</p></li>
+<li><p>Tipo de archivos: De igual manera, se debe asegurar que se esté utilizando el comando correcto para cada tipo de archivo. Es decir, si se quiere abrir un archivo .csv se debe utilizar el comando “read_csv”, mientras que si se quiere abrir un archivo .Rds se debe utilizar el comando “readRDS”.</p></li>
+</ol></li>
+<li><p>Errores de procesamiento de información</p>
+<ol style="list-style-type: lower-alpha">
+<li><p>Problemas con los campos</p>
+<ol style="list-style-type: lower-roman">
+<li><p>Campos que no se encuentran: Este error puede estar relacionado con problemas de cambio de los nombres de los campos o que directamente se dejaron de incluir por diversas razones en la fuente de información original</p></li>
+<li><p>Problemas con el tipo de variables o campos del data frame: No todas las transformaciones se pueden hacer a todos los tipos de variables o campos, es por esto por lo que primero se debe asegurar que el campo a transformar sea el que deseamos. Para esto, se puede utilizar el comando class(dataframe$campo). Para realizar un cambio en el tipo de un campo se pueden utilizar los comandos que inician as._(), por ejemplo: as.double(dataframe$campo), as.character(dataframe$campo), entre otros.</p></li>
+</ol></li>
+<li><p>Insuficiencia de memoria RAM para el procesamiento</p>
+<ol style="list-style-type: lower-roman">
+<li><p>Este es un error que reporta directamente el RStudio con el mensaje <em>“cannot allocate vector….”</em></p>
+<ol style="list-style-type: decimal">
+<li><p>Hay dos posibles causas:</p>
+<ol style="list-style-type: lower-alpha">
+<li>Que en efecto el procesamiento de la información sea el adecuado, pero quizá, incluso por otros procesos en curso, la computadora no cuenta con la memoria suficiente. Para esto se deben finalizar en el administrador de tareas los programas que no estén en uso, y desde la consola de RStudio, desplegar el menú de memoria en uso del ambiente, y liberal memoria que no esté en uso, como muesta la ilustración <a href="r-rstudio-y-python.html#fig:memoriaRstudio">6.4</a>.</li>
+</ol></li>
+</ol></li>
+</ol></li>
+</ol></li>
+</ol>
+<div class="figure"><span style="display:block;" id="fig:memoriaRstudio"></span>
+<img src="images-1/06/memoriaR.png" alt="Liberación de memoria en RStudio" width="228" />
+<p class="caption">
+Ilustración 6.4: Liberación de memoria en RStudio
+</p>
+</div>
+<ol start="2" style="list-style-type: lower-alpha">
+<li>Que el algoritmo no esté procesando la información en la estructura predefinida lo que genera objetos cuyas dimensiones no son las correctas y consumen excesiva memoria. Por ejemplo, duplicidades innecesarias en algunos registros que se pretenden unir entre diferentes bases con la misma información.</li>
+</ol>
+<blockquote>
+<p>Si el error es debido a lo anterior, se debe asegurar que los insumos utilizados en los procedimientos sean los correctos.</p>
+</blockquote>
+<ol start="3" style="list-style-type: decimal">
+<li><p>De error en el lenguaje:</p>
+<ol style="list-style-type: lower-roman">
+<li><p>Mal escrito el código: Es muy frecuente que los errores se den porque, al insertar líneas de códigos hay algún error de tipeo.</p></li>
+<li><p>La paquetería ya no incluye el comando sugerido</p>
+<ol style="list-style-type: decimal">
+<li><p>Pudiera ser un warning, que desde CRAN no se informa la falta de mantenimiento/seguimiento a dicho comando/paquete. Esta advertencia no detendrá el proceso, pero se debe hacer seguimiento a dicho comando en caso de que se deje de incluir definitivamente</p></li>
+<li><p>Podría ser un error en el cual, por diversos motivos, ya no se incluye el comando en la paquetería seleccionada. Usualmente cuando esto sucede la propia consola de R muestra los nuevos códigos con los que fue reemplazado el código en desuso</p></li>
+</ol></li>
+</ol></li>
+</ol>
+<p>La consola de RStudio siempre mostrará el error y alguna información extra, esta debe ser tenida en cuenta ya que muestra la naturaleza del error y, algunas veces, la solución, de no ser así, se puede rastrear el error y solucionarlo con ayuda de internet.</p>
+</div>
+<div id="python" class="section level2 hasAnchor" number="6.5">
+<h2><span class="header-section-number">6.5</span> Python<a href="r-rstudio-y-python.html#python" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>A continuación, se dará una breve descripción de las principales librerías de Python usadas para el SIDIL. Entre paréntesis se indica el número de versión que se utiliza de cada librería.</p>
+<ul>
+<li><p>Numpy (1.23.4) proporciona soporte para el cálculo numérico y la manipulación de datos en forma de arrays y matrices. Es muy útil para realizar cálculos matemáticos y estadísticos de forma eficiente, y es una de las librerías más utilizadas en el área de la ciencia de datos.</p></li>
+<li><p>Pandas (1.4.4) se utiliza para la manipulación y análisis de datos. Ofrece una serie de herramientas para importar, limpiar, transformar y visualizar datos de forma sencilla y rápida. Es muy útil para el procesamiento y análisis de conjuntos de datos de gran tamaño y complejidad.</p></li>
+<li><p>Scikit-learn (1.1.2) proporciona una amplia gama de algoritmos de aprendizaje automático y herramientas para el análisis de datos. Incluye una gran variedad de modelos de aprendizaje automático, como árboles de decisión, regresión lineal y SVM, y proporciona una interfaz sencilla y consistente para su uso.</p></li>
+<li><p>PyTorch (1.12.1) para el desarrollo de redes neuronales y aprendizaje automático profundo. Ofrece una amplia gama de herramientas y funcionalidades para el diseño y entrenamiento de modelos de aprendizaje automático profundo (<em>Deep</em> <em>learning</em>). Además esta librería permite acceder al modelo tabnet que es la primera variante al modelo Random forest que resultó ser el esocigod tcon base en las métricas de performance.</p></li>
+<li><p>Matplotlib (3.6.2): se utiliza para crear gráficos y visualizaciones interactivas de datos en 2D y 3D. Matplotlib ofrece una amplia variedad de tipos de gráficos, como líneas, barras, histogramas, dispersión, gráficos de torta, entre otros.</p></li>
+<li><p>Yellowbrick (1.5): se enfoca en la visualización y diagnóstico de modelos de aprendizaje automático. Proporciona una variedad de gráficos y herramientas interactivas para evaluar y entender el rendimiento y el comportamiento de los modelos de aprendizaje automático. Es una herramienta útil para el análisis y mejora de modelos, lo que ayuda a tomar decisiones más informadas en el proceso de desarrollo de algoritmos de aprendizaje automático.</p></li>
+<li><p>Pydotplus (2.0.2): se utiliza para la generación y visualización de gráficos de redes y árboles en Python. Se utiliza principalmente para visualizar estructuras de datos jerárquicas, como árboles de decisión generados por algoritmos de aprendizaje automático.</p></li>
+<li><p>Clean-text (0.6.0): se utiliza en la limpieza y preprocesamiento de datos de texto. Proporciona una variedad de funciones para eliminar caracteres especiales, eliminar stopwords, realizar lematización y más.</p></li>
+<li><p>Pyreadr (0.4.7): es una librería para facilitar la lectura y escritura de archivos en diversos formatos, como CSV, Excel y más. Proporciona funciones para cargar y guardar datos en diferentes formatos, lo que simplifica la manipulación de conjuntos de datos almacenados en archivos externos.</p></li>
+<li><p>Shap (SHapley Additive exPlanations, 0.41.0): se utiliza para explicar las predicciones de modelos de aprendizaje automático. Se basa en la teoría de juegos y proporciona un marco de trabajo para calcular la importancia de cada característica (atributo) en el resultado de un modelo. Shap es una herramienta útil para interpretar y entender el comportamiento de modelos de aprendizaje automático, lo que puede ayudar a aumentar la confianza en sus predicciones y detectar posibles sesgos.</p></li>
+</ul>
+
+</div>
+</div>
+<div class="footnotes">
+<hr />
+<ol start="3">
+<li id="fn3"><p><a href="https://www.r-project.org/about.html" class="uri">https://www.r-project.org/about.html</a><a href="r-rstudio-y-python.html#fnref3" class="footnote-back">↩︎</a></p></li>
+<li id="fn4"><p><a href="https://posit.co/" class="uri">https://posit.co/</a><a href="r-rstudio-y-python.html#fnref4" class="footnote-back">↩︎</a></p></li>
+</ol>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="presentación-sintética-de-todos-los-scripts.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="especificaciones-del-servidor.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": null,
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": null,
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "none",
+"scroll_highlight": true
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>
