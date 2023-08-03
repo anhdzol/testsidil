@@ -12,3 +12,39 @@ pre {
 pre code {
   white-space: inherit;
 }
+.page-inner{
+  max-width: 80%!important;
+}
+.book-summary a:hover{
+  color: #507C71!important;
+  font-weight: bold;
+}
+.book-summary ul.summary li.active>a{
+  background-color: #507C71!important;
+  color: #fff!important;
+}
+.rmdcomment {
+  padding: 1em 1em 1em 2em;
+  margin-bottom: 10px;
+  background: #f5f5f5;
+  position:relative;
+}
+.note-box {
+  background: #f5f5f5;
+  padding: 25px 0 0 25px;
+}
+.note-box .caption{
+  margin-bottom:0!important;
+  display: none;
+}
+.note-box pre {
+  margin: 0!important;
+  padding:0!important;
+  font-weight: bold;
+  color: #235B4E!important;
+}
+@media all and (min-width: 1500px){
+  .page-inner{
+    max-width: 70%!important;
+}
+}
