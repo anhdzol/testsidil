@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Capítulo 8 Conceptos y hallazgos clave en la exploración del SIAPI-SIPAS | SIDIL: Manual del procesamiento y explotación de la información</title>
+  <meta name="description" content="Capítulo 8 Conceptos y hallazgos clave en la exploración del SIAPI-SIPAS | SIDIL: Manual del procesamiento y explotación de la información" />
+  <meta name="generator" content="bookdown 0.32 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Capítulo 8 Conceptos y hallazgos clave en la exploración del SIAPI-SIPAS | SIDIL: Manual del procesamiento y explotación de la información" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta name="github-repo" content="https://anhdzol.github.io/testsidil/" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Capítulo 8 Conceptos y hallazgos clave en la exploración del SIAPI-SIPAS | SIDIL: Manual del procesamiento y explotación de la información" />
+  
+  
+  
+
+<meta name="author" content="American Institutes for Research" />
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="especificaciones-del-servidor.html"/>
+
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+
+
+
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Manual de procesamiento y explotación de información</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Bienvenida</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#introalineacion"><i class="fa fa-check"></i><b>1.1</b> Alineación con la misión y programas de gobierno</a></li>
+<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#introjustificacion"><i class="fa fa-check"></i><b>1.2</b> Justificación de la viabilidad del proyecto</a></li>
+<li class="chapter" data-level="1.3" data-path="index.html"><a href="index.html#introobjetivos"><i class="fa fa-check"></i><b>1.3</b> Objetivos del SIDIL</a></li>
+<li class="chapter" data-level="1.4" data-path="index.html"><a href="index.html#propuestasolucion"><i class="fa fa-check"></i><b>1.4</b> Propuesta de solución</a></li>
+<li class="chapter" data-level="1.5" data-path="index.html"><a href="index.html#introalcance"><i class="fa fa-check"></i><b>1.5</b> Alcance</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="estructura-y-flujos-de-trabajo-del-sidil.html"><a href="estructura-y-flujos-de-trabajo-del-sidil.html"><i class="fa fa-check"></i><b>2</b> Estructura y flujos de trabajo del SIDIL</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="estructura-y-flujos-de-trabajo-del-sidil.html"><a href="estructura-y-flujos-de-trabajo-del-sidil.html#elementos-básicos-del-sidil"><i class="fa fa-check"></i><b>2.1</b> Elementos básicos del SIDIL</a></li>
+<li class="chapter" data-level="2.2" data-path="estructura-y-flujos-de-trabajo-del-sidil.html"><a href="estructura-y-flujos-de-trabajo-del-sidil.html#modulosqueconformanSIDIL"><i class="fa fa-check"></i><b>2.2</b> Módulos que conforman el SIDIL</a>
+<ul>
+<li class="chapter" data-level="" data-path="estructura-y-flujos-de-trabajo-del-sidil.html"><a href="estructura-y-flujos-de-trabajo-del-sidil.html#moduloIexplicaciongeneral"><i class="fa fa-check"></i>Módulo I: actualización de indicadores</a></li>
+<li class="chapter" data-level="" data-path="estructura-y-flujos-de-trabajo-del-sidil.html"><a href="estructura-y-flujos-de-trabajo-del-sidil.html#moduloIIexplicaciongeneral"><i class="fa fa-check"></i>Módulo II: Consulta al universo de CT, imputación de indicadores y predicción de riesgo</a></li>
+<li class="chapter" data-level="" data-path="estructura-y-flujos-de-trabajo-del-sidil.html"><a href="estructura-y-flujos-de-trabajo-del-sidil.html#moduloIyIIexplicaciongeneral"><i class="fa fa-check"></i>Módulos I y II: operables desde la interfaz de automatización</a></li>
+<li class="chapter" data-level="2.2.1" data-path="estructura-y-flujos-de-trabajo-del-sidil.html"><a href="estructura-y-flujos-de-trabajo-del-sidil.html#módulo-iii-consulta-de-la-mpr-para-priorización-de-ct-a-inspeccionar"><i class="fa fa-check"></i><b>2.2.1</b> ### Módulo III: Consulta de la MPR para priorización de CT a inspeccionar</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="elementosgenerales.html"><a href="elementosgenerales.html"><i class="fa fa-check"></i><b>3</b> Elementos generales del procesamiento de datos</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="elementosgenerales.html"><a href="elementosgenerales.html#estructurascripts"><i class="fa fa-check"></i><b>3.1</b> Estructura de Scripts</a>
+<ul>
+<li class="chapter" data-level="3.1.1" data-path="elementosgenerales.html"><a href="elementosgenerales.html#configinicial"><i class="fa fa-check"></i><b>3.1.1</b> Script de configuración inicial y script de funciones y catálogos</a></li>
+<li class="chapter" data-level="3.1.2" data-path="elementosgenerales.html"><a href="elementosgenerales.html#secuenciadores"><i class="fa fa-check"></i><b>3.1.2</b> Scripts secuenciadores</a></li>
+</ul></li>
+<li class="chapter" data-level="3.2" data-path="elementosgenerales.html"><a href="elementosgenerales.html#estructuracarpetas"><i class="fa fa-check"></i><b>3.2</b> Estructura de carpetas y sintaxis de archivos</a></li>
+<li class="chapter" data-level="3.3" data-path="elementosgenerales.html"><a href="elementosgenerales.html#temporalidad"><i class="fa fa-check"></i><b>3.3</b> Sobre la temporalidad</a></li>
+<li class="chapter" data-level="3.4" data-path="elementosgenerales.html"><a href="elementosgenerales.html#trazabilidad"><i class="fa fa-check"></i><b>3.4</b> Sobre trazabilidad: bitácora, log y parámetros</a></li>
+<li class="chapter" data-level="3.5" data-path="elementosgenerales.html"><a href="elementosgenerales.html#mensajesGeneral"><i class="fa fa-check"></i><b>3.5</b> Mensajes al usuario</a>
+<ul>
+<li class="chapter" data-level="3.5.1" data-path="elementosgenerales.html"><a href="elementosgenerales.html#mensajesError"><i class="fa fa-check"></i><b>3.5.1</b> Mensajes de error</a></li>
+<li class="chapter" data-level="3.5.2" data-path="elementosgenerales.html"><a href="elementosgenerales.html#mensajesAdvertencia"><i class="fa fa-check"></i><b>3.5.2</b> Mensajes de advertencia</a></li>
+<li class="chapter" data-level="3.5.3" data-path="elementosgenerales.html"><a href="elementosgenerales.html#mensajesConfirmacion"><i class="fa fa-check"></i><b>3.5.3</b> Mensajes de información o de confirmación</a></li>
+</ul></li>
+<li class="chapter" data-level="3.6" data-path="elementosgenerales.html"><a href="elementosgenerales.html#software-para-el-procesamiento-de-datos"><i class="fa fa-check"></i><b>3.6</b> Software para el procesamiento de datos</a></li>
+<li class="chapter" data-level="3.7" data-path="elementosgenerales.html"><a href="elementosgenerales.html#catalogos"><i class="fa fa-check"></i><b>3.7</b> Catálogos de información</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="procesamiento.html"><a href="procesamiento.html"><i class="fa fa-check"></i><b>4</b> Procesamiento de las fuentes de información y generación de la MPR</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="procesamiento.html"><a href="procesamiento.html#procesamientoModI"><i class="fa fa-check"></i><b>4.1</b> Módulo I: actualización de indicadores</a>
+<ul>
+<li class="chapter" data-level="4.1.1" data-path="procesamiento.html"><a href="procesamiento.html#procesamientoModIdesafios"><i class="fa fa-check"></i><b>4.1.1</b> Desafíos al tratamiento de bases de datos externas</a></li>
+<li class="chapter" data-level="4.1.2" data-path="procesamiento.html"><a href="procesamiento.html#procesamientoModInivelesagregacion"><i class="fa fa-check"></i><b>4.1.2</b> Sobre niveles de agregación</a></li>
+<li class="chapter" data-level="4.1.3" data-path="procesamiento.html"><a href="procesamiento.html#procesamientoModInominativo"><i class="fa fa-check"></i><b>4.1.3</b> Sobre estimaciones puntuales nominativas</a></li>
+<li class="chapter" data-level="4.1.4" data-path="procesamiento.html"><a href="procesamiento.html#procesamientoModEspecificaciones"><i class="fa fa-check"></i><b>4.1.4</b> Especificaciones por fuente de información</a></li>
+<li class="chapter" data-level="4.1.5" data-path="procesamiento.html"><a href="procesamiento.html#procesamientoModIcoyvshist"><i class="fa fa-check"></i><b>4.1.5</b> Estimaciones puntuales e históricas de indicadores</a></li>
+</ul></li>
+<li class="chapter" data-level="4.2" data-path="procesamiento.html"><a href="procesamiento.html#procesamientoModII"><i class="fa fa-check"></i><b>4.2</b> Módulo II: imputación de indicadores y generación de la MPR</a>
+<ul>
+<li class="chapter" data-level="4.2.1" data-path="procesamiento.html"><a href="procesamiento.html#procesamientoModIIconsultaDNE"><i class="fa fa-check"></i><b>4.2.1</b> Consulta al DNE</a></li>
+<li class="chapter" data-level="4.2.2" data-path="procesamiento.html"><a href="procesamiento.html#procesamientoModIIimputacion"><i class="fa fa-check"></i><b>4.2.2</b> Imputación de indicadores laborales al universo de CT</a></li>
+<li class="chapter" data-level="4.2.3" data-path="procesamiento.html"><a href="procesamiento.html#procesamientoModIIprediccion"><i class="fa fa-check"></i><b>4.2.3</b> Predicción de riesgo</a></li>
+</ul></li>
+<li class="chapter" data-level="4.3" data-path="procesamiento.html"><a href="procesamiento.html#procesamientoModIyIIinterfazAuto"><i class="fa fa-check"></i><b>4.3</b> Módulo I y II: Interfaz de automatización</a></li>
+<li class="chapter" data-level="4.4" data-path="procesamiento.html"><a href="procesamiento.html#procesamientoModIIIinterfazConsulta"><i class="fa fa-check"></i><b>4.4</b> Módulo III: Priorización de los centros de trabajo</a></li>
+<li class="chapter" data-level="4.5" data-path="procesamiento.html"><a href="procesamiento.html#procesamientoModIV"><i class="fa fa-check"></i><b>4.5</b> Módulo IV: Entrenamiento del modelo</a>
+<ul>
+<li class="chapter" data-level="4.5.1" data-path="procesamiento.html"><a href="procesamiento.html#procesamientoModIVSIAPI"><i class="fa fa-check"></i><b>4.5.1</b> Construcción de la serie histórica de inspecciones laborales (2012-2022)</a></li>
+<li class="chapter" data-level="4.5.2" data-path="procesamiento.html"><a href="procesamiento.html#procesamientoModIVindicadores"><i class="fa fa-check"></i><b>4.5.2</b> Construcción de la serie histórica de indicadores laborales</a></li>
+<li class="chapter" data-level="4.5.3" data-path="procesamiento.html"><a href="procesamiento.html#procesamientoModIVmatching"><i class="fa fa-check"></i><b>4.5.3</b> Matching de las series históricas</a></li>
+<li class="chapter" data-level="4.5.4" data-path="procesamiento.html"><a href="procesamiento.html#procesamientoModIVEntrenamiento"><i class="fa fa-check"></i><b>4.5.4</b> Entrenamiento y evaluación del modelo de predicción</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="presentación-sintética-de-todos-los-scripts.html"><a href="presentación-sintética-de-todos-los-scripts.html"><i class="fa fa-check"></i><b>5</b> Presentación sintética de todos los scripts</a></li>
+<li class="chapter" data-level="6" data-path="r-rstudio-y-python.html"><a href="r-rstudio-y-python.html"><i class="fa fa-check"></i><b>6</b> R, RStudio y Python</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="r-rstudio-y-python.html"><a href="r-rstudio-y-python.html#r-y-rstudio"><i class="fa fa-check"></i><b>6.1</b> R y RStudio</a></li>
+<li class="chapter" data-level="6.2" data-path="r-rstudio-y-python.html"><a href="r-rstudio-y-python.html#el-entorno-de-rstudio"><i class="fa fa-check"></i><b>6.2</b> El entorno de RStudio</a></li>
+<li class="chapter" data-level="6.3" data-path="r-rstudio-y-python.html"><a href="r-rstudio-y-python.html#procedimiento-para-ejecutar-proyectos-y-scripts-en-rstudio"><i class="fa fa-check"></i><b>6.3</b> Procedimiento para ejecutar proyectos y scripts en RStudio</a></li>
+<li class="chapter" data-level="6.4" data-path="r-rstudio-y-python.html"><a href="r-rstudio-y-python.html#tipos-de-errores-que-se-pudieran-presentar"><i class="fa fa-check"></i><b>6.4</b> Tipos de errores que se pudieran presentar</a></li>
+<li class="chapter" data-level="6.5" data-path="r-rstudio-y-python.html"><a href="r-rstudio-y-python.html#python"><i class="fa fa-check"></i><b>6.5</b> Python</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="especificaciones-del-servidor.html"><a href="especificaciones-del-servidor.html"><i class="fa fa-check"></i><b>7</b> Especificaciones del servidor</a></li>
+<li class="chapter" data-level="8" data-path="conceptos-y-hallazgos-clave-en-la-exploración-del-siapi-sipas.html"><a href="conceptos-y-hallazgos-clave-en-la-exploración-del-siapi-sipas.html"><i class="fa fa-check"></i><b>8</b> Conceptos y hallazgos clave en la exploración del SIAPI-SIPAS</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="conceptos-y-hallazgos-clave-en-la-exploración-del-siapi-sipas.html"><a href="conceptos-y-hallazgos-clave-en-la-exploración-del-siapi-sipas.html#conceptos-y-clasificaciones-relevantes."><i class="fa fa-check"></i><b>8.1</b> Conceptos y clasificaciones relevantes.</a>
+<ul>
+<li class="chapter" data-level="8.1.1" data-path="conceptos-y-hallazgos-clave-en-la-exploración-del-siapi-sipas.html"><a href="conceptos-y-hallazgos-clave-en-la-exploración-del-siapi-sipas.html#planeación-de-la-inspección"><i class="fa fa-check"></i><b>8.1.1</b> Planeación de la inspección</a></li>
+</ul></li>
+<li class="chapter" data-level="8.2" data-path="conceptos-y-hallazgos-clave-en-la-exploración-del-siapi-sipas.html"><a href="conceptos-y-hallazgos-clave-en-la-exploración-del-siapi-sipas.html#aspectos-pendientes-y-posibles-extensiones-a-futuro"><i class="fa fa-check"></i><b>8.2</b> Aspectos pendientes y posibles extensiones a futuro</a>
+<ul>
+<li class="chapter" data-level="8.2.1" data-path="conceptos-y-hallazgos-clave-en-la-exploración-del-siapi-sipas.html"><a href="conceptos-y-hallazgos-clave-en-la-exploración-del-siapi-sipas.html#limitaciones-en-la-construcción-de-la-variable-dependiente"><i class="fa fa-check"></i><b>8.2.1</b> Limitaciones en la construcción de la variable dependiente</a></li>
+<li class="chapter" data-level="8.2.2" data-path="conceptos-y-hallazgos-clave-en-la-exploración-del-siapi-sipas.html"><a href="conceptos-y-hallazgos-clave-en-la-exploración-del-siapi-sipas.html#posibles-alternativas-como-variable-dependiente"><i class="fa fa-check"></i><b>8.2.2</b> Posibles alternativas como variable dependiente</a></li>
+<li class="chapter" data-level="8.2.3" data-path="conceptos-y-hallazgos-clave-en-la-exploración-del-siapi-sipas.html"><a href="conceptos-y-hallazgos-clave-en-la-exploración-del-siapi-sipas.html#section"><i class="fa fa-check"></i><b>8.2.3</b> </a></li>
+</ul></li>
+</ul></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">SIDIL: Manual del procesamiento y explotación de la información</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="conceptos-y-hallazgos-clave-en-la-exploración-del-siapi-sipas" class="section level1 hasAnchor" number="8">
+<h1><span class="header-section-number">Capítulo 8</span> Conceptos y hallazgos clave en la exploración del SIAPI-SIPAS<a href="conceptos-y-hallazgos-clave-en-la-exploración-del-siapi-sipas.html#conceptos-y-hallazgos-clave-en-la-exploración-del-siapi-sipas" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>Esta sección presenta el análisis que AIR hizo sobre los sistemas con los que cuenta la STPS para el apoyo a la inspección laboral (SIAPI) y al proceso sancionador (SIPAS), con dos principales propósitos. Primero, profundizar en algunos de los conceptos que resultan críticos en la explotación de los registros administrativos de la inspección. Esto para homologar un único vocabulario e interpretación del alcance del SIDIL en lo que refiere a la inspecciones; segundo, para dar cuenta del volumen de información y la calidad de la misma y que el SIDIL consume a efectos de realizar las predicciones.</p>
+<p>La sección está organizada de la siguiente manera:</p>
+<div id="conceptos-y-clasificaciones-relevantes." class="section level2 hasAnchor" number="8.1">
+<h2><span class="header-section-number">8.1</span> Conceptos y clasificaciones relevantes.<a href="conceptos-y-hallazgos-clave-en-la-exploración-del-siapi-sipas.html#conceptos-y-clasificaciones-relevantes." class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Conviene comenzar por la importancia de la explotación de los registros administativos. Quizá la principal información que interesa extraerse del SIAPI es si la inspección ha detectado violaciones a la normativa laboral porque es, justamente, lo que el modelo busca predecir. <strong>La variable dependiente que entra en el entrenamiento del modelo predictivo será aquel aspecto para el cual luego el modelo, al aplicarlo, buscará predecir su ocurrencia.</strong> Seleccionar otra información como variable dependiente, implicará que el modelo prediga sobre esa otra información de entrada.</p>
+<p><strong>Como se ha mencionado al explicar el <a href="procesamiento.html#procesamientoModIVSIAPI">entrenamiento</a> del modelo, éste toma como variable dependiente la detección de violaciones que proceden, una vez que las inspecciones son calificadas por la <mark>UTD</mark> y se acepta como procedente para iniciar el procedimiento de sanción</strong>. Pues bien, este anexo guia a el / la lector/a a identificar cómo es que se arriba a esta definición y cómo se mide, para lo cual el recorrido no es del todo lineal ni evidente para aquellas personas menos familiarizadas con el sistema. <strong>Notar que, mientras que la explotación de los registros administrativos obedece fundamentalmente a la necesidad de <em>entrenar</em> el modelo a partir de los centros de trabajo que fueron inspeccionados, la predicción del mismo, se realiza sobre el universo total de los mismos, independientemente de su historial de inspecciones.</strong></p>
+<p>Una importante precisión es que en la STPS los sistemas de apoyo a la inspección han tenido a lo largo de los años diferentes “instancias” o “cortes”, que se condicen con cada uno de los cambios importantes en la normatividad de la inspección. Esto se debe a que las herramientas utilizadas para apoyar los procesos de inspección no contaban hasta ahora con mecanismos que permitan el manejo y administración de diferentes versiones del marco normativo en una sola instancia del sistema. Por lo cual, ante un nuevo reglamento de inspección o ante una modificación sustantiva a la las leyes y normas en la materia, se requirió copiar el sistema en una nueva instancia en la cual se pudieran reflejar la situación normativa derivada de esa modificación.<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a></p>
+<p>Son cinco los “cortes” que se han realizado a la base de datos, mismos que se han integrado para realizar el análisis que se presenta a continuación. Los 5 “cortes” representan la totalidad de la base de datos y la integración selectiva de los diferentes casos (inspecciones) a lo largo de los diferentes “cortes” previene de duplicar la información y la tergiversación de los hallazgos, se ha requerido un importante trabajo de análisis para la unificación de bases de datos y generar el universo global de las inspecciones realizadas. Esta tarea requirió por supuesto entender la lógica en que se debe hacer la agregación de las inspecciones y ha dado como resultado un universo de cerca de un millón cien mil inspecciones totales en el período, conformándose así el universo de análisis. Cabe agregar que, por lo general, con los diferentes cortes que se realizan se generan pequeños cambios en las taxonomías de algunas variables, y, en menor medida, surgen nuevas tablas al interior de la base de datos.</p>
+<p>El volumen de información que se encuentra en cada uno de los “cortes” varía, y como se observa en la ilustración <a href="conceptos-y-hallazgos-clave-en-la-exploración-del-siapi-sipas.html#fig:volumeninspecciones">8.1</a>, de los cinco “cortes” distintos que se realizaron a la base de datos, el primero consta de cerca de 60 mil inspecciones, con inspecciones que se realizaron entre junio 2012 y abril 2015, mientras que el último corte es el que incorpora las inspecciones realizadas entre enero 2020 y octubre 2021.</p>
+<div class="figure"><span style="display:block;" id="fig:volumeninspecciones"></span>
+<img src="images-1/08/volumeninspecciones.png" alt="Módulos que componen el SIDIL" width="236" />
+<p class="caption">
+Ilustración 8.1: Módulos que componen el SIDIL
+</p>
+</div>
+<p>Recuadro <mark>xx1</mark>: Conformación del <em>índice</em> de inspecciones</p>
+<table>
+<colgroup>
+<col width="100%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="left"><p>La existencia de múltiples instancias de la base de datos del SIAPI obliga a conformar un índice de inspecciones para evitar su conteo duplicado. La lógica es que, de no hacerlo, una misma inspección podría incorporarse hasta 5 veces en la base de entrenamiento.</p>
+<p>A tal efecto, el algoritmo <em>4_query_violaciones_inspecciones_</em> realiza en un primer momento una explotación de todos los campos <em>inspeccion_id</em> de todas las instancias del SIAPI. De cada instancia recupera todas las inspecciones que ésta contenga. Acto seguido, identifica para cada inspección la primera instancia en la que <em>aparece</em> esta inspección. Ésta será la instancia a la que se asociará la inspección. En todas las consultas y emparejamientos subsecuentes se buscará únicamente la información sobre la inspección que haya sido registrada en dicha instancia. De haber información que erroneamente se haya registrado sobre la inspección en otra instancia, ésta no será tomada en cuenta. La lógica detrás, validada con la UTD, es que el marco normativo con el que nace la inspección es el que se mantendrá vigente a lo largo de todo el proceso inspectivo, motivo por el cual, toda información que se genera en las diversas etapas del procedimiento serán recuperadas de esa instancia donde por primera vez <em>nace´</em> la inspección, únicamente.</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left"></td>
+</tr>
+</tbody>
+</table>
+<p>Dada la posibilidad de la coexistencia de diferentes marcos normativos (ver recuadro <mark>XXX 1 XX</mark>) existe una intersección temporal entre los diferentes “cortes”, explicando además que el volumen de inspecciones que representa el “corte” 4, mismo que va de diciembre 2012 a septiembre 2021, represente al 56% de las inspecciones registradas, como se observa en la tabla <mark>xxx1xxx</mark> Ambos aspectos se explican por la misma causa: los “cortes” representan cambios al marco normativo, mientras que cada proceso de inspección debe por lógica corresponder con un único marco normativo (la inspección que “nace” bajo un marco normativo se sostiene en ese ámbito, incluso cuando éste marco jurídico es reemplazado por uno nuevo). Por ello mientras se va concluyendo el proceso inspectivo de un caso, es posible que ante un nuevo cambio normativo coexistan temporalmente diferentes versiones del sistema.</p>
+<p>Tabla xxx1xxx. Distribución de las inspecciones, por fecha de inspección y “corte” de la base.
+<mark>PENDIENTE hacer tabla</mark>
+Corte de la base Fecha inicial Fecha final Número de inspecciones
+1 15/08/2012 27/11/2012 59,879
+2 23/04/2013 05/08/2014 318,772
+3 09/10/2014 12/03/2015 115,109
+4 03/07/2015 14/11/2018 633,176
+5 28/01/2021 31/07/2021 2,794
+Total 1,129,730</p>
+<p><strong>Fuente: Elaboración propia a partir del SIAPI-SIPAS. Nota: las fechas iniciales y fecha finales comprenden al decil 1 y al decil 9, respectivamente de cada base de datos, es decir, pueden encontrarse fechas anteriores y posteriores a las indicadas, pero son excepciones. </strong></p>
+<div id="planeación-de-la-inspección" class="section level3 hasAnchor" number="8.1.1">
+<h3><span class="header-section-number">8.1.1</span> Planeación de la inspección<a href="conceptos-y-hallazgos-clave-en-la-exploración-del-siapi-sipas.html#planeación-de-la-inspección" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Si bien el SIDIL es una herramienta estratégica para la programación de inspecciones en el marco de operativos de inspección (por definición, son inspecciones del <em>tipo</em> <em>extraordinario</em>), la información que se explota para el entrenamiento del modelo no se limita a este tipo de inspecciones.</p>
+</div>
+</div>
+<div id="aspectos-pendientes-y-posibles-extensiones-a-futuro" class="section level2 hasAnchor" number="8.2">
+<h2><span class="header-section-number">8.2</span> Aspectos pendientes y posibles extensiones a futuro<a href="conceptos-y-hallazgos-clave-en-la-exploración-del-siapi-sipas.html#aspectos-pendientes-y-posibles-extensiones-a-futuro" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="limitaciones-en-la-construcción-de-la-variable-dependiente" class="section level3 hasAnchor" number="8.2.1">
+<h3><span class="header-section-number">8.2.1</span> Limitaciones en la construcción de la variable dependiente<a href="conceptos-y-hallazgos-clave-en-la-exploración-del-siapi-sipas.html#limitaciones-en-la-construcción-de-la-variable-dependiente" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+</div>
+<div id="posibles-alternativas-como-variable-dependiente" class="section level3 hasAnchor" number="8.2.2">
+<h3><span class="header-section-number">8.2.2</span> Posibles alternativas como variable dependiente<a href="conceptos-y-hallazgos-clave-en-la-exploración-del-siapi-sipas.html#posibles-alternativas-como-variable-dependiente" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+</div>
+<div id="section" class="section level3" number="8.2.3">
+<h3><span class="header-section-number">8.2.3</span> </h3>
+
+</div>
+</div>
+</div>
+
+
+
+
+
+
+<div class="footnotes">
+<hr />
+<ol start="1">
+<li id="fn1"><p>Como parte de su colaboración con STPS, AIR ha desarrollado un gestor de normativ<a href="conceptos-y-hallazgos-clave-en-la-exploración-del-siapi-sipas.html#fnref1" class="footnote-back">↩︎</a></p></li>
+</ol>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="especificaciones-del-servidor.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": null,
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": null,
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "none",
+"scroll_highlight": true
+}
+});
+});
+</script>
+
+</body>
+
+</html>
