@@ -1,16 +1,3 @@
-fig:esquemaPPTSalafranca
-fig:pipelsimplaaificado2
-fig:scriptinputoutput
-fig:modulosSIDIL
-fig:MPRsimplificada
-fig:arboldecision
-fig:scriptsecuenciador
-fig:secConfigInicial
-fig:organizacioncatalogos
-fig:entornoRStudio
-fig:RStudioProyectoVacio
-fig:RStudioOpenProject
-fig:memoriaRstudio
 introapertura
 introalineacion
 introjustificacion
@@ -20,6 +7,7 @@ introalcance
 estructura-y-flujos-de-trabajo-del-sidil
 elementos-básicos-del-sidil
 modulosqueconformanSIDIL
+módulo-iii-consulta-de-la-mpr-para-priorización-de-ct-a-inspeccionar
 elementosgenerales
 estructurascripts
 configinicial
@@ -62,3 +50,11 @@ procedimiento-para-ejecutar-proyectos-y-scripts-en-rstudio
 tipos-de-errores-que-se-pudieran-presentar
 python
 especificaciones-del-servidor
+conceptos-y-hallazgos-clave-en-la-exploración-del-siapi-sipas
+conceptos-y-clasificaciones-relevantes.
+planeación-de-la-inspección
+meta-y-realización-de-inspecciones-a-realizar-por-tipo-estado-y-por-oficina
+aspectos-pendientes-y-posibles-extensiones-a-futuro
+limitaciones-en-la-construcción-de-la-variable-dependiente
+posibles-alternativas-como-variable-dependiente
+section
