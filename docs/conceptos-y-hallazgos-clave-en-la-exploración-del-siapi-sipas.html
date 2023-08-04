@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Capítulo 8 Conceptos y hallazgos clave en la exploración del SIAPI-SIPAS | SIDIL: Manual del procesamiento y explotación de la información</title>
   <meta name="description" content="Capítulo 8 Conceptos y hallazgos clave en la exploración del SIAPI-SIPAS | SIDIL: Manual del procesamiento y explotación de la información" />
-  <meta name="generator" content="bookdown 0.32 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.34 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Capítulo 8 Conceptos y hallazgos clave en la exploración del SIAPI-SIPAS | SIDIL: Manual del procesamiento y explotación de la información" />
   <meta property="og:type" content="book" />
@@ -30,7 +30,7 @@
   
   
 <link rel="prev" href="especificaciones-del-servidor.html"/>
-
+<link rel="next" href="box-and-tables.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -51,9 +51,22 @@
 <link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
 <link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
 <script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+<script src="libs/htmlwidgets-1.6.2/htmlwidgets.js"></script>
+<script src="libs/plotly-binding-4.10.2/plotly.js"></script>
+<script src="libs/typedarray-0.1/typedarray.min.js"></script>
+<link href="libs/crosstalk-1.2.0/css/crosstalk.min.css" rel="stylesheet" />
+<script src="libs/crosstalk-1.2.0/js/crosstalk.min.js"></script>
+<link href="libs/plotly-htmlwidgets-css-2.11.1/plotly-htmlwidgets.css" rel="stylesheet" />
+<script src="libs/plotly-main-2.11.1/plotly-latest.min.js"></script>
+<script src="libs/kePrint-0.0.1/kePrint.js"></script>
+<link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
 
 
 
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
 
 <link rel="stylesheet" href="style.css" type="text/css" />
 </head>
@@ -150,6 +163,7 @@
 <li class="chapter" data-level="8.1" data-path="conceptos-y-hallazgos-clave-en-la-exploración-del-siapi-sipas.html"><a href="conceptos-y-hallazgos-clave-en-la-exploración-del-siapi-sipas.html#conceptos-y-clasificaciones-relevantes."><i class="fa fa-check"></i><b>8.1</b> Conceptos y clasificaciones relevantes.</a>
 <ul>
 <li class="chapter" data-level="8.1.1" data-path="conceptos-y-hallazgos-clave-en-la-exploración-del-siapi-sipas.html"><a href="conceptos-y-hallazgos-clave-en-la-exploración-del-siapi-sipas.html#planeación-de-la-inspección"><i class="fa fa-check"></i><b>8.1.1</b> Planeación de la inspección</a></li>
+<li class="chapter" data-level="8.1.2" data-path="conceptos-y-hallazgos-clave-en-la-exploración-del-siapi-sipas.html"><a href="conceptos-y-hallazgos-clave-en-la-exploración-del-siapi-sipas.html#meta-y-realización-de-inspecciones-a-realizar-por-tipo-estado-y-por-oficina"><i class="fa fa-check"></i><b>8.1.2</b> Meta y realización de inspecciones a realizar por tipo, estado y por oficina</a></li>
 </ul></li>
 <li class="chapter" data-level="8.2" data-path="conceptos-y-hallazgos-clave-en-la-exploración-del-siapi-sipas.html"><a href="conceptos-y-hallazgos-clave-en-la-exploración-del-siapi-sipas.html#aspectos-pendientes-y-posibles-extensiones-a-futuro"><i class="fa fa-check"></i><b>8.2</b> Aspectos pendientes y posibles extensiones a futuro</a>
 <ul>
@@ -157,6 +171,10 @@
 <li class="chapter" data-level="8.2.2" data-path="conceptos-y-hallazgos-clave-en-la-exploración-del-siapi-sipas.html"><a href="conceptos-y-hallazgos-clave-en-la-exploración-del-siapi-sipas.html#posibles-alternativas-como-variable-dependiente"><i class="fa fa-check"></i><b>8.2.2</b> Posibles alternativas como variable dependiente</a></li>
 <li class="chapter" data-level="8.2.3" data-path="conceptos-y-hallazgos-clave-en-la-exploración-del-siapi-sipas.html"><a href="conceptos-y-hallazgos-clave-en-la-exploración-del-siapi-sipas.html#section"><i class="fa fa-check"></i><b>8.2.3</b> </a></li>
 </ul></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="box-and-tables.html"><a href="box-and-tables.html"><i class="fa fa-check"></i><b>9</b> Box and tables</a>
+<ul>
+<li class="chapter" data-level="9.0.1" data-path="box-and-tables.html"><a href="box-and-tables.html#tablas"><i class="fa fa-check"></i><b>9.0.1</b> Tablas</a></li>
 </ul></li>
 </ul>
 
@@ -183,11 +201,11 @@
 <h2><span class="header-section-number">8.1</span> Conceptos y clasificaciones relevantes.<a href="conceptos-y-hallazgos-clave-en-la-exploración-del-siapi-sipas.html#conceptos-y-clasificaciones-relevantes." class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Conviene comenzar por la importancia de la explotación de los registros administativos. Quizá la principal información que interesa extraerse del SIAPI es si la inspección ha detectado violaciones a la normativa laboral porque es, justamente, lo que el modelo busca predecir. <strong>La variable dependiente que entra en el entrenamiento del modelo predictivo será aquel aspecto para el cual luego el modelo, al aplicarlo, buscará predecir su ocurrencia.</strong> Seleccionar otra información como variable dependiente, implicará que el modelo prediga sobre esa otra información de entrada.</p>
 <p><strong>Como se ha mencionado al explicar el <a href="procesamiento.html#procesamientoModIVSIAPI">entrenamiento</a> del modelo, éste toma como variable dependiente la detección de violaciones que proceden, una vez que las inspecciones son calificadas por la <mark>UTD</mark> y se acepta como procedente para iniciar el procedimiento de sanción</strong>. Pues bien, este anexo guia a el / la lector/a a identificar cómo es que se arriba a esta definición y cómo se mide, para lo cual el recorrido no es del todo lineal ni evidente para aquellas personas menos familiarizadas con el sistema. <strong>Notar que, mientras que la explotación de los registros administrativos obedece fundamentalmente a la necesidad de <em>entrenar</em> el modelo a partir de los centros de trabajo que fueron inspeccionados, la predicción del mismo, se realiza sobre el universo total de los mismos, independientemente de su historial de inspecciones.</strong></p>
-<p>Una importante precisión es que en la STPS los sistemas de apoyo a la inspección han tenido a lo largo de los años diferentes “instancias” o “cortes”, que se condicen con cada uno de los cambios importantes en la normatividad de la inspección. Esto se debe a que las herramientas utilizadas para apoyar los procesos de inspección no contaban hasta ahora con mecanismos que permitan el manejo y administración de diferentes versiones del marco normativo en una sola instancia del sistema. Por lo cual, ante un nuevo reglamento de inspección o ante una modificación sustantiva a la las leyes y normas en la materia, se requirió copiar el sistema en una nueva instancia en la cual se pudieran reflejar la situación normativa derivada de esa modificación.<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a></p>
+<p>Una importante precisión es que en la STPS los sistemas de apoyo a la inspección han tenido a lo largo de los años diferentes “instancias” o “cortes”, que se condicen con cada uno de los cambios importantes en la normatividad de la inspección. Esto se debe a que las herramientas utilizadas para apoyar los procesos de inspección no contaban hasta ahora con mecanismos que permitan el manejo y administración de diferentes versiones del marco normativo en una sola instancia del sistema. Por lo cual, ante un nuevo reglamento de inspección o ante una modificación sustantiva a la las leyes y normas en la materia, se requirió copiar el sistema en una nueva instancia en la cual se pudieran reflejar la situación normativa derivada de esa modificación.<a href="#fn5" class="footnote-ref" id="fnref5"><sup>5</sup></a></p>
 <p>Son cinco los “cortes” que se han realizado a la base de datos, mismos que se han integrado para realizar el análisis que se presenta a continuación. Los 5 “cortes” representan la totalidad de la base de datos y la integración selectiva de los diferentes casos (inspecciones) a lo largo de los diferentes “cortes” previene de duplicar la información y la tergiversación de los hallazgos, se ha requerido un importante trabajo de análisis para la unificación de bases de datos y generar el universo global de las inspecciones realizadas. Esta tarea requirió por supuesto entender la lógica en que se debe hacer la agregación de las inspecciones y ha dado como resultado un universo de cerca de un millón cien mil inspecciones totales en el período, conformándose así el universo de análisis. Cabe agregar que, por lo general, con los diferentes cortes que se realizan se generan pequeños cambios en las taxonomías de algunas variables, y, en menor medida, surgen nuevas tablas al interior de la base de datos.</p>
 <p>El volumen de información que se encuentra en cada uno de los “cortes” varía, y como se observa en la ilustración <a href="conceptos-y-hallazgos-clave-en-la-exploración-del-siapi-sipas.html#fig:volumeninspecciones">8.1</a>, de los cinco “cortes” distintos que se realizaron a la base de datos, el primero consta de cerca de 60 mil inspecciones, con inspecciones que se realizaron entre junio 2012 y abril 2015, mientras que el último corte es el que incorpora las inspecciones realizadas entre enero 2020 y octubre 2021.</p>
 <div class="figure"><span style="display:block;" id="fig:volumeninspecciones"></span>
-<img src="images-1/08/volumeninspecciones.png" alt="Módulos que componen el SIDIL" width="236" />
+<img src="images-1/08/volumeninspecciones.png" alt="Módulos que componen el SIDIL"  />
 <p class="caption">
 Ilustración 8.1: Módulos que componen el SIDIL
 </p>
@@ -223,6 +241,32 @@ Total 1,129,730</p>
 <div id="planeación-de-la-inspección" class="section level3 hasAnchor" number="8.1.1">
 <h3><span class="header-section-number">8.1.1</span> Planeación de la inspección<a href="conceptos-y-hallazgos-clave-en-la-exploración-del-siapi-sipas.html#planeación-de-la-inspección" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Si bien el SIDIL es una herramienta estratégica para la programación de inspecciones en el marco de operativos de inspección (por definición, son inspecciones del <em>tipo</em> <em>extraordinario</em>), la información que se explota para el entrenamiento del modelo no se limita a este tipo de inspecciones.</p>
+<p>La planeación del año se realiza conforme a la disponibilidad de recursos y las prioridades de política pública. Por lo general, a finales de cada año se realiza una planeación anual de las inspecciones para determinar las metas anuales para el año fiscal siguiente, conforme a la disponibilidad de inspectores por oficina, tomando además en cuenta las prioridades de política pública de la gestión. En promedio, entre 2012 y 2021 se estableció una meta anual de 91,026 inspecciones por año. A grandes rasgos se observan tres fases distintas en cuanto a este promedio, como se presenta en la ilustración <a href="conceptos-y-hallazgos-clave-en-la-exploración-del-siapi-sipas.html#fig:Metasanualesinspeccion">8.2</a>: entre 2012 y 2013, la meta anual osciló entre 86,000 y 89,000 inspecciones anuales; de 2014 a 2017 se ubicó entre 119,000 y 124,000 seguido por un máximo observado en 2018 con 130,000 inspecciones y de 2019 en adelante, la meta se redujo a la mitad e incluso hasta un tercio de los niveles de 2012 y 2013. En 2019 la meta alcanzó las 45,061 inspecciones, en 2020 las 30,721 inspecciones y en 2021 39,198 inspecciones. Como se observará más adelante, hay una discrepancia entre la meta anual y lo realizado de hecho, motivo por lo cual sería precipitado concluir en una reducción del volumen de la carga de trabajo.</p>
+<p>La meta anual de inspecciones se distribuye en dos grandes tipos: las de programación aleatoria y las de programación directa. La programación aleatoria es la que se asocia con inspecciones del tipo ordinario, mientras que las de programación directa corresponde a las inspecciones del tipo extraordinario. Se suma un tercer tipo que es el de programación automática y que abarca las inspecciones de comprobación de medidas, como se explicará más adelante.</p>
+<p>El conjunto de las inspecciones de programación aleatoria se compone de inspecciones iniciales y periódicas. Mientras que las inspecciones iniciales son las que se realizan por primera vez a un centro de trabajo (CT) o por ampliación o modificación de éstos , las periódicas tienen cierta frecuencia predeterminada según los resultados de las inspecciones anteriores realizadas al mismo CT, “tomando en consideración la rama industrial, la naturaleza de las actividades que realicen, su grado de riesgo, número de trabajadores y ubicación geográfica” . Ambas conforman buena parte de las inspecciones del tipo ordinaria, sumándose a este grupo las inspecciones de comprobación de medidas en materia de Seguridad e higiene, como se detalla más adelante.</p>
+<p>Por su parte, las inspecciones de programación directa incluyen, pero no se limitan, a las inspecciones realizadas en el marco de un determinado operativo. Los operativos, como se verá más adelante, son un tipo de programación de inspección de un alcance específico que atiende a temáticas o prioridades predefinidas.
+A lo largo de la década analizada el 54.9% de las inspecciones realizadas fueron de programación directa, y el 45.1% de programación aleatoria (ver ilustración 3). Esto no ocurrió sin cierta cierta variación de un año a otro: En 2018 fue cuando la programación directa tuvo el mayor peso (75%), mientras que su menor participación fue en 2019, con tan sólo 20% de la meta anual.</p>
+<div class="figure"><span style="display:block;" id="fig:Metasanualesinspeccion"></span>
+<img src="images-1/08/Metasanualesinspeccion.png" alt="Metas anuales de inspección, por tipo de inspección"  />
+<p class="caption">
+Ilustración 8.2: Metas anuales de inspección, por tipo de inspección
+</p>
+</div>
+</div>
+<div id="meta-y-realización-de-inspecciones-a-realizar-por-tipo-estado-y-por-oficina" class="section level3 hasAnchor" number="8.1.2">
+<h3><span class="header-section-number">8.1.2</span> Meta y realización de inspecciones a realizar por tipo, estado y por oficina<a href="conceptos-y-hallazgos-clave-en-la-exploración-del-siapi-sipas.html#meta-y-realización-de-inspecciones-a-realizar-por-tipo-estado-y-por-oficina" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>En el SIAPI se identificaron 109 oficinas responsables de las inspecciones o Unidades responsables (UR) distribuídas a lo largo de las 32 entidades federativas, sumándose 27 otras UR de carácter federal que corresponden a otras áreas de la STPS, como por ejemplo la DG de Inspección Federal del Trabajo, la DG de Asuntos Jurídicos, etc.. Las 109 UR típicamente toman la forma de una Oficina de Representación Federal del Trabajo (ORFT), de una Subdelegación Federal del Trabajo, de una Oficina Federal del Trabajo, de una Delegación Federal del Trabajo o de una Unidad Subalterna de la ORFT. Se asume que a efectos de la operación de las inspecciones como el seguimiento del proceso sancionador, no existen diferencias sustantivas en cuanto a las atribuciones que tiene cada una de ellas.</p>
+<p>En promedio, en cada entidad federativa hay 3.4 UR, siendo Veracruz la entidad con mayor número de UR con 15 oficinas, y habiendo 17 entidades federativas con solamente 2 UR en su delimitación geográfica. Hay otras 14 entidades federativas que tienen entre 4 y 6 UR (<a href="conceptos-y-hallazgos-clave-en-la-exploración-del-siapi-sipas.html#fig:InspectoresUR">8.3</a>. El número de inspectores por cada UR varía entre 3 y 4 en Baja California Sur y Aguascalientes, respectivamente, y 49 y 87 en el Estado de México y la Ciudad de México. La ilustración da cuenta de la correlación positiva entre el número de centros de trabajo y el número de inspectores activos. Se observa que algunas entidades, como el Estado de México, Veracruz, Tamaulipas, presentan un número proporcionalmente menor de inspectores, mientras que Jalisco y Nuevo León superan la tendencia estatal.</p>
+<p>La interacción entre la meta anual de inspecciones y el número de inspectores disponibles determina la carga de trabajo que se asigna a los inspectores. La planeación anual toma en consideración la disponibilidad de inspectores que se reporta a nivel descentralizado en cada una de las unidades responsables a través de las oficinas de representación, mismas que en su agregación conforman el total de número de inspectores disponibles. Sin embargo, a efectos de la programación de operativos, la disponibilidad de corto plazo de los inspectores no es algo que se pueda capturar en el sistema. <strong>Es en este punto en donde el SIDIL, con la información disponible en el sistema, no puede incorporar de manera automatizada la disponibilidad de inspectores para la conformación de un universo de CT priorizados por riesgos (y atributos e indicadores) <em>estratificado</em> o <em>acotado</em> a la disponibilidad de inspectores en cada UR - toda vez que la información al respecto en el sistema no se actualiza en tiempo real.</strong></p>
+<p>Establecida la meta anual de inspecciones se realiza su distribución a lo largo de tres dimensiones, la temporal, la geográfica y la temática o de alcance, de la siguiente manera: por un lado, la meta anual de inspecciones se distribuye en los doce meses del año (dimensión temporal), y a su vez, se le asigna el volumen a las oficinas que integran cada una de las entidades federativas (dimensión geográfica). Lo anterior aplica tanto para las inspecciones de programación aleatoria como de programación directa. por último, en cuanto a la temática, como se verá más adelante, se trata de la materia sustantiva sobre la que versará la inspección, que en el marco de este reporte se define como alcance, compuesto por materias, submaterias, indicadores e incisos, como se describe en la sección “Alcance de la inspección”, más adelante y que se asigna, sólo en algunos de los casos, al momento de establecer las metas anuales.</p>
+<p>Conviene aclarar, que a efectos de este reporte se define a una inspección como registrada, cuando ésta es programada y por lo tanto aparece en el sistema con un identificador único e intransferible, independientemente de la etapa o estatus en el que se encuentre esta inspección. Esta definición es importante, toda vez que más adelante se distinguirá entre inspecciones realizadas y no realizadas, siendo ambas parte de las inspecciones registradas.</p>
+<p>Considerando la totalidad del país, se observa que la tendencia del número de inspecciones realizadas es superior al número de inspecciones programadas, pero sólo desde 2013 a 2018 inclusive. A partir de 2019 se registra un déficit en el número de inspecciones realizadas con respecto a la planeación anual, mismo que puede estar explicado por el cambio de administración a fines de 2018, como por la irrupción en México de la pandemia de COVID-19 en el año 2020. Complementando lo anterior, en la ilustración 9 se presenta la evolución mensual de ambas variables a lo largo de la década 2012-2021. Además de justificar la afirmación anterior, esta ilustración da cuenta de que ambas variables presentan una elevada volatilidad (cambios abruptos de un mes a otro) y ciclicidad (los meses de diciembre y enero son, por lo general, los de menor volumen).</p>
+<div class="figure"><span style="display:block;" id="fig:InspectoresUR"></span>
+<img src="images-1/08/programadorealizado.png" alt="Módulos que componen el SIDIL"  />
+<p class="caption">
+Ilustración 8.3: Módulos que componen el SIDIL
+</p>
+</div>
 </div>
 </div>
 <div id="aspectos-pendientes-y-posibles-extensiones-a-futuro" class="section level2 hasAnchor" number="8.2">
@@ -239,16 +283,10 @@ Total 1,129,730</p>
 </div>
 </div>
 </div>
-
-
-
-
-
-
 <div class="footnotes">
 <hr />
-<ol start="1">
-<li id="fn1"><p>Como parte de su colaboración con STPS, AIR ha desarrollado un gestor de normativ<a href="conceptos-y-hallazgos-clave-en-la-exploración-del-siapi-sipas.html#fnref1" class="footnote-back">↩︎</a></p></li>
+<ol start="5">
+<li id="fn5"><p>Como parte de su colaboración con STPS, AIR ha desarrollado un gestor de normativ<a href="conceptos-y-hallazgos-clave-en-la-exploración-del-siapi-sipas.html#fnref5" class="footnote-back">↩︎</a></p></li>
 </ol>
 </div>
             </section>
@@ -256,8 +294,8 @@ Total 1,129,730</p>
           </div>
         </div>
       </div>
-<a href="especificaciones-del-servidor.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-
+<a href="especificaciones-del-servidor.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="box-and-tables.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -302,6 +340,20 @@ gitbook.start({
 });
 </script>
 
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
 </body>
 
 </html>

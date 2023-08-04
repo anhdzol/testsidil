@@ -1,0 +1,81 @@
+---
+output:
+  html_document: default
+---
+
+# Box and tables
+
+```{r setup, include=FALSE, echo=FALSE}
+fn = local({
+  i = 0
+  function(x) {
+    i <<- i + 1
+    paste('Recuadro ', '8.', i, ': ', x, sep = '')
+  }
+})
+```
+
+Ut maximus metus nec diam pretium, at vehicula ex blandit. Praesent at lectus eros. Cras ultrices lacus a ante gravida convallis. Sed quam risus, iaculis sed maximus a, suscipit at justo. Proin eget eros tristique, porttitor justo ut, imperdiet urna. Aenean at tempor purus. Pellentesque viverra est in metus vestibulum fringilla. Vivamus dignissim eros quis metus volutpat fringilla. Proin eget viverra purus. [Recuadro 1](#fig:testBox)
+
+In hac habitasse platea dictumst. In ac dolor at tellus cursus vehicula nec non dui. Duis feugiat nibh ac fringilla pellentesque. Morbi mollis augue sed efficitur porta. Morbi pellentesque euismod porta. Vivamus vel porta nisl, quis eleifend felis. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse facilisis, metus id finibus congue, mauris augue imperdiet arcu, vel pellentesque erat lorem at nunc. Nullam dignissim ipsum at erat hendrerit, et gravida mi sollicitudin.
+
+Maecenas ut condimentum orci, ac volutpat est. Phasellus pretium, urna sit amet scelerisque congue, ipsum mauris vulputate nunc, rutrum commodo velit enim ac lectus. Morbi eget urna eu diam tempus posuere. Proin non eros sit amet quam scelerisque imperdiet. Praesent hendrerit et purus eu mattis. Praesent rhoncus diam quis nisl dignissim, vel consequat metus dapibus. Quisque eu tincidunt urna. In hac habitasse platea dictumst. Donec euismod tristique dui vel dapibus. Curabitur nec egestas dui, vitae sagittis magna. Maecenas rhoncus massa vitae elit ultrices pellentesque. Phasellus consequat nisl nec turpis ornare dictum. Mauris scelerisque hendrerit commodo. Etiam placerat urna id nisl volutpat congue. Suspendisse vitae sapien sagittis, sagittis elit in, feugiat nunc.
+
+<div class="note-box">
+```{r testBox, class.source='myClass', echo=FALSE, out.width="50px", fig.cap="Nombre del recuadro", out.extra='style="float:left; background-color: #f5f5f5; padding-right:1em"'}
+knitr::include_graphics("images-1/important-icon.svg")
+fn('Nombre del recuadro...')
+```
+</div>
+
+
+
+```{block, type='rmdcomment'}
+Some text for this block. Some text for this block. Some text for this block. Some text for this block. Some text for this block. Some text for this block.
+End
+Some text for this block. Some text for this block. Some text for this block. Some text for this block. Some text for this block. Some text for this block.
+End
+Some text for this block. Some text for this block. Some text for this block. Some text for this block. Some text for this block. Some text for this block.
+End
+Some text for this block. Some text for this block. Some text for this block. Some text for this block. Some text for this block. Some text for this block.
+End
+Some text for this block. Some text for this block. Some text for this block. Some text for this block. Some text for this block. Some text for this block.
+End
+Some text for this block. Some text for this block. Some text for this block. Some text for this block. Some text for this block. Some text for this block.
+End
+Some text for this block. Some text for this block. Some text for this block. Some text for this block. Some text for this block. Some text for this block.
+End
+Some text for this block. Some text for this block. Some text for this block. Some text for this block. Some text for this block. Some text for this block.
+End
+```
+
+(Ver Recuadro \@ref(fig:testBox))
+
+[Recuadro 1](#fig:testBox)
+
+### Tablas
+
+```{r echo = FALSE, results = 'asis', include = FALSE}
+library(dplyr)
+library(kableExtra, warn.conflicts = TRUE)
+```  
+
+Ejemplo 1 - sroll x - y
+
+```{r echo = FALSE, results = 'asis'}
+data <- read.csv("./data/data-test.csv", stringsAsFactors = F)
+kable(data, caption = "This is data.") %>%
+  kable_styling(bootstrap_options = c("striped", "hover"), full_width = T, font_size = 16) %>%
+    scroll_box(width = "80%", height = "300px")
+```
+
+<br>
+Ejemplo 2
+
+```{r echo = FALSE, results = 'asis'}
+data <- read.csv("./data/data-test.csv", stringsAsFactors = F)
+kable(data, caption = "This is data.") %>%
+  kable_styling(bootstrap_options = c("striped", "hover"), full_width = T, font_size = 16) %>%
+  column_spec(column = 2, width = "3cm", background = "#E5ECEA") %>%
+      scroll_box(width = "100%", height = "300px")
+```

@@ -51,6 +51,15 @@
 <link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
 <link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
 <script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+<script src="libs/htmlwidgets-1.6.2/htmlwidgets.js"></script>
+<script src="libs/plotly-binding-4.10.2/plotly.js"></script>
+<script src="libs/typedarray-0.1/typedarray.min.js"></script>
+<link href="libs/crosstalk-1.2.0/css/crosstalk.min.css" rel="stylesheet" />
+<script src="libs/crosstalk-1.2.0/js/crosstalk.min.js"></script>
+<link href="libs/plotly-htmlwidgets-css-2.11.1/plotly-htmlwidgets.css" rel="stylesheet" />
+<script src="libs/plotly-main-2.11.1/plotly-latest.min.js"></script>
+<script src="libs/kePrint-0.0.1/kePrint.js"></script>
+<link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
 
 
 
@@ -91,6 +100,7 @@
 <li class="chapter" data-level="" data-path="estructura-y-flujos-de-trabajo-del-sidil.html"><a href="estructura-y-flujos-de-trabajo-del-sidil.html#moduloIexplicaciongeneral"><i class="fa fa-check"></i>Módulo I: actualización de indicadores</a></li>
 <li class="chapter" data-level="" data-path="estructura-y-flujos-de-trabajo-del-sidil.html"><a href="estructura-y-flujos-de-trabajo-del-sidil.html#moduloIIexplicaciongeneral"><i class="fa fa-check"></i>Módulo II: Consulta al universo de CT, imputación de indicadores y predicción de riesgo</a></li>
 <li class="chapter" data-level="" data-path="estructura-y-flujos-de-trabajo-del-sidil.html"><a href="estructura-y-flujos-de-trabajo-del-sidil.html#moduloIyIIexplicaciongeneral"><i class="fa fa-check"></i>Módulos I y II: operables desde la interfaz de automatización</a></li>
+<li class="chapter" data-level="2.2.1" data-path="estructura-y-flujos-de-trabajo-del-sidil.html"><a href="estructura-y-flujos-de-trabajo-del-sidil.html#módulo-iii-consulta-de-la-mpr-para-priorización-de-ct-a-inspeccionar"><i class="fa fa-check"></i><b>2.2.1</b> ### Módulo III: Consulta de la MPR para priorización de CT a inspeccionar</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="elementosgenerales.html"><a href="elementosgenerales.html"><i class="fa fa-check"></i><b>3</b> Elementos generales del procesamiento de datos</a>
@@ -122,35 +132,20 @@
 <li class="chapter" data-level="4.1.4" data-path="procesamiento.html"><a href="procesamiento.html#procesamientoModEspecificaciones"><i class="fa fa-check"></i><b>4.1.4</b> Especificaciones por fuente de información</a></li>
 <li class="chapter" data-level="4.1.5" data-path="procesamiento.html"><a href="procesamiento.html#procesamientoModIcoyvshist"><i class="fa fa-check"></i><b>4.1.5</b> Estimaciones puntuales e históricas de indicadores</a></li>
 </ul></li>
-<li class="chapter" data-level="4.2" data-path="procesamiento.html"><a href="procesamiento.html#moduloii"><i class="fa fa-check"></i><b>4.2</b> Módulo II: imputación de indicadores y generación de la MPR</a>
+<li class="chapter" data-level="4.2" data-path="procesamiento.html"><a href="procesamiento.html#procesamientoModII"><i class="fa fa-check"></i><b>4.2</b> Módulo II: imputación de indicadores y generación de la MPR</a>
 <ul>
-<li class="chapter" data-level="4.2.1" data-path="procesamiento.html"><a href="procesamiento.html#propositomoduloii"><i class="fa fa-check"></i><b>4.2.1</b> Propósito principal</a></li>
-<li class="chapter" data-level="4.2.2" data-path="procesamiento.html"><a href="procesamiento.html#requisitosmoduloii"><i class="fa fa-check"></i><b>4.2.2</b> Requisitos para la ejecución de este módulo</a></li>
-<li class="chapter" data-level="4.2.3" data-path="procesamiento.html"><a href="procesamiento.html#procesamientoModIIimputacion"><i class="fa fa-check"></i><b>4.2.3</b> Imputación de indicadores laborales al universo de CT</a></li>
-<li class="chapter" data-level="4.2.4" data-path="procesamiento.html"><a href="procesamiento.html#procesamientoModIIprediccion"><i class="fa fa-check"></i><b>4.2.4</b> Predicción de riesgo</a></li>
+<li class="chapter" data-level="4.2.1" data-path="procesamiento.html"><a href="procesamiento.html#procesamientoModIIconsultaDNE"><i class="fa fa-check"></i><b>4.2.1</b> Consulta al DNE</a></li>
+<li class="chapter" data-level="4.2.2" data-path="procesamiento.html"><a href="procesamiento.html#procesamientoModIIimputacion"><i class="fa fa-check"></i><b>4.2.2</b> Imputación de indicadores laborales al universo de CT</a></li>
+<li class="chapter" data-level="4.2.3" data-path="procesamiento.html"><a href="procesamiento.html#procesamientoModIIprediccion"><i class="fa fa-check"></i><b>4.2.3</b> Predicción de riesgo</a></li>
 </ul></li>
-<li class="chapter" data-level="4.3" data-path="procesamiento.html"><a href="procesamiento.html#procesamientoModIyIIinterfazAuto"><i class="fa fa-check"></i><b>4.3</b> Interfaz de automatización: Módulos I y II</a>
-<ul>
-<li class="chapter" data-level="4.3.1" data-path="procesamiento.html"><a href="procesamiento.html#propositointerfaz1"><i class="fa fa-check"></i><b>4.3.1</b> Propósito de la interfaz</a></li>
-<li class="chapter" data-level="4.3.2" data-path="procesamiento.html"><a href="procesamiento.html#accesointerfaz1"><i class="fa fa-check"></i><b>4.3.2</b> Acceso a la interfaz</a></li>
-<li class="chapter" data-level="4.3.3" data-path="procesamiento.html"><a href="procesamiento.html#organizacioninterfaz1"><i class="fa fa-check"></i><b>4.3.3</b> Organización de la interfaz</a></li>
-<li class="chapter" data-level="" data-path="procesamiento.html"><a href="procesamiento.html#interfaz1-8"><i class="fa fa-check"></i>Procesamiento de información</a></li>
-</ul></li>
-<li class="chapter" data-level="4.4" data-path="procesamiento.html"><a href="procesamiento.html#procesamientoModIIIinterfazConsulta"><i class="fa fa-check"></i><b>4.4</b> Módulo III: Priorización de los centros de trabajo</a>
-<ul>
-<li class="chapter" data-level="4.4.1" data-path="procesamiento.html"><a href="procesamiento.html#propositointerfaz2"><i class="fa fa-check"></i><b>4.4.1</b> Propósito de la interfaz</a></li>
-<li class="chapter" data-level="4.4.2" data-path="procesamiento.html"><a href="procesamiento.html#accesointerfaz2"><i class="fa fa-check"></i><b>4.4.2</b> Acceso a la interfaz</a></li>
-<li class="chapter" data-level="" data-path="procesamiento.html"><a href="procesamiento.html#interfaz2-1"><i class="fa fa-check"></i>Primera prestaña: Filtrado</a></li>
-<li class="chapter" data-level="" data-path="procesamiento.html"><a href="procesamiento.html#interfaz2-3"><i class="fa fa-check"></i>Segunda pestaña: Analisis</a></li>
-<li class="chapter" data-level="" data-path="procesamiento.html"><a href="procesamiento.html#interfaz2-4"><i class="fa fa-check"></i>Tabla final de resultados con sus pestañas</a></li>
-</ul></li>
+<li class="chapter" data-level="4.3" data-path="procesamiento.html"><a href="procesamiento.html#procesamientoModIyIIinterfazAuto"><i class="fa fa-check"></i><b>4.3</b> Módulo I y II: Interfaz de automatización</a></li>
+<li class="chapter" data-level="4.4" data-path="procesamiento.html"><a href="procesamiento.html#procesamientoModIIIinterfazConsulta"><i class="fa fa-check"></i><b>4.4</b> Módulo III: Priorización de los centros de trabajo</a></li>
 <li class="chapter" data-level="4.5" data-path="procesamiento.html"><a href="procesamiento.html#procesamientoModIV"><i class="fa fa-check"></i><b>4.5</b> Módulo IV: Entrenamiento del modelo</a>
 <ul>
-<li class="chapter" data-level="4.5.1" data-path="procesamiento.html"><a href="procesamiento.html#propositoModIV"><i class="fa fa-check"></i><b>4.5.1</b> Propósito principal</a></li>
-<li class="chapter" data-level="4.5.2" data-path="procesamiento.html"><a href="procesamiento.html#procesamientoModIVSIAPI"><i class="fa fa-check"></i><b>4.5.2</b> Construcción de la serie histórica de inspecciones laborales (2012-2022)</a></li>
-<li class="chapter" data-level="4.5.3" data-path="procesamiento.html"><a href="procesamiento.html#procesamientoModIVindicadores"><i class="fa fa-check"></i><b>4.5.3</b> Construcción de la serie histórica de indicadores laborales</a></li>
-<li class="chapter" data-level="4.5.4" data-path="procesamiento.html"><a href="procesamiento.html#procesamientoModIVmatching"><i class="fa fa-check"></i><b>4.5.4</b> Matching de las series históricas</a></li>
-<li class="chapter" data-level="4.5.5" data-path="procesamiento.html"><a href="procesamiento.html#procesamientoModIVEntrenamiento"><i class="fa fa-check"></i><b>4.5.5</b> Entrenamiento y evaluación del modelo de predicción</a></li>
+<li class="chapter" data-level="4.5.1" data-path="procesamiento.html"><a href="procesamiento.html#procesamientoModIVSIAPI"><i class="fa fa-check"></i><b>4.5.1</b> Construcción de la serie histórica de inspecciones laborales (2012-2022)</a></li>
+<li class="chapter" data-level="4.5.2" data-path="procesamiento.html"><a href="procesamiento.html#procesamientoModIVindicadores"><i class="fa fa-check"></i><b>4.5.2</b> Construcción de la serie histórica de indicadores laborales</a></li>
+<li class="chapter" data-level="4.5.3" data-path="procesamiento.html"><a href="procesamiento.html#procesamientoModIVmatching"><i class="fa fa-check"></i><b>4.5.3</b> Matching de las series históricas</a></li>
+<li class="chapter" data-level="4.5.4" data-path="procesamiento.html"><a href="procesamiento.html#procesamientoModIVEntrenamiento"><i class="fa fa-check"></i><b>4.5.4</b> Entrenamiento y evaluación del modelo de predicción</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="5" data-path="presentación-sintética-de-todos-los-scripts.html"><a href="presentación-sintética-de-todos-los-scripts.html"><i class="fa fa-check"></i><b>5</b> Presentación sintética de todos los scripts</a></li>
@@ -163,6 +158,24 @@
 <li class="chapter" data-level="6.5" data-path="r-rstudio-y-python.html"><a href="r-rstudio-y-python.html#python"><i class="fa fa-check"></i><b>6.5</b> Python</a></li>
 </ul></li>
 <li class="chapter" data-level="7" data-path="especificaciones-del-servidor.html"><a href="especificaciones-del-servidor.html"><i class="fa fa-check"></i><b>7</b> Especificaciones del servidor</a></li>
+<li class="chapter" data-level="8" data-path="conceptos-y-hallazgos-clave-en-la-exploración-del-siapi-sipas.html"><a href="conceptos-y-hallazgos-clave-en-la-exploración-del-siapi-sipas.html"><i class="fa fa-check"></i><b>8</b> Conceptos y hallazgos clave en la exploración del SIAPI-SIPAS</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="conceptos-y-hallazgos-clave-en-la-exploración-del-siapi-sipas.html"><a href="conceptos-y-hallazgos-clave-en-la-exploración-del-siapi-sipas.html#conceptos-y-clasificaciones-relevantes."><i class="fa fa-check"></i><b>8.1</b> Conceptos y clasificaciones relevantes.</a>
+<ul>
+<li class="chapter" data-level="8.1.1" data-path="conceptos-y-hallazgos-clave-en-la-exploración-del-siapi-sipas.html"><a href="conceptos-y-hallazgos-clave-en-la-exploración-del-siapi-sipas.html#planeación-de-la-inspección"><i class="fa fa-check"></i><b>8.1.1</b> Planeación de la inspección</a></li>
+<li class="chapter" data-level="8.1.2" data-path="conceptos-y-hallazgos-clave-en-la-exploración-del-siapi-sipas.html"><a href="conceptos-y-hallazgos-clave-en-la-exploración-del-siapi-sipas.html#meta-y-realización-de-inspecciones-a-realizar-por-tipo-estado-y-por-oficina"><i class="fa fa-check"></i><b>8.1.2</b> Meta y realización de inspecciones a realizar por tipo, estado y por oficina</a></li>
+</ul></li>
+<li class="chapter" data-level="8.2" data-path="conceptos-y-hallazgos-clave-en-la-exploración-del-siapi-sipas.html"><a href="conceptos-y-hallazgos-clave-en-la-exploración-del-siapi-sipas.html#aspectos-pendientes-y-posibles-extensiones-a-futuro"><i class="fa fa-check"></i><b>8.2</b> Aspectos pendientes y posibles extensiones a futuro</a>
+<ul>
+<li class="chapter" data-level="8.2.1" data-path="conceptos-y-hallazgos-clave-en-la-exploración-del-siapi-sipas.html"><a href="conceptos-y-hallazgos-clave-en-la-exploración-del-siapi-sipas.html#limitaciones-en-la-construcción-de-la-variable-dependiente"><i class="fa fa-check"></i><b>8.2.1</b> Limitaciones en la construcción de la variable dependiente</a></li>
+<li class="chapter" data-level="8.2.2" data-path="conceptos-y-hallazgos-clave-en-la-exploración-del-siapi-sipas.html"><a href="conceptos-y-hallazgos-clave-en-la-exploración-del-siapi-sipas.html#posibles-alternativas-como-variable-dependiente"><i class="fa fa-check"></i><b>8.2.2</b> Posibles alternativas como variable dependiente</a></li>
+<li class="chapter" data-level="8.2.3" data-path="conceptos-y-hallazgos-clave-en-la-exploración-del-siapi-sipas.html"><a href="conceptos-y-hallazgos-clave-en-la-exploración-del-siapi-sipas.html#section"><i class="fa fa-check"></i><b>8.2.3</b> </a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="box-and-tables.html"><a href="box-and-tables.html"><i class="fa fa-check"></i><b>9</b> Box and tables</a>
+<ul>
+<li class="chapter" data-level="9.0.1" data-path="box-and-tables.html"><a href="box-and-tables.html#tablas"><i class="fa fa-check"></i><b>9.0.1</b> Tablas</a></li>
+</ul></li>
 </ul>
 
       </nav>
@@ -347,7 +360,6 @@ Ilustración 2.4: Matriz de predicción de riesgos (ilustración simplificada)
 <p><strong>En contraste con la interfaz de consulta (ver más adelante), esta interfaz, si bien facilita la ejecución de los módulos I y II, sí requiere de cierto conocimiento técnico</strong> – estadístico en cuanto a que algunos de los mensajes que se reportan en su consola, si bien sólo se reportan a título informativo y no se espera una aprobación explícita del usuario, permiten a un usuario informado determinar que los resultados obtenidos guardan sentido. Por ejemplo, en un momento determinado la actualización de los indicadores del IMSS reporta el porcentaje que las mujeres representan en el total de personas aseguradas. Un usuario informado sabe que aproximadamente este porcentaje se ubica alrededor del 40% y que cualquier desviación sustantiva de dicho porcentaje pudiera implicar que la identificación del sexo a partir de la CURP de las personas aseguradas no resultó satisfactoria o que hubo algún problema en el procesamiento realizado. De manera análoga, un usuario experimentado conoce el total de personas ocupadas que se estiman a partir de la ENOE (y sabe cómo validar esta estimación en el portal del INEGI), por lo que cualquier desviación sustantiva de una estimación normal tendría que llamarle la atención, ameritar la interrupción del proceso e iniciar una revisión exhaustiva a nivel código para encontrar la solución a dicho error de cálculo.</p>
 <p>Recuadro 6: la utilización de la interfaz de automatización</p>
 <table>
-<caption>### Módulo III: Consulta de la MPR para priorización de CT a inspeccionar {.unnumbered #interfazConsultaexplicaciongeneral}</caption>
 <colgroup>
 <col width="100%" />
 </colgroup>
@@ -368,6 +380,9 @@ Ilustración 2.4: Matriz de predicción de riesgos (ilustración simplificada)
 </tr>
 </tbody>
 </table>
+</div>
+<div id="módulo-iii-consulta-de-la-mpr-para-priorización-de-ct-a-inspeccionar" class="section level3 hasAnchor" number="2.2.1">
+<h3><span class="header-section-number">2.2.1</span> ### Módulo III: Consulta de la MPR para priorización de CT a inspeccionar<a href="estructura-y-flujos-de-trabajo-del-sidil.html#módulo-iii-consulta-de-la-mpr-para-priorización-de-ct-a-inspeccionar" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>En el módulo de consulta se explota la información contenida en la Matriz de Predicción de Riesgo (MPR). Se realiza a través de una interfaz interactiva, permitiendo al usuario escoger y ponderar diferentes campos para acotar y priorizar el universo de CT disponible en el DNE para logar un subconjunto de ellos que cumplen determinados criterios. Los CT en dicho subconjunto cumplen con características que reflejan la estrategia de inspección que se quiere desarrollar. Típicamente constituirán este subconjunto aquellos CT de mayor probabilidad de incumplimiento en cierta submateria y que además cumplen con los criterios impuestos a otras variables que los caracterizan.</p>
 <p><strong>La utilización de esta interfaz no requiere conocimientos avanzados de estadística ni de econometría</strong>: si bien el SIDIL es un proceso intensivo en datos, su producto final, la MPR, es explotado por el área de programación de las inspecciones a través de una interfaz amigable que permite reflejar prioridades estratégicas propias del proceso de planeación, particularmente aquellas que se dan en el marco de operativos de un alcance específico.</p>
 <p>La interfaz permite al usuario:</p>
@@ -393,7 +408,7 @@ Ilustración 2.4: Matriz de predicción de riesgos (ilustración simplificada)
 <p>La explotación histórica de todas las fuentes de información, inclusive los resultados de las inspecciones, permite la <strong>interacción entre variables</strong> provenientes de diferentes fuentes en el entrenamiento del modelo de aprendizaje de máquina (machine learning) que se utiliza para la predicción de riesgo. El modelo utilizado para este fin es el <strong>Random Forest</strong>, dadas que las pruebas realizadas con la información provista por la STPS dieron mejores resultados de predictibilidad con este modelo. Sin embargo, esto puede y debe revisarse conforme avance la literatura y la tecnología en esta materia.</p>
 <p>Un <strong>modelo Random Forest (RF) de aprendizaje automático utiliza múltiples árboles de decisión para hacer predicciones sobre un conjunto de datos</strong>. Los árboles de decisión son un tipo de modelo de aprendizaje automático que se utiliza para tomar decisiones basadas en datos. Se representan gráficamente como un árbol, donde cada nodo representa una decisión o una acción (en este caso, una variable atributo o indicador asociado a los CT) y las ramas que se desprenden de él representan las posibles opciones que se pueden tomar.</p>
 <p><strong>En el caso del modelo de RF que se utiliza, cada árbol de decisión en el modelo es una representación gráfica de las reglas que se utilizan para predecir la probabilidad de incumplimiento en una de las submaterias de inspección</strong>. Cada árbol en el modelo toma como entrada los indicadores que se han calculado para el centro de trabajo que se está evaluando y, a través de una serie de preguntas, clasifica el centro de trabajo en una de las dos categorías: violación o no violación procedente en la submateria en cuestión.</p>
-<p><mark><mark>Placeholder imagen pixelada pendiente mejora</mark></mark></p>
+<p><mark>Placeholder imagen pixelada pendiente mejora</mark></p>
 <div class="figure"><span style="display:block;" id="fig:arboldecision"></span>
 <img src="images-1/02/arbol_decision.png" alt="Ejemplo de un árbol de decisión"  />
 <p class="caption">
@@ -461,6 +476,20 @@ gitbook.start({
 });
 </script>
 
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
 </body>
 
 </html>
