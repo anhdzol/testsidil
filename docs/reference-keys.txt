@@ -14,6 +14,7 @@ fig:memoriaRstudio
 fig:volumeninspecciones
 fig:Metasanualesinspeccion
 fig:InspectoresUR
+fig:programadorealizado
 fig:testBox
 tab:unnamed-chunk-4
 tab:unnamed-chunk-5

@@ -105,7 +105,7 @@ Considerando la totalidad del país, se observa que la tendencia del número de 
 
 
 
-```{r InspectoresUR, echo=FALSE, fig.cap ="Módulos que componen el SIDIL"}
+```{r programadorealizado, echo=FALSE, fig.cap ="Módulos que componen el SIDIL"}
 #Nota, los nombre de referencia no pueden tener guion bajo
 knitr::include_graphics("images-1/08/programadorealizado.png")
 

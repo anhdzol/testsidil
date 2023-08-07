@@ -7,6 +7,9 @@ output:
     number_sections: true
     always_allow_html: true
 github-repo: https://anhdzol.github.io/testsidil/
+description: "Breve descripcion pendiente"
+always_allow_html: true
+
 
 ---
 # Bienvenida {#introapertura}
