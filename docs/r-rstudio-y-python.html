@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Capítulo 6 R, RStudio y Python | SIDIL: Manual del procesamiento y explotación de la información</title>
+  <title>Capítulo 5 R, RStudio y Python | SIDIL: Manual del procesamiento y explotación de la información</title>
   <meta name="description" content="Breve descripcion pendiente" />
-  <meta name="generator" content="bookdown 0.32 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.34 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Capítulo 6 R, RStudio y Python | SIDIL: Manual del procesamiento y explotación de la información" />
+  <meta property="og:title" content="Capítulo 5 R, RStudio y Python | SIDIL: Manual del procesamiento y explotación de la información" />
   <meta property="og:type" content="book" />
   
   <meta property="og:description" content="Breve descripcion pendiente" />
-  <meta name="github-repo" content="https://anhdzol.github.io/testsidil/" />
+  <meta name="github-repo" content="anhdzol/testsidil/" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Capítulo 6 R, RStudio y Python | SIDIL: Manual del procesamiento y explotación de la información" />
+  <meta name="twitter:title" content="Capítulo 5 R, RStudio y Python | SIDIL: Manual del procesamiento y explotación de la información" />
   
   <meta name="twitter:description" content="Breve descripcion pendiente" />
   
@@ -51,18 +51,15 @@
 <link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
 <link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
 <script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
-<script src="libs/htmlwidgets-1.6.1/htmlwidgets.js"></script>
-<script src="libs/plotly-binding-4.10.1/plotly.js"></script>
-<script src="libs/typedarray-0.1/typedarray.min.js"></script>
-<link href="libs/crosstalk-1.2.0/css/crosstalk.min.css" rel="stylesheet" />
-<script src="libs/crosstalk-1.2.0/js/crosstalk.min.js"></script>
-<link href="libs/plotly-htmlwidgets-css-2.11.1/plotly-htmlwidgets.css" rel="stylesheet" />
-<script src="libs/plotly-main-2.11.1/plotly-latest.min.js"></script>
 <script src="libs/kePrint-0.0.1/kePrint.js"></script>
 <link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
 
 
 
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
 
 <link rel="stylesheet" href="style.css" type="text/css" />
 </head>
@@ -96,7 +93,7 @@
 <li class="chapter" data-level="" data-path="estructura-y-flujos-de-trabajo-del-sidil.html"><a href="estructura-y-flujos-de-trabajo-del-sidil.html#moduloIexplicaciongeneral"><i class="fa fa-check"></i>Módulo I: actualización de indicadores</a></li>
 <li class="chapter" data-level="" data-path="estructura-y-flujos-de-trabajo-del-sidil.html"><a href="estructura-y-flujos-de-trabajo-del-sidil.html#moduloIIexplicaciongeneral"><i class="fa fa-check"></i>Módulo II: Consulta al universo de CT, imputación de indicadores y predicción de riesgo</a></li>
 <li class="chapter" data-level="" data-path="estructura-y-flujos-de-trabajo-del-sidil.html"><a href="estructura-y-flujos-de-trabajo-del-sidil.html#moduloIyIIexplicaciongeneral"><i class="fa fa-check"></i>Módulos I y II: operables desde la interfaz de automatización</a></li>
-<li class="chapter" data-level="2.2.1" data-path="estructura-y-flujos-de-trabajo-del-sidil.html"><a href="estructura-y-flujos-de-trabajo-del-sidil.html#módulo-iii-consulta-de-la-mpr-para-priorización-de-ct-a-inspeccionar"><i class="fa fa-check"></i><b>2.2.1</b> ### Módulo III: Consulta de la MPR para priorización de CT a inspeccionar</a></li>
+<li class="chapter" data-level="2.2.1" data-path="estructura-y-flujos-de-trabajo-del-sidil.html"><a href="estructura-y-flujos-de-trabajo-del-sidil.html#módulo-iii-consulta-de-la-mpr-para-priorización-de-ct-a-inspeccionar"><i class="fa fa-check"></i><b>2.2.1</b> Módulo III: Consulta de la MPR para priorización de CT a inspeccionar</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="elementosgenerales.html"><a href="elementosgenerales.html"><i class="fa fa-check"></i><b>3</b> Elementos generales del procesamiento de datos</a>
@@ -118,59 +115,37 @@
 <li class="chapter" data-level="3.6" data-path="elementosgenerales.html"><a href="elementosgenerales.html#software-para-el-procesamiento-de-datos"><i class="fa fa-check"></i><b>3.6</b> Software para el procesamiento de datos</a></li>
 <li class="chapter" data-level="3.7" data-path="elementosgenerales.html"><a href="elementosgenerales.html#catalogos"><i class="fa fa-check"></i><b>3.7</b> Catálogos de información</a></li>
 </ul></li>
-<li class="chapter" data-level="4" data-path="procesamiento.html"><a href="procesamiento.html"><i class="fa fa-check"></i><b>4</b> Procesamiento de las fuentes de información y generación de la MPR</a>
+<li class="chapter" data-level="4" data-path="presentación-sintética-de-todos-los-scripts.html"><a href="presentación-sintética-de-todos-los-scripts.html"><i class="fa fa-check"></i><b>4</b> Presentación sintética de todos los scripts</a></li>
+<li class="chapter" data-level="5" data-path="r-rstudio-y-python.html"><a href="r-rstudio-y-python.html"><i class="fa fa-check"></i><b>5</b> R, RStudio y Python</a>
 <ul>
-<li class="chapter" data-level="4.1" data-path="procesamiento.html"><a href="procesamiento.html#procesamientoModI"><i class="fa fa-check"></i><b>4.1</b> Módulo I: actualización de indicadores</a>
-<ul>
-<li class="chapter" data-level="4.1.1" data-path="procesamiento.html"><a href="procesamiento.html#procesamientoModIdesafios"><i class="fa fa-check"></i><b>4.1.1</b> Desafíos al tratamiento de bases de datos externas</a></li>
-<li class="chapter" data-level="4.1.2" data-path="procesamiento.html"><a href="procesamiento.html#procesamientoModInivelesagregacion"><i class="fa fa-check"></i><b>4.1.2</b> Sobre niveles de agregación</a></li>
-<li class="chapter" data-level="4.1.3" data-path="procesamiento.html"><a href="procesamiento.html#procesamientoModInominativo"><i class="fa fa-check"></i><b>4.1.3</b> Sobre estimaciones puntuales nominativas</a></li>
-<li class="chapter" data-level="4.1.4" data-path="procesamiento.html"><a href="procesamiento.html#procesamientoModEspecificaciones"><i class="fa fa-check"></i><b>4.1.4</b> Especificaciones por fuente de información</a></li>
-<li class="chapter" data-level="4.1.5" data-path="procesamiento.html"><a href="procesamiento.html#procesamientoModIcoyvshist"><i class="fa fa-check"></i><b>4.1.5</b> Estimaciones puntuales e históricas de indicadores</a></li>
+<li class="chapter" data-level="5.1" data-path="r-rstudio-y-python.html"><a href="r-rstudio-y-python.html#r-y-rstudio"><i class="fa fa-check"></i><b>5.1</b> R y RStudio</a></li>
+<li class="chapter" data-level="5.2" data-path="r-rstudio-y-python.html"><a href="r-rstudio-y-python.html#el-entorno-de-rstudio"><i class="fa fa-check"></i><b>5.2</b> El entorno de RStudio</a></li>
+<li class="chapter" data-level="5.3" data-path="r-rstudio-y-python.html"><a href="r-rstudio-y-python.html#procedimiento-para-ejecutar-proyectos-y-scripts-en-rstudio"><i class="fa fa-check"></i><b>5.3</b> Procedimiento para ejecutar proyectos y scripts en RStudio</a></li>
+<li class="chapter" data-level="5.4" data-path="r-rstudio-y-python.html"><a href="r-rstudio-y-python.html#tipos-de-errores-que-se-pudieran-presentar"><i class="fa fa-check"></i><b>5.4</b> Tipos de errores que se pudieran presentar</a></li>
+<li class="chapter" data-level="5.5" data-path="r-rstudio-y-python.html"><a href="r-rstudio-y-python.html#python"><i class="fa fa-check"></i><b>5.5</b> Python</a></li>
 </ul></li>
-<li class="chapter" data-level="4.2" data-path="procesamiento.html"><a href="procesamiento.html#procesamientoModII"><i class="fa fa-check"></i><b>4.2</b> Módulo II: imputación de indicadores y generación de la MPR</a>
+<li class="chapter" data-level="6" data-path="especificaciones-del-servidor.html"><a href="especificaciones-del-servidor.html"><i class="fa fa-check"></i><b>6</b> Especificaciones del servidor</a></li>
+<li class="chapter" data-level="7" data-path="conceptos-y-hallazgos-clave-en-la-exploración-del-siapi-sipas.html"><a href="conceptos-y-hallazgos-clave-en-la-exploración-del-siapi-sipas.html"><i class="fa fa-check"></i><b>7</b> Conceptos y hallazgos clave en la exploración del SIAPI-SIPAS</a>
 <ul>
-<li class="chapter" data-level="4.2.1" data-path="procesamiento.html"><a href="procesamiento.html#procesamientoModIIconsultaDNE"><i class="fa fa-check"></i><b>4.2.1</b> Consulta al DNE</a></li>
-<li class="chapter" data-level="4.2.2" data-path="procesamiento.html"><a href="procesamiento.html#procesamientoModIIimputacion"><i class="fa fa-check"></i><b>4.2.2</b> Imputación de indicadores laborales al universo de CT</a></li>
-<li class="chapter" data-level="4.2.3" data-path="procesamiento.html"><a href="procesamiento.html#procesamientoModIIprediccion"><i class="fa fa-check"></i><b>4.2.3</b> Predicción de riesgo</a></li>
+<li class="chapter" data-level="7.1" data-path="conceptos-y-hallazgos-clave-en-la-exploración-del-siapi-sipas.html"><a href="conceptos-y-hallazgos-clave-en-la-exploración-del-siapi-sipas.html#conceptos-y-clasificaciones-relevantes."><i class="fa fa-check"></i><b>7.1</b> Conceptos y clasificaciones relevantes.</a>
+<ul>
+<li class="chapter" data-level="7.1.1" data-path="conceptos-y-hallazgos-clave-en-la-exploración-del-siapi-sipas.html"><a href="conceptos-y-hallazgos-clave-en-la-exploración-del-siapi-sipas.html#planeación-de-la-inspección"><i class="fa fa-check"></i><b>7.1.1</b> Planeación de la inspección</a></li>
+<li class="chapter" data-level="7.1.2" data-path="conceptos-y-hallazgos-clave-en-la-exploración-del-siapi-sipas.html"><a href="conceptos-y-hallazgos-clave-en-la-exploración-del-siapi-sipas.html#meta-y-realización-de-inspecciones-a-realizar-por-tipo-estado-y-por-oficina"><i class="fa fa-check"></i><b>7.1.2</b> Meta y realización de inspecciones a realizar por tipo, estado y por oficina</a></li>
 </ul></li>
-<li class="chapter" data-level="4.3" data-path="procesamiento.html"><a href="procesamiento.html#procesamientoModIyIIinterfazAuto"><i class="fa fa-check"></i><b>4.3</b> Módulo I y II: Interfaz de automatización</a></li>
-<li class="chapter" data-level="4.4" data-path="procesamiento.html"><a href="procesamiento.html#procesamientoModIIIinterfazConsulta"><i class="fa fa-check"></i><b>4.4</b> Módulo III: Priorización de los centros de trabajo</a></li>
-<li class="chapter" data-level="4.5" data-path="procesamiento.html"><a href="procesamiento.html#procesamientoModIV"><i class="fa fa-check"></i><b>4.5</b> Módulo IV: Entrenamiento del modelo</a>
+<li class="chapter" data-level="7.2" data-path="conceptos-y-hallazgos-clave-en-la-exploración-del-siapi-sipas.html"><a href="conceptos-y-hallazgos-clave-en-la-exploración-del-siapi-sipas.html#alcance-de-la-inspección"><i class="fa fa-check"></i><b>7.2</b> Alcance de la inspección</a>
 <ul>
-<li class="chapter" data-level="4.5.1" data-path="procesamiento.html"><a href="procesamiento.html#procesamientoModIVSIAPI"><i class="fa fa-check"></i><b>4.5.1</b> Construcción de la serie histórica de inspecciones laborales (2012-2022)</a></li>
-<li class="chapter" data-level="4.5.2" data-path="procesamiento.html"><a href="procesamiento.html#procesamientoModIVindicadores"><i class="fa fa-check"></i><b>4.5.2</b> Construcción de la serie histórica de indicadores laborales</a></li>
-<li class="chapter" data-level="4.5.3" data-path="procesamiento.html"><a href="procesamiento.html#procesamientoModIVmatching"><i class="fa fa-check"></i><b>4.5.3</b> Matching de las series históricas</a></li>
-<li class="chapter" data-level="4.5.4" data-path="procesamiento.html"><a href="procesamiento.html#procesamientoModIVEntrenamiento"><i class="fa fa-check"></i><b>4.5.4</b> Entrenamiento y evaluación del modelo de predicción</a></li>
+<li class="chapter" data-level="7.2.1" data-path="conceptos-y-hallazgos-clave-en-la-exploración-del-siapi-sipas.html"><a href="conceptos-y-hallazgos-clave-en-la-exploración-del-siapi-sipas.html#criterios-de-selección-utilizados-antes-del-sidil."><i class="fa fa-check"></i><b>7.2.1</b> Criterios de selección utilizados antes del SIDIL.</a></li>
 </ul></li>
-</ul></li>
-<li class="chapter" data-level="5" data-path="presentación-sintética-de-todos-los-scripts.html"><a href="presentación-sintética-de-todos-los-scripts.html"><i class="fa fa-check"></i><b>5</b> Presentación sintética de todos los scripts</a></li>
-<li class="chapter" data-level="6" data-path="r-rstudio-y-python.html"><a href="r-rstudio-y-python.html"><i class="fa fa-check"></i><b>6</b> R, RStudio y Python</a>
+<li class="chapter" data-level="7.3" data-path="conceptos-y-hallazgos-clave-en-la-exploración-del-siapi-sipas.html"><a href="conceptos-y-hallazgos-clave-en-la-exploración-del-siapi-sipas.html#aspectos-pendientes-y-posibles-extensiones-a-futuro"><i class="fa fa-check"></i><b>7.3</b> Aspectos pendientes y posibles extensiones a futuro</a>
 <ul>
-<li class="chapter" data-level="6.1" data-path="r-rstudio-y-python.html"><a href="r-rstudio-y-python.html#r-y-rstudio"><i class="fa fa-check"></i><b>6.1</b> R y RStudio</a></li>
-<li class="chapter" data-level="6.2" data-path="r-rstudio-y-python.html"><a href="r-rstudio-y-python.html#el-entorno-de-rstudio"><i class="fa fa-check"></i><b>6.2</b> El entorno de RStudio</a></li>
-<li class="chapter" data-level="6.3" data-path="r-rstudio-y-python.html"><a href="r-rstudio-y-python.html#procedimiento-para-ejecutar-proyectos-y-scripts-en-rstudio"><i class="fa fa-check"></i><b>6.3</b> Procedimiento para ejecutar proyectos y scripts en RStudio</a></li>
-<li class="chapter" data-level="6.4" data-path="r-rstudio-y-python.html"><a href="r-rstudio-y-python.html#tipos-de-errores-que-se-pudieran-presentar"><i class="fa fa-check"></i><b>6.4</b> Tipos de errores que se pudieran presentar</a></li>
-<li class="chapter" data-level="6.5" data-path="r-rstudio-y-python.html"><a href="r-rstudio-y-python.html#python"><i class="fa fa-check"></i><b>6.5</b> Python</a></li>
-</ul></li>
-<li class="chapter" data-level="7" data-path="especificaciones-del-servidor.html"><a href="especificaciones-del-servidor.html"><i class="fa fa-check"></i><b>7</b> Especificaciones del servidor</a></li>
-<li class="chapter" data-level="8" data-path="conceptos-y-hallazgos-clave-en-la-exploración-del-siapi-sipas.html"><a href="conceptos-y-hallazgos-clave-en-la-exploración-del-siapi-sipas.html"><i class="fa fa-check"></i><b>8</b> Conceptos y hallazgos clave en la exploración del SIAPI-SIPAS</a>
-<ul>
-<li class="chapter" data-level="8.1" data-path="conceptos-y-hallazgos-clave-en-la-exploración-del-siapi-sipas.html"><a href="conceptos-y-hallazgos-clave-en-la-exploración-del-siapi-sipas.html#conceptos-y-clasificaciones-relevantes."><i class="fa fa-check"></i><b>8.1</b> Conceptos y clasificaciones relevantes.</a>
-<ul>
-<li class="chapter" data-level="8.1.1" data-path="conceptos-y-hallazgos-clave-en-la-exploración-del-siapi-sipas.html"><a href="conceptos-y-hallazgos-clave-en-la-exploración-del-siapi-sipas.html#planeación-de-la-inspección"><i class="fa fa-check"></i><b>8.1.1</b> Planeación de la inspección</a></li>
-<li class="chapter" data-level="8.1.2" data-path="conceptos-y-hallazgos-clave-en-la-exploración-del-siapi-sipas.html"><a href="conceptos-y-hallazgos-clave-en-la-exploración-del-siapi-sipas.html#meta-y-realización-de-inspecciones-a-realizar-por-tipo-estado-y-por-oficina"><i class="fa fa-check"></i><b>8.1.2</b> Meta y realización de inspecciones a realizar por tipo, estado y por oficina</a></li>
-</ul></li>
-<li class="chapter" data-level="8.2" data-path="conceptos-y-hallazgos-clave-en-la-exploración-del-siapi-sipas.html"><a href="conceptos-y-hallazgos-clave-en-la-exploración-del-siapi-sipas.html#aspectos-pendientes-y-posibles-extensiones-a-futuro"><i class="fa fa-check"></i><b>8.2</b> Aspectos pendientes y posibles extensiones a futuro</a>
-<ul>
-<li class="chapter" data-level="8.2.1" data-path="conceptos-y-hallazgos-clave-en-la-exploración-del-siapi-sipas.html"><a href="conceptos-y-hallazgos-clave-en-la-exploración-del-siapi-sipas.html#limitaciones-en-la-construcción-de-la-variable-dependiente"><i class="fa fa-check"></i><b>8.2.1</b> Limitaciones en la construcción de la variable dependiente</a></li>
-<li class="chapter" data-level="8.2.2" data-path="conceptos-y-hallazgos-clave-en-la-exploración-del-siapi-sipas.html"><a href="conceptos-y-hallazgos-clave-en-la-exploración-del-siapi-sipas.html#posibles-alternativas-como-variable-dependiente"><i class="fa fa-check"></i><b>8.2.2</b> Posibles alternativas como variable dependiente</a></li>
-<li class="chapter" data-level="8.2.3" data-path="conceptos-y-hallazgos-clave-en-la-exploración-del-siapi-sipas.html"><a href="conceptos-y-hallazgos-clave-en-la-exploración-del-siapi-sipas.html#section"><i class="fa fa-check"></i><b>8.2.3</b> </a></li>
+<li class="chapter" data-level="7.3.1" data-path="conceptos-y-hallazgos-clave-en-la-exploración-del-siapi-sipas.html"><a href="conceptos-y-hallazgos-clave-en-la-exploración-del-siapi-sipas.html#limitaciones-en-la-construcción-de-la-variable-dependiente"><i class="fa fa-check"></i><b>7.3.1</b> Limitaciones en la construcción de la variable dependiente</a></li>
+<li class="chapter" data-level="7.3.2" data-path="conceptos-y-hallazgos-clave-en-la-exploración-del-siapi-sipas.html"><a href="conceptos-y-hallazgos-clave-en-la-exploración-del-siapi-sipas.html#posibles-alternativas-como-variable-dependiente"><i class="fa fa-check"></i><b>7.3.2</b> Posibles alternativas como variable dependiente</a></li>
+<li class="chapter" data-level="7.3.3" data-path="conceptos-y-hallazgos-clave-en-la-exploración-del-siapi-sipas.html"><a href="conceptos-y-hallazgos-clave-en-la-exploración-del-siapi-sipas.html#section"><i class="fa fa-check"></i><b>7.3.3</b> </a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="9" data-path="box-and-tables.html"><a href="box-and-tables.html"><i class="fa fa-check"></i><b>9</b> Box and tables</a>
+<li class="chapter" data-level="8" data-path="box-and-tables.html"><a href="box-and-tables.html"><i class="fa fa-check"></i><b>8</b> Box and tables</a>
 <ul>
-<li class="chapter" data-level="9.0.1" data-path="box-and-tables.html"><a href="box-and-tables.html#tablas"><i class="fa fa-check"></i><b>9.0.1</b> Tablas</a></li>
+<li class="chapter" data-level="8.0.1" data-path="box-and-tables.html"><a href="box-and-tables.html#tablas"><i class="fa fa-check"></i><b>8.0.1</b> Tablas</a></li>
 </ul></li>
 </ul>
 
@@ -189,16 +164,16 @@
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="r-rstudio-y-python" class="section level1 hasAnchor" number="6">
-<h1><span class="header-section-number">Capítulo 6</span> R, RStudio y Python<a href="r-rstudio-y-python.html#r-rstudio-y-python" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="r-rstudio-y-python" class="section level1 hasAnchor" number="5">
+<h1><span class="header-section-number">Capítulo 5</span> R, RStudio y Python<a href="r-rstudio-y-python.html#r-rstudio-y-python" class="anchor-section" aria-label="Anchor link to header"></a></h1>
 <p>En este anexo se presentan, fundamentalmente, los conceptos y prácticas básicas en la utilización de la interfaz de RStudio. También se presentan algunos aspectos relevantes de Python, pero que si bien requiere tenerse instalado, desde la perspectiva de SIDIL, no requiere ser ejecutado en una interfaz distinta a Rstudio</p>
-<div id="r-y-rstudio" class="section level2 hasAnchor" number="6.1">
-<h2><span class="header-section-number">6.1</span> R y RStudio<a href="r-rstudio-y-python.html#r-y-rstudio" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="r-y-rstudio" class="section level2 hasAnchor" number="5.1">
+<h2><span class="header-section-number">5.1</span> R y RStudio<a href="r-rstudio-y-python.html#r-y-rstudio" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>La gran mayoría de los algoritmos que constituyen el SIDIL se desarrollaron y mantendrán en el lenguaje R.<a href="#fn3" class="footnote-ref" id="fnref3"><sup>3</sup></a> Esto es independiente de que a través de una interfaz “paraguas” se pudieran automatizar hasta cierto punto la secuencia de los scripts. R es el lenguaje de programación de uso libre desarrollado para el análisis estadístico y gráfico. Afortunadamente existe un ambiente integrado de desarrollo que se llama RStudio (que recientemente cambió su nombre a Posit<a href="#fn4" class="footnote-ref" id="fnref4"><sup>4</sup></a>) y que facilita la programación, compilación y visualización de desarrollos en el lenguaje R. SIDIL prevé que el usuario procese la información con R Studio, y para que este último funcione se requiere tener R instalado. A continuación, se ofrecen detalles sobre las principales características de R y RStudio.</p>
 </div>
-<div id="el-entorno-de-rstudio" class="section level2 hasAnchor" number="6.2">
-<h2><span class="header-section-number">6.2</span> El entorno de RStudio<a href="r-rstudio-y-python.html#el-entorno-de-rstudio" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>El entorno de RStudio está conformado por cuatro partes (ver ilustración <a href="r-rstudio-y-python.html#fig:entornoRStudio">6.1</a>):</p>
+<div id="el-entorno-de-rstudio" class="section level2 hasAnchor" number="5.2">
+<h2><span class="header-section-number">5.2</span> El entorno de RStudio<a href="r-rstudio-y-python.html#el-entorno-de-rstudio" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>El entorno de RStudio está conformado por cuatro partes (ver ilustración <a href="r-rstudio-y-python.html#fig:entornoRStudio">5.1</a>):</p>
 <ol style="list-style-type: decimal">
 <li><p>Scripts: En esta parte se generan o cargan los scripts o archivos de código que se van a ejecutar. Se pueden abrir varios scripts a la vez. Todos los scripts, independientemente de que estén en pestañas separadas, utilizan y cargan objetos del mismo ambiente (a menos que se configure distinto, cosa que no sucede en SIDIL). Para correr una línea de un script se debe poner el cursor sobre la línea que se desee correr y presionar la tecla Control (Ctrl) + Intro o se puede presionar el botón “Run” en la parte izquierda superior de esta sección. Para ejecutar el script completo se debe presionar Ctrl + Shift + Intro. Se pueden seleccionar con el cursor las líneas que se deseen correr y presionar Ctrl+Intro o la tecla Run. Para aquellas/os lectores más familiarizados con Stata, el equivalente a un script en dicho software es el “do file”.</p></li>
 <li><p>Ambiente (Environment): En el ambiente se muestran todos los objetos generados por los códigos. Es importante mencionar que los objetos que se alojan en el ambiente no están guardados en el disco rígido del equipo de cómputo, únicamente están disponibles en esta sección mientras se ejecutan los scripts. Para el guardado de los elementos se debe generar el comando correspondiente en el script o consola, determinando el cómo se quiere guardar el objeto generado. Para eliminar un objeto del ambiente se utiliza el comando rm(). Por ejemplo, rm(resultados_analisis). Si se quiere remover todo tipo de objeto en el ambiente, el comando es: “rm(list = ls())”. En el ambiente se encuentran diferentes tipos de objetos:</p></li>
@@ -217,31 +192,31 @@
 <div class="figure"><span style="display:block;" id="fig:entornoRStudio"></span>
 <img src="images-1/06/RStudio.png" alt="Entorno de RStudio" width="636" />
 <p class="caption">
-Ilustración 6.1: Entorno de RStudio
+Recuadro 5.1: Entorno de RStudio
 </p>
 </div>
 </div>
-<div id="procedimiento-para-ejecutar-proyectos-y-scripts-en-rstudio" class="section level2 hasAnchor" number="6.3">
-<h2><span class="header-section-number">6.3</span> Procedimiento para ejecutar proyectos y scripts en RStudio<a href="r-rstudio-y-python.html#procedimiento-para-ejecutar-proyectos-y-scripts-en-rstudio" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="procedimiento-para-ejecutar-proyectos-y-scripts-en-rstudio" class="section level2 hasAnchor" number="5.3">
+<h2><span class="header-section-number">5.3</span> Procedimiento para ejecutar proyectos y scripts en RStudio<a href="r-rstudio-y-python.html#procedimiento-para-ejecutar-proyectos-y-scripts-en-rstudio" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Abrir el proyecto SIDIL: Esto es fundamental, porque los proyectos en R Studio mantienen de manera ordenada en una misma ruta todos los elementos necesarios para que los códigos se ejecuten de manera correcta, de igual manera albergan los resultados que se producen de dichos códigos.</p>
 <p>Lo importante es primero abrir el proyecto SIDIL, sea desde el Explorador de Windows o desde RStudio.</p>
 <ul>
 <li><p>Si se abre desde el explorador de archivos, se podrá identificar el proyecto por el logo de R y por el tipo de archivo .Rproj. Si se ha abierto con anterioridad el proyecto, este podría desplegar los scripts que se hayan utilizado con anteriormente, si no, será necesario abrir los scripts que se deseen ejecutar o editar en la primera sección de la pantalla (I. Scripts) o seleccionándolos directamente en la sección IV de ubicación de archivos.</p></li>
-<li><p>Si se abre desde el programa RStudio, primero se debe asegurar que no esté ningún proyecto cargado. En la parte superior derecha (sección II de la pantalla), se puede identificar el proyecto en el que se está trabajando. En la ilustración <a href="r-rstudio-y-python.html#fig:RStudioProyectoVacio">6.2</a> se observa que en el ambiente no se muestra ningún proyecto. Al hacer clic sobre la flecha señalando hacia abajo se despliega el menú que permite seleccionar “Open Project…” (ilustración <a href="r-rstudio-y-python.html#fig:RStudioOpenProject">6.3</a>) , navegar hasta la ubicación del proyecto <em>SIDIL.Rproj</em> seleccionarlo y abrirlo para.</p></li>
+<li><p>Si se abre desde el programa RStudio, primero se debe asegurar que no esté ningún proyecto cargado. En la parte superior derecha (sección II de la pantalla), se puede identificar el proyecto en el que se está trabajando. En la ilustración <a href="r-rstudio-y-python.html#fig:RStudioProyectoVacio">5.2</a> se observa que en el ambiente no se muestra ningún proyecto. Al hacer clic sobre la flecha señalando hacia abajo se despliega el menú que permite seleccionar “Open Project…” (ilustración <a href="r-rstudio-y-python.html#fig:RStudioOpenProject">5.3</a>) , navegar hasta la ubicación del proyecto <em>SIDIL.Rproj</em> seleccionarlo y abrirlo para.</p></li>
 </ul>
 <div class="figure"><span style="display:block;" id="fig:RStudioProyectoVacio"></span>
 <img src="images-1/06/proyectoVacio.png" alt="Vista del ambiente sin proyecto" width="240" />
 <p class="caption">
-Ilustración 6.2: Vista del ambiente sin proyecto
+Recuadro 5.2: Vista del ambiente sin proyecto
 </p>
 </div>
 <div class="figure"><span style="display:block;" id="fig:RStudioOpenProject"></span>
 <img src="images-1/06/openproject.png" alt="Vista del ambiente sin proyecto" width="234" />
 <p class="caption">
-Ilustración 6.3: Vista del ambiente sin proyecto
+Recuadro 5.3: Vista del ambiente sin proyecto
 </p>
 </div>
-<p>Si hubiera algún proyecto previamente cargado, se debe cerrar desplegando el menú del proyecto y seleccionando “Close Project” (tercera opción en la ilustración <a href="r-rstudio-y-python.html#fig:RStudioOpenProject">6.3</a>).</p>
+<p>Si hubiera algún proyecto previamente cargado, se debe cerrar desplegando el menú del proyecto y seleccionando “Close Project” (tercera opción en la ilustración <a href="r-rstudio-y-python.html#fig:RStudioOpenProject">5.3</a>).</p>
 <p>El siguiente paso es abrir el script que se desea correr o editar, o bien, generar un nuevo script: Los archivos de códigos que utiliza el proyecto SIDIL en el ambiente RStudio puede ser de dos tipos: R Script (tipo. R) o R Markdown (tipo .Rmd). Para abrir un archivo ya existente o generar uno nuevo se puede realizar desde la primera sección de la pantalla (I. Scripts), donde el primer ícono despliega las opciones de nuevos documentos que se quieren creen, y el tercero abre el explorador de archivos para seleccionar alguno de los documentos ya existentes. Un script ya existente también se puede abrir desde la sección IV del programa RStudio, únicamente hace clic sobre el archivo. R o .Rmd que se desee abrir.</p>
 <p>Una parte primordial para la ejecución de los scripts es la instalación y el llamado de las paqueterías que se utilizarán, ya que estas albergan los comandos que se utilizan en los archivos de códigos. Si bien R Studio cuenta con algunos comandos básicos, la versatilidad del programa permite importar y utilizar cientos de paqueterías que facilitan la generación de códigos con sus comandos. A continuación, se presentan las paqueterías que utiliza el proyecto SIDIL junto con algunos de los principales comandos de cada una. Esta lista de principales comandos no es exhaustiva y muchas paqueterías pueden contener cientos de comandos.</p>
 <table style="width:100%;">
@@ -438,8 +413,8 @@ Existen otros comandos para guardar las bases de datos en otros formatos: write.
 </ul>
 <p>Además de estos, se utilizan muchos otros comandos de las paqueterías cargadas, no obstante, estos son los que se utilizan con más frecuencia ya que son los básicos para la carga, transformación y guardado de la información que utiliza el SIDIL. Si surge alguna duda, o si se requiere profundizar en estos u otros comandos, existe amplia información en internet que incluye explicaciones y ejemplos sobre el uso de los diversos comandos en el ambiente de RStudio, dos de las principales fuentes de consulta son: www. cran.r-project.org y <a href="http://www.stackoverflow.com">www.stackoverflow.com</a>, o bien con el comando help(package=“__”), poniendo entre las comillas el nombre de la paquetería que se desea buscar. De igual manera, si se desea buscar información sobre algún comando, se puede utilizar la línea de código help(__, package=“__”), poniendo en el primer argumento el comando en cuestión y en el segundo la paquetería al que pertenece.</p>
 </div>
-<div id="tipos-de-errores-que-se-pudieran-presentar" class="section level2 hasAnchor" number="6.4">
-<h2><span class="header-section-number">6.4</span> Tipos de errores que se pudieran presentar<a href="r-rstudio-y-python.html#tipos-de-errores-que-se-pudieran-presentar" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="tipos-de-errores-que-se-pudieran-presentar" class="section level2 hasAnchor" number="5.4">
+<h2><span class="header-section-number">5.4</span> Tipos de errores que se pudieran presentar<a href="r-rstudio-y-python.html#tipos-de-errores-que-se-pudieran-presentar" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Típicamente se pueden presentar los siguientes errores al trabajar en RStudio.</p>
 <ol style="list-style-type: decimal">
 <li><p>Errores de lectura de información</p>
@@ -460,7 +435,7 @@ Existen otros comandos para guardar las bases de datos en otros formatos: write.
 <ol style="list-style-type: decimal">
 <li><p>Hay dos posibles causas:</p>
 <ol style="list-style-type: lower-alpha">
-<li>Que en efecto el procesamiento de la información sea el adecuado, pero quizá, incluso por otros procesos en curso, la computadora no cuenta con la memoria suficiente. Para esto se deben finalizar en el administrador de tareas los programas que no estén en uso, y desde la consola de RStudio, desplegar el menú de memoria en uso del ambiente, y liberal memoria que no esté en uso, como muesta la ilustración <a href="r-rstudio-y-python.html#fig:memoriaRstudio">6.4</a>.</li>
+<li>Que en efecto el procesamiento de la información sea el adecuado, pero quizá, incluso por otros procesos en curso, la computadora no cuenta con la memoria suficiente. Para esto se deben finalizar en el administrador de tareas los programas que no estén en uso, y desde la consola de RStudio, desplegar el menú de memoria en uso del ambiente, y liberal memoria que no esté en uso, como muesta la ilustración <a href="r-rstudio-y-python.html#fig:memoriaRstudio">5.4</a>.</li>
 </ol></li>
 </ol></li>
 </ol></li>
@@ -469,7 +444,7 @@ Existen otros comandos para guardar las bases de datos en otros formatos: write.
 <div class="figure"><span style="display:block;" id="fig:memoriaRstudio"></span>
 <img src="images-1/06/memoriaR.png" alt="Liberación de memoria en RStudio" width="228" />
 <p class="caption">
-Ilustración 6.4: Liberación de memoria en RStudio
+Recuadro 5.4: Liberación de memoria en RStudio
 </p>
 </div>
 <ol start="2" style="list-style-type: lower-alpha">
@@ -491,8 +466,8 @@ Ilustración 6.4: Liberación de memoria en RStudio
 </ol>
 <p>La consola de RStudio siempre mostrará el error y alguna información extra, esta debe ser tenida en cuenta ya que muestra la naturaleza del error y, algunas veces, la solución, de no ser así, se puede rastrear el error y solucionarlo con ayuda de internet.</p>
 </div>
-<div id="python" class="section level2 hasAnchor" number="6.5">
-<h2><span class="header-section-number">6.5</span> Python<a href="r-rstudio-y-python.html#python" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="python" class="section level2 hasAnchor" number="5.5">
+<h2><span class="header-section-number">5.5</span> Python<a href="r-rstudio-y-python.html#python" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>A continuación, se dará una breve descripción de las principales librerías de Python usadas para el SIDIL. Entre paréntesis se indica el número de versión que se utiliza de cada librería.</p>
 <ul>
 <li><p>Numpy (1.23.4) proporciona soporte para el cálculo numérico y la manipulación de datos en forma de arrays y matrices. Es muy útil para realizar cálculos matemáticos y estadísticos de forma eficiente, y es una de las librerías más utilizadas en el área de la ciencia de datos.</p></li>
@@ -536,7 +511,17 @@ Ilustración 6.4: Liberación de memoria en RStudio
 <script>
 gitbook.require(["gitbook"], function(gitbook) {
 gitbook.start({
-"sharing": null,
+"sharing": {
+"github": true,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
 "fontsettings": {
 "theme": "white",
 "family": "sans",
@@ -554,7 +539,7 @@ gitbook.start({
 "link": null,
 "text": null
 },
-"download": null,
+"download": ["bookdownproj.none"],
 "search": {
 "engine": "fuse",
 "options": null
@@ -567,20 +552,6 @@ gitbook.start({
 });
 </script>
 
-<!-- dynamically load mathjax for compatibility with self-contained -->
-<script>
-  (function () {
-    var script = document.createElement("script");
-    script.type = "text/javascript";
-    var src = "true";
-    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
-    if (location.protocol !== "file:")
-      if (/^https?:/.test(src))
-        src = src.replace(/^https?:/, '');
-    script.src = src;
-    document.getElementsByTagName("head")[0].appendChild(script);
-  })();
-</script>
 </body>
 
 </html>

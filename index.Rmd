@@ -2,11 +2,12 @@
 title: "SIDIL: Manual del procesamiento y explotación de la información"
 author: "American Institutes for Research"
 site: bookdown::bookdown_site
-output: 
+output:
   bookdown::markdown_document2:
     number_sections: true
     always_allow_html: true
-github-repo: https://anhdzol.github.io/testsidil/
+# output: word_document
+github-repo: anhdzol/testsidil/
 description: "Breve descripcion pendiente"
 always_allow_html: true
 
@@ -108,17 +109,17 @@ Buscando fortalecer el objetivo de que desde la inspección laboral se vigile y 
 Para abordar el reto de seleccionar empresas de alto riesgo mediante el uso de la analítica de datos debieron desarrollarse herramientas y actividades para la elaboración de criterios de detección de violaciones y desviaciones de las normas laborales, con la formalización de indicadores que de estos criterios, la gestión y procesamiento de información y el desarrollo y la puesta en funcionamiento de herramientas tecnológicas que permitan el almacenamiento de los datos, su explotación y consulta.
 
 
-**PENDIENTE ELABORAR SOBRE ESTA ILUSTRACIÓN**
-Como muestra la ilustración \@ref(fig:esquemaPPTSalafranca), ....LOREM IPSUM...
+Como muestra la ilustración \@ref(fig:esquemaPPTSalafranca), el SIDIL parte del acceso y explotación de diferentes fuentes de información, propiedad de la STPS pero también de otras instituciones de relevancia en materia laboral. A través de un proceso de minería de datos, se genera una matriz de predicción de riesgos. Ésta es explotada por una interfaz de consulta que reduce el universo de CT a un subconjunto de CT que cumplen con ciertos criterios de filtrado y análisis. Así, SIDIL permite la realización de operativos inteligentes que reflejan las prioridades de inspección.
 
-```{r esquemaPPTSalafranca,echo=FALSE, fig.cap="Presentación esquematizada de la solución"}
+
+```{r esquemaPPTSalafranca,echo=FALSE, out.width="50%", fig.cap="Presentación esquematizada de la solución"}
 knitr::include_graphics("images-1/01/esquemaPPTSalafranca.jpg")
 ```
 
 **LA IMAGEN ANTERIOR REEMPLAZARÍA ESTA OTRA** 
 
 
-![Ilustración XXX: ](images-1/01/Ilustracion1.png)
+![Ilustración XXX: ](images-1/01/Ilustracion1.png){ out.width="50%"}
 
 
 En el esquema anterior se puede observar los componentes básicos de la solución planteada, que tienen que ver con:
