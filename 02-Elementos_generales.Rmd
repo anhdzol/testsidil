@@ -331,7 +331,7 @@ El resto de los catálogos están organizados en subcarpetas según el tipo de i
     a.  Catálogo de materias y submaterias que forman parte del potencial alcance de una inspección (subcarpeta *marco_normativo*, archivo: *cat_submaterias)*. Establece la relación entre el código identificador de submaterias y materias de inspección con las etiquetas.
 
 
-```{r relacionDNESNILESIAPISIPAS, class.source='myClass', echo=FALSE, out.width="50px", fig.cap="Versiones de archivos de catálogos.", out.extra='style="float:left; background-color: #f5f5f5; padding-right:1em"'}
+```{r cambioscatalogos, class.source='myClass', echo=FALSE, out.width="50px", fig.cap="Versiones de archivos de catálogos.", out.extra='style="float:left; background-color: #f5f5f5; padding-right:1em"'}
 knitr::include_graphics("images-1/important-icon.svg")
 # htmltools::HTML(fn('Nombre del recuadro desde DIV...'))
 ```

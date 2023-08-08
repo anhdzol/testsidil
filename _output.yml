@@ -9,3 +9,4 @@ bookdown::gitbook:
         <li><a href="./">Manual de procesamiento y explotación de información</a></li>
       scroll_highlight: true
       collapse: none
+bookdown::epub_book: default

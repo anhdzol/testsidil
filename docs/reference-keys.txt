@@ -13,11 +13,14 @@ fig:arboldecision
 fig:scriptsecuenciador
 fig:secConfigInicial
 fig:organizacioncatalogos
+fig:versionadoelementos
+fig:cambioscatalogos
 fig:entornoRStudio
 fig:RStudioProyectoVacio
 fig:RStudioOpenProject
 fig:memoriaRstudio
 fig:volumeninspecciones
+fig:indiceinspecciones
 fig:Metasanualesinspeccion
 fig:InspectoresUR
 fig:programadorealizado
@@ -28,8 +31,8 @@ fig:submateriasSH
 fig:tetrisprogramacion
 fig:modulosSIDasdaIL
 fig:testBox
-tab:unnamed-chunk-9
-tab:unnamed-chunk-10
+tab:unnamed-chunk-12
+tab:unnamed-chunk-13
 introapertura
 introalineacion
 introjustificacion
@@ -53,6 +56,7 @@ mensajesAdvertencia
 mensajesConfirmacion
 software-para-el-procesamiento-de-datos
 catalogos
+la-matriz-de-predicción-de-riesgo
 presentación-sintética-de-todos-los-scripts
 r-rstudio-y-python
 r-y-rstudio
@@ -61,7 +65,7 @@ procedimiento-para-ejecutar-proyectos-y-scripts-en-rstudio
 tipos-de-errores-que-se-pudieran-presentar
 python
 especificaciones-del-servidor
-conceptos-y-hallazgos-clave-en-la-exploración-del-siapi-sipas
+anexoHallazgos
 conceptos-y-clasificaciones-relevantes.
 planeación-de-la-inspección
 meta-y-realización-de-inspecciones-a-realizar-por-tipo-estado-y-por-oficina

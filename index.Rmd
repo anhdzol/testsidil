@@ -31,13 +31,8 @@ El SIDIL fue desarrollado por American Institutes for Research (AIR) en colabora
  
 El SIDIL responde a la necesidad de hacer un uso eficiente y eficaz de los recursos públicos a través de la focalización de los universos de las inspecciones y al propósito de realizar una mejor cobertura de los diferentes tipos de riesgos laborales, a la no repetición de inspecciones y a la priorización de CT con mayor probabilidad de incumplimiento, entre otros aspectos relativos a la eficiencia y eficacia de las inspecciones laborales.
 
-En los primeros meses de este proyecto el equipo se abocó al entendimiento, descripción y explotación de los registros administrativos del proceso de inspección y sanción. Dicho trabajó concluyó de manera preliminar en un documento de hallazgos, cuyos principales resultados fueron presentados a la STPS.
+En los primeros meses de este proyecto el equipo se abocó al entendimiento, descripción y explotación de los registros administrativos del proceso de inspección y sanción. Dicho trabajó concluyó de manera preliminar en un documento de hallazgos, cuyos principales resultados fueron presentados a la STPS. Algunos de ellos se presentan en el [anexo correspondiente](#anexoHallazgos).
 
-
-[[pendiente definir sobre: 
-
-[DOCUMENTO DE HALLAZGOS](https://msair.sharepoint.com/:w:/r/sites/Impaq_Projects/Mexico/CALLE/Ongoing%20Tasks/Data%20Intelligence/Data%20Analysis/2022-01%20An%C3%A1lisis%20SIAPI_SIPAS%20-%20Hallazgos.docx?d=wf74a0d86ad244c92a86c8a88e3af6f1e&csf=1&web=1&e=GcTmkv)
-]]
 
 En cuanto a los temas técnicos, abordar el reto de seleccionar empresas de alto riesgo mediante el uso de la analítica de datos resulta adecuado para los algoritmos de aprendizaje automático, ya que se cuenta con una masa crítica de información para procesar.  A lo largo de este proyecto el equipo de AIR se abocó al análisis de datos, la incorporación de fuentes de información, su relacionamiento, la definición de indicadores, la generación y entrenamiento de modelos estadísticos para la predicción de riesgo y el desarrollo de un poderoso sistema de información, que se presenta a detalle a lo largo de este documento.
 
@@ -58,6 +53,8 @@ En la Estrategia prioritaria “4.4.- Reestructurar la inspección laboral con �
 Por su parte la Estrategia Digital Nacional (EDN) centra su razón de ser en la necesidad de orientar el uso y el desarrollo de las TIC al bienestar del pueblo mexicano con una visión humanista del uso de las tecnologías y guardando estrictamente los principios de austeridad republicana, transparencia, privilegiando lo público y el uso o desarrollo nacional de tecnologías de acceso abierto [...] Visión: Un país digitalizado y un gobierno austero, honesto y transparente, con autonomía e independencia tecnológicas, centrado en las necesidades ciudadanas, principalmente de los más pobres.
 
 Entre sus Líneas de acción figuran:
+
+
 *	Definir elementos técnicos y normativos clave para la contratación o desarrollo de soluciones tecnológicas propias, de acceso abierto.
 *	Fomentar el desarrollo de sistemas de información gubernamentales propios y de acceso abierto que se compartan entre Instituciones.
 * Priorizar el uso de Software Libre y estándares abiertos.
@@ -116,15 +113,15 @@ Como muestra la ilustración \@ref(fig:esquemaPPTSalafranca), el SIDIL parte del
 knitr::include_graphics("images-1/01/esquemaPPTSalafranca.jpg")
 ```
 
-**LA IMAGEN ANTERIOR REEMPLAZARÍA ESTA OTRA** 
+[**LA IMAGEN ANTERIOR REEMPLAZARÍA ESTA OTRA** ][.mark]
 
 
-![Ilustración XXX: ](images-1/01/Ilustracion1.png){ out.width="50%"}
+![Ilustración BORRABLE: ](images-1/01/Ilustracion1.png){ out.width="50%"}
 
 
 En el esquema anterior se puede observar los componentes básicos de la solución planteada, que tienen que ver con:
 
-* ~~La concentración y procesamiento de la información estadística y los estudios especializados que permiten el análisis de las redes y cadenas productivas, del contexto laboral y su caracterización en materia de actividad económica, ocupación, empleo, evolución de los sueldos y salarios, etc.~~
+* SUGIERO QUITAR: [ ~~La concentración y procesamiento de la información estadística y los estudios especializados que permiten el análisis de las redes y cadenas productivas, del contexto laboral y su caracterización en materia de actividad económica, ocupación, empleo, evolución de los sueldos y salarios, etc.~~]{.mark}
 * La limpieza, enriquecimiento y relacionamiento de información que se pudo integrar en bases de datos para su análisis. Esta información, como ya se mencionó, proviene tanto de fuentes internas como externas, a través de convenios de colaboración.
 * La determinación de los criterios de análisis que buscaron identificar las principales violaciones y que reflejen las prioridades en materia de política pública que deben guiar la inspección del trabajo.
 * El desarrollo de las herramientas que, a partir del establecimiento de los criterios mencionados y su descomposición en indicadores, permitieron llevar a cabo análisis basados en algoritmos de analítica, minería de datos y aprendizaje de máquina.

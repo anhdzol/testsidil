@@ -65,6 +65,20 @@
 \providecommand{\tightlist}{%
   \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
 \setcounter{secnumdepth}{5}
+\usepackage{booktabs}
+\usepackage{longtable}
+\usepackage{array}
+\usepackage{multirow}
+\usepackage{wrapfig}
+\usepackage{float}
+\usepackage{colortbl}
+\usepackage{pdflscape}
+\usepackage{tabu}
+\usepackage{threeparttable}
+\usepackage{threeparttablex}
+\usepackage[normalem]{ulem}
+\usepackage{makecell}
+\usepackage{xcolor}
 \ifLuaTeX
   \usepackage{selnolig}  % disable illegal ligatures
 \fi
@@ -194,8 +208,7 @@ Buscando fortalecer el objetivo de que desde la inspección laboral se vigile y 
 
 Para abordar el reto de seleccionar empresas de alto riesgo mediante el uso de la analítica de datos debieron desarrollarse herramientas y actividades para la elaboración de criterios de detección de violaciones y desviaciones de las normas laborales, con la formalización de indicadores que de estos criterios, la gestión y procesamiento de información y el desarrollo y la puesta en funcionamiento de herramientas tecnológicas que permitan el almacenamiento de los datos, su explotación y consulta.
 
-\textbf{PENDIENTE ELABORAR SOBRE ESTA ILUSTRACIÓN}
-Como muestra la ilustración \ref{fig:esquemaPPTSalafranca}, \ldots.LOREM IPSUM\ldots{}
+Como muestra la ilustración \ref{fig:esquemaPPTSalafranca}, el SIDIL parte del acceso y explotación de diferentes fuentes de información, propiedad de la STPS pero también de otras instituciones de relevancia en materia laboral. A través de un proceso de minería de datos, se genera una matriz de predicción de riesgos. Ésta es explotada por una interfaz de consulta que reduce el universo de CT a un subconjunto de CT que cumplen con ciertos criterios de filtrado y análisis. Así, SIDIL permite la realización de operativos inteligentes que reflejan las prioridades de inspección.
 
 \begin{figure}
 \includegraphics[width=0.5\linewidth]{images-1/01/esquemaPPTSalafranca} \caption{Presentación esquematizada de la solución}\label{fig:esquemaPPTSalafranca}
@@ -306,11 +319,11 @@ A su vez, la compartimentalización se observa, cuando es posible, al interior m
 
 Así mismo, la modularización abona a la facilidad de dar mantenimiento a los diferentes componentes del SIDIL. La ejecución de los módulos por separado (en contraste con una ejecución única de todos los módulos) hace que, de presentarse problemas o de ser necesarias una revisión, ésta pueda concentrarse en los módulos en donde fuera de interés sin afectar a los demás módulos. La modularización permite aprovechar posibles ventajas comparativas, áreas de especialización e incluso atribuciones heterogéneas al interior de la STPS, permitiendo limitar el acceso a ciertas carpetas o subcarpetas en las que se alojan los inputs o scripts de ciertos módulos.
 
-\begin{verbatim}
-## [1] "aqui PIPELINE"
-\end{verbatim}
+\begin{figure}
+\includegraphics[width=0.5\linewidth]{images-1/02/pipeline_elaborado} \caption{Módulos que componen el SIDIL}\label{fig:modulosSIDIL}
+\end{figure}
 
-El SIDIL tiene cuatro módulos, tal como se muestra en la ilustración \ref{fig:modulosSIDIL}: El \protect\hyperlink{moduloIexplicaciongeneral}{primer módulo} es el de actualización de indicadores, mismo que explota las fuentes de información exógenas; el \protect\hyperlink{moduloIIexplicaciongeneral}{segundo módulo} es el de consulta al universo de CT registrados en el DNE, la imputación de indicadores y de predicción de riesgo, que incorpora los resultados del módulo anterior. Estos dos módulos son operables a través de una \protect\hyperlink{moduloIyIIexplicaciongeneral}{interfaz de automatización}, misma que a su vez permite de una manera muy simple, asegurando coherencia y consistencia, la incorporación y actualización de catálogos y fuentes de información.
+El SIDIL tiene cuatro módulos, tal como se muestra en el recuadro \ref{fig:modulosSIDIL}: El \protect\hyperlink{moduloIexplicaciongeneral}{primer módulo} es el de actualización de indicadores, mismo que explota las fuentes de información exógenas; el \protect\hyperlink{moduloIIexplicaciongeneral}{segundo módulo} es el de consulta al universo de CT registrados en el DNE, la imputación de indicadores y de predicción de riesgo, que incorpora los resultados del módulo anterior. Estos dos módulos son operables a través de una \protect\hyperlink{moduloIyIIexplicaciongeneral}{interfaz de automatización}, misma que a su vez permite de una manera muy simple, asegurando coherencia y consistencia, la incorporación y actualización de catálogos y fuentes de información.
 
 Así, la interfaz de automatización abarca el desarrollo de los procesos que están en color azul en esta ilustración. Luego, el tercer módulo es el de la \protect\hyperlink{interfazConsultaexplicaciongeneral}{interfaz de consulta}, que explota el principal resultado del módulo anterior (la Matriz de Predicción de Riesgos, MPR). Esta consulta está esquematizada en el área verde de la figura, y da como resultado un \emph{listado de centros de trabajo priorizados}, listos para ser incorporados a la programación de inspecciones. Por último, el cuarto módulo, de entrenamiento, es el que permite reentrenar el modelo para actualizar la forma en la que se realizará la predicción. El módulo cuarto arroja un modelo predictivo entrenado (llamémoslo ``parámetros del modelo'') que el módulo II consulta para la predicción del modelo sobre el universo de CT enriquecido con los indicadores. A continuación, se ofrecen las principales características de estos módulos.
 
@@ -492,7 +505,7 @@ Hasta aquí se obtiene el universo de los CT extraído del DNE y enriquecido con
 
 \textbf{A partir de los indicadores imputados a cada uno de los CT, y con base en el modelo entrenado (ver módulo IV) se calculará el riesgo de incumplimiento de cada uno de ellos por submateria.} La información de indicadores, para cada uno de los CT del universo, se utiliza como insumo para el cálculo de factores que permitirán la predicción del riesgo de incumplimiento en cada una de las submaterias de las Condiciones Generales de Trabajo a través de la \textbf{aplicación del modelo} (previamente entrenado\^{}{[}Conviene enfatizar que no es en este módulo donde se entrena el modelo, ya que eso forma parte del módulo IV, en este caso sólo se aplica el modelo previamente entrenado.) para predecir y atribuir un factor de riesgo de incumplimiento a cada centro de trabajo para cada submateria.
 
-El resultado final de este módulo es la \textbf{Matriz de Predicción de Riesgos} (MPR), misma que se analiza en mucho más detalle en la sección. 3.10. Aquí conviene mencionar que la MPR tiene tantas filas como centros de trabajo registrados en el DNE y el número de columnas dependerá de la disponibilidad de indicadores, del número de atributos que se consulten al DNE (cuando menos serán aquellos campos de geografía, clasificación industrial y tamaño) y del número de submaterias sobre las cuales se realiza una predicción de riesgo, como muestra la Ilustración 3 a continuación.
+El resultado final de este módulo es la \textbf{Matriz de Predicción de Riesgos} (MPR), misma que se analiza en mucho más detalle en la sección. 3.10. Aquí conviene mencionar que la MPR tiene tantas filas como centros de trabajo registrados en el DNE y el número de columnas dependerá de la disponibilidad de indicadores, del número de atributos que se consulten al DNE (cuando menos serán aquellos campos de geografía, clasificación industrial y tamaño) y del número de submaterias sobre las cuales se realiza una predicción de riesgo, como muestra el recuadro \ref{fig:MPRsimplificada} a continuación.
 
 \begin{figure}
 \includegraphics[width=11.61in]{images-1/02/MPR_simplificada} \caption{Matriz de predicción de riesgos (ilustración simplificada)}\label{fig:MPRsimplificada}
@@ -507,8 +520,6 @@ El resultado final de este módulo es la \textbf{Matriz de Predicción de Riesgo
 \textbf{En el proceso de la actualización de los módulos I y II desde esta interfaz, en la consola de procesamiento se presenta solamente la información más ejecutiva sin abundar en todo el detalle técnico del procesamiento de información.} Esto implica, que: a) la interfaz permite la ejecución automatizada de los códigos del módulo I y II, más no exime de la responsabilidad de analizar los resultados reportados en su consola; y b) la interfaz no presenta toda la información que un usuario más técnico pudiera requerir para su análisis y comprensión de los procedimientos ejecutados, la que se encuentran en las bitácoras de cada proceso, también accesibles para un usuario más avanzado. Por último, realizadas las principales actualizaciones, la interfaz permite la descarga de la MPR más reciente y enviarla a la interfaz de consulta, poniendo así la MPR a disposición del otro tipo de usuario del SIDIL, el personal de la UTD, para la priorización de CT conforme a las estrategias de selección que se presenten.
 
 \textbf{En contraste con la interfaz de consulta (ver más adelante), esta interfaz, si bien facilita la ejecución de los módulos I y II, sí requiere de cierto conocimiento técnico} -- estadístico en cuanto a que algunos de los mensajes que se reportan en su consola, si bien sólo se reportan a título informativo y no se espera una aprobación explícita del usuario, permiten a un usuario informado determinar que los resultados obtenidos guardan sentido. Por ejemplo, en un momento determinado la actualización de los indicadores del IMSS reporta el porcentaje que las mujeres representan en el total de personas aseguradas. Un usuario informado sabe que aproximadamente este porcentaje se ubica alrededor del 40\% y que cualquier desviación sustantiva de dicho porcentaje pudiera implicar que la identificación del sexo a partir de la CURP de las personas aseguradas no resultó satisfactoria o que hubo algún problema en el procesamiento realizado. De manera análoga, un usuario experimentado conoce el total de personas ocupadas que se estiman a partir de la ENOE (y sabe cómo validar esta estimación en el portal del INEGI), por lo que cualquier desviación sustantiva de una estimación normal tendría que llamarle la atención, ameritar la interrupción del proceso e iniciar una revisión exhaustiva a nivel código para encontrar la solución a dicho error de cálculo.
-
-Recuadro 6:
 
 \begin{figure}
 \includegraphics[width=50px,style="float:left; background-color: #f5f5f5; padding-right:1em"]{images-1/important-icon} \caption{La utilización de la interfaz de automatización}\label{fig:utilizacioninterfazauto}
@@ -672,6 +683,10 @@ A su vez, es desde el script de configuración inicial que se ejecuta de manera 
 
 El motivo por el cual el script que lee catálogos y define funciones no está directamente contenido en el de configuración inicial reside en que para la ejecución de ciertos procesos en la interfaz de automatización se requiere únicamente la lectura de catálogos y funciones. Sin embargo, no afecta a la conclusión de que el script de configuración inicial es de menester importancia y se ejecuta en todos los procesos del SIDIL que se realizan con R.
 
+\hl{@\citet{Propuesta} de capsula: tour rapido por config inicial y 0 funciones:
+@@ sobre todo importante porque habra cambios importantes para acomodar las apps de las interfaces.
+@\citet{posiblemente} mas o menos por aqui se incorpore todavía un parrafo al respecto}
+
 \hypertarget{secuenciadores}{%
 \subsubsection{Scripts secuenciadores}\label{secuenciadores}}
 
@@ -762,7 +777,7 @@ Al interior de 1\_insumos se encuentran tres subcarpetas:
 \item
   La segunda es \emph{originales} y sirve para depositar las fuentes de información sin procesamiento previo, por ejemplo, los archivos originales en formato dbf que componen la ENOE, o los archivos separados por tabulados que componen los registros administrativos del IMSS.
 \item
-  En la tercer subcarpeta, de nombre \emph{procesados}, se almacenan los resultados del procesamiento que ya forma parte del SIDIL, concretamente, el resultado de la extracción y transformación de cada fuente de información, siempre que se requiera el guardado de los temporales procesados.
+  En la tercer subcarpeta, de nombre \emph{procesados}, se almacenan los resultados del procesamiento que ya forma parte del SIDIL, concretamente, el resultado de la extracción y transformación de cada fuente de información, siempre que se requiera el guardado de los temporales procesados. Notar que un criterio que determina si los resultados se resguardan aquí, en esta carpeta, o en \emph{3\_resultados} es que siempre que los resultados sean consultados por otro módulo entonces se guardan en \emph{3\_resultados}.
 
   \begin{itemize}
   \tightlist
@@ -770,6 +785,9 @@ Al interior de 1\_insumos se encuentran tres subcarpetas:
     Notar que en el caso de la ENOE, dado que su procesamiento no demanda mucha RAM, no se escribe a disco en esta carpeta. En contraste, para el procesamiento del IMSS se escriben tanto archivos temporales intermedios (que se borran luego de su utilización de manera automática) como también el guardado de los procesados ``finales'' (sin que estos sean resultados, sino que únicamente ``preprocesados'' que reducen las dimensiones y ``limpian'' algunos campos de los insumos).
   \end{itemize}
 \end{itemize}
+
+\hl{@@ idea capsula
+breve tour por las carpetas dentro de 1\_insumos}
 
 Al interior de \emph{2\_codigos}, existen tres principales subcarpetas:
 
@@ -806,6 +824,11 @@ En la carpeta \emph{4\_reportes} se albergan cuatro subcarpetas
   \emph{parametros: es la exportación de los parámetros que se definen en el script de configuración inicial.}
 \end{itemize}
 
+\hl{@@ idea video capsula:
+breve tour por las carpetas dentro de 4\_resultados
+particularmente mostrar la diferencia entre las dos bitacoras.
+mostrar también cómo se lee el log}
+
 \hypertarget{temporalidad}{%
 \subsection{Sobre la temporalidad}\label{temporalidad}}
 
@@ -822,39 +845,48 @@ El SIDIL, a lo largo de los diferentes módulos, está configurado para procesar
 
 En cambio, el formato de la referencia al periodo temporal es específico para cada fuente de información, toda vez que la frecuencia de actualización y representatividad es específica a cada fuente. Así por ejemplo la tabla con la información sociodemográfica de las personas encuestadas en la ENOE contiene en su nombre ``1t2022'' haciendo referencia al primer trimestre de 2022. En cambio, para el IMSS; cuya información original es de frecuencia mensual, la referencia es 2022131 (que representa la fecha de corte al 31 de enero de 2022).
 
-Recuadro 6: Versionado de elementos
+\begin{figure}
+\includegraphics[width=50px,style="float:left; background-color: #f5f5f5; padding-right:1em"]{images-1/important-icon} \caption{Versionado de elementos}\label{fig:versionadoelementos}
+\end{figure}
 
-\begin{longtable}[]{@{}
-  >{\raggedright\arraybackslash}p{(\columnwidth - 0\tabcolsep) * \real{1.0011}}@{}}
-\caption{El versionado de los archivos no solo permite la trazabilidad (ver subsección siguiente) sino que además es indispensable para el funcionamiento adecuado del SIDIL. Dos ejemplos: primero, la lectura de scripts de cálculo de indicadores en el módulo I requiere la identificación de fecha (tan solo para poder aplicarlo, pero además para identificar la versión más reciente). De la misma manera, la interfaz de explotación de datos requiere del adecuado versionado de la MPR para poder identificar la versión más reciente y ofrecer la predicción de riesgos más actualizada.}\tabularnewline
-\toprule\noalign{}
-\begin{minipage}[b]{\linewidth}\raggedright
-\textbf{El principio de versionado para todos los elementos en SIDIL es que la última versión de dicho elemento es la que se debe utilizar,} motivo por el cual, en el nombre del elemento (así como se guarda en las carpetas referidas) se debe incluir la fecha.
+\begin{rmdcomment}
+\textbf{El principio de versionado para todos los elementos en SIDIL es
+que la última versión de dicho elemento es la que se debe utilizar,}
+motivo por el cual, en el nombre del elemento (así como se guarda en las
+carpetas referidas) se debe incluir la fecha.
 
-El formato de definición de la fecha que se utiliza para identificar la versión únicamente será el siguiente: \emph{aaaa\_mm\_dd\_hhmm}, es decir, cuatro dígitos para el año, seguido de un guion bajo, luego dos dígitos para el mes, otro guion bajo, luego dos dígitos para el día, otro guion bajo, y dos dígitos de la hora~ y dos de la hora juntos. Notar que la hora es en formato 24 horas. Por ejemplo: 2022\_11\_03\_0901 (año 2022, mes noviembre, día 03, 09 horas con 01 minutos). Este versionado se actualiza y genera automáticamente mediante el script de configuración inicial. La fecha y hora se obtiene directamente del sistema.
+El formato de definición de la fecha que se utiliza para identificar la
+versión únicamente será el siguiente: \emph{aaaa\_mm\_dd\_hhmm}, es
+decir, cuatro dígitos para el año, seguido de un guion bajo, luego dos
+dígitos para el mes, otro guion bajo, luego dos dígitos para el día,
+otro guion bajo, y dos dígitos de la hora~ y dos de la hora juntos.
+Notar que la hora es en formato 24 horas. Por ejemplo:
+2022\_11\_03\_0901 (año 2022, mes noviembre, día 03, 09 horas con 01
+minutos). Este versionado se actualiza y genera automáticamente mediante
+el script de configuración inicial. La fecha y hora se obtiene
+directamente del sistema.
 
-Para los scripts, el versionado también se incluye en el nombre del script al guardarlo; no es necesario incluir la hora y minuto del guardado pero sí mantener la estructura \emph{aaaa\_mm\_dd} de la fecha. Notar que el guardado de scripts se realiza de manera manual, toda vez que se consideran relativamente estables en el SIDIL y que justamente por eso el versionado de scripts no lleva horas ni minutos Es decir, cada cambio que se realice al script, se sugiere enfáticamente, debe culminar con el guardado de una nueva versión con una fecha posterior (al menos un día) a la versión anterior. El SIDIL está configurado para que scripts como el secuenciador, busquen la última versión de los diferentes scripts. En consecuencia:~ si hay dos elementos con el mismo nombre, se utiliza el que tenga la fecha de edición más reciente. Esta regla aplica para toda lectura de insumos.
+Para los scripts, el versionado también se incluye en el nombre del
+script al guardarlo; no es necesario incluir la hora y minuto del
+guardado pero sí mantener la estructura \emph{aaaa\_mm\_dd} de la fecha.
+Notar que el guardado de scripts se realiza de manera manual, toda vez
+que se consideran relativamente estables en el SIDIL y que justamente
+por eso el versionado de scripts no lleva horas ni minutos Es decir,
+cada cambio que se realice al script, se sugiere enfáticamente, debe
+culminar con el guardado de una nueva versión con una fecha posterior
+(al menos un día) a la versión anterior. El SIDIL está configurado para
+que scripts como el secuenciador, busquen la última versión de los
+diferentes scripts. En consecuencia:~ si hay dos elementos con el mismo
+nombre, se utiliza el que tenga la fecha de edición más reciente. Esta
+regla aplica para toda lectura de insumos.
 
-Esto debe distinguirse del periodo de referencia, cuyo formato es específico a las fuentes de información utilizadas. Por ejemplo, en la ENOE se utiliza 1t2022, mientras que en el IMSS se utiliza 2022131 para enero de 2022.
-\end{minipage} \\
-\midrule\noalign{}
-\endfirsthead
-\toprule\noalign{}
-\begin{minipage}[b]{\linewidth}\raggedright
-\textbf{El principio de versionado para todos los elementos en SIDIL es que la última versión de dicho elemento es la que se debe utilizar,} motivo por el cual, en el nombre del elemento (así como se guarda en las carpetas referidas) se debe incluir la fecha.
+Esto debe distinguirse del periodo de referencia, cuyo formato es
+específico a las fuentes de información utilizadas. Por ejemplo, en la
+ENOE se utiliza 1t2022, mientras que en el IMSS se utiliza 2022131 para
+enero de 2022.
+\end{rmdcomment}
 
-El formato de definición de la fecha que se utiliza para identificar la versión únicamente será el siguiente: \emph{aaaa\_mm\_dd\_hhmm}, es decir, cuatro dígitos para el año, seguido de un guion bajo, luego dos dígitos para el mes, otro guion bajo, luego dos dígitos para el día, otro guion bajo, y dos dígitos de la hora~ y dos de la hora juntos. Notar que la hora es en formato 24 horas. Por ejemplo: 2022\_11\_03\_0901 (año 2022, mes noviembre, día 03, 09 horas con 01 minutos). Este versionado se actualiza y genera automáticamente mediante el script de configuración inicial. La fecha y hora se obtiene directamente del sistema.
-
-Para los scripts, el versionado también se incluye en el nombre del script al guardarlo; no es necesario incluir la hora y minuto del guardado pero sí mantener la estructura \emph{aaaa\_mm\_dd} de la fecha. Notar que el guardado de scripts se realiza de manera manual, toda vez que se consideran relativamente estables en el SIDIL y que justamente por eso el versionado de scripts no lleva horas ni minutos Es decir, cada cambio que se realice al script, se sugiere enfáticamente, debe culminar con el guardado de una nueva versión con una fecha posterior (al menos un día) a la versión anterior. El SIDIL está configurado para que scripts como el secuenciador, busquen la última versión de los diferentes scripts. En consecuencia:~ si hay dos elementos con el mismo nombre, se utiliza el que tenga la fecha de edición más reciente. Esta regla aplica para toda lectura de insumos.
-
-Esto debe distinguirse del periodo de referencia, cuyo formato es específico a las fuentes de información utilizadas. Por ejemplo, en la ENOE se utiliza 1t2022, mientras que en el IMSS se utiliza 2022131 para enero de 2022.
-\end{minipage} \\
-\midrule\noalign{}
-\endhead
-\bottomrule\noalign{}
-\endlastfoot
- \\
-\end{longtable}
+El versionado de los archivos no solo permite la trazabilidad (ver subsección siguiente) sino que además es indispensable para el funcionamiento adecuado del SIDIL. Dos ejemplos: primero, la lectura de scripts de cálculo de indicadores en el módulo I requiere la identificación de fecha (tan solo para poder aplicarlo, pero además para identificar la versión más reciente). De la misma manera, la interfaz de explotación de datos requiere del adecuado versionado de la MPR para poder identificar la versión más reciente y ofrecer la predicción de riesgos más actualizada.
 
 \hypertarget{trazabilidad}{%
 \subsection{Sobre trazabilidad: bitácora, log y parámetros}\label{trazabilidad}}
@@ -1031,55 +1063,50 @@ El resto de los catálogos están organizados en subcarpetas según el tipo de i
   \end{enumerate}
 \end{enumerate}
 
-Recuadro 8: Versiones de archivos de catálogos.
+\begin{figure}
+\includegraphics[width=50px,style="float:left; background-color: #f5f5f5; padding-right:1em"]{images-1/important-icon} \caption{Versiones de archivos de catálogos.}\label{fig:cambioscatalogos}
+\end{figure}
 
-\begin{longtable}[]{@{}
-  >{\raggedright\arraybackslash}p{(\columnwidth - 0\tabcolsep) * \real{1.0028}}@{}}
-\caption{La Matriz de Predicción de Riesgo}\tabularnewline
-\toprule\noalign{}
-\begin{minipage}[b]{\linewidth}\raggedright
-Si se requiere hacer algún cambio sobre la información que abarca los catálogos este se debe hacer directamente en los mismos catálogos, pero se sugiere sea de la siguiente manera:
-
-\begin{enumerate}
-\def\labelenumi{\arabic{enumi})}
-\item
-  Resguardar una copia del catálogo desactualizado en la subcarpeta \emph{anteriores\_descartar} que se encuentra en su respectiva carpeta. Se sugiere guardarlo con la fecha en la que dicho catalogo fue reemplazado.
-\item
-  Modificar y/o reemplazar el catálogo, para que esta sea procesada correctamente por los scripts, sin cambiar el nombre del archivo del catálogo.
-\end{enumerate}
-
-Por ejemplo, si se desarrolla un nuevo indicador que quiere ser integrado al SIDIL, no solo se deben desarrollar sus códigos y guardarlos en las carpetas correspondientes, también debe ser agregado al catálogo de indicadores (\emph{cat\_indicadores}), o si cambia el marco normativo, este se debe actualizar en su respectiva carpeta de catálogos (\emph{marco\_normativo}).
-
-De ser necesario, es posible resguardar la versión anterior del catálogo, entonces puede resguardarse en la subcarpeta \emph{anteriores}. Lo importante es que el script de configuración inicial, siempre "buscará" el mismo nombre de archivo insumo para cada catálogo, independientemente de su contenido o vigencia.
-
-Precisando esto último, la carga de los diferentes catálogos será a partir de la información resguardada en el catálogo de catálogos, mismo que se encuentra en la raíz del proyecto. Esto es importante porque la consistencia de nombres que se estipula a lo largo del SIDIL también requiere tomar este archivo en consideración.
-\end{minipage} \\
-\midrule\noalign{}
-\endfirsthead
-\toprule\noalign{}
-\begin{minipage}[b]{\linewidth}\raggedright
-Si se requiere hacer algún cambio sobre la información que abarca los catálogos este se debe hacer directamente en los mismos catálogos, pero se sugiere sea de la siguiente manera:
+\begin{rmdcomment}
+Si se requiere hacer algún cambio sobre la información que abarca los
+catálogos este se debe hacer directamente en los mismos catálogos, pero
+se sugiere sea de la siguiente manera:
 
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi})}
 \item
-  Resguardar una copia del catálogo desactualizado en la subcarpeta \emph{anteriores\_descartar} que se encuentra en su respectiva carpeta. Se sugiere guardarlo con la fecha en la que dicho catalogo fue reemplazado.
+  Resguardar una copia del catálogo desactualizado en la subcarpeta
+  \emph{anteriores\_descartar} que se encuentra en su respectiva
+  carpeta. Se sugiere guardarlo con la fecha en la que dicho catalogo
+  fue reemplazado.
 \item
-  Modificar y/o reemplazar el catálogo, para que esta sea procesada correctamente por los scripts, sin cambiar el nombre del archivo del catálogo.
+  Modificar y/o reemplazar el catálogo, para que esta sea procesada
+  correctamente por los scripts, sin cambiar el nombre del archivo del
+  catálogo.
 \end{enumerate}
 
-Por ejemplo, si se desarrolla un nuevo indicador que quiere ser integrado al SIDIL, no solo se deben desarrollar sus códigos y guardarlos en las carpetas correspondientes, también debe ser agregado al catálogo de indicadores (\emph{cat\_indicadores}), o si cambia el marco normativo, este se debe actualizar en su respectiva carpeta de catálogos (\emph{marco\_normativo}).
+Por ejemplo, si se desarrolla un nuevo indicador que quiere ser
+integrado al SIDIL, no solo se deben desarrollar sus códigos y
+guardarlos en las carpetas correspondientes, también debe ser agregado
+al catálogo de indicadores (\emph{cat\_indicadores}), o si cambia el
+marco normativo, este se debe actualizar en su respectiva carpeta de
+catálogos (\emph{marco\_normativo}).
 
-De ser necesario, es posible resguardar la versión anterior del catálogo, entonces puede resguardarse en la subcarpeta \emph{anteriores}. Lo importante es que el script de configuración inicial, siempre "buscará" el mismo nombre de archivo insumo para cada catálogo, independientemente de su contenido o vigencia.
+De ser necesario, es posible resguardar la versión anterior del
+catálogo, entonces puede resguardarse en la subcarpeta
+\emph{anteriores}. Lo importante es que el script de configuración
+inicial, siempre \emph{buscará} el mismo nombre de archivo insumo para
+cada catálogo, independientemente de su contenido o vigencia.
 
-Precisando esto último, la carga de los diferentes catálogos será a partir de la información resguardada en el catálogo de catálogos, mismo que se encuentra en la raíz del proyecto. Esto es importante porque la consistencia de nombres que se estipula a lo largo del SIDIL también requiere tomar este archivo en consideración.
-\end{minipage} \\
-\midrule\noalign{}
-\endhead
-\bottomrule\noalign{}
-\endlastfoot
- \\
-\end{longtable}
+Precisando esto último, la carga de los diferentes catálogos será a
+partir de la información resguardada en el catálogo de catálogos, mismo
+que se encuentra en la raíz del proyecto. Esto es importante porque la
+consistencia de nombres que se estipula a lo largo del SIDIL también
+requiere tomar este archivo en consideración.
+\end{rmdcomment}
+
+\hypertarget{la-matriz-de-predicciuxf3n-de-riesgo}{%
+\subsection{La Matriz de Predicción de Riesgo}\label{la-matriz-de-predicciuxf3n-de-riesgo}}
 
 La Matriz de Predicción de Riesgo (MPR) es un producto crítico del sistema. La MPR es la tabla que reúne el universo actualizado de centros de trabajo disponibles en el DNE (una fila de la matriz por cada centro de trabajo), junto con sus atributos más importantes, los indicadores atribuidos a ellos a partir de la explotación de diferentes fuentes de información, y por supuesto, la predicción de riesgo asociada a ciertas submaterias y una predicción de riesgo general (todo ello en las columnas de la matriz). Es, en esencia, el principal producto del SIDIL previo a la priorización de un subconjunto del universo de CT realizada por quien esté a cargo de la programación de inspecciones.
 
@@ -1097,10 +1124,14 @@ La MPR es un punto crítico porque:
   Contiene toda la información que, a través de filtros y consultas, permitirá generar los universos susceptibles de ser inspeccionados, priorizados por riesgo de incumplimiento en las diferentes submaterias.
 \end{enumerate}
 
+\hl{@\citet{idea} capsula:
+breve tour por una MPR mostrando que el nro de filas depende del número de CT activos en MPR, y los diferentes tipos de columnas que hay y como se relacionan estos con los catalogos de campos\_DNE y cat\_indicadores}
+
 \hypertarget{presentaciuxf3n-sintuxe9tica-de-todos-los-scripts}{%
 \section{Presentación sintética de todos los scripts}\label{presentaciuxf3n-sintuxe9tica-de-todos-los-scripts}}
 
 A continuación se presentan de manera sintética todos los scripts que constituyen el SIDIL.
+\hl{@\citet{pendiente} revisar formato de tabla}
 
 \begin{longtable}[]{@{}
   >{\raggedright\arraybackslash}p{(\columnwidth - 12\tabcolsep) * \real{0.0551}}
@@ -1669,6 +1700,96 @@ Considerando la totalidad del país, se observa que la tendencia del número de 
 \includegraphics[width=12.56in]{images-1/08/programadorealizado} \caption{Módulos que componen el SIDIL}\label{fig:programadorealizado}
 \end{figure}
 
+\#\#\#Tipos y subtipos de inspección
+
+Hay dos grandes tipos de inspección: las inspecciones ordinarias y las extraordinarias. A su vez, al interior de las inspecciones ordinarias se encuentran tres subtipos: iniciales, periódicas y de comprobación de medidas; mientras, las inspecciones extraordinarias comprenden a las inspecciones de subtipo homónimo (extraordinarias) y las extraordinarias de orientación y asesoría.
+
+El tipo de actuación de una inspección se corresponde en términos generales con el tipo de programación: las inspecciones de programación aleatoria se corresponden con las inspecciones del tipo ordinaria, pero no incluyen a las inspecciones de comprobación de medidas, pues estas son de programación automática - como se explicará más adelante. Las inspecciones de programación directa son las inspecciones extraordinarias.
+
+Como se puede ver en el recuadro \ref{fig:tipossubtipos}, en el universo de más de un millón de inspecciones realizadas entre 2012 y 2021, se encuentra un 40.4\% (456,209 inspecciones) que son del tipo ordinarias. 59.6\% (673,521) de ese total son extraordinarias. Menos del 0.1\% de las inspecciones realizadas no tienen un tipo asignado, mismo que puede ser un error de sistema. A su interior la gran mayoría de las inspecciones ordinarias son del tipo periódicas (266,118 inspecciones que representan 58.3\% de las ordinarias y 23.6\% del total), seguido por las iniciales (136,024 inspecciones, 29.8\% de las ordinarias y 12\% del total) y, por último, las de comprobación de medidas (54,607 inspecciones, 11.8\% de las ordinarias y 4.8\% del total). Por su parte, el 59.6\% del total de las inspecciones y que son extraordinarias, son en su mayoría del subtipo extraordinarias (605,090 inspecciones, 89.9\% de las extraordinarias y 53.5\% del total). Una fracción menor corresponde a las inspecciones del subtipo extraordinaria de orientación y asesoría (68,133 inspecciones, 10.1\% de las extraordinarias y 6\% del total).
+
+En cuanto a las inspecciones de comprobación de medida, si bien son del tipo ordinarias, se distinguen por ser de seguimiento a inspecciones realizadas previamente y que concluyeron con el emplazamiento de medidas. Las medidas son consecuencia de una inspección en la materia de Seguridad e higiene y las dicta un inspector cuando, en la evaluación de los reactivos encuentra incumplimientos por parte del centro trabajo que deben ser atendidos y, además, verificados con una inspección posterior, es decir, en la visita de comprobación de medidas. En caso de que la comprobación de medidas determine el incumplimiento de las medidas dictadas, se dicta la violación, misma que, de ratificarse en la calificación pasa a la sanción.
+
+\begin{figure}
+\includegraphics[width=7.46in]{images-1/08/tipossubtipos} \caption{Universo de inspecciones registradas, según su tipo y subtipo, 2012-2021}\label{fig:tipossubtipos}
+\end{figure}
+
+\hypertarget{alcance-de-la-inspecciuxf3n}{%
+\subsection{Alcance de la inspección}\label{alcance-de-la-inspecciuxf3n}}
+
+En las materias reguladas por la legislación laboral los inspectores federales del trabajo, en el ámbito de sus respectivas competencias, vigilan a los Centros de Trabajo y brindan apoyo, asesoría y orientación a los trabajadores y patrones (DOF 2014, capítulo primero). Hay siete materias principales:
+
+\begin{itemize}
+\tightlist
+\item
+  Seguridad e Higiene (SH)
+\item
+  Condiciones Generales de Trabajo (CGT)
+\item
+  Capacitación y Adiestramiento (CA)
+\item
+  Agencias de Colocación (AC)
+\item
+  Recipientes Sujetos a Presión y Calderas )RSPC)
+\item
+  Constatación y Actualización de Datos (CAD)
+\item
+  Otras (materias reguladas por la legislación laboral)
+\end{itemize}
+
+Las materias se organizan en submaterias, indicadores e incisos, como se muestra en el recuadro \ref{fig:marconormativo} y se describe a continuación.
+
+\begin{figure}
+\includegraphics[width=8.36in]{images-1/08/marconormativo} \caption{Definición conceptual del alcance de las inspecciones}\label{fig:marconormativo}
+\end{figure}
+
+Estas materias a su vez se dividen en submaterias que permiten asignar alcances más específicos para orientar de manera más eficiente las inspecciones. A continuación se presentan el número de submaterias por cada tipo de materia.
+
+\begin{figure}
+\includegraphics[width=5.75in]{images-1/08/submaterias} \caption{Definición conceptual del alcance de las inspecciones}\label{fig:submaterias}
+\end{figure}
+
+En el caso de la materia de Seguridad e Higiene, es posible indicar en la submateria que se asigna a la inspección, si al centro de trabajo que se inspeccionará le aplican Normas específicas expedidas por la STPS u otras dependencias de la Administración Pública Federal, conforme a lo dispuesto en la Ley Federal sobre Metrología y Normalización. Cabe destacar que estas normas (NOM) están en constante evolución y actualización como lo muestra el recuadro \ref{fig:}
+
+\begin{figure}
+\includegraphics[width=8.17in]{images-1/08/submateriasSH} \caption{Definición conceptual del alcance de las inspecciones}\label{fig:submateriasSH}
+\end{figure}
+
+A cada submateria le corresponden indicadores: preguntas o reactivos utilizadas por los inspectores para determinar violaciones o faltas. Un ejemplo de ello es el siguiente: en la materia ``Condiciones Generales de Trabajo'' encontramos una submateria que tienen que ver con el ``Trabajo de menores'', que a su vez tiene un indicador que tiene que ver con si el patrón ``Cuenta con trabajadores menores de 18 años que laboren en condiciones peligrosas o insalubres''.
+
+Finalmente, en algunos de los indicadores encontramos un nivel mayor de desagregación, que son los incisos. Los incisos de un indicador son preguntas que lo desagregan y que buscan especificar con un mayor nivel de detalle las características que se requiere revisar en una inspección laboral. Cada indicador puede tener ninguno, uno o varios incisos a los cuales se les debe indicar una respuesta en el momento de la inspección (en general la respuesta posible es positiva, negativa o no aplica). Continuando el ejemplo mencionado anteriormente, si en la submateria ``Trabajo de menores'' hay un indicador acerca de ``Los contratos individuales de trabajo'', este indicador a su vez tiene un inciso que pregunta acerca de ``la duración de la jornada''.
+
+Cabe enfatizar aquí que, derivado de la estructura ramificada (materias, submaterias, indicadores, incisos) en total se presentan 8,148 reactivos distintos que forman parte del universo de aspectos que un inspector podría vigilar en la visita a un centro de trabajo. Por supuesto, hay una delimitación ex ante de la inspección que acota el alcance.
+
+En el caso de las inspecciones del tipo ordinarias, la delimitación del alcance es a nivel materia y submateria, evaluando la totalidad de los indicadores e incisos que componen cada una de las submaterias.
+
+En el caso de las inspecciones extraordinarias, el alcance es más específico, derivado de la propia naturaleza de este tipo de programación. El caso de los operativos, por ejemplo, presenta un alcance específico que puede atender ciertas combinaciones y selección específica de diversas materias, submaterias, indicadores e incisos, sin que tenga que evaluarse la totalidad de los componentes al interior de cada uno de ellos.
+
+\hypertarget{criterios-de-selecciuxf3n-utilizados-antes-del-sidil.}{%
+\subsubsection{Criterios de selección utilizados antes del SIDIL.}\label{criterios-de-selecciuxf3n-utilizados-antes-del-sidil.}}
+
+Dados los objetivos del SIDIL y más allá del ejemplo en particular, lo que conviene resaltar aquí es que actualmente la STPS ya cuenta con un conjunto de criterios que le permiten crear universos (subconjuntos) de empresas que reúnen ciertos atributos en común y sobre los cuales posteriormente se realiza una selección aleatoria para determinar qué centros de trabajo serán sujetos de inspección. Según el art. 27 fracción II del RGITAS (DOF 2014: p.~72) y la operación del sistema las inspecciones iniciales y las periódicas son las que se programan de manera aleatoria.
+
+\textbf{Dicha selección aleatoria se realiza sobre subconjuntos de empresas generados en el DNE a partir de la aplicación de filtros sobre los atributos de los CT en materia de rama industrial, clase de riesgo, tamaño de la empresa, la utilización de ciertas sustancias líquidas y pirofóricos, etc.}
+
+Para cada uno de dichos atributos se definen valores límite - pudiendo ser porcentajes, rangos, valores mínimos o máximos o una variable dicotómica (si/no). Estos parámetros serán utilizados como filtro para identificar los CT sobre los cuales se realizará la selección aleatoria de las empresas.
+
+Pongamos un ejemplo: todos los CT tienen una clase de riesgo (de I a V) en el sistema del IMSS, según la actividad económica, el historial de accidentes registrados y el Catálogo de Actividades del propio IMSS (ver \ref{fig:tetrisprogramacion}. A menor clase, menor riesgo para la persona trabajadora. El criterio de clase de riesgo del IMSS está incluido, aunque no de manera consistente, en la generación de subconjuntos de CT a lo largo de la década analizada. En la ilustración 13 se observa que en el año 2012 sólamente se seleccionaron CT con clases de riesgo I y II. En 2013 ninguna clase y entre 2014 y 2018 se incluyeron los CT de cualquier clase de riesgo. En 2019 y 2020 (al igual que en 2013) no se incluyó este criterio, y en 2021 sólo se utilizó a efectos de las inspecciones aleatorias. No quedan claros los motivos de estos cambios en la utilización de estos criterios, pero lo que es evidente es que la clase de riesgo ha sido, en diferentes momentos, un criterio para la selección del universo de empresas a inspeccionar. Se observa la ``activación'' (``si'') versus la ``desactivación'' (``no'') de las diferentes clases de riesgo en el IMSS para los dos subtipos de inspección aleatoria, periódicas e iniciales.
+
+\begin{figure}
+\includegraphics[width=4.36in]{images-1/08/tetrisprogramacion} \caption{Aplicación del  atributo *clase de riesgo en el IMSS* para la generación de subconjuntos de CT sobre los cuales se aleatorizan, 2012-2021}\label{fig:tetrisprogramacion}
+\end{figure}
+
+Es importante resaltar que actualmente en la programación anual se utiliza la información preexistente de los CT a efectos de crear subconjuntos del universo total de los mismos sobre los cuales se seleccionará un porcentaje determinado para la realización de visitas de inspección.
+
+Lo anterior resalta el potencial y pertinencia del proyecto de desarrollo del sistema de analítica de datos para la inspección laboral (SIDIL). Éste precisamente pretende explotar diferentes fuentes de información para construir una herramienta de planeación versátil que permita reflejar e informar las cambiantes prioridades de política pública. En este contexto, la apuesta del SIDIL es justamente el desarrollo de nuevos indicadores que reflejen los resultados de las inspecciones en conjunción con más información obtenida de otras fuentes de información, manteniendo la posibilidad de ponderarlos de manera selectiva.
+
+Más aun, el SIDIL propone que la incorporación de ciertos atributos, indicadores y predicción se mantenga actualizada con cierta frecuencia. Cuando menos cada tres meses, se realiza una consulta al DNE para obtener el universo de los CT activos, luego se les imputa el valor más reciente de las diversas fuentes de información, a la vez que se toma esta información como input para la actualización de las respectivas predicciones de riesgo a nivel submateria.
+
+Sin embargo, sí cabe señalar que aquellos campos que únicamente se encuentran disponibles en el DNE (y no son actualizables con ninguna otra fuente, como por ejemplo, si el CT tiene sustancias químicas), se mantendrán tal y como vienen registrados en el DNE, reconociendo que en la actualidad muchos campos no son actualizados.
+
+En este sentido, el principal valor agregado del SIDIL es que permite, a efectos de la selección de CT para una programación de operativos, generar una predicción de riesgo a nivel submateria que reúne el efecto que cada uno de los campos asociados a los CT (atributos e indicadores) tiene sobre la probabilidad de detectar violaciones que proceden en la determinada submateria.
+
 \hypertarget{aspectos-pendientes-y-posibles-extensiones-a-futuro}{%
 \subsection{Aspectos pendientes y posibles extensiones a futuro}\label{aspectos-pendientes-y-posibles-extensiones-a-futuro}}
 
@@ -1723,7 +1844,7 @@ Ejemplo 1 - sroll x - y
 
 \begin{table}
 
-\caption{\label{tab:unnamed-chunk-9}This is data.}
+\caption{\label{tab:unnamed-chunk-11}This is data.}
 \centering
 \fontsize{16}{18}\selectfont
 \begin{tabu} to \linewidth {>{\raggedright}X>{\raggedright}X>{\raggedright}X>{\raggedright}X>{\raggedright}X>{\raggedright}X}
@@ -1757,7 +1878,7 @@ Ejemplo 2
 
 \begin{table}
 
-\caption{\label{tab:unnamed-chunk-10}This is data.}
+\caption{\label{tab:unnamed-chunk-12}This is data.}
 \centering
 \fontsize{16}{18}\selectfont
 \begin{tabu} to \linewidth {>{\raggedright}X>{\raggedright}X>{\raggedright}X>{\raggedright}X>{\raggedright}X>{\raggedright}X}
