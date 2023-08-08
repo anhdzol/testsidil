@@ -1,11 +1,11 @@
 bookdown::gitbook:
   css: style.css
   config:
-    sharing: null
-    download: null
+    sharing: 
+      github: true
+    download: none
     toc:
       before: |
         <li><a href="./">Manual de procesamiento y explotación de información</a></li>
       scroll_highlight: true
       collapse: none
-        

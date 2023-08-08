@@ -43,6 +43,11 @@ A su vez, es desde el script de configuración inicial que se ejecuta de manera 
 
 El motivo por el cual el script que lee catálogos y define funciones no está directamente contenido en el de configuración inicial reside en que para la ejecución de ciertos procesos en la interfaz de automatización se requiere únicamente la lectura de catálogos y funciones. Sin embargo, no afecta a la conclusión de que el script de configuración inicial es de menester importancia y se ejecuta en todos los procesos del SIDIL que se realizan con R.
 
+[@@Propuesta de capsula: tour rapido por config inicial y 0 funciones:
+@@ sobre todo importante porque habra cambios importantes para acomodar las apps de las interfaces.
+@@posiblemente mas o menos por aqui se incorpore todavía un parrafo al respecto]{.mark}
+
+
 ### Scripts secuenciadores {#secuenciadores}
 
 **Hay once scripts secuenciadores a lo largo del SIDIL, pues su alcance es específico para un proceso determinado dentro de cada módulo.** El propósito es centralizar la ejecución de diversos scripts, asegurando el procesamiento de la información en el orden adecuado, en pro de la coherencia de la información. El script secuenciador llama al procesamiento de otros scripts sin la necesidad de ejecutar cada uno de ellos individualmente.
@@ -123,9 +128,12 @@ Al interior de 1_insumos se encuentran tres subcarpetas:
 
 -   La segunda es *originales* y sirve para depositar las fuentes de información sin procesamiento previo, por ejemplo, los archivos originales en formato dbf que componen la ENOE, o los archivos separados por tabulados que componen los registros administrativos del IMSS.
 
--   En la tercer subcarpeta, de nombre *procesados*, se almacenan los resultados del procesamiento que ya forma parte del SIDIL, concretamente, el resultado de la extracción y transformación de cada fuente de información, siempre que se requiera el guardado de los temporales procesados.
+-   En la tercer subcarpeta, de nombre *procesados*, se almacenan los resultados del procesamiento que ya forma parte del SIDIL, concretamente, el resultado de la extracción y transformación de cada fuente de información, siempre que se requiera el guardado de los temporales procesados. Notar que un criterio que determina si los resultados se resguardan aquí, en esta carpeta, o en *3_resultados* es que siempre que los resultados sean consultados por otro módulo entonces se guardan en *3_resultados*. 
 
     -   Notar que en el caso de la ENOE, dado que su procesamiento no demanda mucha RAM, no se escribe a disco en esta carpeta. En contraste, para el procesamiento del IMSS se escriben tanto archivos temporales intermedios (que se borran luego de su utilización de manera automática) como también el guardado de los procesados "finales" (sin que estos sean resultados, sino que únicamente "preprocesados" que reducen las dimensiones y "limpian" algunos campos de los insumos).
+    
+[@@ idea capsula
+breve tour por las carpetas dentro de 1_insumos]{.mark}
 
 Al interior de *2_codigos*, existen tres principales subcarpetas:
 
@@ -153,6 +161,14 @@ En la carpeta *4_reportes* se albergan cuatro subcarpetas
 
 -   *parametros: es la exportación de los parámetros que se definen en el script de configuración inicial.*
 
+
+[@@ idea video capsula:
+breve tour por las carpetas dentro de 4_resultados
+particularmente mostrar la diferencia entre las dos bitacoras.
+mostrar también cómo se lee el log 
+]{.mark}
+
+
 ## Sobre la temporalidad {#temporalidad}
 
 A lo largo de la operación del SIDIL la persona usuaria podrá encontrar referencias a un periodo o momento exacto en el tiempo:
@@ -165,20 +181,28 @@ El SIDIL, a lo largo de los diferentes módulos, está configurado para procesar
 
 En cambio, el formato de la referencia al periodo temporal es específico para cada fuente de información, toda vez que la frecuencia de actualización y representatividad es específica a cada fuente. Así por ejemplo la tabla con la información sociodemográfica de las personas encuestadas en la ENOE contiene en su nombre "1t2022" haciendo referencia al primer trimestre de 2022. En cambio, para el IMSS; cuya información original es de frecuencia mensual, la referencia es 2022131 (que representa la fecha de corte al 31 de enero de 2022).
 
-Recuadro 6: Versionado de elementos
 
-+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| **El principio de versionado para todos los elementos en SIDIL es que la última versión de dicho elemento es la que se debe utilizar,** motivo por el cual, en el nombre del elemento (así como se guarda en las carpetas referidas) se debe incluir la fecha.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            |
-|                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           |
-| El formato de definición de la fecha que se utiliza para identificar la versión únicamente será el siguiente: *aaaa_mm_dd_hhmm*, es decir, cuatro dígitos para el año, seguido de un guion bajo, luego dos dígitos para el mes, otro guion bajo, luego dos dígitos para el día, otro guion bajo, y dos dígitos de la hora  y dos de la hora juntos. Notar que la hora es en formato 24 horas. Por ejemplo: 2022_11_03_0901 (año 2022, mes noviembre, día 03, 09 horas con 01 minutos). Este versionado se actualiza y genera automáticamente mediante el script de configuración inicial. La fecha y hora se obtiene directamente del sistema.                                                                                                                                                                                                                                                            |
-|                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           |
-| Para los scripts, el versionado también se incluye en el nombre del script al guardarlo; no es necesario incluir la hora y minuto del guardado pero sí mantener la estructura *aaaa_mm_dd* de la fecha. Notar que el guardado de scripts se realiza de manera manual, toda vez que se consideran relativamente estables en el SIDIL y que justamente por eso el versionado de scripts no lleva horas ni minutos Es decir, cada cambio que se realice al script, se sugiere enfáticamente, debe culminar con el guardado de una nueva versión con una fecha posterior (al menos un día) a la versión anterior. El SIDIL está configurado para que scripts como el secuenciador, busquen la última versión de los diferentes scripts. En consecuencia:  si hay dos elementos con el mismo nombre, se utiliza el que tenga la fecha de edición más reciente. Esta regla aplica para toda lectura de insumos. |
-|                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           |
-| Esto debe distinguirse del periodo de referencia, cuyo formato es específico a las fuentes de información utilizadas. Por ejemplo, en la ENOE se utiliza 1t2022, mientras que en el IMSS se utiliza 2022131 para enero de 2022.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           |
-+===========================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================+
-+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 
-: El versionado de los archivos no solo permite la trazabilidad (ver subsección siguiente) sino que además es indispensable para el funcionamiento adecuado del SIDIL. Dos ejemplos: primero, la lectura de scripts de cálculo de indicadores en el módulo I requiere la identificación de fecha (tan solo para poder aplicarlo, pero además para identificar la versión más reciente). De la misma manera, la interfaz de explotación de datos requiere del adecuado versionado de la MPR para poder identificar la versión más reciente y ofrecer la predicción de riesgos más actualizada.
+
+```{r versionadoelementos, class.source='myClass', echo=FALSE, out.width="50px", fig.cap="Versionado de elementos", out.extra='style="float:left; background-color: #f5f5f5; padding-right:1em"'}
+knitr::include_graphics("images-1/important-icon.svg")
+# htmltools::HTML(fn('Nombre del recuadro desde DIV...'))
+```
+
+ 
+
+```{block, type='rmdcomment', fig.cap="test numeracion block"}
+**El principio de versionado para todos los elementos en SIDIL es que la última versión de dicho elemento es la que se debe utilizar,** motivo por el cual, en el nombre del elemento (así como se guarda en las carpetas referidas) se debe incluir la fecha.  
+
+ El formato de definición de la fecha que se utiliza para identificar la versión únicamente será el siguiente: *aaaa_mm_dd_hhmm*, es decir, cuatro dígitos para el año, seguido de un guion bajo, luego dos dígitos para el mes, otro guion bajo, luego dos dígitos para el día, otro guion bajo, y dos dígitos de la hora  y dos de la hora juntos. Notar que la hora es en formato 24 horas. Por ejemplo: 2022_11_03_0901 (año 2022, mes noviembre, día 03, 09 horas con 01 minutos). Este versionado se actualiza y genera automáticamente mediante el script de configuración inicial. La fecha y hora se obtiene directamente del sistema.     
+ 
+ 
+Para los scripts, el versionado también se incluye en el nombre del script al guardarlo; no es necesario incluir la hora y minuto del guardado pero sí mantener la estructura *aaaa_mm_dd* de la fecha. Notar que el guardado de scripts se realiza de manera manual, toda vez que se consideran relativamente estables en el SIDIL y que justamente por eso el versionado de scripts no lleva horas ni minutos Es decir, cada cambio que se realice al script, se sugiere enfáticamente, debe culminar con el guardado de una nueva versión con una fecha posterior (al menos un día) a la versión anterior. El SIDIL está configurado para que scripts como el secuenciador, busquen la última versión de los diferentes scripts. En consecuencia:  si hay dos elementos con el mismo nombre, se utiliza el que tenga la fecha de edición más reciente. Esta regla aplica para toda lectura de insumos. 
+
+Esto debe distinguirse del periodo de referencia, cuyo formato es específico a las fuentes de información utilizadas. Por ejemplo, en la ENOE se utiliza 1t2022, mientras que en el IMSS se utiliza 2022131 para enero de 2022. 
+
+```
+ El versionado de los archivos no solo permite la trazabilidad (ver subsección siguiente) sino que además es indispensable para el funcionamiento adecuado del SIDIL. Dos ejemplos: primero, la lectura de scripts de cálculo de indicadores en el módulo I requiere la identificación de fecha (tan solo para poder aplicarlo, pero además para identificar la versión más reciente). De la misma manera, la interfaz de explotación de datos requiere del adecuado versionado de la MPR para poder identificar la versión más reciente y ofrecer la predicción de riesgos más actualizada.
 
 ## Sobre trazabilidad: bitácora, log y parámetros {#trazabilidad}
 
@@ -306,24 +330,30 @@ El resto de los catálogos están organizados en subcarpetas según el tipo de i
 
     a.  Catálogo de materias y submaterias que forman parte del potencial alcance de una inspección (subcarpeta *marco_normativo*, archivo: *cat_submaterias)*. Establece la relación entre el código identificador de submaterias y materias de inspección con las etiquetas.
 
-Recuadro 8: Versiones de archivos de catálogos.
 
-+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| Si se requiere hacer algún cambio sobre la información que abarca los catálogos este se debe hacer directamente en los mismos catálogos, pero se sugiere sea de la siguiente manera:                                                                                                                                                                                     |
-|                                                                                                                                                                                                                                                                                                                                                                          |
-| 1) Resguardar una copia del catálogo desactualizado en la subcarpeta *anteriores_descartar* que se encuentra en su respectiva carpeta. Se sugiere guardarlo con la fecha en la que dicho catalogo fue reemplazado.                                                                                                                                                       |
-|                                                                                                                                                                                                                                                                                                                                                                          |
-| 2) Modificar y/o reemplazar el catálogo, para que esta sea procesada correctamente por los scripts, sin cambiar el nombre del archivo del catálogo.                                                                                                                                                                                                                      |
-|                                                                                                                                                                                                                                                                                                                                                                          |
-| Por ejemplo, si se desarrolla un nuevo indicador que quiere ser integrado al SIDIL, no solo se deben desarrollar sus códigos y guardarlos en las carpetas correspondientes, también debe ser agregado al catálogo de indicadores (*cat_indicadores*), o si cambia el marco normativo, este se debe actualizar en su respectiva carpeta de catálogos (*marco_normativo*). |
-|                                                                                                                                                                                                                                                                                                                                                                          |
-| De ser necesario, es posible resguardar la versión anterior del catálogo, entonces puede resguardarse en la subcarpeta *anteriores*. Lo importante es que el script de configuración inicial, siempre \"buscará\" el mismo nombre de archivo insumo para cada catálogo, independientemente de su contenido o vigencia.                                                   |
-|                                                                                                                                                                                                                                                                                                                                                                          |
-| Precisando esto último, la carga de los diferentes catálogos será a partir de la información resguardada en el catálogo de catálogos, mismo que se encuentra en la raíz del proyecto. Esto es importante porque la consistencia de nombres que se estipula a lo largo del SIDIL también requiere tomar este archivo en consideración.                                    |
-+==========================================================================================================================================================================================================================================================================================================================================================================+
-+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+```{r relacionDNESNILESIAPISIPAS, class.source='myClass', echo=FALSE, out.width="50px", fig.cap="Versiones de archivos de catálogos.", out.extra='style="float:left; background-color: #f5f5f5; padding-right:1em"'}
+knitr::include_graphics("images-1/important-icon.svg")
+# htmltools::HTML(fn('Nombre del recuadro desde DIV...'))
+```
 
-: La Matriz de Predicción de Riesgo
+```{block, type='rmdcomment', fig.cap="test numeracion block"}
+ Si se requiere hacer algún cambio sobre la información que abarca los catálogos este se debe hacer directamente en los mismos catálogos, pero se sugiere sea de la siguiente manera:
+ 
+1) Resguardar una copia del catálogo desactualizado en la subcarpeta *anteriores_descartar* que se encuentra en su respectiva carpeta. Se sugiere guardarlo con la fecha en la que dicho catalogo fue reemplazado.                       
+
+2) Modificar y/o reemplazar el catálogo, para que esta sea procesada correctamente por los scripts, sin cambiar el nombre del archivo del catálogo.          
+ 
+Por ejemplo, si se desarrolla un nuevo indicador que quiere ser integrado al SIDIL, no solo se deben desarrollar sus códigos y guardarlos en las carpetas correspondientes, también debe ser agregado al catálogo de indicadores (*cat_indicadores*), o si cambia el marco normativo, este se debe actualizar en su respectiva carpeta de catálogos (*marco_normativo*).
+
+
+De ser necesario, es posible resguardar la versión anterior del catálogo, entonces puede resguardarse en la subcarpeta *anteriores*. Lo importante es que el script de configuración inicial, siempre *buscará* el mismo nombre de archivo insumo para cada catálogo, independientemente de su contenido o vigencia.
+
+Precisando esto último, la carga de los diferentes catálogos será a partir de la información resguardada en el catálogo de catálogos, mismo que se encuentra en la raíz del proyecto. Esto es importante porque la consistencia de nombres que se estipula a lo largo del SIDIL también requiere tomar este archivo en consideración.
+```
+
+
+
+## La Matriz de Predicción de Riesgo
 
 La Matriz de Predicción de Riesgo (MPR) es un producto crítico del sistema. La MPR es la tabla que reúne el universo actualizado de centros de trabajo disponibles en el DNE (una fila de la matriz por cada centro de trabajo), junto con sus atributos más importantes, los indicadores atribuidos a ellos a partir de la explotación de diferentes fuentes de información, y por supuesto, la predicción de riesgo asociada a ciertas submaterias y una predicción de riesgo general (todo ello en las columnas de la matriz). Es, en esencia, el principal producto del SIDIL previo a la priorización de un subconjunto del universo de CT realizada por quien esté a cargo de la programación de inspecciones.
 
@@ -336,3 +366,7 @@ La MPR es un punto crítico porque:
 3)  Junto con los metadatos asociados a la MPR, es el único insumo imprescindible para el funcionamiento de la interfaz de consulta.
 
 4)  Contiene toda la información que, a través de filtros y consultas, permitirá generar los universos susceptibles de ser inspeccionados, priorizados por riesgo de incumplimiento en las diferentes submaterias.
+
+
+[@@idea capsula:
+breve tour por una MPR mostrando que el nro de filas depende del número de CT activos en MPR, y los diferentes tipos de columnas que hay y como se relacionan estos con los catalogos de campos_DNE  y cat_indicadores ]{.mark}
