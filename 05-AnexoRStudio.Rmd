@@ -3,6 +3,23 @@ output:
   html_document: default
 ---
 
+```{r setup03, include=FALSE, echo=FALSE}
+fn = local({
+  i = 0
+  function(x) {
+    i <<- i + 1
+    paste('Recuadro ', '4.', i, ': ', x, sep = '')
+  }
+})
+```
+
+```{r echo = FALSE, results = 'asis', include = FALSE}
+library(dplyr)
+library(kableExtra, warn.conflicts = TRUE)
+library(readxl)
+```  
+
+
 # R, RStudio y Python
 
 En este anexo se presentan, fundamentalmente, los conceptos y prácticas básicas en la utilización de la interfaz de RStudio. También se presentan algunos aspectos relevantes de Python, pero que si bien requiere tenerse instalado, desde la perspectiva de SIDIL, no requiere ser ejecutado en una interfaz distinta a Rstudio
@@ -68,131 +85,137 @@ El siguiente paso es abrir el script que se desea correr o editar, o bien, gener
 
 Una parte primordial para la ejecución de los scripts es la instalación y el llamado de las paqueterías que se utilizarán, ya que estas albergan los comandos que se utilizan en los archivos de códigos. Si bien R Studio cuenta con algunos comandos básicos, la versatilidad del programa permite importar y utilizar cientos de paqueterías que facilitan la generación de códigos con sus comandos. A continuación, se presentan las paqueterías que utiliza el proyecto SIDIL junto con algunos de los principales comandos de cada una. Esta lista de principales comandos no es exhaustiva y muchas paqueterías pueden contener cientos de comandos.
 
-+------------+---------------------------------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------+
-| Paquete    | Principal función                                                                           | Principales comandos                                                                                                                                    |
-+============+=============================================================================================+=========================================================================================================================================================+
-| pacman     | Instalar y llamar paqueterías                                                               | p_load()                                                                                                                                                |
-+------------+---------------------------------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------+
-| here       | Establecer el directorio en el que se trabaja                                               | here ()                                                                                                                                                 |
-+------------+---------------------------------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------+
-| tidyverse  | Colección de paqueterías de gramática, estructura de datos, gráficas, entre otras.          | operador pipe "%\>%" , read_csv(), filter(), group_by(), mutate(), rename(), summarise(), str_detect() (y otros str\_), as_tibble (), pivo()t, gather() |
-+------------+---------------------------------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------+
-| haven      | Lee archivos sav, dta, entre otros                                                          | read_sav(), read_dta()                                                                                                                                  |
-+------------+---------------------------------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------+
-| dbplyr     | Permite trabajar con bases de datos de distinto tipo                                        | show_query(), collect()                                                                                                                                 |
-+------------+---------------------------------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------+
-| foreign    | Permite leer y guardar archivos de distinto tipo                                            | read.dbf ()                                                                                                                                             |
-+------------+---------------------------------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------+
-| janitor    | Paquetería de gramática y estructura de datos                                               | clean_names(), tabyl()                                                                                                                                  |
-+------------+---------------------------------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------+
-| readxl     | Lee archivos de Excel                                                                       | read_excel()                                                                                                                                            |
-+------------+---------------------------------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------+
-| survey     | Paquetería para encuestas complejas                                                         | svymean(), svyby()                                                                                                                                      |
-+------------+---------------------------------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------+
-| srvyr      | Paquetería para encuestas complejas, agrega la sintaxis de tidyverse a la paquetería survey | as_survey_design(), survey_mean(), survey_total()                                                                                                       |
-+------------+---------------------------------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------+
-| surveycv   | Paquetería para encuestas complejas, permite cálculo de coeficiente de variación            | cv.svy()                                                                                                                                                |
-+------------+---------------------------------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------+
-| tidymodels | Colección de paqueterías para modelaje y machine learning utilizando el lenguaje tidyverse  | Rsample (),training(), prep()                                                                                                                           |
-+------------+---------------------------------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------+
-| crayon     | Cambia el color de los mensajes de la consola                                               | styles(), crayon()                                                                                                                                      |
-+------------+---------------------------------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------+
-| data.table | Herramientas para el manejo de objetos de bases de datos                                    | fread(), file.exists()                                                                                                                                  |
-+------------+---------------------------------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------+
-| stats      | Paquetería para cálculos y herramientas estadísticas                                        | gl(), glm(),                                                                                                                                            |
-+------------+---------------------------------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------+
-| scriptName | Recupera nombres y ubicación de scripts                                                     | current_filename()                                                                                                                                      |
-+------------+---------------------------------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------+
-| rstudioapi | Accede a Rstudio API si está disponible                                                     | isavailable()                                                                                                                                           |
-+------------+---------------------------------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------+
-| stringi    | Paquetería para procesamiento de lenguaje natural                                           | stri_extract_all(),                                                                                                                                     |
-|            |                                                                                             |                                                                                                                                                         |
-|            |                                                                                             | str_detect(),                                                                                                                                           |
-+------------+---------------------------------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------+
-| beepr      | Genera sonidos de notificación                                                              | beep()                                                                                                                                                  |
-+------------+---------------------------------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------+
-| rlang      | Funciones esenciales para el funcionamiento de Rstudio                                      | Diversos elementos de funcionamiento interno.                                                                                                           |
-+------------+---------------------------------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------+
-| tools      | Funciones esenciales para el funcionamiento de Rstudio                                      | Diversos elementos de funcionamiento interno.                                                                                                           |
-+------------+---------------------------------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------+
+```{r echo = FALSE, results = 'asis'}
+tabla1 <- read_excel("./data/tablas05.xlsx", sheet = "tabla1")
+kable(tabla1, caption = "Principales paqueterías de R utilizadas en el SIDIL") %>%
+  kable_styling(bootstrap_options = c("striped", "hover"), full_width = T, font_size = 14) %>%
+    scroll_box(width = "100%", height = "600px")
+```
 
-: Tabla XXX: Principales paquetes usados en R.
 
 Existen algunos comandos que se usan con más frecuencia y que resultan muy importantes para la lectura y procesamiento de la información. Algunos de estos son:
 
 -   Comandos read_excel() y read_csv(): Estos comandos permite leer y cargar archivos de formato .xlsx y .csv al ambiente de RStudio. Ejemplo:
 
-*correspondencia_cat_scianHOGARES\<-read_excel("I:/CALLE/Data/SIDIL/1_insumos/catálogos/clasificacion_industrialcat_scianHOGARES.xlsx")*
+``` r
+correspondencia_cat_scianHOGARES <- read_excel("I:/CALLE/Data/SIDIL/1_insumos/catálogos/clasificacion_industrialcat_scianHOGARES.xlsx")
+```
 
 Notar que en Rstudio los separadores diagonales o slash deben estar inclinados a la derecha (/).
 
 -   El comando here(): permite establecer la ruta donde se ejecutarán los archivos, suele ser la misma donde se localiza el proyecto R. Es muy útil para cargar y guardar archivos, ya que únicamente se tendrá que utilizar el comando here() para reemplazar toda la ruta, que de otra manera tendría que ser escrita en su totalidad. Ejemplo:
 
-> *correspondencia_cat_scianHOGARES\<-read_excel(here(), "1_insumos","catálogos","clasificacion_industrial","cat_scianHOGARES.xlsx")*
+``` r
+correspondencia_cat_scianHOGARES <-read_excel(here(), "1_insumos","catálogos","clasificacion_industrial","cat_scianHOGARES.xlsx")
+```
 
 -   Los comandos paste() y paste0(): Estos comandos funcionan para concatenar elementos. El primero permite determinar un separador entre los elementos. Ejemplo:
 
-*bitacora \<- read_csv(paste(here(),"4_reportes","bitacoras","bitacora.csv",sep = "/")*
+``` r
+bitacora <- read_csv(paste(here(),"4_reportes","bitacoras","bitacora.csv",sep = "/"))
+``` 
 
 -   El comando source(): Este comando permite llamar y correr otros archivos script .R y .Rmd desde otro script. En otras palabras, el comando facilita la ejecución de múltiples scripts desde uno solo. Ejemplo:
 
-*source(here("2_codigos","cod_config_inicial","0_config_inicial.R"))*
+``` r
+source(here("2_codigos","cod_config_inicial","0_config_inicial.R"))
+``` 
 
 -   El operador pipe " %\>% ": este operador permite concatenar diversas líneas de código sobre un mismo objeto, sin necesidad de volverlo a"llamar" o nombrar. Ejemplo:
 
-*enoe \<- ENOEN_sdemycoes %\>% mutate(contrato_escrito=ifelse(contrato_escrito==1,1,0))*
-
+``` r
+enoe <- ENOEN_sdemycoes %>% mutate(contrato_escrito=ifelse(contrato_escrito==1,1,0))
+``` 
 -   Los comandos \_join: comprende left_join(), right_join(), full_join(), semi_join(), inner_join() y anti_join(). Este grupo de comandos se utiliza para unir dos data frames o tablas. Ejemplo:
 
-*ENOEN_sdemycoes \<-left_join(ENOEN_sdemycoes, correspondencia_cat_scianHOGARES, by=c("p4a_tres"="scian_hogares_2018")*
+``` r
+ENOEN_sdemycoes <-left_join(ENOEN_sdemycoes, correspondencia_cat_scianHOGARES, by=c("p4a_tres"="scian_hogares_2018")
+``` 
 
 -   El comando mutate(): sirve para crear nuevas variables o campos dentro de un data frame o tabla, es muy importante para la transformación de la información. Ejemplo:
 
-*enoe \<- ENOEN_sdemycoes %\>% mutate(ing_min=ifelse(ing7c==1,1,0))*
+``` r
+enoe <- ENOEN_sdemycoes %>% mutate(ing_min=ifelse(ing7c==1,1,0))
+``` 
 
 -   El comando filter(): permite filtrar información de una variable o campo excluyendo una o muchas de sus categorías o rangos. Ejemplo:
 
-*ENOEN_sdemycoes \<- ENOEN_sdemycoes %\>% filter(p3h==1)*
+``` r
+ENOEN_sdemycoes <- ENOEN_sdemycoes %>% filter(p3h==1)
+``` 
 
 -   El comando select(): selecciona una o más variables o campos de un data frame o tabla. Ejemplo:
 
-*ENOEN_sdemycoes \<- ENOEN_sdemycoes %\>% filter(p3h==1)*
+``` r
+ENOEN_sdemycoes <- ENOEN_sdemycoes %>% filter(p3h==1)
+``` 
 
 -   El comando select(): selecciona una o más variables o campos de un data frame o tabla. Ejemplo:
 
-*ENOEN_sdemycoes \<- ENOEN_sdemycoes %\>% filter(p3h==1)*
+``` r
+ENOEN_sdemycoes <- ENOEN_sdemycoes %>% filter(p3h==1)
+``` 
 
 -   El comando case_when(): funciona para clasificar o reclasificar categorías de una variable o campo (cuando a, entonces b; cuando c, entonces (simbolizado por " \~ ") d; etc.). Este comando permite hacer comparaciones entre categorías de la misma variable o entre diferentes variables utilizando símbolos de igualdad y desigualdad como"=","\>","\<","!=" (diferente) para crear las nuevas categorías. Ejemplo:
 
-*ENOEN_sdemycoes\<-ENOEN_sdemycoes %\>% mutate(cat_tamanio= as.factor(case_when(*
-
-*cat_tamanio\<=3\~'1', cat_tamanio==4\~'2', cat_tamanio\>=5 & cat_tamanio\<=7\~'3', cat_tamanio==8\~'4', cat_tamanio==9\~'5', cat_tamanio\>=10\~'6')))*
+``` r
+ENOEN_sdemycoes <- ENOEN_sdemycoes %>% 
+mutate(cat_tamanio= as.factor(case_when(
+  cat_tamanio<= 3~'1', 
+  cat_tamanio==4~'2', 
+  cat_tamanio>=5 & cat_tamanio<=7~'3', 
+  cat_tamanio==8~'4', 
+  cat_tamanio==9~'5', 
+  cat_tamanio>=10~'6')))
+``` 
 
 Notar que el case_when clasifica las situaciones con la jerarquía con la que sucede la ocurrencia: Es decir, si una observación cumple con dos "casos" entonces al evaluarse el primer caso y cumplirse, ya no se evalúa el segundo caso.
 
--   El comando if_else() o ifelse(): Al igual que el comando anterior, funciona para reclasificar categorías de variables o campos, aunque esta función permite solo dos opciones de clasificación (si sucede x, entonces y). Ejemplo:\
-    *enoe \<- ENOEN_sdemycoes %\>% mutate(presta_soc=ifelse(pre_asa==1,1,0))*
+-   El comando if_else() o ifelse(): Al igual que el comando anterior, funciona para reclasificar categorías de variables o campos, aunque esta función permite solo dos opciones de clasificación (si sucede x, entonces y). Ejemplo:
 
--   El comando for(): Este comando permite hacer iteraciones de uno o más comandos sobre los elementos declarados, estos elementos pueden ser pertenecientes a un vector o lista. Ejemplo:\
-    *for (i in lista_indicadores_enoe){*\
-    *dir.create(paste0(here("3_resultados/coyuntura/res_coy_ENOE", i)))*\
-    *ENOE")) }*
+``` r
+enoe <- ENOEN_sdemycoes %>% mutate(presta_soc=ifelse(pre_asa==1,1,0))
+```
 
--   Comandos sub(), gsub(), y aquellos que inician con stri\_() o str\_(): Estos comandos sirven para transformar e identificar patrones en cadenas de texto (o procesamiento de lenguaje natural) utilizando diversos códigos. Ejemplo:\
-    *filter(str_detect(nombre_archivo,"SDEM"))*
+-   El comando for(): Este comando permite hacer iteraciones de uno o más comandos sobre los elementos declarados, estos elementos pueden ser pertenecientes a un vector o lista. Ejemplo:
 
--   Comando as_survey_design(): este comando se utiliza para declarar una base de datos como encuesta a partir de sus variables muestrales. Ejemplo:\
-    *enoesvyset \<- enoe %\>% as_survey_design(strata = estrato, weights = peso, id = upm, nest=TRUE)*
+``` r
+for (i in lista_indicadores_enoe){
+dir.create(paste0(here("3_resultados/coyuntura/res_coy_ENOE", i))), ENOE"))}
+```
 
--   Comandos que empiezan con svy\_() o survey\_(): Estos comandos toman en cuenta la encuesta declarada para hacer cálculos sobre la misma considerando su diseño muestral. Entre estos podemos encontrar: survey_mean() y survey_ratio(). Estos comandos brindan la opción de obtener el error estándar (se), los intervalos de confianza (ci), la varianza (var), y los coeficientes de variación (vi) de las estimaciones calculadas. Ejemplo:\
-    *valor=survey_mean(ing_min, vartype = c("cv"), na.rm=T)*
+-   Comandos sub(), gsub(), y aquellos que inician con stri\_() o str\_(): Estos comandos sirven para transformar e identificar patrones en cadenas de texto (o procesamiento de lenguaje natural) utilizando diversos códigos. Ejemplo:
 
--   Comando try_catch(): Este comando permite poner condiciones a la ejecución de otros comandos en R. Suele utilizarse para mostrar errores y warnigs que se deben tener en cuenta, por ejemplo, si no se encontró algún archivo o script. Usualmente el comando impide que se detenga la ejecución del código ante posibles errores, aunque se debe prestar especial atención a los mensajes de error y warnings que se produzcan en la consola. Ejemplo:\
-    *municipios_frontera_norte \<-tryCatch(suppressMessages(read_csv(* *paste(path_a_marco_geo,"municipios_fn","municipiosFronteraNorte.csv",sep="/"),error= function(e) {cat(crayon::red("\\n","\\n",paste("\*\*\* ERROR \*\*\* No se ha cargado: Catalogo de municipios en la frontera norte.")),"\\n","\\n")})*
+``` r
+filter(str_detect(nombre_archivo,"SDEM"))
+```
 
--   Comando saveRDS(): este comando permite guardar data frames en formato .Rds. Ejemplo: *saveRDS(enoe_temp,paste0(here(),"/", "3_resultados/coyuntura/res_coy_ENOE","/" ,nombre,"/enoe\_",nombre,"\_",periodo,anio,"\_",v,".Rds"))*\
-    \
-    Existen otros comandos para guardar las bases de datos en otros formatos: write.csv(), write.dta(), entre otros.
+-   Comando as_survey_design(): este comando se utiliza para declarar una base de datos como encuesta a partir de sus variables muestrales. Ejemplo:
+
+``` r
+enoesvyset <- enoe %>% as_survey_design(strata = estrato, weights = peso, id = upm, nest=TRUE)
+```
+
+-   Comandos que empiezan con svy\_() o survey\_(): Estos comandos toman en cuenta la encuesta declarada para hacer cálculos sobre la misma considerando su diseño muestral. Entre estos podemos encontrar: survey_mean() y survey_ratio(). Estos comandos brindan la opción de obtener el error estándar (se), los intervalos de confianza (ci), la varianza (var), y los coeficientes de variación (vi) de las estimaciones calculadas. Ejemplo:
+
+``` r
+valor=survey_mean(ing_min, vartype = c("cv"), na.rm=T)
+```
+
+-   Comando try_catch(): Este comando permite poner condiciones a la ejecución de otros comandos en R. Suele utilizarse para mostrar errores y warnigs que se deben tener en cuenta, por ejemplo, si no se encontró algún archivo o script. Usualmente el comando impide que se detenga la ejecución del código ante posibles errores, aunque se debe prestar especial atención a los mensajes de error y warnings que se produzcan en la consola. Ejemplo:
+
+``` r
+municipios_frontera_norte <-
+tryCatch(
+suppressMessages(read_csv(paste(path_a_marco_geo,"municipios_fn","municipiosFronteraNorte.csv",sep="/"),
+error= function(e) {cat(crayon::red("\n","\n",paste("*** ERROR *** No se ha cargado: Catalogo de municipios en la frontera norte.")),"\n","\n")})))
+```
+
+-   Comando saveRDS(): este comando permite guardar data frames en formato .Rds. Ejemplo:
+``` r
+saveRDS(enoe_temp,paste0(here(),"/", "3_resultados/coyuntura/res_coy_ENOE","/" ,nombre,"/enoe\_",nombre,"\_",periodo,anio,"\_",v,".Rds"))
+```
+  Existen otros comandos para guardar las bases de datos en otros formatos: write.csv(), write.dta(), entre otros.
 
 Además de estos, se utilizan muchos otros comandos de las paqueterías cargadas, no obstante, estos son los que se utilizan con más frecuencia ya que son los básicos para la carga, transformación y guardado de la información que utiliza el SIDIL. Si surge alguna duda, o si se requiere profundizar en estos u otros comandos, existe amplia información en internet que incluye explicaciones y ejemplos sobre el uso de los diversos comandos en el ambiente de RStudio, dos de las principales fuentes de consulta son: www. cran.r-project.org y [www.stackoverflow.com](http://www.stackoverflow.com), o bien con el comando help(package="\_\_"), poniendo entre las comillas el nombre de la paquetería que se desea buscar. De igual manera, si se desea buscar información sobre algún comando, se puede utilizar la línea de código help(\_\_, package="\_\_"), poniendo en el primer argumento el comando en cuestión y en el segundo la paquetería al que pertenece.
 
