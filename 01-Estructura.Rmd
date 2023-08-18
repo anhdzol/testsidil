@@ -253,7 +253,7 @@ En otras palabras, la interfaz de automatización permite mantener actualizado l
 ```
 
 
-### Módulo III: Consulta de la MPR para priorización de CT a inspeccionar
+### Módulo III: Consulta de la MPR para priorización de CT a inspeccionar {#moduloIIIIConsultaMPR .unnumbered}
 
 En el módulo de consulta se explota la información contenida en la Matriz de Predicción de Riesgo (MPR). Se realiza a través de una interfaz interactiva, permitiendo al usuario escoger y ponderar diferentes campos para acotar y priorizar el universo de CT disponible en el DNE para logar un subconjunto de ellos que cumplen determinados criterios. Los CT en dicho subconjunto cumplen con características que reflejan la estrategia de inspección que se quiere desarrollar. Típicamente constituirán este subconjunto aquellos CT de mayor probabilidad de incumplimiento en cierta submateria y que además cumplen con los criterios impuestos a otras variables que los caracterizan.
 

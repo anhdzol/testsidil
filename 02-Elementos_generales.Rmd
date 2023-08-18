@@ -238,7 +238,7 @@ Esta sección adelanta algunos detalles que, independientemente de la ejecución
 
 A lo largo de su ejecución, los diversos procedimientos reportan mensajes al usuario a través de la consola del software. Estos mensajes pueden ser clasificados en los siguientes grupos:
 
-### Mensajes de error {#mensajesError}
+### Mensajes de error {#mensajesError.unnumbered}
 
 Estos mensajes surgen cuando la ejecución del código no es como se espera y el proceso probablemente falle en una(s) parte(s) o toda su ejecución. Casi con seguridad no se cumplió con el propósito del proceso y el mismo se interrumpió.
 
@@ -252,7 +252,7 @@ En algunos casos el mensaje de error puede reunir dos o tres elementos. Como se 
 
 Notar que no siempre estarán los tres elementos en un mensaje de error. Podría ser un error no previsto, en cuyo caso no habrá un texto en español, o bien el propio sistema podría no arrojar el tercer elemento ("*Warning...*") toda vez que no lo prevé así este lenguaje.
 
-### Mensajes de advertencia {#mensajesAdvertencia}
+### Mensajes de advertencia {#mensajesAdvertencia.unnumbered}
 
 Son mensajes que requieren la atención del usuario pero que no necesariamente implican que algo haya salido mal, y que no impiden que el procedimiento se desarrolle. Por ejemplo, en el procesamiento de los insumos más recientes de los registros administrativos del IMSS, se notifica al usuario si los periodos de referencia de los dos insumos que se deben "cruzar" (puestos asegurados y patrones registrados) no se refieren al mismo periodo de referencia. En dicho caso, el mensaje se despliega como:
 
@@ -262,7 +262,7 @@ Como se explica más adelante, esto pudiera ser intencional o no y requiere la a
 
 Notar que tanto los mensajes de error como de advertencia son acompañados, cuando previstos por el sistema, con tres asteriscos antes y después del tipo de error. Esto para propiciar su identificación en la consola.
 
-### Mensajes de información o de confirmación {#mensajesConfirmacion}
+### Mensajes de información o de confirmación {#mensajesConfirmacion.unnumbered}
 
 Son mensajes que en la mayoría de las veces sólo informan al usuario el inicio o conclusión de algún proceso, mismo que anticipa qué estará procesando la computadora. Un ejemplo es:
 

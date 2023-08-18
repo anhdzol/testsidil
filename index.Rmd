@@ -13,7 +13,7 @@ always_allow_html: true
 
 
 ---
-# Bienvenida {#introapertura}
+# Introducción {#introapertura}
 <!-- # PRESENTACIÓN DEL SIDIL -->
 
 >*Aplicación de la analítica de datos para la generación de estrategias inteligentes de selección de empresas para la inspección laboral*
@@ -21,7 +21,7 @@ always_allow_html: true
 
 Las inspecciones laborales son el instrumento más importante que utilizan los gobiernos para verificar y garantizar que las empresas adopten las medidas necesarias para cumplir con las normativas en materia de condiciones laborales y de seguridad y salud en el trabajo. No obstante, el efecto de dichas inspecciones depende de diversos factores, siendo un factor fundamental el de los mecanismos de selección de los centros de trabajo a inspeccionar.
 
-Realizar inspecciones en todo el universo de empresas no resulta viable debido a las limitaciones presupuestales y de recursos humanos que tienen las instituciones públicas. Al día de hoy la selección de las empresas que se van a inspeccionar se basa en un mecanismo aleatorio sobre una preselección de centros de trabajo que cumplen con ciertas características o que cuentan con determinados atributos de tamaña, rama de actividad, región, etc. Dichas características de selección no sólo son un conjunto limitado de atributos observables, sino que además no toman en consideración en ninguna medida el riesgo de incumplimiento laboral de las empresas. 
+Realizar inspecciones en todo el universo de empresas no resulta viable debido a las limitaciones presupuestales y de recursos humanos que tienen las instituciones públicas. Al día de hoy la selección de las empresas que se van a inspeccionar se basa en un mecanismo aleatorio sobre una preselección de centros de trabajo que cumplen con ciertas características o que cuentan con determinados atributos de tamaño, rama de actividad, región, etc. Dichas características de selección no sólo son un conjunto limitado de atributos observables, sino que además no toman en consideración en ninguna medida el riesgo de incumplimiento laboral de las empresas. 
 
 En ese marco, este componente busca apoyar a la Secretaría de Trabajo y Previsión Social (STPS) en la generación de herramientas y mecanismos que permitan seleccionar centros de trabajo en función de **un enfoque basado en evidencia, en particular, a partir de la estimación de riesgos de incumplimiento a determinada normatividad en materia laboral**. El potencial de este enfoque es que se alcance una mayor eficiencia de la inspección. Para ello se requirió el desarrollo de métodos de análisis que permitieran la priorización en función del riesgo, basándose en que la STPS dispone de grandes volúmenes de datos derivados de la inspección laboral y de otras bases de datos, propias o de terceros, de enorme utilidad. Ha sido necesario, de la misma manera, relacionar estos registros administrativos de la autoridad inspectiva con otras fuentes de información estadística y registros de otras instituciones públicas para enriquecer el universo de empresas y contar así con más información que permita establecer factores de riesgo.
  
@@ -133,5 +133,5 @@ El SIDIL tiene como alcance:
 * Desarrollar una matriz de criterios sustantivos para la identificación de las principales violaciones laborales por parte de los patrones, desagregados en los indicadores necesarios y factibles para su evaluación en las empresas y centros a partir de las fuentes de información que se disponen.
 * A partir de un diagnóstico pormenorizado contar con la identificación de los acervos de información susceptibles de incorporarse, así como las necesidades de procesamiento que son necesarias para integrar estos datos al cálculo de los indicadores generados.
 * La implementación de un repositorio de información y un ambiente de analítica de datos con las bases de datos procesadas y listas para su incorporación.
-* Una serie de interfaces y servicios de información que permitan la consulta del repositorio de datos a través de los indicadores y criterios definidos para la generación de estrategias inteligentes para la inspección.
+* Desarrollar una serie de interfaces y servicios de información que permitan la consulta del repositorio de datos a través de los indicadores y criterios definidos para la generación de estrategias inteligentes para la inspección.
 *	La transferencia del conocimiento y de las herramientas necesarias para asegurar la sostenibilidad del proyecto en el mediano plazo.
