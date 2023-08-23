@@ -60,8 +60,74 @@
 <script src="libs/plotly-main-2.11.1/plotly-latest.min.js"></script>
 <script src="libs/kePrint-0.0.1/kePrint.js"></script>
 <link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
+<link href="libs/tabwid-1.1.3/tabwid.css" rel="stylesheet" />
+<script src="libs/tabwid-1.1.3/tabwid.js"></script>
 
 
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
 
 <style type="text/css">
   
@@ -84,7 +150,7 @@
 <li><a href="./">Manual de procesamiento y explotación de información</a></li>
 
 <li class="divider"></li>
-<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Bienvenida</a>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introducción</a>
 <ul>
 <li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#introalineacion"><i class="fa fa-check"></i><b>1.1</b> Alineación con la misión y programas de gobierno</a></li>
 <li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#introjustificacion"><i class="fa fa-check"></i><b>1.2</b> Justificación de la viabilidad del proyecto</a></li>
@@ -100,7 +166,7 @@
 <li class="chapter" data-level="" data-path="estructura-y-flujos-de-trabajo-del-sidil.html"><a href="estructura-y-flujos-de-trabajo-del-sidil.html#moduloIexplicaciongeneral"><i class="fa fa-check"></i>Módulo I: actualización de indicadores</a></li>
 <li class="chapter" data-level="" data-path="estructura-y-flujos-de-trabajo-del-sidil.html"><a href="estructura-y-flujos-de-trabajo-del-sidil.html#moduloIIexplicaciongeneral"><i class="fa fa-check"></i>Módulo II: Consulta al universo de CT, imputación de indicadores y predicción de riesgo</a></li>
 <li class="chapter" data-level="" data-path="estructura-y-flujos-de-trabajo-del-sidil.html"><a href="estructura-y-flujos-de-trabajo-del-sidil.html#moduloIyIIexplicaciongeneral"><i class="fa fa-check"></i>Módulos I y II: operables desde la interfaz de automatización</a></li>
-<li class="chapter" data-level="2.2.1" data-path="estructura-y-flujos-de-trabajo-del-sidil.html"><a href="estructura-y-flujos-de-trabajo-del-sidil.html#módulo-iii-consulta-de-la-mpr-para-priorización-de-ct-a-inspeccionar"><i class="fa fa-check"></i><b>2.2.1</b> Módulo III: Consulta de la MPR para priorización de CT a inspeccionar</a></li>
+<li class="chapter" data-level="" data-path="estructura-y-flujos-de-trabajo-del-sidil.html"><a href="estructura-y-flujos-de-trabajo-del-sidil.html#moduloIIIIConsultaMPR"><i class="fa fa-check"></i>Módulo III: Consulta de la MPR para priorización de CT a inspeccionar</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="elementosgenerales.html"><a href="elementosgenerales.html"><i class="fa fa-check"></i><b>3</b> Elementos generales del procesamiento de datos</a>
@@ -115,9 +181,9 @@
 <li class="chapter" data-level="3.4" data-path="elementosgenerales.html"><a href="elementosgenerales.html#trazabilidad"><i class="fa fa-check"></i><b>3.4</b> Sobre trazabilidad: bitácora, log y parámetros</a></li>
 <li class="chapter" data-level="3.5" data-path="elementosgenerales.html"><a href="elementosgenerales.html#mensajesGeneral"><i class="fa fa-check"></i><b>3.5</b> Mensajes al usuario</a>
 <ul>
-<li class="chapter" data-level="3.5.1" data-path="elementosgenerales.html"><a href="elementosgenerales.html#mensajesError"><i class="fa fa-check"></i><b>3.5.1</b> Mensajes de error</a></li>
-<li class="chapter" data-level="3.5.2" data-path="elementosgenerales.html"><a href="elementosgenerales.html#mensajesAdvertencia"><i class="fa fa-check"></i><b>3.5.2</b> Mensajes de advertencia</a></li>
-<li class="chapter" data-level="3.5.3" data-path="elementosgenerales.html"><a href="elementosgenerales.html#mensajesConfirmacion"><i class="fa fa-check"></i><b>3.5.3</b> Mensajes de información o de confirmación</a></li>
+<li class="chapter" data-level="3.5.1" data-path="elementosgenerales.html"><a href="elementosgenerales.html#mensajesError.unnumbered"><i class="fa fa-check"></i><b>3.5.1</b> Mensajes de error</a></li>
+<li class="chapter" data-level="3.5.2" data-path="elementosgenerales.html"><a href="elementosgenerales.html#mensajesAdvertencia.unnumbered"><i class="fa fa-check"></i><b>3.5.2</b> Mensajes de advertencia</a></li>
+<li class="chapter" data-level="3.5.3" data-path="elementosgenerales.html"><a href="elementosgenerales.html#mensajesConfirmacion.unnumbered"><i class="fa fa-check"></i><b>3.5.3</b> Mensajes de información o de confirmación</a></li>
 </ul></li>
 <li class="chapter" data-level="3.6" data-path="elementosgenerales.html"><a href="elementosgenerales.html#software-para-el-procesamiento-de-datos"><i class="fa fa-check"></i><b>3.6</b> Software para el procesamiento de datos</a></li>
 <li class="chapter" data-level="3.7" data-path="elementosgenerales.html"><a href="elementosgenerales.html#catalogos"><i class="fa fa-check"></i><b>3.7</b> Catálogos de información</a></li>
@@ -192,10 +258,6 @@
 <li class="chapter" data-level="8.3.3" data-path="anexoHallazgos.html"><a href="anexoHallazgos.html#section"><i class="fa fa-check"></i><b>8.3.3</b> </a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="9" data-path="box-and-tables.html"><a href="box-and-tables.html"><i class="fa fa-check"></i><b>9</b> Box and tables</a>
-<ul>
-<li class="chapter" data-level="9.0.1" data-path="box-and-tables.html"><a href="box-and-tables.html#tablas"><i class="fa fa-check"></i><b>9.0.1</b> Tablas</a></li>
-</ul></li>
 </ul>
 
       </nav>
@@ -268,198 +330,346 @@ Recuadro 6.3: Vista del ambiente sin proyecto
 <p>Si hubiera algún proyecto previamente cargado, se debe cerrar desplegando el menú del proyecto y seleccionando “Close Project” (tercera opción en la ilustración <a href="r-rstudio-y-python.html#fig:RStudioOpenProject">6.3</a>).</p>
 <p>El siguiente paso es abrir el script que se desea correr o editar, o bien, generar un nuevo script: Los archivos de códigos que utiliza el proyecto SIDIL en el ambiente RStudio puede ser de dos tipos: R Script (tipo. R) o R Markdown (tipo .Rmd). Para abrir un archivo ya existente o generar uno nuevo se puede realizar desde la primera sección de la pantalla (I. Scripts), donde el primer ícono despliega las opciones de nuevos documentos que se quieren creen, y el tercero abre el explorador de archivos para seleccionar alguno de los documentos ya existentes. Un script ya existente también se puede abrir desde la sección IV del programa RStudio, únicamente hace clic sobre el archivo. R o .Rmd que se desee abrir.</p>
 <p>Una parte primordial para la ejecución de los scripts es la instalación y el llamado de las paqueterías que se utilizarán, ya que estas albergan los comandos que se utilizan en los archivos de códigos. Si bien R Studio cuenta con algunos comandos básicos, la versatilidad del programa permite importar y utilizar cientos de paqueterías que facilitan la generación de códigos con sus comandos. A continuación, se presentan las paqueterías que utiliza el proyecto SIDIL junto con algunos de los principales comandos de cada una. Esta lista de principales comandos no es exhaustiva y muchas paqueterías pueden contener cientos de comandos.</p>
-<table style="width:100%;">
-<caption>Tabla XXX: Principales paquetes usados en R.</caption>
-<colgroup>
-<col width="4%" />
-<col width="35%" />
-<col width="58%" />
-</colgroup>
+<div style="border: 1px solid #ddd; padding: 0px; overflow-y: scroll; height:600px; overflow-x: scroll; width:100%; ">
+<table class="table table-striped table-hover" style="font-size: 14px; margin-left: auto; margin-right: auto;">
+<caption style="font-size: initial !important;">
+<span id="tab:unnamed-chunk-35">Tabla 6.1: </span>Principales paqueterías de R utilizadas en el SIDIL
+</caption>
 <thead>
-<tr class="header">
-<th>Paquete</th>
-<th>Principal función</th>
-<th>Principales comandos</th>
+<tr>
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
+Paquetería
+</th>
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
+Principal función
+</th>
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
+Principales comandos
+</th>
 </tr>
 </thead>
 <tbody>
-<tr class="odd">
-<td>pacman</td>
-<td>Instalar y llamar paqueterías</td>
-<td>p_load()</td>
+<tr>
+<td style="text-align:left;">
+pacman
+</td>
+<td style="text-align:left;">
+Instalar y llamar paqueterías
+</td>
+<td style="text-align:left;">
+p_load()
+</td>
 </tr>
-<tr class="even">
-<td>here</td>
-<td>Establecer el directorio en el que se trabaja</td>
-<td>here ()</td>
+<tr>
+<td style="text-align:left;">
+here
+</td>
+<td style="text-align:left;">
+Establecer el directorio en el que se trabaja
+</td>
+<td style="text-align:left;">
+here ()
+</td>
 </tr>
-<tr class="odd">
-<td>tidyverse</td>
-<td>Colección de paqueterías de gramática, estructura de datos, gráficas, entre otras.</td>
-<td>operador pipe “%&gt;%” , read_csv(), filter(), group_by(), mutate(), rename(), summarise(), str_detect() (y otros str_), as_tibble (), pivo()t, gather()</td>
+<tr>
+<td style="text-align:left;">
+tidyverse
+</td>
+<td style="text-align:left;">
+Colección de paqueterías de gramática, estructura de datos, gráficas, entre otras.
+</td>
+<td style="text-align:left;">
+operador pipe “%&gt;%” , read_csv(), filter(), group_by(), mutate(), rename(), summarise(), str_detect() (y otros str_), as_tibble (), pivo()t, gather()
+</td>
 </tr>
-<tr class="even">
-<td>haven</td>
-<td>Lee archivos sav, dta, entre otros</td>
-<td>read_sav(), read_dta()</td>
+<tr>
+<td style="text-align:left;">
+haven
+</td>
+<td style="text-align:left;">
+Lee archivos sav, dta, entre otros
+</td>
+<td style="text-align:left;">
+read_sav(), read_dta()
+</td>
 </tr>
-<tr class="odd">
-<td>dbplyr</td>
-<td>Permite trabajar con bases de datos de distinto tipo</td>
-<td>show_query(), collect()</td>
+<tr>
+<td style="text-align:left;">
+dbplyr
+</td>
+<td style="text-align:left;">
+Permite trabajar con bases de datos de distinto tipo
+</td>
+<td style="text-align:left;">
+show_query(), collect()
+</td>
 </tr>
-<tr class="even">
-<td>foreign</td>
-<td>Permite leer y guardar archivos de distinto tipo</td>
-<td>read.dbf ()</td>
+<tr>
+<td style="text-align:left;">
+foreign
+</td>
+<td style="text-align:left;">
+Permite leer y guardar archivos de distinto tipo
+</td>
+<td style="text-align:left;">
+read.dbf ()
+</td>
 </tr>
-<tr class="odd">
-<td>janitor</td>
-<td>Paquetería de gramática y estructura de datos</td>
-<td>clean_names(), tabyl()</td>
+<tr>
+<td style="text-align:left;">
+janitor
+</td>
+<td style="text-align:left;">
+Paquetería de gramática y estructura de datos
+</td>
+<td style="text-align:left;">
+clean_names(), tabyl()
+</td>
 </tr>
-<tr class="even">
-<td>readxl</td>
-<td>Lee archivos de Excel</td>
-<td>read_excel()</td>
+<tr>
+<td style="text-align:left;">
+readxl
+</td>
+<td style="text-align:left;">
+Lee archivos de Excel
+</td>
+<td style="text-align:left;">
+read_excel()
+</td>
 </tr>
-<tr class="odd">
-<td>survey</td>
-<td>Paquetería para encuestas complejas</td>
-<td>svymean(), svyby()</td>
+<tr>
+<td style="text-align:left;">
+survey
+</td>
+<td style="text-align:left;">
+Paquetería para encuestas complejas
+</td>
+<td style="text-align:left;">
+svymean(), svyby()
+</td>
 </tr>
-<tr class="even">
-<td>srvyr</td>
-<td>Paquetería para encuestas complejas, agrega la sintaxis de tidyverse a la paquetería survey</td>
-<td>as_survey_design(), survey_mean(), survey_total()</td>
+<tr>
+<td style="text-align:left;">
+srvyr
+</td>
+<td style="text-align:left;">
+Paquetería para encuestas complejas, agrega la sintaxis de tidyverse a la paquetería survey
+</td>
+<td style="text-align:left;">
+as_survey_design(), survey_mean(), survey_total()
+</td>
 </tr>
-<tr class="odd">
-<td>surveycv</td>
-<td>Paquetería para encuestas complejas, permite cálculo de coeficiente de variación</td>
-<td>cv.svy()</td>
+<tr>
+<td style="text-align:left;">
+surveycv
+</td>
+<td style="text-align:left;">
+Paquetería para encuestas complejas, permite cálculo de coeficiente de variación
+</td>
+<td style="text-align:left;">
+cv.svy()
+</td>
 </tr>
-<tr class="even">
-<td>tidymodels</td>
-<td>Colección de paqueterías para modelaje y machine learning utilizando el lenguaje tidyverse</td>
-<td>Rsample (),training(), prep()</td>
+<tr>
+<td style="text-align:left;">
+tidymodels
+</td>
+<td style="text-align:left;">
+Colección de paqueterías para modelaje y machine learning utilizando el lenguaje tidyverse
+</td>
+<td style="text-align:left;">
+Rsample (),training(), prep()
+</td>
 </tr>
-<tr class="odd">
-<td>crayon</td>
-<td>Cambia el color de los mensajes de la consola</td>
-<td>styles(), crayon()</td>
+<tr>
+<td style="text-align:left;">
+crayon
+</td>
+<td style="text-align:left;">
+Cambia el color de los mensajes de la consola
+</td>
+<td style="text-align:left;">
+styles(), crayon()
+</td>
 </tr>
-<tr class="even">
-<td>data.table</td>
-<td>Herramientas para el manejo de objetos de bases de datos</td>
-<td>fread(), file.exists()</td>
+<tr>
+<td style="text-align:left;">
+data.table
+</td>
+<td style="text-align:left;">
+Herramientas para el manejo de objetos de bases de datos
+</td>
+<td style="text-align:left;">
+fread(), file.exists()
+</td>
 </tr>
-<tr class="odd">
-<td>stats</td>
-<td>Paquetería para cálculos y herramientas estadísticas</td>
-<td>gl(), glm(),</td>
+<tr>
+<td style="text-align:left;">
+stats
+</td>
+<td style="text-align:left;">
+Paquetería para cálculos y herramientas estadísticas
+</td>
+<td style="text-align:left;">
+gl(), glm(),
+</td>
 </tr>
-<tr class="even">
-<td>scriptName</td>
-<td>Recupera nombres y ubicación de scripts</td>
-<td>current_filename()</td>
+<tr>
+<td style="text-align:left;">
+scriptName
+</td>
+<td style="text-align:left;">
+Recupera nombres y ubicación de scripts
+</td>
+<td style="text-align:left;">
+current_filename()
+</td>
 </tr>
-<tr class="odd">
-<td>rstudioapi</td>
-<td>Accede a Rstudio API si está disponible</td>
-<td>isavailable()</td>
+<tr>
+<td style="text-align:left;">
+rstudioapi
+</td>
+<td style="text-align:left;">
+Accede a Rstudio API si está disponible
+</td>
+<td style="text-align:left;">
+isavailable()
+</td>
 </tr>
-<tr class="even">
-<td>stringi</td>
-<td>Paquetería para procesamiento de lenguaje natural</td>
-<td><p>stri_extract_all(),</p>
-<p>str_detect(),</p></td>
+<tr>
+<td style="text-align:left;">
+stringi
+</td>
+<td style="text-align:left;">
+Paquetería para procesamiento de lenguaje natural
+</td>
+<td style="text-align:left;">
+stri_extract_all(), str_detect(),
+</td>
 </tr>
-<tr class="odd">
-<td>beepr</td>
-<td>Genera sonidos de notificación</td>
-<td>beep()</td>
+<tr>
+<td style="text-align:left;">
+beepr
+</td>
+<td style="text-align:left;">
+Genera sonidos de notificación
+</td>
+<td style="text-align:left;">
+beep()
+</td>
 </tr>
-<tr class="even">
-<td>rlang</td>
-<td>Funciones esenciales para el funcionamiento de Rstudio</td>
-<td>Diversos elementos de funcionamiento interno.</td>
+<tr>
+<td style="text-align:left;">
+rlang
+</td>
+<td style="text-align:left;">
+Funciones esenciales para el funcionamiento de Rstudio
+</td>
+<td style="text-align:left;">
+Diversos elementos de funcionamiento interno.
+</td>
 </tr>
-<tr class="odd">
-<td>tools</td>
-<td>Funciones esenciales para el funcionamiento de Rstudio</td>
-<td>Diversos elementos de funcionamiento interno.</td>
+<tr>
+<td style="text-align:left;">
+tools
+</td>
+<td style="text-align:left;">
+Funciones esenciales para el funcionamiento de Rstudio
+</td>
+<td style="text-align:left;">
+Diversos elementos de funcionamiento interno.
+</td>
 </tr>
 </tbody>
 </table>
+</div>
 <p>Existen algunos comandos que se usan con más frecuencia y que resultan muy importantes para la lectura y procesamiento de la información. Algunos de estos son:</p>
 <ul>
 <li>Comandos read_excel() y read_csv(): Estos comandos permite leer y cargar archivos de formato .xlsx y .csv al ambiente de RStudio. Ejemplo:</li>
 </ul>
-<p><em>correspondencia_cat_scianHOGARES&lt;-read_excel(“I:/CALLE/Data/SIDIL/1_insumos/catálogos/clasificacion_industrialcat_scianHOGARES.xlsx”)</em></p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="r-rstudio-y-python.html#cb1-1" tabindex="-1"></a>correspondencia_cat_scianHOGARES <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(<span class="st">&quot;I:/CALLE/Data/SIDIL/1_insumos/catálogos/clasificacion_industrialcat_scianHOGARES.xlsx&quot;</span>)</span></code></pre></div>
 <p>Notar que en Rstudio los separadores diagonales o slash deben estar inclinados a la derecha (/).</p>
 <ul>
 <li>El comando here(): permite establecer la ruta donde se ejecutarán los archivos, suele ser la misma donde se localiza el proyecto R. Es muy útil para cargar y guardar archivos, ya que únicamente se tendrá que utilizar el comando here() para reemplazar toda la ruta, que de otra manera tendría que ser escrita en su totalidad. Ejemplo:</li>
 </ul>
-<blockquote>
-<p><em>correspondencia_cat_scianHOGARES&lt;-read_excel(here(), “1_insumos”,“catálogos”,“clasificacion_industrial”,“cat_scianHOGARES.xlsx”)</em></p>
-</blockquote>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="r-rstudio-y-python.html#cb2-1" tabindex="-1"></a>correspondencia_cat_scianHOGARES <span class="ot">&lt;-</span><span class="fu">read_excel</span>(<span class="fu">here</span>(), <span class="st">&quot;1_insumos&quot;</span>,<span class="st">&quot;catálogos&quot;</span>,<span class="st">&quot;clasificacion_industrial&quot;</span>,<span class="st">&quot;cat_scianHOGARES.xlsx&quot;</span>)</span></code></pre></div>
 <ul>
 <li>Los comandos paste() y paste0(): Estos comandos funcionan para concatenar elementos. El primero permite determinar un separador entre los elementos. Ejemplo:</li>
 </ul>
-<p><em>bitacora &lt;- read_csv(paste(here(),“4_reportes”,“bitacoras”,“bitacora.csv”,sep = “/”)</em></p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="r-rstudio-y-python.html#cb3-1" tabindex="-1"></a>bitacora <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="fu">paste</span>(<span class="fu">here</span>(),<span class="st">&quot;4_reportes&quot;</span>,<span class="st">&quot;bitacoras&quot;</span>,<span class="st">&quot;bitacora.csv&quot;</span>,<span class="at">sep =</span> <span class="st">&quot;/&quot;</span>))</span></code></pre></div>
 <ul>
 <li>El comando source(): Este comando permite llamar y correr otros archivos script .R y .Rmd desde otro script. En otras palabras, el comando facilita la ejecución de múltiples scripts desde uno solo. Ejemplo:</li>
 </ul>
-<p><em>source(here(“2_codigos”,“cod_config_inicial”,“0_config_inicial.R”))</em></p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="r-rstudio-y-python.html#cb4-1" tabindex="-1"></a><span class="fu">source</span>(<span class="fu">here</span>(<span class="st">&quot;2_codigos&quot;</span>,<span class="st">&quot;cod_config_inicial&quot;</span>,<span class="st">&quot;0_config_inicial.R&quot;</span>))</span></code></pre></div>
 <ul>
 <li>El operador pipe ” %&gt;% “: este operador permite concatenar diversas líneas de código sobre un mismo objeto, sin necesidad de volverlo a”llamar” o nombrar. Ejemplo:</li>
 </ul>
-<p><em>enoe &lt;- ENOEN_sdemycoes %&gt;% mutate(contrato_escrito=ifelse(contrato_escrito==1,1,0))</em></p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="r-rstudio-y-python.html#cb5-1" tabindex="-1"></a>enoe <span class="ot">&lt;-</span> ENOEN_sdemycoes <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">contrato_escrito=</span><span class="fu">ifelse</span>(contrato_escrito<span class="sc">==</span><span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">0</span>))</span></code></pre></div>
 <ul>
 <li>Los comandos _join: comprende left_join(), right_join(), full_join(), semi_join(), inner_join() y anti_join(). Este grupo de comandos se utiliza para unir dos data frames o tablas. Ejemplo:</li>
 </ul>
-<p><em>ENOEN_sdemycoes &lt;-left_join(ENOEN_sdemycoes, correspondencia_cat_scianHOGARES, by=c(“p4a_tres”=“scian_hogares_2018”)</em></p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="r-rstudio-y-python.html#cb6-1" tabindex="-1"></a>ENOEN_sdemycoes <span class="ot">&lt;-</span><span class="fu">left_join</span>(ENOEN_sdemycoes, correspondencia_cat_scianHOGARES, <span class="at">by=</span><span class="fu">c</span>(<span class="st">&quot;p4a_tres&quot;</span><span class="ot">=</span><span class="st">&quot;scian_hogares_2018&quot;</span>)</span></code></pre></div>
 <ul>
 <li>El comando mutate(): sirve para crear nuevas variables o campos dentro de un data frame o tabla, es muy importante para la transformación de la información. Ejemplo:</li>
 </ul>
-<p><em>enoe &lt;- ENOEN_sdemycoes %&gt;% mutate(ing_min=ifelse(ing7c==1,1,0))</em></p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="r-rstudio-y-python.html#cb7-1" tabindex="-1"></a>enoe <span class="ot">&lt;-</span> ENOEN_sdemycoes <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">ing_min=</span><span class="fu">ifelse</span>(ing7c<span class="sc">==</span><span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">0</span>))</span></code></pre></div>
 <ul>
 <li>El comando filter(): permite filtrar información de una variable o campo excluyendo una o muchas de sus categorías o rangos. Ejemplo:</li>
 </ul>
-<p><em>ENOEN_sdemycoes &lt;- ENOEN_sdemycoes %&gt;% filter(p3h==1)</em></p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="r-rstudio-y-python.html#cb8-1" tabindex="-1"></a>ENOEN_sdemycoes <span class="ot">&lt;-</span> ENOEN_sdemycoes <span class="sc">%&gt;%</span> <span class="fu">filter</span>(p3h<span class="sc">==</span><span class="dv">1</span>)</span></code></pre></div>
 <ul>
 <li>El comando select(): selecciona una o más variables o campos de un data frame o tabla. Ejemplo:</li>
 </ul>
-<p><em>ENOEN_sdemycoes &lt;- ENOEN_sdemycoes %&gt;% filter(p3h==1)</em></p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="r-rstudio-y-python.html#cb9-1" tabindex="-1"></a>ENOEN_sdemycoes <span class="ot">&lt;-</span> ENOEN_sdemycoes <span class="sc">%&gt;%</span> <span class="fu">filter</span>(p3h<span class="sc">==</span><span class="dv">1</span>)</span></code></pre></div>
 <ul>
 <li>El comando select(): selecciona una o más variables o campos de un data frame o tabla. Ejemplo:</li>
 </ul>
-<p><em>ENOEN_sdemycoes &lt;- ENOEN_sdemycoes %&gt;% filter(p3h==1)</em></p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="r-rstudio-y-python.html#cb10-1" tabindex="-1"></a>ENOEN_sdemycoes <span class="ot">&lt;-</span> ENOEN_sdemycoes <span class="sc">%&gt;%</span> <span class="fu">filter</span>(p3h<span class="sc">==</span><span class="dv">1</span>)</span></code></pre></div>
 <ul>
 <li>El comando case_when(): funciona para clasificar o reclasificar categorías de una variable o campo (cuando a, entonces b; cuando c, entonces (simbolizado por ” ~ “) d; etc.). Este comando permite hacer comparaciones entre categorías de la misma variable o entre diferentes variables utilizando símbolos de igualdad y desigualdad como”=“,”&gt;“,”&lt;“,”!=” (diferente) para crear las nuevas categorías. Ejemplo:</li>
 </ul>
-<p><em>ENOEN_sdemycoes&lt;-ENOEN_sdemycoes %&gt;% mutate(cat_tamanio= as.factor(case_when(</em></p>
-<p><em>cat_tamanio&lt;=3~‘1’, cat_tamanio==4~‘2’, cat_tamanio&gt;=5 &amp; cat_tamanio&lt;=7~‘3’, cat_tamanio==8~‘4’, cat_tamanio==9~‘5’, cat_tamanio&gt;=10~‘6’)))</em></p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="r-rstudio-y-python.html#cb11-1" tabindex="-1"></a>ENOEN_sdemycoes <span class="ot">&lt;-</span> ENOEN_sdemycoes <span class="sc">%&gt;%</span> </span>
+<span id="cb11-2"><a href="r-rstudio-y-python.html#cb11-2" tabindex="-1"></a><span class="fu">mutate</span>(<span class="at">cat_tamanio=</span> <span class="fu">as.factor</span>(<span class="fu">case_when</span>(</span>
+<span id="cb11-3"><a href="r-rstudio-y-python.html#cb11-3" tabindex="-1"></a>  cat_tamanio<span class="sc">&lt;=</span> <span class="dv">3</span><span class="sc">~</span><span class="st">&#39;1&#39;</span>, </span>
+<span id="cb11-4"><a href="r-rstudio-y-python.html#cb11-4" tabindex="-1"></a>  cat_tamanio<span class="sc">==</span><span class="dv">4</span><span class="sc">~</span><span class="st">&#39;2&#39;</span>, </span>
+<span id="cb11-5"><a href="r-rstudio-y-python.html#cb11-5" tabindex="-1"></a>  cat_tamanio<span class="sc">&gt;=</span><span class="dv">5</span> <span class="sc">&amp;</span> cat_tamanio<span class="sc">&lt;=</span><span class="dv">7</span><span class="sc">~</span><span class="st">&#39;3&#39;</span>, </span>
+<span id="cb11-6"><a href="r-rstudio-y-python.html#cb11-6" tabindex="-1"></a>  cat_tamanio<span class="sc">==</span><span class="dv">8</span><span class="sc">~</span><span class="st">&#39;4&#39;</span>, </span>
+<span id="cb11-7"><a href="r-rstudio-y-python.html#cb11-7" tabindex="-1"></a>  cat_tamanio<span class="sc">==</span><span class="dv">9</span><span class="sc">~</span><span class="st">&#39;5&#39;</span>, </span>
+<span id="cb11-8"><a href="r-rstudio-y-python.html#cb11-8" tabindex="-1"></a>  cat_tamanio<span class="sc">&gt;=</span><span class="dv">10</span><span class="sc">~</span><span class="st">&#39;6&#39;</span>)))</span></code></pre></div>
 <p>Notar que el case_when clasifica las situaciones con la jerarquía con la que sucede la ocurrencia: Es decir, si una observación cumple con dos “casos” entonces al evaluarse el primer caso y cumplirse, ya no se evalúa el segundo caso.</p>
 <ul>
-<li><p>El comando if_else() o ifelse(): Al igual que el comando anterior, funciona para reclasificar categorías de variables o campos, aunque esta función permite solo dos opciones de clasificación (si sucede x, entonces y). Ejemplo:<br />
-<em>enoe &lt;- ENOEN_sdemycoes %&gt;% mutate(presta_soc=ifelse(pre_asa==1,1,0))</em></p></li>
-<li><p>El comando for(): Este comando permite hacer iteraciones de uno o más comandos sobre los elementos declarados, estos elementos pueden ser pertenecientes a un vector o lista. Ejemplo:<br />
-<em>for (i in lista_indicadores_enoe){</em><br />
-<em>dir.create(paste0(here(“3_resultados/coyuntura/res_coy_ENOE”, i)))</em><br />
-<em>ENOE”)) }</em></p></li>
-<li><p>Comandos sub(), gsub(), y aquellos que inician con stri_() o str_(): Estos comandos sirven para transformar e identificar patrones en cadenas de texto (o procesamiento de lenguaje natural) utilizando diversos códigos. Ejemplo:<br />
-<em>filter(str_detect(nombre_archivo,“SDEM”))</em></p></li>
-<li><p>Comando as_survey_design(): este comando se utiliza para declarar una base de datos como encuesta a partir de sus variables muestrales. Ejemplo:<br />
-<em>enoesvyset &lt;- enoe %&gt;% as_survey_design(strata = estrato, weights = peso, id = upm, nest=TRUE)</em></p></li>
-<li><p>Comandos que empiezan con svy_() o survey_(): Estos comandos toman en cuenta la encuesta declarada para hacer cálculos sobre la misma considerando su diseño muestral. Entre estos podemos encontrar: survey_mean() y survey_ratio(). Estos comandos brindan la opción de obtener el error estándar (se), los intervalos de confianza (ci), la varianza (var), y los coeficientes de variación (vi) de las estimaciones calculadas. Ejemplo:<br />
-<em>valor=survey_mean(ing_min, vartype = c(“cv”), na.rm=T)</em></p></li>
-<li><p>Comando try_catch(): Este comando permite poner condiciones a la ejecución de otros comandos en R. Suele utilizarse para mostrar errores y warnigs que se deben tener en cuenta, por ejemplo, si no se encontró algún archivo o script. Usualmente el comando impide que se detenga la ejecución del código ante posibles errores, aunque se debe prestar especial atención a los mensajes de error y warnings que se produzcan en la consola. Ejemplo:<br />
-<em>municipios_frontera_norte &lt;-tryCatch(suppressMessages(read_csv(</em> <em>paste(path_a_marco_geo,“municipios_fn”,“municipiosFronteraNorte.csv”,sep=“/”),error= function(e) {cat(crayon::red(“\n”,“\n”,paste(“*** ERROR *** No se ha cargado: Catalogo de municipios en la frontera norte.”)),“\n”,“\n”)})</em></p></li>
-<li><p>Comando saveRDS(): este comando permite guardar data frames en formato .Rds. Ejemplo: <em>saveRDS(enoe_temp,paste0(here(),“/”, “3_resultados/coyuntura/res_coy_ENOE”,“/” ,nombre,“/enoe_”,nombre,“_”,periodo,anio,“_”,v,“.Rds”))</em><br />
-<br />
-Existen otros comandos para guardar las bases de datos en otros formatos: write.csv(), write.dta(), entre otros.</p></li>
+<li>El comando if_else() o ifelse(): Al igual que el comando anterior, funciona para reclasificar categorías de variables o campos, aunque esta función permite solo dos opciones de clasificación (si sucede x, entonces y). Ejemplo:</li>
 </ul>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="r-rstudio-y-python.html#cb12-1" tabindex="-1"></a>enoe <span class="ot">&lt;-</span> ENOEN_sdemycoes <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">presta_soc=</span><span class="fu">ifelse</span>(pre_asa<span class="sc">==</span><span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">0</span>))</span></code></pre></div>
+<ul>
+<li>El comando for(): Este comando permite hacer iteraciones de uno o más comandos sobre los elementos declarados, estos elementos pueden ser pertenecientes a un vector o lista. Ejemplo:</li>
+</ul>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="r-rstudio-y-python.html#cb13-1" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> lista_indicadores_enoe){</span>
+<span id="cb13-2"><a href="r-rstudio-y-python.html#cb13-2" tabindex="-1"></a><span class="fu">dir.create</span>(<span class="fu">paste0</span>(<span class="fu">here</span>(<span class="st">&quot;3_resultados/coyuntura/res_coy_ENOE&quot;</span>, i))), ENOE<span class="st">&quot;))}</span></span></code></pre></div>
+<ul>
+<li>Comandos sub(), gsub(), y aquellos que inician con stri_() o str_(): Estos comandos sirven para transformar e identificar patrones en cadenas de texto (o procesamiento de lenguaje natural) utilizando diversos códigos. Ejemplo:</li>
+</ul>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="r-rstudio-y-python.html#cb14-1" tabindex="-1"></a><span class="fu">filter</span>(<span class="fu">str_detect</span>(nombre_archivo,<span class="st">&quot;SDEM&quot;</span>))</span></code></pre></div>
+<ul>
+<li>Comando as_survey_design(): este comando se utiliza para declarar una base de datos como encuesta a partir de sus variables muestrales. Ejemplo:</li>
+</ul>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="r-rstudio-y-python.html#cb15-1" tabindex="-1"></a>enoesvyset <span class="ot">&lt;-</span> enoe <span class="sc">%&gt;%</span> <span class="fu">as_survey_design</span>(<span class="at">strata =</span> estrato, <span class="at">weights =</span> peso, <span class="at">id =</span> upm, <span class="at">nest=</span><span class="cn">TRUE</span>)</span></code></pre></div>
+<ul>
+<li>Comandos que empiezan con svy_() o survey_(): Estos comandos toman en cuenta la encuesta declarada para hacer cálculos sobre la misma considerando su diseño muestral. Entre estos podemos encontrar: survey_mean() y survey_ratio(). Estos comandos brindan la opción de obtener el error estándar (se), los intervalos de confianza (ci), la varianza (var), y los coeficientes de variación (vi) de las estimaciones calculadas. Ejemplo:</li>
+</ul>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="r-rstudio-y-python.html#cb16-1" tabindex="-1"></a>valor<span class="ot">=</span><span class="fu">survey_mean</span>(ing_min, <span class="at">vartype =</span> <span class="fu">c</span>(<span class="st">&quot;cv&quot;</span>), <span class="at">na.rm=</span>T)</span></code></pre></div>
+<ul>
+<li>Comando try_catch(): Este comando permite poner condiciones a la ejecución de otros comandos en R. Suele utilizarse para mostrar errores y warnigs que se deben tener en cuenta, por ejemplo, si no se encontró algún archivo o script. Usualmente el comando impide que se detenga la ejecución del código ante posibles errores, aunque se debe prestar especial atención a los mensajes de error y warnings que se produzcan en la consola. Ejemplo:</li>
+</ul>
+<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="r-rstudio-y-python.html#cb17-1" tabindex="-1"></a>municipios_frontera_norte <span class="ot">&lt;-</span></span>
+<span id="cb17-2"><a href="r-rstudio-y-python.html#cb17-2" tabindex="-1"></a><span class="fu">tryCatch</span>(</span>
+<span id="cb17-3"><a href="r-rstudio-y-python.html#cb17-3" tabindex="-1"></a><span class="fu">suppressMessages</span>(<span class="fu">read_csv</span>(<span class="fu">paste</span>(path_a_marco_geo,<span class="st">&quot;municipios_fn&quot;</span>,<span class="st">&quot;municipiosFronteraNorte.csv&quot;</span>,<span class="at">sep=</span><span class="st">&quot;/&quot;</span>),</span>
+<span id="cb17-4"><a href="r-rstudio-y-python.html#cb17-4" tabindex="-1"></a><span class="at">error=</span> <span class="cf">function</span>(e) {<span class="fu">cat</span>(crayon<span class="sc">::</span><span class="fu">red</span>(<span class="st">&quot;</span><span class="sc">\n</span><span class="st">&quot;</span>,<span class="st">&quot;</span><span class="sc">\n</span><span class="st">&quot;</span>,<span class="fu">paste</span>(<span class="st">&quot;*** ERROR *** No se ha cargado: Catalogo de municipios en la frontera norte.&quot;</span>)),<span class="st">&quot;</span><span class="sc">\n</span><span class="st">&quot;</span>,<span class="st">&quot;</span><span class="sc">\n</span><span class="st">&quot;</span>)})))</span></code></pre></div>
+<ul>
+<li>Comando saveRDS(): este comando permite guardar data frames en formato .Rds. Ejemplo:</li>
+</ul>
+<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="r-rstudio-y-python.html#cb18-1" tabindex="-1"></a><span class="fu">saveRDS</span>(enoe_temp,<span class="fu">paste0</span>(<span class="fu">here</span>(),<span class="st">&quot;/&quot;</span>, <span class="st">&quot;3_resultados/coyuntura/res_coy_ENOE&quot;</span>,<span class="st">&quot;/&quot;</span> ,nombre,<span class="st">&quot;/enoe\_&quot;</span>,nombre,<span class="st">&quot;\_&quot;</span>,periodo,anio,<span class="st">&quot;\_&quot;</span>,v,<span class="st">&quot;.Rds&quot;</span>))</span></code></pre></div>
+<p>Existen otros comandos para guardar las bases de datos en otros formatos: write.csv(), write.dta(), entre otros.</p>
 <p>Además de estos, se utilizan muchos otros comandos de las paqueterías cargadas, no obstante, estos son los que se utilizan con más frecuencia ya que son los básicos para la carga, transformación y guardado de la información que utiliza el SIDIL. Si surge alguna duda, o si se requiere profundizar en estos u otros comandos, existe amplia información en internet que incluye explicaciones y ejemplos sobre el uso de los diversos comandos en el ambiente de RStudio, dos de las principales fuentes de consulta son: www. cran.r-project.org y <a href="http://www.stackoverflow.com">www.stackoverflow.com</a>, o bien con el comando help(package=“__”), poniendo entre las comillas el nombre de la paquetería que se desea buscar. De igual manera, si se desea buscar información sobre algún comando, se puede utilizar la línea de código help(__, package=“__”), poniendo en el primer argumento el comando en cuestión y en el segundo la paquetería al que pertenece.</p>
 </div>
 <div id="tipos-de-errores-que-se-pudieran-presentar" class="section level2 hasAnchor" number="6.4">

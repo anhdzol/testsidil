@@ -60,8 +60,74 @@
 <script src="libs/plotly-main-2.11.1/plotly-latest.min.js"></script>
 <script src="libs/kePrint-0.0.1/kePrint.js"></script>
 <link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
+<link href="libs/tabwid-1.1.3/tabwid.css" rel="stylesheet" />
+<script src="libs/tabwid-1.1.3/tabwid.js"></script>
 
 
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
 
 <style type="text/css">
   
@@ -84,7 +150,7 @@
 <li><a href="./">Manual de procesamiento y explotación de información</a></li>
 
 <li class="divider"></li>
-<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Bienvenida</a>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introducción</a>
 <ul>
 <li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#introalineacion"><i class="fa fa-check"></i><b>1.1</b> Alineación con la misión y programas de gobierno</a></li>
 <li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#introjustificacion"><i class="fa fa-check"></i><b>1.2</b> Justificación de la viabilidad del proyecto</a></li>
@@ -100,7 +166,7 @@
 <li class="chapter" data-level="" data-path="estructura-y-flujos-de-trabajo-del-sidil.html"><a href="estructura-y-flujos-de-trabajo-del-sidil.html#moduloIexplicaciongeneral"><i class="fa fa-check"></i>Módulo I: actualización de indicadores</a></li>
 <li class="chapter" data-level="" data-path="estructura-y-flujos-de-trabajo-del-sidil.html"><a href="estructura-y-flujos-de-trabajo-del-sidil.html#moduloIIexplicaciongeneral"><i class="fa fa-check"></i>Módulo II: Consulta al universo de CT, imputación de indicadores y predicción de riesgo</a></li>
 <li class="chapter" data-level="" data-path="estructura-y-flujos-de-trabajo-del-sidil.html"><a href="estructura-y-flujos-de-trabajo-del-sidil.html#moduloIyIIexplicaciongeneral"><i class="fa fa-check"></i>Módulos I y II: operables desde la interfaz de automatización</a></li>
-<li class="chapter" data-level="2.2.1" data-path="estructura-y-flujos-de-trabajo-del-sidil.html"><a href="estructura-y-flujos-de-trabajo-del-sidil.html#módulo-iii-consulta-de-la-mpr-para-priorización-de-ct-a-inspeccionar"><i class="fa fa-check"></i><b>2.2.1</b> Módulo III: Consulta de la MPR para priorización de CT a inspeccionar</a></li>
+<li class="chapter" data-level="" data-path="estructura-y-flujos-de-trabajo-del-sidil.html"><a href="estructura-y-flujos-de-trabajo-del-sidil.html#moduloIIIIConsultaMPR"><i class="fa fa-check"></i>Módulo III: Consulta de la MPR para priorización de CT a inspeccionar</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="elementosgenerales.html"><a href="elementosgenerales.html"><i class="fa fa-check"></i><b>3</b> Elementos generales del procesamiento de datos</a>
@@ -115,9 +181,9 @@
 <li class="chapter" data-level="3.4" data-path="elementosgenerales.html"><a href="elementosgenerales.html#trazabilidad"><i class="fa fa-check"></i><b>3.4</b> Sobre trazabilidad: bitácora, log y parámetros</a></li>
 <li class="chapter" data-level="3.5" data-path="elementosgenerales.html"><a href="elementosgenerales.html#mensajesGeneral"><i class="fa fa-check"></i><b>3.5</b> Mensajes al usuario</a>
 <ul>
-<li class="chapter" data-level="3.5.1" data-path="elementosgenerales.html"><a href="elementosgenerales.html#mensajesError"><i class="fa fa-check"></i><b>3.5.1</b> Mensajes de error</a></li>
-<li class="chapter" data-level="3.5.2" data-path="elementosgenerales.html"><a href="elementosgenerales.html#mensajesAdvertencia"><i class="fa fa-check"></i><b>3.5.2</b> Mensajes de advertencia</a></li>
-<li class="chapter" data-level="3.5.3" data-path="elementosgenerales.html"><a href="elementosgenerales.html#mensajesConfirmacion"><i class="fa fa-check"></i><b>3.5.3</b> Mensajes de información o de confirmación</a></li>
+<li class="chapter" data-level="3.5.1" data-path="elementosgenerales.html"><a href="elementosgenerales.html#mensajesError.unnumbered"><i class="fa fa-check"></i><b>3.5.1</b> Mensajes de error</a></li>
+<li class="chapter" data-level="3.5.2" data-path="elementosgenerales.html"><a href="elementosgenerales.html#mensajesAdvertencia.unnumbered"><i class="fa fa-check"></i><b>3.5.2</b> Mensajes de advertencia</a></li>
+<li class="chapter" data-level="3.5.3" data-path="elementosgenerales.html"><a href="elementosgenerales.html#mensajesConfirmacion.unnumbered"><i class="fa fa-check"></i><b>3.5.3</b> Mensajes de información o de confirmación</a></li>
 </ul></li>
 <li class="chapter" data-level="3.6" data-path="elementosgenerales.html"><a href="elementosgenerales.html#software-para-el-procesamiento-de-datos"><i class="fa fa-check"></i><b>3.6</b> Software para el procesamiento de datos</a></li>
 <li class="chapter" data-level="3.7" data-path="elementosgenerales.html"><a href="elementosgenerales.html#catalogos"><i class="fa fa-check"></i><b>3.7</b> Catálogos de información</a></li>
@@ -191,10 +257,6 @@
 <li class="chapter" data-level="8.3.2" data-path="anexoHallazgos.html"><a href="anexoHallazgos.html#posibles-alternativas-como-variable-dependiente"><i class="fa fa-check"></i><b>8.3.2</b> Posibles alternativas como variable dependiente</a></li>
 <li class="chapter" data-level="8.3.3" data-path="anexoHallazgos.html"><a href="anexoHallazgos.html#section"><i class="fa fa-check"></i><b>8.3.3</b> </a></li>
 </ul></li>
-</ul></li>
-<li class="chapter" data-level="9" data-path="box-and-tables.html"><a href="box-and-tables.html"><i class="fa fa-check"></i><b>9</b> Box and tables</a>
-<ul>
-<li class="chapter" data-level="9.0.1" data-path="box-and-tables.html"><a href="box-and-tables.html#tablas"><i class="fa fa-check"></i><b>9.0.1</b> Tablas</a></li>
 </ul></li>
 </ul>
 
