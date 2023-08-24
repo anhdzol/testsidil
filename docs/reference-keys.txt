@@ -27,13 +27,13 @@ tab:unnamed-chunk-19
 fig:formatoperiodos
 fig:parametrosimss
 tab:unnamed-chunk-22
-tab:unnamed-chunk-23
 tab:unnamed-chunk-24
 tab:unnamed-chunk-25
 tab:unnamed-chunk-26
 tab:unnamed-chunk-27
-fig:tabla1
 tab:unnamed-chunk-28
+fig:tabla1
+tab:unnamed-chunk-29
 fig:interfaz1-1
 fig:interfaz1-2
 fig:interfaz1-3
@@ -73,6 +73,7 @@ fig:shap
 fig:entornoRStudio
 fig:RStudioProyectoVacio
 fig:RStudioOpenProject
+tab:unnamed-chunk-35
 fig:memoriaRstudio
 fig:volumeninspecciones
 fig:indiceinspecciones
@@ -84,10 +85,6 @@ fig:marconormativo
 fig:submaterias
 fig:submateriasSH
 fig:tetrisprogramacion
-fig:modulosSIDasdaIL
-fig:testBox
-tab:unnamed-chunk-36
-tab:unnamed-chunk-37
 introapertura
 introalineacion
 introjustificacion
@@ -97,7 +94,6 @@ introalcance
 estructura-y-flujos-de-trabajo-del-sidil
 elementos-básicos-del-sidil
 modulosqueconformanSIDIL
-módulo-iii-consulta-de-la-mpr-para-priorización-de-ct-a-inspeccionar
 elementosgenerales
 estructurascripts
 configinicial
@@ -106,9 +102,9 @@ estructuracarpetas
 temporalidad
 trazabilidad
 mensajesGeneral
-mensajesError
-mensajesAdvertencia
-mensajesConfirmacion
+mensajesError.unnumbered
+mensajesAdvertencia.unnumbered
+mensajesConfirmacion.unnumbered
 software-para-el-procesamiento-de-datos
 catalogos
 la-matriz-de-predicción-de-riesgo
@@ -160,5 +156,3 @@ aspectos-pendientes-y-posibles-extensiones-a-futuro
 limitaciones-en-la-construcción-de-la-variable-dependiente
 posibles-alternativas-como-variable-dependiente
 section
-box-and-tables
-tablas
