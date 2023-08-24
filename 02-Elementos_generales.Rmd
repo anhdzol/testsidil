@@ -13,7 +13,7 @@ Típicamente, en cada script se incluyen múltiples instrucciones al procesador,
 
 En coordinación con la STPS, al interior de cada módulo se dividieron las instrucciones en los siguientes grupos de scripts que, en línea general, caracterizan la ejecución de los diferentes procesos a lo largo de los módulos del SIDIL. El criterio principal fue que en los diferentes scripts del SIDIL se dividieran los diferentes procesos de tal forma que se refleje un balance entre minimizar el número de scripts que un usuario debe ejecutar a la vez que se mantiene una coherencia en el contenido y alcance de lo que contengan los respectivos scripts.
 
-El SIDIL contempla más de 20 diferentes scripts. Los scripts podrían ser clasificados de diversas maneras y muchos de ellos son de un alcance muy específico por lo que la gran mayoría de ellos se presenta específicamente en el contexto de cada módulo, en las secciones posteriores. En el anexo 1 se ofrece una presentación tabular de todos los scripts, siguiendo el módulo y el orden en el que generalmente se utilizan.
+El SIDIL contempla más de 20 diferentes scripts. Los scripts podrían ser clasificados de diversas maneras y muchos de ellos son de un alcance muy específico por lo que la gran mayoría de ellos se presenta específicamente en el contexto de cada módulo, en las secciones posteriores. En la [sección 5](#anexotablascripts) se ofrece una presentación tabular de todos los scripts, siguiendo el módulo y el orden en el que generalmente se utilizan.
 
 Sin embargo, hay dos scripts cuya explicación se realiza en esta sección, dado su carácter más general. Estos son el script de configuración inicial y los scripts secuenciadores, a saber:
 
@@ -23,7 +23,7 @@ Sin embargo, hay dos scripts cuya explicación se realiza en esta sección, dado
 
 En concreto, el script de configuración inicial, identificado con el nombre estable de *0_config_inicial*, ejecuta y define los siguientes aspectos.
 
--   Carga de paquetes y librerías (ver Anexo 1: R y RStudio)
+-   Carga de paquetes y librerías (ver [sección 6. R, RStudio y Python](#anexoRyRStudio))
 
 -   Generación de carpetas y subcarpetas para el funcionamiento del sistema.
 
@@ -68,7 +68,7 @@ Módulo I
 
 2)  Script secuenciador para IMSS
 
-3)  Script secuenciador para Censo
+3)  Script secuenciador para Censo Económico
 
 Módulo II
 
@@ -104,7 +104,7 @@ knitr::include_graphics("images-1/02/sec_config_inicial.png")
 
 Dada la división de instrucciones en los diferentes scripts que fueron enunciados de manera genérica en la sección anterior, la estructura de las carpetas con que trabaja el SIDIL se describe en esta sección.
 
-La organización de archivos en estas carpetas es agnóstica al sistema operativo y ubicación del SIDIL, siempre y cuando se transfiera el conjunto de carpetas sin realizar modificaciones. De realizarse cambios en los nombres de las carpetas, es muy probable que muchos scripts no funcionen, toda vez que los nombres de las carpetas son parte sustantiva de la identificación de inputs, scripts y outputs que se deben correr. De la misma manera, el cambio en el nombre de algunos archivos, particularmente los catálogos que no llevan una versión en el nombre del archivo, puede requerir ajustes en el código.[^02-elementos_generales-2]
+La organización de archivos en estas carpetas es agnóstica al sistema operativo y ubicación del SIDIL, siempre y cuando se transfiera el conjunto de carpetas sin realizar modificaciones. De realizarse cambios en los nombres de las carpetas, es muy probable que muchos scripts no funcionen, toda vez que los nombres de las carpetas son parte sustantiva de la identificación de inputs, scripts y outputs que se deben correr. De la misma manera, el cambio en el nombre de algunos archivos, particularmente los catálogos que no llevan una versión en el nombre del archivo, pueden requerir ajustes en el código.[^02-elementos_generales-2]
 
 [^02-elementos_generales-2]: En estos casos, para mantener el control de versiones, al resguardar la versión anterior del catálogo, se le agrega la fecha de resguardo de dicha versión "anterior" al nombre del archivo. Ver Recuadro 8.
 
@@ -124,7 +124,7 @@ knitr::include_graphics("images-1/03/organizacion_catalogos.png")
 
 Al interior de 1_insumos se encuentran tres subcarpetas:
 
--   La primera, *catalogos*, reúne los diferentes archivos que sistematizan y etiquetan la información. Sobre ello se profundiza en la sección 3.9.
+-   La primera, *catálogos*, reúne los diferentes archivos que sistematizan y etiquetan la información. Sobre ello se profundiza en la sección [Catálogos de información](#catalogos).
 
 -   La segunda es *originales* y sirve para depositar las fuentes de información sin procesamiento previo, por ejemplo, los archivos originales en formato dbf que componen la ENOE, o los archivos separados por tabulados que componen los registros administrativos del IMSS.
 
@@ -141,25 +141,25 @@ Al interior de *2_codigos*, existen tres principales subcarpetas:
 
 -   *coyuntura:* almacena en sus respectivas subcarpetas, los scripts que se requieren para la explotación de las diferentes fuentes de información. Por ejemplo, para la explotación de las fuentes de información ENOE e IMSS hay carpetas asignadas para almacenar, respectivamente, el script secuenciador, el script de extracción y transformación, los scripts de indicadores y los scripts de reportes.
 
--   *historico:* lo mismo que *coyuntura* pero a fines de la construcción histórica de los indicadores.
+-   *histórico:* lo mismo que *coyuntura* pero a fines de la construcción histórica de los indicadores.
 
 En la carpeta *3_resultados* se distinguen tres subcarpetas:
 
 -   *coyuntura*: contiene subcarpetas para los cálculos de indicadores y las consultas al DNE
 
--   *historico:* similar al caso anterior, pero con la consideración histórica
+-   *histórico:* similar al caso anterior, pero con la consideración histórica
 
 -   *MPR:* El principal resultado del SIDIL, todas las versiones de ellas.
 
 En la carpeta *4_reportes* se albergan cuatro subcarpetas
 
--   *bitacoras:* contiene dos archivos, ambos en formato tabular: Una bitácora donde se registran todas las ejecuciones de todos los scripts secuenciadores, y una bitácora de estatus donde se registra únicamente la última ejecución de cada script. El primero hace a la trazabilidad del sistema, mientras que el segundo permite mantener actualizada una tabla que se despliega en la interfaz de consulta y que informa, justamente, la última ejecución de cada proceso. Estos archivos, respectivamente, se llaman bitácora y bitácora_estatus y están en formato csv.
+-   *bitácoras:* contiene dos archivos, ambos en formato tabular: Una bitácora donde se registran todas las ejecuciones de todos los scripts secuenciadores, y una bitácora de estatus donde se registra únicamente la última ejecución de cada script. El primero hace a la trazabilidad del sistema, mientras que el segundo permite mantener actualizada una tabla que se despliega en la interfaz de consulta y que informa, justamente, la última ejecución de cada proceso. Estos archivos, respectivamente, se llaman bitácora y bitácora_estatus y están en formato csv.
 
 -   *eval_modelo:* contiene los reportes de evaluación del modelo entrenado
 
 -   *Logs:* resguarda los logs (archivos .txt) que contienen los resultados y mensajes de la consola cuando se ejecutan los scripts
 
--   *parametros: es la exportación de los parámetros que se definen en el script de configuración inicial.*
+-   *parámetros: es la exportación de los parámetros que se definen en el script de configuración inicial.*
 
 
 [@@ idea video capsula:
@@ -194,7 +194,7 @@ knitr::include_graphics("images-1/important-icon.svg")
 ```{block, type='rmdcomment', fig.cap="test numeracion block"}
 **El principio de versionado para todos los elementos en SIDIL es que la última versión de dicho elemento es la que se debe utilizar,** motivo por el cual, en el nombre del elemento (así como se guarda en las carpetas referidas) se debe incluir la fecha.  
 
- El formato de definición de la fecha que se utiliza para identificar la versión únicamente será el siguiente: *aaaa_mm_dd_hhmm*, es decir, cuatro dígitos para el año, seguido de un guion bajo, luego dos dígitos para el mes, otro guion bajo, luego dos dígitos para el día, otro guion bajo, y dos dígitos de la hora  y dos de la hora juntos. Notar que la hora es en formato 24 horas. Por ejemplo: 2022_11_03_0901 (año 2022, mes noviembre, día 03, 09 horas con 01 minutos). Este versionado se actualiza y genera automáticamente mediante el script de configuración inicial. La fecha y hora se obtiene directamente del sistema.     
+ El formato de definición de la fecha que se utiliza para identificar la versión únicamente será el siguiente: *aaaa_mm_dd_hhmm*, es decir, cuatro dígitos para el año, seguido de un guion bajo, luego dos dígitos para el mes, otro guion bajo, luego dos dígitos para el día, otro guion bajo, y dos dígitos de la hora y dos de la hora juntos. Notar que la hora es en formato 24 horas. Por ejemplo: 2022_11_03_0901 (año 2022, mes noviembre, día 03, 09 horas con 01 minutos). Este versionado se actualiza y genera automáticamente mediante el script de configuración inicial. La fecha y hora se obtiene directamente del sistema.     
  
  
 Para los scripts, el versionado también se incluye en el nombre del script al guardarlo; no es necesario incluir la hora y minuto del guardado pero sí mantener la estructura *aaaa_mm_dd* de la fecha. Notar que el guardado de scripts se realiza de manera manual, toda vez que se consideran relativamente estables en el SIDIL y que justamente por eso el versionado de scripts no lleva horas ni minutos Es decir, cada cambio que se realice al script, se sugiere enfáticamente, debe culminar con el guardado de una nueva versión con una fecha posterior (al menos un día) a la versión anterior. El SIDIL está configurado para que scripts como el secuenciador, busquen la última versión de los diferentes scripts. En consecuencia:  si hay dos elementos con el mismo nombre, se utiliza el que tenga la fecha de edición más reciente. Esta regla aplica para toda lectura de insumos. 
@@ -242,7 +242,7 @@ A lo largo de su ejecución, los diversos procedimientos reportan mensajes al us
 
 Estos mensajes surgen cuando la ejecución del código no es como se espera y el proceso probablemente falle en una(s) parte(s) o toda su ejecución. Casi con seguridad no se cumplió con el propósito del proceso y el mismo se interrumpió.
 
-En algunos casos el mensaje de error puede reunir dos o tres elementos. Como se observa en el ejemplo a continuación, un primer elemento es el que está escrito en español. Esto es porque en este caso se pudo prever que este tipo de error pudiera surgir. El segundo elemento es el que empieza con "Error in ..." y esta es la información de error que genera el propio sistema. El tercer elemento es el que empieza con "Warning message...", cuya aparición depende del tipo de error. Sobre esto último es importante notar que la aparición de un mensaje de "warning" por si sólo en muchas ocasiones no es un error y sólo es una advertencia del propio sistema. El SIDIL anticipa mucho de estos warning a partir de "encapsular" ciertas partes del código en un TryCatch.
+En algunos casos el mensaje de error puede reunir dos o tres elementos. Como se observa en el ejemplo a continuación, un primer elemento es el que está escrito en español. Esto es porque en este caso se pudo prever que este tipo de error pudiera surgir. El segundo elemento es el que empieza con "Error in ..." y esta es la información de error que genera el propio sistema. El tercer elemento es el que empieza con "Warning message...", cuya aparición depende del tipo de error. Sobre esto último es importante notar que la aparición de un mensaje de "warning" por sí sólo en muchas ocasiones no es un error y sólo es una advertencia del propio sistema. El SIDIL anticipa mucho de estos warning a partir de "encapsular" ciertas partes del código en un TryCatch.
 
 > *"2022-12-22 13:19:13 \*\*\*ERROR\*\*\*: No fue posible guardar el ultimo insumo de Accidentes (STPS_RT_202212.xlsx) debido a: Error in gzfile(file, mode): cannot open the connection*
 
