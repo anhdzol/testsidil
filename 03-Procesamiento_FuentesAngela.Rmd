@@ -3,7 +3,7 @@ output:
   html_document: default
 ---
 
-```{r setup031, include=FALSE, echo=FALSE}
+```{r setup0311, include=FALSE, echo=FALSE}
 fn = local({
   i = 0
   function(x) {
@@ -11,17 +11,30 @@ fn = local({
     paste('Recuadro ', '4.', i, ': ', x, sep = '')
   }
 })
+
+merge_custom <- function(ft, x, columns){
+  z <- rle(x)
+  rows_at <- cumsum(z$lengths) - z$lengths + 1
+
+  for(i in seq_along(rows_at)){
+    for(j in columns)
+      ft <- flextable::merge_at(x = ft, i = seq( rows_at[i], rows_at[i] + z$lengths[i] - 1), j = j)
+  }
+
+  ft
+}
 ```
 
 ```{r echo = FALSE, results = 'asis', include = FALSE}
 library(dplyr)
 library(kableExtra, warn.conflicts = TRUE)
 library(readxl)
+library(flextable)
 ```
 
 # Procesamiento de las fuentes de información y generación de la MPR {#procesamiento}
 
-Como ya fue mencionado, en los módulos I y II se procede a la actualización de indicadores a partir de la explotación de las fuentes de información, así como a la consulta del universo de CT, la imputación de indicadores a este universo y la predicción de riesgo que incorpora los resultados del modelo entrenado. En esta sección veremos en detalle cómo funcionan estos dos módulos fundamentales del SIDIL.
+Como ya fue mencionado, en los módulos I y II se procede a la actualización de indicadores a partir de la explotación de las fuentes de información, así como a la consulta del universo de CT, la imputación de indicadores a este universo y la predicción de riesgo que incorpora los resultados del modelo entrenado. En esta sección veremos en detalle cómo funcionan estos dos módulos fundamentales del SIDIL. 
 
 ## Módulo I: actualización de indicadores {#procesamientoModI}
 
@@ -55,7 +68,9 @@ Hay diversos desafíos que se pudieran presentar para la inclusión de bases de 
 
 4)  Inclusión de nuevos indicadores. El diseño del SIDIL contempla la posibilidad de incluir nuevos indicadores con relativa facilidad, siguiendo el procedimiento estipulado en el recuadro a continuación. Es importante mencionar que la incorporación de nuevos indicadores, de requerirse su inclusión como variables de entrada para la predicción de riesgo, requiere el re-entrenamiento del modelo. Sin embargo, si sólo hubiera necesidad de incorporarlos como un indicador adicional para la caracterización "unidimensional" de un CT, entonces no es necesario volver a entrenar el modelo.
 
-```{r IndicadoresNuevos, class.source='myClass', echo=FALSE, out.width="50px", fig.cap="Procedimiento para la inclusión de nuevos indicadores", out.extra='style="float:left; background-color: #f5f5f5; padding-right:1em"'}
+5)  Ajustes al cálculo de indicadores: Hay que distinguir la necesidad de la inclusión de *nuevos* indicadores que se especificó en el punto y recuadro anterior. Un cambio en la metodología de cálculo de un indicador no requiere mayor modificación que resguardar el script del cálculo del indicador con una fecha de versión posterior a la más reciente hasta entonces. Así el secuenciador de la explotación de la fuente de información detectará que esta es la nueva versión que se debe tomar. Por supuesto, el cálculo debe ser replicado hacia atrás en el tiempo para asegurar la consistencia temporal de la medición de indicadores.
+
+```{r IndicadoresNuevos1, class.source='myClass', echo=FALSE, out.width="50px", fig.cap="Procedimiento para la inclusión de nuevos indicadores", out.extra='style="float:left; background-color: #f5f5f5; padding-right:1em"'}
 knitr::include_graphics("images-1/important-icon.svg")
 ```
 
@@ -80,9 +95,8 @@ Para calcular un nuevo indicador es necesario seguir el siguiente procedimiento,
 
 ```
 
-5)  Ajustes al cálculo de indicadores: Hay que distinguir la necesidad de la inclusión de *nuevos* indicadores que se especificó en el punto y recuadro anterior. Un cambio en la metodología de cálculo de un indicador no requiere mayor modificación que resguardar el script del cálculo del indicador con una fecha de versión posterior a la más reciente hasta entonces. Así el secuenciador de la explotación de la fuente de información detectará que esta es la nueva versión que se debe tomar. Por supuesto, el cálculo debe ser replicado hacia atrás en el tiempo para asegurar la consistencia temporal de la medición de indicadores.
 
-```{r nuevosypreexistentes, class.source='myClass', echo=FALSE, out.width="50px", fig.cap="Distinción entre incorporación de nuevos indicadores y actualización de método de cálculo de indicadores preexistentes", out.extra='style="float:left; background-color: #f5f5f5; padding-right:1em"'}
+```{r nuevosypreexistentes1, class.source='myClass', echo=FALSE, out.width="50px", fig.cap="Distinción entre incorporación de nuevos indicadores y actualización de método de cálculo de indicadores preexistentes", out.extra='style="float:left; background-color: #f5f5f5; padding-right:1em"'}
 knitr::include_graphics("images-1/important-icon.svg")
 ```
 
@@ -163,7 +177,7 @@ ggplotly(p, tooltip="text") # from ggplot to plotly
 
 ```
 
-```{r modificacionagregacion, class.source='myClass', echo=FALSE, out.width="50px", fig.cap="Modificaciones a los niveles de agregación", out.extra='style="float:left; background-color: #f5f5f5; padding-right:1em"'}
+```{r modificacionagregacion1, class.source='myClass', echo=FALSE, out.width="50px", fig.cap="Modificaciones a los niveles de agregación", out.extra='style="float:left; background-color: #f5f5f5; padding-right:1em"'}
 knitr::include_graphics("images-1/important-icon.svg")
 ```
 
@@ -195,7 +209,7 @@ Conforme se profundice la aplicación del SIDIL y se realicen las mejoras planea
 
 Como se observa en la sección de [Estructura y flujos de trabajo](#estructuracarpetas), la estructura de carpetas prevé una carpeta para cada indicador. A su interior, a su vez se incluye una subcarpeta llamada anteriores misma que permite almacenar los outputs de procesos anteriores.
 
-```{r estimacionespuntuales, class.source='myClass', echo=FALSE, out.width="50px", fig.cap="Organización de las estimaciones puntuales por indicador", out.extra='style="float:left; background-color: #f5f5f5; padding-right:1em"'}
+```{r estimacionespuntuales1, class.source='myClass', echo=FALSE, out.width="50px", fig.cap="Organización de las estimaciones puntuales por indicador", out.extra='style="float:left; background-color: #f5f5f5; padding-right:1em"'}
 knitr::include_graphics("images-1/important-icon.svg")
 ```
 
@@ -222,16 +236,17 @@ Pero, en sentido estricto, cuando un usuario final quiere obtener el valor de un
 Esta sección reúne información relevante en dos niveles. Por un lado, se ofrecen detalles de los indicadores que se calculan para cada una de las fuentes de información. Por otro lado, se informan los procedimientos de cálculo de dichos indicadores y aspectos que requieren mayor cautela. A continuación, primero se presenta el resumen de las otras subsecciones que siguen. Se observa que la gran mayoría de las fuentes información son de carácter administrativo. Las excepciones vienen de la ENOE y del CENSO gestionadas por INEGI.
 
 ```{r echo = FALSE, results = 'asis'}
+
 tabla1 <- read_excel("./data/tablas03.xlsx", sheet = "tabla1")
 kable(tabla1, caption = "Resumen de las fuentes de información utilizadas en el SIDIL") %>%
   kable_styling(bootstrap_options = c("striped", "hover"), full_width = T, font_size = 14) %>%
-    scroll_box(width = "100%", height = "600px") %>% 
-  footnote(general = "Los detalles de las fuentes de información se presentan en el Módulo II")
+    scroll_box(width = "100%", height = "600px") #%>%
+footnote(general = "Los detalles de las fuentes de informacion se presentan en el Modulo II")
 ```
 
 Todas estas fuentes de información se incorp oran y deberán seguir incorporándose conforme surjan actualizaciones futuras, en un determinado formato, estructura de nombre, ubicación especifica y frecuencia de actualización. Estas características fundamentales serán especificadas en cada una de las subsecciones siguientes.
 
-```{r resguardobases, class.source='myClass', echo=FALSE, out.width="50px", fig.cap=" Resguardo de las bases originales", out.extra='style="float:left; background-color: #f5f5f5; padding-right:1em"'}
+```{r resguardobases1, class.source='myClass', echo=FALSE, out.width="50px", fig.cap=" Resguardo de las bases originales", out.extra='style="float:left; background-color: #f5f5f5; padding-right:1em"'}
 knitr::include_graphics("images-1/important-icon.svg")
 ```
 
@@ -240,7 +255,7 @@ knitr::include_graphics("images-1/important-icon.svg")
 El adecuado resguardo de la información original provista por las fuentes de información es crítico para el funcionamiento del sistema. Algunos puntos importantes a considerar:
 
   -   Sintaxis para el nombrado de los insumos. Dado que esta información no se encuentra como campo "dentro" de los insumos, el correcto nombrado del archivo digital es indispensable. AIR ha detectado los patrones más frecuentes de cómo se guardan los diferentes insumos de las diferentes fuentes de información, y esto fue reflejado en los scripts que los utilizan, motivo por el cual no se sugiere modificaciones a la sintaxis (salvo excepciones) sino constancia en los patrones actuales.
-  -   Ubicación de los insumos en las carpetas y subcarpetas adecuadas. El resguardo adecuado del insumo incluye su ubicación en la carpeta adecuada y en el formato especificado, toda vez que los algoritmos detectan el tipo de fuente, el periodo de referencia, etc., a partir de las carpetas, subcarpetas y nombres que se estipulan en el catálogo de fuentes. Resguardo para la reproducibilidad. El SIDIL descansa sobre un versionado de scripts y outputs, resguardando el mínimo de resultados intermedios, para hacer un uso eficiente del almacenamiento a disco. Lo hace bajo el supuesto fundamental de que los insumos se mantendrán disponibles en las carpetas especificadas o al menos resguardados en su formato original en otro lugar pero disponibles para ser nuevamente colocadas en su carpeta específica para reproducir una determina actualización.
+  -   Ubicación de los insumos en las carpetas y subcarpetas adecuadas. El resguardo adecuado del insumo incluye su ubicación en la carpeta adecuada y en el formato especificado, toda vez que los algoritmos detectan el tipo de fuente, el periodo de referencia, etc., a partir de las carpetas, subcarpetas y nombres que se estipulan en el catálogo de fuentes. Resguardo para la reproducibilidad. El SIDIL descansa sobre un versionado de scripts y outputs, resguardando el mínimo de resultados intermedios, para hacer un uso eficiente del almacenamiento a disco. Lo hace bajo el supuesto fundamental de que los insumos se mantendrán disponibles en las carpetas especificadas o al menos resguardados en su formato original en otro lugar, pero disponibles para ser nuevamente colocadas en su carpeta específica para reproducir una determina actualización.
   -   No duplicidad de insumos para un mismo periodo de referencia: no se debe guardar más de un archivo para un mismo insumo de un determinado periodo de referencia. Esto también aplica aunque fueran en formatos distintos: sólo puede haber un insumo para un periodo de referencia dentro de la carpeta especificada.
 
 ```
@@ -328,10 +343,10 @@ tabla1 <- read_excel("./data/tablas03.xlsx", sheet = "tabla3")
 
 kable(tabla1, caption = "Procesos para la actualización de indicadores con base en la ENOE") %>% collapse_rows(c(1,2,3),latex_hline = "major", valign = "middle") %>% 
   kable_styling(bootstrap_options = c("striped", "hover"), full_width = T, font_size = 14) %>% 
-    scroll_box(width = "100%", height = "600px") %>% 
-  footnote(number = c("Los mensajes confirmatorios y de error o advertencia se muestran en la consola del RStudio al momento de ejecutar el script secuenciador y quedan registrados en la bitácora al momento de finalizar su ejecució.
-                      " ,"El mensaje de confirmación referente a la población subordinada y remunerada de la ENOE permite cotejar la información producida por el script con la información oficial del INEGI, para corroborar que se haya generado de manera correcta la base de datos y que se esté utilizando el último insumo de la encuesta.
-                      ", "El error referente a la no disponibilidad de indicadores surgirá del segundo al cuarto trimestre del año en el indicador “Sindicato” de la ENOE, ya que se calcula de manera anual con el cuestionario ampliado del primer trimestre del año."), threeparttable = TRUE)
+     scroll_box(width = "100%", height = "600px") #%>% 
+  # footnote(number = c("Los mensajes confirmatorios y de error o advertencia se muestran en la consola del RStudio al momento de ejecutar el script secuenciador y quedan registrados en la bitácora al momento de finalizar su ejecució.
+  #                     " ,"El mensaje de confirmación referente a la población subordinada y remunerada de la ENOE permite cotejar la información producida por el script con la información oficial del INEGI, para corroborar que se haya generado de manera correcta la base de datos y que se esté utilizando el último insumo de la encuesta.
+  #                     ", "El error referente a la no disponibilidad de indicadores surgirá del segundo al cuarto trimestre del año en el indicador “Sindicato” de la ENOE, ya que se calcula de manera anual con el cuestionario ampliado del primer trimestre del año."), threeparttable = TRUE)
 ```
 
 ##### Salidas - Outputs {#outputenoe .unnumbered}
@@ -423,7 +438,7 @@ Los tres insumos que se utilizan son los siguientes:
 
         -   El formato original del periodo de referencia que se incluye por parte del IMSS no es compatible con el algoritmo de lectura del SIDIL por lo que es necesario guardarlo con el formato de fecha adecuado, mismo que sigue exactamente el formato que se estipula para los otros dos insumos.
 
-```{r formatoperiodos, class.source='myClass', echo=FALSE, out.width="50px", fig.cap=" Formato de periodo de referencia de los insumos del IMSS", out.extra='style="float:left; background-color: #f5f5f5; padding-right:1em"'}
+```{r formatoperiodos1, class.source='myClass', echo=FALSE, out.width="50px", fig.cap=" Formato de periodo de referencia de los insumos del IMSS", out.extra='style="float:left; background-color: #f5f5f5; padding-right:1em"'}
 knitr::include_graphics("images-1/important-icon.svg")
 ```
 
@@ -450,7 +465,7 @@ Para la generación de los seis indicadores provenientes del IMSS se cuenta con 
 
 -   El parámetro *muestra*. De estar definido en valor verdadero (TRUE) entonces se toman muestras muy pequeñas de las fuentes de información de patrones y puestos, para que el análisis exploratorio (en particular la evaluación del correcto funcionamiento del código) se vuelva mucho más ágil. De manera predeterminada, la definición del parámetro está comentada (cancelada). De activarla pero dejarlo en falso (FALSE) el efecto será el mismo: nulo.
 
--   El parámetro *solo_adicionales*: para evitar que se recalculen *todos* los meses que fueran estipulados por la interacción de los otros parámetros con los insumos disponibles, este parámetro, de dejarlo en TRUE, hace que el algoritmo secuenciador identifique, en cada una de las etapas del procesamiento, los resultados y/o procesados calculados previamente, con el único propósito de no duplicar el procesamiento de información. Esto es, de existir el resultado o procesado requerido para un periodo de referencia determinado se tomará la última versión disponible como válida, independientemente de su contenido. Así, este parámetro permite actualizar el SIDIL más rápido, sin necesidad de volver a calcular todo lo preexistente.
+-   El parámetro *solo_adicionales*: Debe dejarse en TRUE para evitar que se recalculen *todos* los meses que fueran estipulados por la interacción de los otros parámetros con los insumos disponibles. Esto hace que el algoritmo secuenciador identifique, en cada una de las etapas del procesamiento, los resultados y/o procesados calculados previamente, con el único propósito de no duplicar el procesamiento de información. Esto es, de existir el resultado o procesado requerido para un periodo de referencia determinado se tomará la última versión disponible como válida, independientemente de su contenido. Así, este parámetro permite actualizar el SIDIL más rápido, sin necesidad de volver a calcular todo lo preexistente.
 
 -   El parámetro *coyuntural* que, de fijarse verdadero, únicamente actualiza los indicadores a efectos del módulo I.
 
@@ -468,7 +483,7 @@ Para la generación de los seis indicadores provenientes del IMSS se cuenta con 
 
 -   El parámetro *val_referencia*, así como se describe en la sección anterior de la ENOE\*
 
-```{r parametrosimss, class.source='myClass', echo=FALSE, out.width="50px", fig.cap="Configuración de parámetros del script secuenciador del IMSS", out.extra='style="float:left; background-color: #f5f5f5; padding-right:1em"'}
+```{r parametrosimss1, class.source='myClass', echo=FALSE, out.width="50px", fig.cap="Configuración de parámetros del script secuenciador del IMSS", out.extra='style="float:left; background-color: #f5f5f5; padding-right:1em"'}
 knitr::include_graphics("images-1/important-icon.svg")
 ```
 
@@ -595,13 +610,11 @@ knitr::include_graphics("images-1/important-icon.svg")
 
 -   Volviendo al script secuenciador, de estar *coyuntural* en TRUE, se realiza el cálculo del promedio móvil a partir de los resultados mensuales de cada indicador.
 
--   El script concluye infomrnado al usuario su conclusión, registrando en bitácora, log y tablas de parámetros los procesos realizados y resultados obtenidos.
+-   El script concluye infotmando al usuario su conclusión, registrando en bitácora, log y tablas de parámetros los procesos realizados y resultados obtenidos.
 
 Los tres tipos de scripts tienen en común que lidian con importantes volúmenes de datos, incluso a pesar de que, por definición, el script EST procura reducir las dimensiones cuando fuera oportuno. Para evitar que el usuario perciba que el sistema dejó de funcionar o quedó sin operar, el número de mensajes que se despliegan en consola es relativamente mayor al que se presenta en los scripts de la ENOE. En particular, en el script EST se reporta un porcentaje de avance conforme se avanza en el procesamiento por fracciones de los insumos de más de un millón de registros patronales y más de veinte millones de registros de empleos asegurados.
 
 En la siguiente tabla se detalla el proceso de ejecución de cada script, incluyendo el tipo de ejecución (manual por un usuario o automatizada), outputs (resultados que generan cada uno de los scripts), mensajes confirmatorios esperados, los cuales indican que el proceso se ejecutó de manera correcta y los outputs o resultados son los esperados, y posibles mensajes de error.
-
-aaaaaaa
 
 
 ```{r  echo = FALSE, message=FALSE,warnings=FALSE, results = 'asis'}
@@ -635,19 +648,8 @@ flextable::flextable(tabla1) %>%
       freeze_first_column = FALSE
     )
   )) %>%
-  flextable::fontsize(size=11,part="all") %>% 
-  flextable::autofit()
-
-# grouping_vars <- c("Ejecución del usuario", "Ejecución automatizada", "Output")
-# tablax <- collapse_rows_df(tabla1, grouping_vars)
-
-
-# 
-# 
-# kable(tabla1, caption = "yyyyyy Procesos para la actualización de indicadores con base en los datos del IMSS") %>% 
-#   kable_styling(bootstrap_options = c("striped", "hover"), full_width = T, font_size = 14) %>%
-#     scroll_box(width = "100%", height = "600px") %>%
-#   footnote(number = c("Estos mensajes se muestran en la consola del RStudio al momento de ejecutar el script secuenciador y quedan registrados en la bitácora al momento de finalizar su ejecución."), threeparttable = TRUE)
+  flextable::fontsize(size=10,part="all") %>% 
+  flextable::autofit() 
 
 ```
 
@@ -769,7 +771,7 @@ Antes de profundizar en el objeto de esta sección, conviene aprovechar este eje
 
 \- **Que la explotación de este tipo de tablas requiere de la cautela de que la misma unidad de observación se representa en diferentes niveles de agregación. Esto es importante a efectos de la explotación rápida de indicadores precalculados**. Es decir, que en la interpretación y explotación de esta información se debe evitar caer en la paradoja de Simpson, paradoja en la cual una tendencia que aparece en diferentes grupos de datos se invierte o desaparece cuando se combinan los grupos. De la misma manera, una explotación inadecuada puede arrojar categorías de columnas incompletas. Por ejemplo, si no se filtrara la información por "1_geo2" (entidades) entonces dicha columna tendrá observaciones vacías.
 
-\- **Que para el cálculo de estas estimaciones no se toma en consideración las necesidades de información para el match con el universo de CT. Es decir, en la explotación de las fuentes de información, se aplican los algoritmos para todas las posibles combinaciones de categorías dentro de los diversos niveles de agregación**. Si bien la persona usuaria podría acotar estas estimaciones por su significancia estadística (ajustando los valores umbrales en el catálogo de indicadores), no hay, al menos por diseño, una evaluación ex ante si realmente es necesaria la estimación en todas las categorías especificadas. Esto, fundamentalmente, porque por su propia naturaleza siempre es posible que al DNE se incorpore un nuevo CT con una determinada combinación de categorías de geografía, clasificación industrial y tamaño que no se presentaba hasta entonces en el DNE y que ahora se necesite dicha estimación puntual. Además, es deseable la combinatoria de categorías toda vez que si el usuario restringe el nivel de significancia estadística entonces las estimaciones de menor nivel de agregación (usualmente de mayor significancia) se volverán más relevantes. De no hacerlo así como está configurado, entonces si surgiera ese nuevo CT con combinación de categorías previamente inexistentes, entonces habría que volver a realizar todas las estimaciones del módulo I.
+\- **Que para el cálculo de estas estimaciones no se toma en consideración las necesidades de información para el match con el universo de CT. Es decir, en la explotación de las fuentes de información, se aplican los algoritmos para todas las posibles combinaciones de categorías dentro de los diversos niveles de agregación**. Si bien la persona usuaria podría acotar estas estimaciones por su significancia estadística (ajustando los valores umbrales en el catálogo de indicadores), no hay, al menos por diseño, una evaluación ex ante si realmente es necesaria la estimación en todas las categorías especificadas. Esto, fundamentalmente, porque por su propia naturaleza siempre es posible que al DNE se incorpore un nuevo CT con una determinada combinación de categorías de geografía, clasificación industrial y tamaño que no se presentaba hasta entonces en el DNE y que ahora se necesite dicha estimación puntual. Además, es deseable la combinación de categorías toda vez que si el usuario restringe el nivel de significancia estadística entonces las estimaciones de menor nivel de agregación (usualmente de mayor significancia) se volverán más relevantes. De no hacerlo así como está configurado, entonces si surgiera ese nuevo CT con combinación de categorías previamente inexistentes, entonces habría que volver a realizar todas las estimaciones del módulo I.
 
 \- **"Oferta" de estimaciones: este acervo de estimaciones coyunturales sería suficiente para ofrecer de manera sistematizada reportes que caractericen al mercado laboral con diferentes niveles de especificación**. Es decir, dada la estructura estable de esta información, independientemente de la posible heterogeneidad del periodo de referencia, cabe pensar que a partir de estas diferentes tablas (aquí sólo reunidas a fines ilustrativos) podrían incorporarse rutinas que permitan dar un seguimiento más o menos pormenorizado de ciertos fenómenos laborales a diferentes niveles de agregación. Así, como fue visto durante las sesiones de acompañamiento, esto constituye la oferta de estimaciones puntuales para los diferentes indicadores.
 
@@ -1673,17 +1675,17 @@ La Parte 4 está dividida en dos scripts: el script de entrenamiento y el script
 
     7.  Preparación de la base para el entrenamiento del modelo, donde se estandarizan las variables, se realiza un muestreo aleatorio (también se brinda la posibilidad de que dicho muestreo sea por fecha de inspección), se hace un *pivot* o trasposición de la base, se reemplazan los valores faltantes e infinitos por -1 (ya que no es un valor válido para la predicción, como si lo es el 0), se generan objetos tipo *array* que contienen las variables a predecir tanto para la predicción por submateria como para la predicción general, entre otros procedimientos.
 
-    8.  Una vez se tienen las bases de datos listas, se inicia el \> entrenamiento del modelo. Primero se selecciona el modelo que se \> quiere entrenar, puede ser Random Forest o TabNet. Para \> seleccionar Random Forest, en la sección 8.1, el parámetro \> "model_number" debe ser igual a 1 (model_number = '1'), para \> seleccionar el modelo TabNet, el parámetro "model_number" debe ser \> igual a 2 (model_number = '2'). Se dejará preseleccionado el \> modelo Random Forest.Posteriormente, se divide la base 4 objetos *array*, dos que contienen las variables de entrada (con el nombre "x\_...") y dos que contienen la variable objetivo (con el nombre "y\_..."). Cada par será utilizado para el entrenamiento y para el test.
+    8.  Una vez se tienen las bases de datos listas, se inicia el entrenamiento del modelo. Primero se selecciona el modelo que se quiere entrenar, puede ser Random Forest o TabNet. Para seleccionar Random Forest, en la sección 8.1, el parámetro "model_number" debe ser igual a 1 (model_number = '1'), para seleccionar el modelo TabNet, el parámetro "model_number" debe ser igual a 2 (model_number = '2'). Se dejará preseleccionado el modelo Random Forest.Posteriormente, se divide la base 4 objetos *array*, dos que contienen las variables de entrada (con el nombre "x\_...") y dos que contienen la variable objetivo (con el nombre "y\_..."). Cada par será utilizado para el entrenamiento y para el test.
 
-        a\. Random Forest: Primero se generan los archivos .txt y .pkl que albergarán los resultados del modelo, los cuales serán utilizados \> en la predicción. Estos son:
+        a\. Random Forest: Primero se generan los archivos .txt y .pkl que albergarán los resultados del modelo, los cuales serán utilizados en la predicción. Estos son:
 
-        -   sub_test_rf\\\_(fecha).txt: Contiene las submaterias sobre las cuales se harán las predicciones
+        -   sub_test_rf\\_(fecha).txt: Contiene las submaterias sobre las cuales se harán las predicciones
 
-        -   score_test_rf\\\_(fecha).txt: Contiene una medida de confianza de las predicciones para cada submateria
+        -   score_test_rf\\_(fecha).txt: Contiene una medida de confianza de las predicciones para cada submateria
 
-        -   rf_clf\\\_(fecha).pkl: Contiene los elementos del modelo entrenado de clasificación (predicción por submaterias)
+        -   rf_clf\\_(fecha).pkl: Contiene los elementos del modelo entrenado de clasificación (predicción por submaterias)
 
-        -   rd_regr\\\_(fecha).pkl: Contiene los elementos del modelo entrenado de regresión (predicción general).
+        -   rd_regr\\_(fecha).pkl: Contiene los elementos del modelo entrenado de regresión (predicción general).
 
             Posteriormente, se entrenan los dos modelos:
 
@@ -1695,15 +1697,15 @@ La Parte 4 está dividida en dos scripts: el script de entrenamiento y el script
 
     <!-- -->
 
-    b.  TabNet: Primero se generan los archivos .txt y .pkl que albergarán los resultados del modelo, los cuales será utilizados en la \> predicción. Estos son:
+    b.  TabNet: Primero se generan los archivos .txt y .pkl que albergarán los resultados del modelo, los cuales será utilizados en la predicción. Estos son:
 
-        -   sub_test_tn\\\_(fecha).txt: Contiene las submaterias sobre las cuales se harán las predicciones
+        -   sub_test_tn\\_(fecha).txt: Contiene las submaterias sobre las cuales se harán las predicciones
 
-        -   score_test_tn\\\_(fecha).txt: Contiene una medida de confianza de las predicciones para cada submateria
+        -   score_test_tn\\_(fecha).txt: Contiene una medida de confianza de las predicciones para cada submateria
 
-        -   tabnet_model_1\\\_(fecha).pkl: Contiene los elementos del modelo entrenado de clasificación (predicción por submaterias)
+        -   tabnet_model_1\\_(fecha).pkl: Contiene los elementos del modelo entrenado de clasificación (predicción por submaterias)
 
-        -   tabnet_model_1\\\_(fecha).pkl: Contiene los elementos del modelo entrenado de regresión (predicción general).
+        -   tabnet_model_1\\_(fecha).pkl: Contiene los elementos del modelo entrenado de regresión (predicción general).
 
             Posteriormente, se entrenan los dos modelos:
 
@@ -1714,20 +1716,24 @@ La Parte 4 está dividida en dos scripts: el script de entrenamiento y el script
 
     <!-- -->
 
-    9.  Se guardan los resultados de la predicción y se ajusta el base \> resultado del riesgo total.
+    9.  Se guardan los resultados de la predicción y se ajusta el base resultado del riesgo total.
     10. Se registra el proceso en las bitácoras correspondientes.
     11. Cierre.
 
 -   El script de entrenamiento del modelo tiene las siguientes partes:
 
-    1.  Generación de métricas de *performance* del modelo predictivo entrenado para los dos modelos, ya sea Random Forest o TabNet. En esta parte se generan dos tablas que se imprimirán en el log reportando las métricas de rendimiento del modelo, estas son[\^23]:
-        -   Precisión (*accuracy*): La precisión es una medida de qué tan bien el modelo clasificador coincide con los datos reales y proporciona información sobre la exactitud general del modelo.
+    1.  Generación de métricas de *performance* del modelo predictivo entrenado para los dos modelos, ya sea Random Forest o TabNet. En esta parte se generan dos tablas que se imprimirán en el log reportando las métricas de rendimiento del modelo, estas son^[En el caso del modelo Random Forest MultiOutput, se muestran estas mismas medidas para cada una de las predicciones, además de un promedio general. Para el caso de TabNet se muestran otras medidas propias de los modelos de regresión, como R2, mínimos cuadraros (MCO) y error cuadrático medio (RMSE).]:
+        -   Exactitud (accuracy): La exactitud es una medida de qué tan bien el modelo predictor coincide con los datos reales, en otras palabras mide cuánto se aproximan los resultados obtenidos a los valores verdaderos, tanto positivos como negativos.  
+         $\Accuracy = VP + VN / VP + VN + FP + FN$ ^[VP:verdadero positivo; VN: verdadero negativo; FP: falso positivo; FN: falso negativo]
 
-        -   Puntaje de precisión (*precision score*): Es una métrica que mide la proporción de predicciones positivas correctas (verdaderos positivos) con respecto a todas las predicciones positivas realizadas por el modelo, es decir, cuán precisas son las predicciones positivas del modelo.
+        -   Puntaje de precisión (precision score): Es una métrica que mide la proporción de predicciones positivas correctas (verdaderos positivos) con respecto a todas las predicciones positivas realizadas por el modelo, es decir,  proporciona información sobre su rendimiento con respecto a los falsos positivos.
+          $\Precision = VP / VP + FP$
 
-        -   Sensibilidad o tasa de verdaderos positivos (*recall*): Es una medida que evalúa la capacidad de un modelo de clasificación para identificar correctamente las muestras positivas. El recall se centra en saber cuántos valores positivos fueron correctamente clasificados.
+        -   Sensibilidad o tasa de verdaderos positivos (recall): Es una medida que evalúa la capacidad de un modelo de clasificación para identificar correctamente las muestras positivas. El recall se centra en el rendimiento de un clasificador con respecto a falsos negativos (cuántos fallaron)
+          $\Recall = VP / VP + FN
 
         -   Puntaje F1 (*F1 Score*): Es una métrica que combina la precisión (precision) y el recall en una sola medida para evaluar el rendimiento de un modelo de clasificación. El F1 Score es una medida que oscila entre 0 y 1, donde 1 representa la mejor puntuación posible, indicando un equilibrio entre precisión y recall.
+          $\F1-score = 2 * (precision * recall) / (precision + recall)
 
         -   Puntaje AUC (*Area Under the Curve Score*): Es una métrica utilizada para evaluar el rendimiento de un modelo de clasificación binaria en un problema de clasificación. AUC mide la capacidad del modelo para distinguir entre clases positivas y negativas. El AUC Score representa el área bajo la curva ROC y varía entre 0 y 1. Un AUC Score de 1 indica un modelo perfecto que puede distinguir perfectamente entre las clases positivas y negativas, mientras que un AUC Score de 0.5 indica un modelo que realiza predicciones al azar.
 
@@ -1790,7 +1796,7 @@ knitr::include_graphics("images-1/important-icon.svg")
 
 ```{block, type='rmdcomment', fig.cap="Reporte Shapley"}
 
- [El análisis Shapley se utiliza para comprender la contribución de características individuales en un modelo de aprendizaje automático y cómo afectan las predicciones del modelo. Dado que modelos como Random Forest o TabNet no arrojan resultados de contribución a la predicción de las variables de la misma manera que lo hace una regresión simple, por ejemplo, el análisis Shapley se aplica con el fin de comprender cómo las características individuales afectan las predicciones del modelo.]{.underline}
+El análisis Shapley se utiliza para comprender la contribución de características individuales en un modelo de aprendizaje automático y cómo afectan las predicciones del modelo. Dado que modelos como Random Forest o TabNet no arrojan resultados de contribución a la predicción de las variables de la misma manera que lo hace una regresión simple, por ejemplo, el análisis Shapley se aplica con el fin de comprender cómo las características individuales afectan las predicciones del modelo.
 
  Al calcular los valores Shapley para cada característica, se obtiene una medida de importancia relativa. Estos valores indican cuánto contribuye cada característica a la predicción final. Este aporte se puede medir y visualizar de diferentes maneras, entre ellas:
 
