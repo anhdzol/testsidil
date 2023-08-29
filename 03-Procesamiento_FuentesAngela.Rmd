@@ -268,13 +268,13 @@ La ENOE cuenta con cinco tablas, de las cuales se utilizan tres para generar 11 
 
 ##### Frecuencia de actualización y propuesta de calendarización {#frecuenciaenoe .unnumbered}
 
-Las bases de datos de la encuesta se actualizan de manera trimestral, por lo cual esa será la frecuencia de actualización. Si bien la STPS recibe las bases de la ENOE por parte del INEGI de manera directa y con cierta anticipación de su publicación (y son las bases que utiliza el SIDIL), no es necesario ejecutar la actualización de inmediato, sino que se puede tomar como guía el calendario de publicaciones de INEGI[^procesamiento_fuentes-2], las próximas publicaciones de la ENOE desde la realización de este manual son: primer trimestre 2023: 29 de mayo de 2023, segundo trimestre 2023: 28 de agosto de 2023, tercer trimestre 2023: 27 de noviembre de 2023.
+Las bases de datos de la encuesta se actualizan de manera trimestral, por lo cual esa será la frecuencia de actualización. Si bien la STPS recibe las bases de la ENOE por parte del INEGI de manera directa y con cierta anticipación de su publicación (y son las bases que utiliza el SIDIL), no es necesario ejecutar la actualización de inmediato, sino que se puede tomar como guía el calendario de publicaciones de INEGI[^procesamiento_fuentes-2], las próximas publicaciones de la ENOE desde la realización de este manual son: segundo trimestre 2023: 28 de agosto de 2023 y tercer trimestre 2023: 27 de noviembre de 2023.
 
 [^procesamiento_fuentes-2]: En internet: <https://www.inegi.org.mx/contenidos/saladeprensa/doc/cal_2023.pdf>
 
 Por supuesto, la DGIET debe estar atenta a modificaciones en este calendario, así como de las actualizaciones previstas para 2024 y a posteriori.
 
-Se sugiere que la actualización de los indicadores de la ENOE se realice con cada actualización de la encuesta, es decir, durante las últimas semanas del mes de febrero, de mayo, de agosto y de noviembre. Esto sujeto a cambios en la calendarización de la publicación de la ENOE.
+Se sugiere que la actualización de los indicadores de la ENOE se realice con cada actualización de la encuesta, y durante las dos semanas siguientes de la publicación de la encuesta. Esto sujeto a cambios en la calendarización de la publicación de la ENOE.
 
 ##### Indicadores que se calculan {#indicadoresenoe .unnumbered}
 
@@ -291,9 +291,9 @@ El cálculo de los indicadores se realizará en las 11 agregaciones, las cuales 
 
 ##### Entradas - Inputs {#inputenoe .unnumbered}
 
-Los insumos principales para la generación de los 11 indicadores son las bases de datos originales de la ENOE que son proporcionadas por el INEGI a la DGIET de la STPS.
+Los insumos principales para la generación de los 11 indicadores son las bases de datos originales de la ENOE que son proporcionadas por el INEGI a la DGIET de la STPS o bien, las bases descargadas del sitio oficial del INEGI en formato .dbf.
 
-Para que el SIDIL detecte el último trimestre disponible de manera correcta es imprescindible que los archivos originales de la ENOE se guarden con la siguiente estructura de nombre y que se mantenga así durante todo momento:
+La estructura del nombre de los archivos puede presentarse de la siguiente manera;
 
 -   ENOEN_COE1(trimestre del 1 al 4) T(últimos dos números del año) \_2x.dbf
 
@@ -309,7 +309,7 @@ Para que el SIDIL detecte el último trimestre disponible de manera correcta es 
 
 (Notar que todas las bases de datos de datos deben estar en formato .dbf)
 
-Particularmente se enfatiza que los periodos de referencia deben ser: un dígito para el trimestre, seguido por una T, seguido por dos dígitos para el año, seguido por un "\_" y "2x", finalizando con el formato del archivo ".dbf". [Ver Recuadro XXXX_8\_XXX]{.mark}
+Aunque la estructura del nombre puede variar, es importante que el nombre contega los siguientes elementos para que sean detectados por el script extractor: nombre del cuestionario (COE1, COE2 o SDEM), un dígito para el trimestre, seguido por una T, seguido por dos dígitos para el año, y finalizar con el forma
 
 Se utilizan estas bases para seguir los principios de uso mínimo de memoria de las computadoras y de aprovechamiento de los recursos ya disponibles por la Secretaría, por lo que esta estructura se establece siguiendo la estructura real de los archivos al momento de ser entregado este manual. Si esta estructura cambia, es imprescindible que los archivos se guarden con nombres que sigan la estructura anteriormente expuesta en orden de que se puedan leer los archivos y generar los indicadores.
 
@@ -363,7 +363,7 @@ La incorporación de las tablas de registros administrativos que el IMSS compart
 
 -   Al ser un registro administrativo cabe remarcar que su propósito no es (primordialmente) la estadística - no surge de una encuesta, no existen parámetros de diseño complejo, por ello la definición y utilidad que tienen los coeficientes de variación de una estimación puntual deben ser interpretados con su debida cautela.
 
--   El IMSS utiliza su propia clasificación industrial, misma que no es del todo "emparejable" con la del SCIAN que se utiliza en estadísticas del INEGI. Para atender a este desafío se desarrolló una tabla de correspondencias unidireccional del IMSS al SCIAN a tres y dos dígitos, misma que fue cotejada y enriquecida con resultados de un trabajo independiente realizado por la propia STPS junto con el INEGI y el IMSS.
+-   El IMSS utiliza su propia clasificación industrial, misma que no es del todo equivalente a la del SCIAN que se utiliza en estadísticas del INEGI. Para atender a este desafío se desarrolló una tabla de correspondencias unidireccional del IMSS al SCIAN a tres y dos dígitos, misma que fue cotejada y enriquecida con resultados de un trabajo independiente realizado por la propia STPS junto con el INEGI y el IMSS.
 
 -   Las bases del IMSS contienen registros más voluminosos que las demás fuentes de información utilizadas, ya que la base de patrones es más de un millón de observaciones y la de puestos asegurados, supera los 20 millones de registros, ambas de actualización mensual. Mientras tanto la base de riesgos/accidentes concluye el año reportando aproximadamente medio millón de observaciones.
 
