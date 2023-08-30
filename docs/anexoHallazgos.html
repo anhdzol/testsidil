@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Capítulo 8 Conceptos y hallazgos clave en la exploración del SIAPI-SIPAS | SIDIL: Manual del procesamiento y explotación de la información</title>
+  <title>Capítulo 7 Conceptos y hallazgos clave en la exploración del SIAPI-SIPAS | SIDIL: Manual del procesamiento y explotación de la información</title>
   <meta name="description" content="Breve descripcion pendiente" />
   <meta name="generator" content="bookdown 0.34 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Capítulo 8 Conceptos y hallazgos clave en la exploración del SIAPI-SIPAS | SIDIL: Manual del procesamiento y explotación de la información" />
+  <meta property="og:title" content="Capítulo 7 Conceptos y hallazgos clave en la exploración del SIAPI-SIPAS | SIDIL: Manual del procesamiento y explotación de la información" />
   <meta property="og:type" content="book" />
   
   <meta property="og:description" content="Breve descripcion pendiente" />
   <meta name="github-repo" content="anhdzol/testsidil/" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Capítulo 8 Conceptos y hallazgos clave en la exploración del SIAPI-SIPAS | SIDIL: Manual del procesamiento y explotación de la información" />
+  <meta name="twitter:title" content="Capítulo 7 Conceptos y hallazgos clave en la exploración del SIAPI-SIPAS | SIDIL: Manual del procesamiento y explotación de la información" />
   
   <meta name="twitter:description" content="Breve descripcion pendiente" />
   
@@ -51,17 +51,74 @@
 <link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
 <link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
 <script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
-<script src="libs/htmlwidgets-1.6.2/htmlwidgets.js"></script>
-<script src="libs/plotly-binding-4.10.2/plotly.js"></script>
-<script src="libs/typedarray-0.1/typedarray.min.js"></script>
-<link href="libs/crosstalk-1.2.0/css/crosstalk.min.css" rel="stylesheet" />
-<script src="libs/crosstalk-1.2.0/js/crosstalk.min.js"></script>
-<link href="libs/plotly-htmlwidgets-css-2.11.1/plotly-htmlwidgets.css" rel="stylesheet" />
-<script src="libs/plotly-main-2.11.1/plotly-latest.min.js"></script>
 <script src="libs/kePrint-0.0.1/kePrint.js"></script>
 <link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
 
 
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
 
 <style type="text/css">
   
@@ -123,78 +180,37 @@
 <li class="chapter" data-level="3.7" data-path="elementosgenerales.html"><a href="elementosgenerales.html#catalogos"><i class="fa fa-check"></i><b>3.7</b> Catálogos de información</a></li>
 <li class="chapter" data-level="3.8" data-path="elementosgenerales.html"><a href="elementosgenerales.html#la-matriz-de-predicción-de-riesgo"><i class="fa fa-check"></i><b>3.8</b> La Matriz de Predicción de Riesgo</a></li>
 </ul></li>
-<li class="chapter" data-level="4" data-path="procesamiento.html"><a href="procesamiento.html"><i class="fa fa-check"></i><b>4</b> Procesamiento de las fuentes de información y generación de la MPR</a>
+<li class="chapter" data-level="4" data-path="presentación-sintética-de-todos-los-scripts.html"><a href="presentación-sintética-de-todos-los-scripts.html"><i class="fa fa-check"></i><b>4</b> Presentación sintética de todos los scripts</a></li>
+<li class="chapter" data-level="5" data-path="r-rstudio-y-python.html"><a href="r-rstudio-y-python.html"><i class="fa fa-check"></i><b>5</b> R, RStudio y Python</a>
 <ul>
-<li class="chapter" data-level="4.1" data-path="procesamiento.html"><a href="procesamiento.html#procesamientoModI"><i class="fa fa-check"></i><b>4.1</b> Módulo I: actualización de indicadores</a>
-<ul>
-<li class="chapter" data-level="4.1.1" data-path="procesamiento.html"><a href="procesamiento.html#procesamientoModIdesafios"><i class="fa fa-check"></i><b>4.1.1</b> Desafíos al tratamiento de bases de datos externas</a></li>
-<li class="chapter" data-level="4.1.2" data-path="procesamiento.html"><a href="procesamiento.html#procesamientoModInivelesagregacion"><i class="fa fa-check"></i><b>4.1.2</b> Sobre niveles de agregación</a></li>
-<li class="chapter" data-level="4.1.3" data-path="procesamiento.html"><a href="procesamiento.html#procesamientoModInominativo"><i class="fa fa-check"></i><b>4.1.3</b> Sobre estimaciones puntuales nominativas</a></li>
-<li class="chapter" data-level="4.1.4" data-path="procesamiento.html"><a href="procesamiento.html#procesamientoModEspecificaciones"><i class="fa fa-check"></i><b>4.1.4</b> Especificaciones por fuente de información</a></li>
-<li class="chapter" data-level="4.1.5" data-path="procesamiento.html"><a href="procesamiento.html#procesamientoModIcoyvshist"><i class="fa fa-check"></i><b>4.1.5</b> Estimaciones puntuales e históricas de indicadores</a></li>
+<li class="chapter" data-level="5.1" data-path="r-rstudio-y-python.html"><a href="r-rstudio-y-python.html#r-y-rstudio"><i class="fa fa-check"></i><b>5.1</b> R y RStudio</a></li>
+<li class="chapter" data-level="5.2" data-path="r-rstudio-y-python.html"><a href="r-rstudio-y-python.html#el-entorno-de-rstudio"><i class="fa fa-check"></i><b>5.2</b> El entorno de RStudio</a></li>
+<li class="chapter" data-level="5.3" data-path="r-rstudio-y-python.html"><a href="r-rstudio-y-python.html#procedimiento-para-ejecutar-proyectos-y-scripts-en-rstudio"><i class="fa fa-check"></i><b>5.3</b> Procedimiento para ejecutar proyectos y scripts en RStudio</a></li>
+<li class="chapter" data-level="5.4" data-path="r-rstudio-y-python.html"><a href="r-rstudio-y-python.html#tipos-de-errores-que-se-pudieran-presentar"><i class="fa fa-check"></i><b>5.4</b> Tipos de errores que se pudieran presentar</a></li>
+<li class="chapter" data-level="5.5" data-path="r-rstudio-y-python.html"><a href="r-rstudio-y-python.html#python"><i class="fa fa-check"></i><b>5.5</b> Python</a></li>
 </ul></li>
-<li class="chapter" data-level="4.2" data-path="procesamiento.html"><a href="procesamiento.html#moduloii"><i class="fa fa-check"></i><b>4.2</b> Módulo II: imputación de indicadores y generación de la MPR</a>
+<li class="chapter" data-level="6" data-path="especificaciones-del-servidor.html"><a href="especificaciones-del-servidor.html"><i class="fa fa-check"></i><b>6</b> Especificaciones del servidor</a></li>
+<li class="chapter" data-level="7" data-path="anexoHallazgos.html"><a href="anexoHallazgos.html"><i class="fa fa-check"></i><b>7</b> Conceptos y hallazgos clave en la exploración del SIAPI-SIPAS</a>
 <ul>
-<li class="chapter" data-level="4.2.1" data-path="procesamiento.html"><a href="procesamiento.html#propositomoduloii"><i class="fa fa-check"></i><b>4.2.1</b> Propósito principal</a></li>
-<li class="chapter" data-level="4.2.2" data-path="procesamiento.html"><a href="procesamiento.html#requisitosmoduloii"><i class="fa fa-check"></i><b>4.2.2</b> Requisitos para la ejecución de este módulo</a></li>
-<li class="chapter" data-level="4.2.3" data-path="procesamiento.html"><a href="procesamiento.html#procesamientoModIIimputacion"><i class="fa fa-check"></i><b>4.2.3</b> Imputación de indicadores laborales al universo de CT</a></li>
-<li class="chapter" data-level="4.2.4" data-path="procesamiento.html"><a href="procesamiento.html#procesamientoModIIprediccion"><i class="fa fa-check"></i><b>4.2.4</b> Predicción de riesgo</a></li>
+<li class="chapter" data-level="7.1" data-path="anexoHallazgos.html"><a href="anexoHallazgos.html#conceptos-y-clasificaciones-relevantes."><i class="fa fa-check"></i><b>7.1</b> Conceptos y clasificaciones relevantes.</a>
+<ul>
+<li class="chapter" data-level="7.1.1" data-path="anexoHallazgos.html"><a href="anexoHallazgos.html#planeación-de-la-inspección"><i class="fa fa-check"></i><b>7.1.1</b> Planeación de la inspección</a></li>
+<li class="chapter" data-level="7.1.2" data-path="anexoHallazgos.html"><a href="anexoHallazgos.html#meta-y-realización-de-inspecciones-a-realizar-por-tipo-estado-y-por-oficina"><i class="fa fa-check"></i><b>7.1.2</b> Meta y realización de inspecciones a realizar por tipo, estado y por oficina</a></li>
 </ul></li>
-<li class="chapter" data-level="4.3" data-path="procesamiento.html"><a href="procesamiento.html#procesamientoModIyIIinterfazAuto"><i class="fa fa-check"></i><b>4.3</b> Interfaz de automatización: Módulos I y II</a>
+<li class="chapter" data-level="7.2" data-path="anexoHallazgos.html"><a href="anexoHallazgos.html#alcance-de-la-inspección"><i class="fa fa-check"></i><b>7.2</b> Alcance de la inspección</a>
 <ul>
-<li class="chapter" data-level="4.3.1" data-path="procesamiento.html"><a href="procesamiento.html#propositointerfaz1"><i class="fa fa-check"></i><b>4.3.1</b> Propósito de la interfaz</a></li>
-<li class="chapter" data-level="4.3.2" data-path="procesamiento.html"><a href="procesamiento.html#accesointerfaz1"><i class="fa fa-check"></i><b>4.3.2</b> Acceso a la interfaz</a></li>
-<li class="chapter" data-level="4.3.3" data-path="procesamiento.html"><a href="procesamiento.html#organizacioninterfaz1"><i class="fa fa-check"></i><b>4.3.3</b> Organización de la interfaz</a></li>
-<li class="chapter" data-level="" data-path="procesamiento.html"><a href="procesamiento.html#interfaz1-8"><i class="fa fa-check"></i>Procesamiento de información</a></li>
+<li class="chapter" data-level="7.2.1" data-path="anexoHallazgos.html"><a href="anexoHallazgos.html#criterios-de-selección-utilizados-antes-del-sidil."><i class="fa fa-check"></i><b>7.2.1</b> Criterios de selección utilizados antes del SIDIL.</a></li>
 </ul></li>
-<li class="chapter" data-level="4.4" data-path="procesamiento.html"><a href="procesamiento.html#procesamientoModIIIinterfazConsulta"><i class="fa fa-check"></i><b>4.4</b> Módulo III: Priorización de los centros de trabajo</a>
+<li class="chapter" data-level="7.3" data-path="anexoHallazgos.html"><a href="anexoHallazgos.html#aspectos-pendientes-y-posibles-extensiones-a-futuro"><i class="fa fa-check"></i><b>7.3</b> Aspectos pendientes y posibles extensiones a futuro</a>
 <ul>
-<li class="chapter" data-level="4.4.1" data-path="procesamiento.html"><a href="procesamiento.html#propositointerfaz2"><i class="fa fa-check"></i><b>4.4.1</b> Propósito de la interfaz</a></li>
-<li class="chapter" data-level="4.4.2" data-path="procesamiento.html"><a href="procesamiento.html#accesointerfaz2"><i class="fa fa-check"></i><b>4.4.2</b> Acceso a la interfaz</a></li>
-<li class="chapter" data-level="" data-path="procesamiento.html"><a href="procesamiento.html#interfaz2-1"><i class="fa fa-check"></i>Primera prestaña: Filtrado</a></li>
-<li class="chapter" data-level="" data-path="procesamiento.html"><a href="procesamiento.html#interfaz2-3"><i class="fa fa-check"></i>Segunda pestaña: Analisis</a></li>
-<li class="chapter" data-level="" data-path="procesamiento.html"><a href="procesamiento.html#interfaz2-4"><i class="fa fa-check"></i>Tabla final de resultados con sus pestañas</a></li>
-</ul></li>
-<li class="chapter" data-level="4.5" data-path="procesamiento.html"><a href="procesamiento.html#procesamientoModIV"><i class="fa fa-check"></i><b>4.5</b> Módulo IV: Entrenamiento del modelo</a>
-<ul>
-<li class="chapter" data-level="4.5.1" data-path="procesamiento.html"><a href="procesamiento.html#propositoModIV"><i class="fa fa-check"></i><b>4.5.1</b> Propósito principal</a></li>
-<li class="chapter" data-level="4.5.2" data-path="procesamiento.html"><a href="procesamiento.html#procesamientoModIVSIAPI"><i class="fa fa-check"></i><b>4.5.2</b> Construcción de la serie histórica de inspecciones laborales (2012-2022)</a></li>
-<li class="chapter" data-level="4.5.3" data-path="procesamiento.html"><a href="procesamiento.html#procesamientoModIVindicadores"><i class="fa fa-check"></i><b>4.5.3</b> Construcción de la serie histórica de indicadores laborales</a></li>
-<li class="chapter" data-level="4.5.4" data-path="procesamiento.html"><a href="procesamiento.html#procesamientoModIVmatching"><i class="fa fa-check"></i><b>4.5.4</b> Matching de las series históricas</a></li>
-<li class="chapter" data-level="4.5.5" data-path="procesamiento.html"><a href="procesamiento.html#procesamientoModIVEntrenamiento"><i class="fa fa-check"></i><b>4.5.5</b> Entrenamiento y evaluación del modelo de predicción</a></li>
+<li class="chapter" data-level="7.3.1" data-path="anexoHallazgos.html"><a href="anexoHallazgos.html#limitaciones-en-la-construcción-de-la-variable-dependiente"><i class="fa fa-check"></i><b>7.3.1</b> Limitaciones en la construcción de la variable dependiente</a></li>
+<li class="chapter" data-level="7.3.2" data-path="anexoHallazgos.html"><a href="anexoHallazgos.html#posibles-alternativas-como-variable-dependiente"><i class="fa fa-check"></i><b>7.3.2</b> Posibles alternativas como variable dependiente</a></li>
+<li class="chapter" data-level="7.3.3" data-path="anexoHallazgos.html"><a href="anexoHallazgos.html#section"><i class="fa fa-check"></i><b>7.3.3</b> </a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="5" data-path="presentación-sintética-de-todos-los-scripts.html"><a href="presentación-sintética-de-todos-los-scripts.html"><i class="fa fa-check"></i><b>5</b> Presentación sintética de todos los scripts</a></li>
-<li class="chapter" data-level="6" data-path="r-rstudio-y-python.html"><a href="r-rstudio-y-python.html"><i class="fa fa-check"></i><b>6</b> R, RStudio y Python</a>
+<li class="chapter" data-level="8" data-path="box-and-tables.html"><a href="box-and-tables.html"><i class="fa fa-check"></i><b>8</b> Box and tables</a>
 <ul>
-<li class="chapter" data-level="6.1" data-path="r-rstudio-y-python.html"><a href="r-rstudio-y-python.html#r-y-rstudio"><i class="fa fa-check"></i><b>6.1</b> R y RStudio</a></li>
-<li class="chapter" data-level="6.2" data-path="r-rstudio-y-python.html"><a href="r-rstudio-y-python.html#el-entorno-de-rstudio"><i class="fa fa-check"></i><b>6.2</b> El entorno de RStudio</a></li>
-<li class="chapter" data-level="6.3" data-path="r-rstudio-y-python.html"><a href="r-rstudio-y-python.html#procedimiento-para-ejecutar-proyectos-y-scripts-en-rstudio"><i class="fa fa-check"></i><b>6.3</b> Procedimiento para ejecutar proyectos y scripts en RStudio</a></li>
-<li class="chapter" data-level="6.4" data-path="r-rstudio-y-python.html"><a href="r-rstudio-y-python.html#tipos-de-errores-que-se-pudieran-presentar"><i class="fa fa-check"></i><b>6.4</b> Tipos de errores que se pudieran presentar</a></li>
-<li class="chapter" data-level="6.5" data-path="r-rstudio-y-python.html"><a href="r-rstudio-y-python.html#python"><i class="fa fa-check"></i><b>6.5</b> Python</a></li>
-</ul></li>
-<li class="chapter" data-level="7" data-path="especificaciones-del-servidor.html"><a href="especificaciones-del-servidor.html"><i class="fa fa-check"></i><b>7</b> Especificaciones del servidor</a></li>
-<li class="chapter" data-level="8" data-path="anexoHallazgos.html"><a href="anexoHallazgos.html"><i class="fa fa-check"></i><b>8</b> Conceptos y hallazgos clave en la exploración del SIAPI-SIPAS</a>
-<ul>
-<li class="chapter" data-level="8.1" data-path="anexoHallazgos.html"><a href="anexoHallazgos.html#conceptos-y-clasificaciones-relevantes."><i class="fa fa-check"></i><b>8.1</b> Conceptos y clasificaciones relevantes.</a>
-<ul>
-<li class="chapter" data-level="8.1.1" data-path="anexoHallazgos.html"><a href="anexoHallazgos.html#planeación-de-la-inspección"><i class="fa fa-check"></i><b>8.1.1</b> Planeación de la inspección</a></li>
-<li class="chapter" data-level="8.1.2" data-path="anexoHallazgos.html"><a href="anexoHallazgos.html#meta-y-realización-de-inspecciones-a-realizar-por-tipo-estado-y-por-oficina"><i class="fa fa-check"></i><b>8.1.2</b> Meta y realización de inspecciones a realizar por tipo, estado y por oficina</a></li>
-</ul></li>
-<li class="chapter" data-level="8.2" data-path="anexoHallazgos.html"><a href="anexoHallazgos.html#alcance-de-la-inspección"><i class="fa fa-check"></i><b>8.2</b> Alcance de la inspección</a>
-<ul>
-<li class="chapter" data-level="8.2.1" data-path="anexoHallazgos.html"><a href="anexoHallazgos.html#criterios-de-selección-utilizados-antes-del-sidil."><i class="fa fa-check"></i><b>8.2.1</b> Criterios de selección utilizados antes del SIDIL.</a></li>
-</ul></li>
-<li class="chapter" data-level="8.3" data-path="anexoHallazgos.html"><a href="anexoHallazgos.html#aspectos-pendientes-y-posibles-extensiones-a-futuro"><i class="fa fa-check"></i><b>8.3</b> Aspectos pendientes y posibles extensiones a futuro</a>
-<ul>
-<li class="chapter" data-level="8.3.1" data-path="anexoHallazgos.html"><a href="anexoHallazgos.html#limitaciones-en-la-construcción-de-la-variable-dependiente"><i class="fa fa-check"></i><b>8.3.1</b> Limitaciones en la construcción de la variable dependiente</a></li>
-<li class="chapter" data-level="8.3.2" data-path="anexoHallazgos.html"><a href="anexoHallazgos.html#posibles-alternativas-como-variable-dependiente"><i class="fa fa-check"></i><b>8.3.2</b> Posibles alternativas como variable dependiente</a></li>
-<li class="chapter" data-level="8.3.3" data-path="anexoHallazgos.html"><a href="anexoHallazgos.html#section"><i class="fa fa-check"></i><b>8.3.3</b> </a></li>
-</ul></li>
-</ul></li>
-<li class="chapter" data-level="9" data-path="box-and-tables.html"><a href="box-and-tables.html"><i class="fa fa-check"></i><b>9</b> Box and tables</a>
-<ul>
-<li class="chapter" data-level="9.0.1" data-path="box-and-tables.html"><a href="box-and-tables.html#tablas"><i class="fa fa-check"></i><b>9.0.1</b> Tablas</a></li>
+<li class="chapter" data-level="8.0.1" data-path="box-and-tables.html"><a href="box-and-tables.html#tablas"><i class="fa fa-check"></i><b>8.0.1</b> Tablas</a></li>
 </ul></li>
 </ul>
 
@@ -213,31 +229,31 @@
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="anexoHallazgos" class="section level1 hasAnchor" number="8">
-<h1><span class="header-section-number">Capítulo 8</span> Conceptos y hallazgos clave en la exploración del SIAPI-SIPAS<a href="anexoHallazgos.html#anexoHallazgos" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="anexoHallazgos" class="section level1 hasAnchor" number="7">
+<h1><span class="header-section-number">Capítulo 7</span> Conceptos y hallazgos clave en la exploración del SIAPI-SIPAS<a href="anexoHallazgos.html#anexoHallazgos" class="anchor-section" aria-label="Anchor link to header"></a></h1>
 <p>[@@ nota interna para borrar: esto es un resumen muy selectivo del doc de hallazgos</p>
 <p><a href="https://msair.sharepoint.com/:w:/r/sites/Impaq_Projects/Mexico/CALLE/Ongoing%20Tasks/Data%20Intelligence/Data%20Analysis/2022-01%20An%C3%A1lisis%20SIAPI_SIPAS%20-%20Hallazgos.docx?d=wf74a0d86ad244c92a86c8a88e3af6f1e&amp;csf=1&amp;web=1&amp;e=GcTmkv">DOCUMENTO DE HALLAZGOS</a>
 ]]
 ]{.mark}</p>
 <p>Esta sección presenta el análisis que AIR hizo sobre los sistemas con los que cuenta la STPS para el apoyo a la inspección laboral (SIAPI) y al proceso sancionador (SIPAS), con dos principales propósitos. Primero, profundizar en algunos de los conceptos que resultan críticos en la explotación de los registros administrativos de la inspección. Esto para homologar un único vocabulario e interpretación del alcance del SIDIL en lo que refiere a la inspecciones; segundo, para dar cuenta del volumen de información y la calidad de la misma y que el SIDIL consume a efectos de realizar las predicciones.</p>
 <p>La sección está organizada de la siguiente manera:</p>
-<div id="conceptos-y-clasificaciones-relevantes." class="section level2 hasAnchor" number="8.1">
-<h2><span class="header-section-number">8.1</span> Conceptos y clasificaciones relevantes.<a href="anexoHallazgos.html#conceptos-y-clasificaciones-relevantes." class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="conceptos-y-clasificaciones-relevantes." class="section level2 hasAnchor" number="7.1">
+<h2><span class="header-section-number">7.1</span> Conceptos y clasificaciones relevantes.<a href="anexoHallazgos.html#conceptos-y-clasificaciones-relevantes." class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Conviene comenzar por la importancia de la explotación de los registros administativos. Quizá la principal información que interesa extraerse del SIAPI es si la inspección ha detectado violaciones a la normativa laboral porque es, justamente, lo que el modelo busca predecir. <strong>La variable dependiente que entra en el entrenamiento del modelo predictivo será aquel aspecto para el cual luego el modelo, al aplicarlo, buscará predecir su ocurrencia.</strong> Seleccionar otra información como variable dependiente, implicará que el modelo prediga sobre esa otra información de entrada.</p>
-<p><strong>Como se ha mencionado al explicar el <a href="procesamiento.html#procesamientoModIVSIAPI">entrenamiento</a> del modelo, éste toma como variable dependiente la detección de violaciones que proceden, una vez que las inspecciones son calificadas por la <mark>UTD</mark> y se acepta como procedente para iniciar el procedimiento de sanción</strong>. Pues bien, este anexo guia a el / la lector/a a identificar cómo es que se arriba a esta definición y cómo se mide, para lo cual el recorrido no es del todo lineal ni evidente para aquellas personas menos familiarizadas con el sistema. <strong>Notar que, mientras que la explotación de los registros administrativos obedece fundamentalmente a la necesidad de <em>entrenar</em> el modelo a partir de los centros de trabajo que fueron inspeccionados, la predicción del mismo, se realiza sobre el universo total de los mismos, independientemente de su historial de inspecciones.</strong></p>
-<p>Una importante precisión es que en la STPS los sistemas de apoyo a la inspección han tenido a lo largo de los años diferentes “instancias” o “cortes”, que se condicen con cada uno de los cambios importantes en la normatividad de la inspección. Esto se debe a que las herramientas utilizadas para apoyar los procesos de inspección no contaban hasta ahora con mecanismos que permitan el manejo y administración de diferentes versiones del marco normativo en una sola instancia del sistema. Por lo cual, ante un nuevo reglamento de inspección o ante una modificación sustantiva a la las leyes y normas en la materia, se requirió copiar el sistema en una nueva instancia en la cual se pudieran reflejar la situación normativa derivada de esa modificación.<a href="#fn15" class="footnote-ref" id="fnref15"><sup>15</sup></a></p>
+<p><strong>Como se ha mencionado al explicar el <a href="#procesamientoModIVSIAPI">entrenamiento</a> del modelo, éste toma como variable dependiente la detección de violaciones que proceden, una vez que las inspecciones son calificadas por la <mark>UTD</mark> y se acepta como procedente para iniciar el procedimiento de sanción</strong>. Pues bien, este anexo guia a el / la lector/a a identificar cómo es que se arriba a esta definición y cómo se mide, para lo cual el recorrido no es del todo lineal ni evidente para aquellas personas menos familiarizadas con el sistema. <strong>Notar que, mientras que la explotación de los registros administrativos obedece fundamentalmente a la necesidad de <em>entrenar</em> el modelo a partir de los centros de trabajo que fueron inspeccionados, la predicción del mismo, se realiza sobre el universo total de los mismos, independientemente de su historial de inspecciones.</strong></p>
+<p>Una importante precisión es que en la STPS los sistemas de apoyo a la inspección han tenido a lo largo de los años diferentes “instancias” o “cortes”, que se condicen con cada uno de los cambios importantes en la normatividad de la inspección. Esto se debe a que las herramientas utilizadas para apoyar los procesos de inspección no contaban hasta ahora con mecanismos que permitan el manejo y administración de diferentes versiones del marco normativo en una sola instancia del sistema. Por lo cual, ante un nuevo reglamento de inspección o ante una modificación sustantiva a la las leyes y normas en la materia, se requirió copiar el sistema en una nueva instancia en la cual se pudieran reflejar la situación normativa derivada de esa modificación.<a href="#fn5" class="footnote-ref" id="fnref5"><sup>5</sup></a></p>
 <p>Son cinco los “cortes” que se han realizado a la base de datos, mismos que se han integrado para realizar el análisis que se presenta a continuación. Los 5 “cortes” representan la totalidad de la base de datos y la integración selectiva de los diferentes casos (inspecciones) a lo largo de los diferentes “cortes” previene de duplicar la información y la tergiversación de los hallazgos, se ha requerido un importante trabajo de análisis para la unificación de bases de datos y generar el universo global de las inspecciones realizadas. Esta tarea requirió por supuesto entender la lógica en que se debe hacer la agregación de las inspecciones y ha dado como resultado un universo de cerca de un millón cien mil inspecciones totales en el período, conformándose así el universo de análisis. Cabe agregar que, por lo general, con los diferentes cortes que se realizan se generan pequeños cambios en las taxonomías de algunas variables, y, en menor medida, surgen nuevas tablas al interior de la base de datos.</p>
-<p>El volumen de información que se encuentra en cada uno de los “cortes” varía, y como se observa en la ilustración <a href="anexoHallazgos.html#fig:volumeninspecciones">8.1</a>, de los cinco “cortes” distintos que se realizaron a la base de datos, el primero consta de cerca de 60 mil inspecciones, con inspecciones que se realizaron entre junio 2012 y abril 2015, mientras que el último corte es el que incorpora las inspecciones realizadas entre enero 2020 y octubre 2021.</p>
+<p>El volumen de información que se encuentra en cada uno de los “cortes” varía, y como se observa en la ilustración <a href="anexoHallazgos.html#fig:volumeninspecciones">7.1</a>, de los cinco “cortes” distintos que se realizaron a la base de datos, el primero consta de cerca de 60 mil inspecciones, con inspecciones que se realizaron entre junio 2012 y abril 2015, mientras que el último corte es el que incorpora las inspecciones realizadas entre enero 2020 y octubre 2021.</p>
 <div class="figure"><span style="display:block;" id="fig:volumeninspecciones"></span>
-<img src="images-1/08/volumeninspecciones.png" alt="Módulos que componen el SIDIL" width="236" />
+<img src="images-1/08/volumeninspecciones.png" alt="Módulos que componen el SIDIL"  />
 <p class="caption">
-Recuadro 8.1: Módulos que componen el SIDIL
+Recuadro 7.1: Módulos que componen el SIDIL
 </p>
 </div>
 <div class="figure"><span style="display:block;" id="fig:indiceinspecciones"></span>
 <img src="images-1/important-icon.svg" alt="Conformación del *índice* de inspecciones" width="50px" style="float:left; background-color: #f5f5f5; padding-right:1em" />
 <p class="caption">
-Recuadro 8.2: Conformación del <em>índice</em> de inspecciones
+Recuadro 7.2: Conformación del <em>índice</em> de inspecciones
 </p>
 </div>
 <div class="rmdcomment">
@@ -266,7 +282,7 @@ procedimiento serán recuperadas de esa instancia donde por primera vez
 <em>nace´</em> la inspección, únicamente.
 </p>
 </div>
-<p>Dada la posibilidad de la coexistencia de diferentes marcos normativos (ver recuadro <a href="anexoHallazgos.html#fig:indiceinspecciones">8.2</a>) existe una intersección temporal entre los diferentes “cortes”, explicando además que el volumen de inspecciones que representa el “corte” 4, mismo que va de diciembre 2012 a septiembre 2021, represente al 56% de las inspecciones registradas, como se observa en la tabla <mark>xxx1xxx</mark> Ambos aspectos se explican por la misma causa: los “cortes” representan cambios al marco normativo, mientras que cada proceso de inspección debe por lógica corresponder con un único marco normativo (la inspección que “nace” bajo un marco normativo se sostiene en ese ámbito, incluso cuando éste marco jurídico es reemplazado por uno nuevo). Por ello mientras se va concluyendo el proceso inspectivo de un caso, es posible que ante un nuevo cambio normativo coexistan temporalmente diferentes versiones del sistema.</p>
+<p>Dada la posibilidad de la coexistencia de diferentes marcos normativos (ver recuadro <a href="anexoHallazgos.html#fig:indiceinspecciones">7.2</a>) existe una intersección temporal entre los diferentes “cortes”, explicando además que el volumen de inspecciones que representa el “corte” 4, mismo que va de diciembre 2012 a septiembre 2021, represente al 56% de las inspecciones registradas, como se observa en la tabla <mark>xxx1xxx</mark> Ambos aspectos se explican por la misma causa: los “cortes” representan cambios al marco normativo, mientras que cada proceso de inspección debe por lógica corresponder con un único marco normativo (la inspección que “nace” bajo un marco normativo se sostiene en ese ámbito, incluso cuando éste marco jurídico es reemplazado por uno nuevo). Por ello mientras se va concluyendo el proceso inspectivo de un caso, es posible que ante un nuevo cambio normativo coexistan temporalmente diferentes versiones del sistema.</p>
 <p>Tabla xxx1xxx. Distribución de las inspecciones, por fecha de inspección y “corte” de la base.
 <mark>PENDIENTE hacer tabla</mark>
 Corte de la base Fecha inicial Fecha final Número de inspecciones
@@ -277,29 +293,29 @@ Corte de la base Fecha inicial Fecha final Número de inspecciones
 5 28/01/2021 31/07/2021 2,794
 Total 1,129,730</p>
 <p><strong>Fuente: Elaboración propia a partir del SIAPI-SIPAS. Nota: las fechas iniciales y fecha finales comprenden al decil 1 y al decil 9, respectivamente de cada base de datos, es decir, pueden encontrarse fechas anteriores y posteriores a las indicadas, pero son excepciones. </strong></p>
-<div id="planeación-de-la-inspección" class="section level3 hasAnchor" number="8.1.1">
-<h3><span class="header-section-number">8.1.1</span> Planeación de la inspección<a href="anexoHallazgos.html#planeación-de-la-inspección" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="planeación-de-la-inspección" class="section level3 hasAnchor" number="7.1.1">
+<h3><span class="header-section-number">7.1.1</span> Planeación de la inspección<a href="anexoHallazgos.html#planeación-de-la-inspección" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Si bien el SIDIL es una herramienta estratégica para la programación de inspecciones en el marco de operativos de inspección (por definición, son inspecciones del <em>tipo</em> <em>extraordinario</em>), la información que se explota para el entrenamiento del modelo no se limita a este tipo de inspecciones.</p>
-<p>La planeación del año se realiza conforme a la disponibilidad de recursos y las prioridades de política pública. Por lo general, a finales de cada año se realiza una planeación anual de las inspecciones para determinar las metas anuales para el año fiscal siguiente, conforme a la disponibilidad de inspectores por oficina, tomando además en cuenta las prioridades de política pública de la gestión. En promedio, entre 2012 y 2021 se estableció una meta anual de 91,026 inspecciones por año. A grandes rasgos se observan tres fases distintas en cuanto a este promedio, como se presenta en la ilustración <a href="anexoHallazgos.html#fig:Metasanualesinspeccion">8.3</a>: entre 2012 y 2013, la meta anual osciló entre 86,000 y 89,000 inspecciones anuales; de 2014 a 2017 se ubicó entre 119,000 y 124,000 seguido por un máximo observado en 2018 con 130,000 inspecciones y de 2019 en adelante, la meta se redujo a la mitad e incluso hasta un tercio de los niveles de 2012 y 2013. En 2019 la meta alcanzó las 45,061 inspecciones, en 2020 las 30,721 inspecciones y en 2021 39,198 inspecciones. Como se observará más adelante, hay una discrepancia entre la meta anual y lo realizado de hecho, motivo por lo cual sería precipitado concluir en una reducción del volumen de la carga de trabajo.</p>
+<p>La planeación del año se realiza conforme a la disponibilidad de recursos y las prioridades de política pública. Por lo general, a finales de cada año se realiza una planeación anual de las inspecciones para determinar las metas anuales para el año fiscal siguiente, conforme a la disponibilidad de inspectores por oficina, tomando además en cuenta las prioridades de política pública de la gestión. En promedio, entre 2012 y 2021 se estableció una meta anual de 91,026 inspecciones por año. A grandes rasgos se observan tres fases distintas en cuanto a este promedio, como se presenta en la ilustración <a href="anexoHallazgos.html#fig:Metasanualesinspeccion">7.3</a>: entre 2012 y 2013, la meta anual osciló entre 86,000 y 89,000 inspecciones anuales; de 2014 a 2017 se ubicó entre 119,000 y 124,000 seguido por un máximo observado en 2018 con 130,000 inspecciones y de 2019 en adelante, la meta se redujo a la mitad e incluso hasta un tercio de los niveles de 2012 y 2013. En 2019 la meta alcanzó las 45,061 inspecciones, en 2020 las 30,721 inspecciones y en 2021 39,198 inspecciones. Como se observará más adelante, hay una discrepancia entre la meta anual y lo realizado de hecho, motivo por lo cual sería precipitado concluir en una reducción del volumen de la carga de trabajo.</p>
 <p>La meta anual de inspecciones se distribuye en dos grandes tipos: las de programación aleatoria y las de programación directa. La programación aleatoria es la que se asocia con inspecciones del tipo ordinario, mientras que las de programación directa corresponde a las inspecciones del tipo extraordinario. Se suma un tercer tipo que es el de programación automática y que abarca las inspecciones de comprobación de medidas, como se explicará más adelante.</p>
 <p>El conjunto de las inspecciones de programación aleatoria se compone de inspecciones iniciales y periódicas. Mientras que las inspecciones iniciales son las que se realizan por primera vez a un centro de trabajo (CT) o por ampliación o modificación de éstos , las periódicas tienen cierta frecuencia predeterminada según los resultados de las inspecciones anteriores realizadas al mismo CT, “tomando en consideración la rama industrial, la naturaleza de las actividades que realicen, su grado de riesgo, número de trabajadores y ubicación geográfica” . Ambas conforman buena parte de las inspecciones del tipo ordinaria, sumándose a este grupo las inspecciones de comprobación de medidas en materia de Seguridad e higiene, como se detalla más adelante.</p>
 <p>Por su parte, las inspecciones de programación directa incluyen, pero no se limitan, a las inspecciones realizadas en el marco de un determinado operativo. Los operativos, como se verá más adelante, son un tipo de programación de inspección de un alcance específico que atiende a temáticas o prioridades predefinidas.
 A lo largo de la década analizada el 54.9% de las inspecciones realizadas fueron de programación directa, y el 45.1% de programación aleatoria (ver ilustración 3). Esto no ocurrió sin cierta cierta variación de un año a otro: En 2018 fue cuando la programación directa tuvo el mayor peso (75%), mientras que su menor participación fue en 2019, con tan sólo 20% de la meta anual.</p>
 <div class="figure"><span style="display:block;" id="fig:Metasanualesinspeccion"></span>
-<img src="images-1/08/Metasanualesinspeccion.png" alt="Metas anuales de inspección, por tipo de inspección" width="264" />
+<img src="images-1/08/Metasanualesinspeccion.png" alt="Metas anuales de inspección, por tipo de inspección"  />
 <p class="caption">
-Recuadro 8.3: Metas anuales de inspección, por tipo de inspección
+Recuadro 7.3: Metas anuales de inspección, por tipo de inspección
 </p>
 </div>
 </div>
-<div id="meta-y-realización-de-inspecciones-a-realizar-por-tipo-estado-y-por-oficina" class="section level3 hasAnchor" number="8.1.2">
-<h3><span class="header-section-number">8.1.2</span> Meta y realización de inspecciones a realizar por tipo, estado y por oficina<a href="anexoHallazgos.html#meta-y-realización-de-inspecciones-a-realizar-por-tipo-estado-y-por-oficina" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="meta-y-realización-de-inspecciones-a-realizar-por-tipo-estado-y-por-oficina" class="section level3 hasAnchor" number="7.1.2">
+<h3><span class="header-section-number">7.1.2</span> Meta y realización de inspecciones a realizar por tipo, estado y por oficina<a href="anexoHallazgos.html#meta-y-realización-de-inspecciones-a-realizar-por-tipo-estado-y-por-oficina" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>En el SIAPI se identificaron 109 oficinas responsables de las inspecciones o Unidades responsables (UR) distribuídas a lo largo de las 32 entidades federativas, sumándose 27 otras UR de carácter federal que corresponden a otras áreas de la STPS, como por ejemplo la DG de Inspección Federal del Trabajo, la DG de Asuntos Jurídicos, etc.. Las 109 UR típicamente toman la forma de una Oficina de Representación Federal del Trabajo (ORFT), de una Subdelegación Federal del Trabajo, de una Oficina Federal del Trabajo, de una Delegación Federal del Trabajo o de una Unidad Subalterna de la ORFT. Se asume que a efectos de la operación de las inspecciones como el seguimiento del proceso sancionador, no existen diferencias sustantivas en cuanto a las atribuciones que tiene cada una de ellas.</p>
-<p>En promedio, en cada entidad federativa hay 3.4 UR, siendo Veracruz la entidad con mayor número de UR con 15 oficinas, y habiendo 17 entidades federativas con solamente 2 UR en su delimitación geográfica. Hay otras 14 entidades federativas que tienen entre 4 y 6 UR (<a href="anexoHallazgos.html#fig:InspectoresUR">8.4</a>. El número de inspectores por cada UR varía entre 3 y 4 en Baja California Sur y Aguascalientes, respectivamente, y 49 y 87 en el Estado de México y la Ciudad de México. La ilustración da cuenta de la correlación positiva entre el número de centros de trabajo y el número de inspectores activos. Se observa que algunas entidades, como el Estado de México, Veracruz, Tamaulipas, presentan un número proporcionalmente menor de inspectores, mientras que Jalisco y Nuevo León superan la tendencia estatal.</p>
+<p>En promedio, en cada entidad federativa hay 3.4 UR, siendo Veracruz la entidad con mayor número de UR con 15 oficinas, y habiendo 17 entidades federativas con solamente 2 UR en su delimitación geográfica. Hay otras 14 entidades federativas que tienen entre 4 y 6 UR (<a href="anexoHallazgos.html#fig:InspectoresUR">7.4</a>. El número de inspectores por cada UR varía entre 3 y 4 en Baja California Sur y Aguascalientes, respectivamente, y 49 y 87 en el Estado de México y la Ciudad de México. La ilustración da cuenta de la correlación positiva entre el número de centros de trabajo y el número de inspectores activos. Se observa que algunas entidades, como el Estado de México, Veracruz, Tamaulipas, presentan un número proporcionalmente menor de inspectores, mientras que Jalisco y Nuevo León superan la tendencia estatal.</p>
 <div class="figure"><span style="display:block;" id="fig:InspectoresUR"></span>
-<img src="images-1/08/InspectoresUR.png" alt="Número de inspectores activos y CT cubiertos, por UR, a 2021." width="251" />
+<img src="images-1/08/InspectoresUR.png" alt="Número de inspectores activos y CT cubiertos, por UR, a 2021."  />
 <p class="caption">
-Recuadro 8.4: Número de inspectores activos y CT cubiertos, por UR, a 2021.
+Recuadro 7.4: Número de inspectores activos y CT cubiertos, por UR, a 2021.
 </p>
 </div>
 <p>La interacción entre la meta anual de inspecciones y el número de inspectores disponibles determina la carga de trabajo que se asigna a los inspectores. La planeación anual toma en consideración la disponibilidad de inspectores que se reporta a nivel descentralizado en cada una de las unidades responsables a través de las oficinas de representación, mismas que en su agregación conforman el total de número de inspectores disponibles. Sin embargo, a efectos de la programación de operativos, la disponibilidad de corto plazo de los inspectores no es algo que se pueda capturar en el sistema. <strong>Es en este punto en donde el SIDIL, con la información disponible en el sistema, no puede incorporar de manera automatizada la disponibilidad de inspectores para la conformación de un universo de CT priorizados por riesgos (y atributos e indicadores) <em>estratificado</em> o <em>acotado</em> a la disponibilidad de inspectores en cada UR - toda vez que la información al respecto en el sistema no se actualiza en tiempo real.</strong></p>
@@ -307,26 +323,26 @@ Recuadro 8.4: Número de inspectores activos y CT cubiertos, por UR, a 2021.
 <p>Conviene aclarar, que a efectos de este reporte se define a una inspección como registrada, cuando ésta es programada y por lo tanto aparece en el sistema con un identificador único e intransferible, independientemente de la etapa o estatus en el que se encuentre esta inspección. Esta definición es importante, toda vez que más adelante se distinguirá entre inspecciones realizadas y no realizadas, siendo ambas parte de las inspecciones registradas.</p>
 <p>Considerando la totalidad del país, se observa que la tendencia del número de inspecciones realizadas es superior al número de inspecciones programadas, pero sólo desde 2013 a 2018 inclusive. A partir de 2019 se registra un déficit en el número de inspecciones realizadas con respecto a la planeación anual, mismo que puede estar explicado por el cambio de administración a fines de 2018, como por la irrupción en México de la pandemia de COVID-19 en el año 2020. Complementando lo anterior, en la ilustración 9 se presenta la evolución mensual de ambas variables a lo largo de la década 2012-2021. Además de justificar la afirmación anterior, esta ilustración da cuenta de que ambas variables presentan una elevada volatilidad (cambios abruptos de un mes a otro) y ciclicidad (los meses de diciembre y enero son, por lo general, los de menor volumen).</p>
 <div class="figure"><span style="display:block;" id="fig:programadorealizado"></span>
-<img src="images-1/08/programadorealizado.png" alt="Módulos que componen el SIDIL" width="452" />
+<img src="images-1/08/programadorealizado.png" alt="Módulos que componen el SIDIL"  />
 <p class="caption">
-Recuadro 8.5: Módulos que componen el SIDIL
+Recuadro 7.5: Módulos que componen el SIDIL
 </p>
 </div>
 <p>###Tipos y subtipos de inspección</p>
 <p>Hay dos grandes tipos de inspección: las inspecciones ordinarias y las extraordinarias. A su vez, al interior de las inspecciones ordinarias se encuentran tres subtipos: iniciales, periódicas y de comprobación de medidas; mientras, las inspecciones extraordinarias comprenden a las inspecciones de subtipo homónimo (extraordinarias) y las extraordinarias de orientación y asesoría.</p>
 <p>El tipo de actuación de una inspección se corresponde en términos generales con el tipo de programación: las inspecciones de programación aleatoria se corresponden con las inspecciones del tipo ordinaria, pero no incluyen a las inspecciones de comprobación de medidas, pues estas son de programación automática - como se explicará más adelante. Las inspecciones de programación directa son las inspecciones extraordinarias.</p>
-<p>Como se puede ver en el recuadro <a href="anexoHallazgos.html#fig:tipossubtipos">8.6</a>, en el universo de más de un millón de inspecciones realizadas entre 2012 y 2021, se encuentra un 40.4% (456,209 inspecciones) que son del tipo ordinarias. 59.6% (673,521) de ese total son extraordinarias. Menos del 0.1% de las inspecciones realizadas no tienen un tipo asignado, mismo que puede ser un error de sistema. A su interior la gran mayoría de las inspecciones ordinarias son del tipo periódicas (266,118 inspecciones que representan 58.3% de las ordinarias y 23.6% del total), seguido por las iniciales (136,024 inspecciones, 29.8% de las ordinarias y 12% del total) y, por último, las de comprobación de medidas (54,607 inspecciones, 11.8% de las ordinarias y 4.8% del total). Por su parte, el 59.6% del total de las inspecciones y que son extraordinarias, son en su mayoría del subtipo extraordinarias (605,090 inspecciones, 89.9% de las extraordinarias y 53.5% del total). Una fracción menor corresponde a las inspecciones del subtipo extraordinaria de orientación y asesoría (68,133 inspecciones, 10.1% de las extraordinarias y 6% del total).</p>
+<p>Como se puede ver en el recuadro <a href="anexoHallazgos.html#fig:tipossubtipos">7.6</a>, en el universo de más de un millón de inspecciones realizadas entre 2012 y 2021, se encuentra un 40.4% (456,209 inspecciones) que son del tipo ordinarias. 59.6% (673,521) de ese total son extraordinarias. Menos del 0.1% de las inspecciones realizadas no tienen un tipo asignado, mismo que puede ser un error de sistema. A su interior la gran mayoría de las inspecciones ordinarias son del tipo periódicas (266,118 inspecciones que representan 58.3% de las ordinarias y 23.6% del total), seguido por las iniciales (136,024 inspecciones, 29.8% de las ordinarias y 12% del total) y, por último, las de comprobación de medidas (54,607 inspecciones, 11.8% de las ordinarias y 4.8% del total). Por su parte, el 59.6% del total de las inspecciones y que son extraordinarias, son en su mayoría del subtipo extraordinarias (605,090 inspecciones, 89.9% de las extraordinarias y 53.5% del total). Una fracción menor corresponde a las inspecciones del subtipo extraordinaria de orientación y asesoría (68,133 inspecciones, 10.1% de las extraordinarias y 6% del total).</p>
 <p>En cuanto a las inspecciones de comprobación de medida, si bien son del tipo ordinarias, se distinguen por ser de seguimiento a inspecciones realizadas previamente y que concluyeron con el emplazamiento de medidas. Las medidas son consecuencia de una inspección en la materia de Seguridad e higiene y las dicta un inspector cuando, en la evaluación de los reactivos encuentra incumplimientos por parte del centro trabajo que deben ser atendidos y, además, verificados con una inspección posterior, es decir, en la visita de comprobación de medidas. En caso de que la comprobación de medidas determine el incumplimiento de las medidas dictadas, se dicta la violación, misma que, de ratificarse en la calificación pasa a la sanción.</p>
 <div class="figure"><span style="display:block;" id="fig:tipossubtipos"></span>
-<img src="images-1/08/tipossubtipos.png" alt="Universo de inspecciones registradas, según su tipo y subtipo, 2012-2021" width="268" />
+<img src="images-1/08/tipossubtipos.png" alt="Universo de inspecciones registradas, según su tipo y subtipo, 2012-2021"  />
 <p class="caption">
-Recuadro 8.6: Universo de inspecciones registradas, según su tipo y subtipo, 2012-2021
+Recuadro 7.6: Universo de inspecciones registradas, según su tipo y subtipo, 2012-2021
 </p>
 </div>
 </div>
 </div>
-<div id="alcance-de-la-inspección" class="section level2 hasAnchor" number="8.2">
-<h2><span class="header-section-number">8.2</span> Alcance de la inspección<a href="anexoHallazgos.html#alcance-de-la-inspección" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="alcance-de-la-inspección" class="section level2 hasAnchor" number="7.2">
+<h2><span class="header-section-number">7.2</span> Alcance de la inspección<a href="anexoHallazgos.html#alcance-de-la-inspección" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>En las materias reguladas por la legislación laboral los inspectores federales del trabajo, en el ámbito de sus respectivas competencias, vigilan a los Centros de Trabajo y brindan apoyo, asesoría y orientación a los trabajadores y patrones (DOF 2014, capítulo primero). Hay siete materias principales:</p>
 <ul>
 <li>Seguridad e Higiene (SH)</li>
@@ -337,25 +353,25 @@ Recuadro 8.6: Universo de inspecciones registradas, según su tipo y subtipo, 20
 <li>Constatación y Actualización de Datos (CAD)</li>
 <li>Otras (materias reguladas por la legislación laboral)</li>
 </ul>
-<p>Las materias se organizan en submaterias, indicadores e incisos, como se muestra en el recuadro <a href="anexoHallazgos.html#fig:marconormativo">8.7</a> y se describe a continuación.</p>
+<p>Las materias se organizan en submaterias, indicadores e incisos, como se muestra en el recuadro <a href="anexoHallazgos.html#fig:marconormativo">7.7</a> y se describe a continuación.</p>
 <div class="figure"><span style="display:block;" id="fig:marconormativo"></span>
-<img src="images-1/08/marconormativo.png" alt="Definición conceptual del alcance de las inspecciones" width="301" />
+<img src="images-1/08/marconormativo.png" alt="Definición conceptual del alcance de las inspecciones"  />
 <p class="caption">
-Recuadro 8.7: Definición conceptual del alcance de las inspecciones
+Recuadro 7.7: Definición conceptual del alcance de las inspecciones
 </p>
 </div>
 <p>Estas materias a su vez se dividen en submaterias que permiten asignar alcances más específicos para orientar de manera más eficiente las inspecciones. A continuación se presentan el número de submaterias por cada tipo de materia.</p>
 <div class="figure"><span style="display:block;" id="fig:submaterias"></span>
-<img src="images-1/08/submaterias.png" alt="Definición conceptual del alcance de las inspecciones" width="207" />
+<img src="images-1/08/submaterias.png" alt="Definición conceptual del alcance de las inspecciones"  />
 <p class="caption">
-Recuadro 8.8: Definición conceptual del alcance de las inspecciones
+Recuadro 7.8: Definición conceptual del alcance de las inspecciones
 </p>
 </div>
 <p>En el caso de la materia de Seguridad e Higiene, es posible indicar en la submateria que se asigna a la inspección, si al centro de trabajo que se inspeccionará le aplican Normas específicas expedidas por la STPS u otras dependencias de la Administración Pública Federal, conforme a lo dispuesto en la Ley Federal sobre Metrología y Normalización. Cabe destacar que estas normas (NOM) están en constante evolución y actualización como lo muestra el recuadro <a href="#fig:"><strong>??</strong></a></p>
 <div class="figure"><span style="display:block;" id="fig:submateriasSH"></span>
-<img src="images-1/08/submateriasSH.png" alt="Definición conceptual del alcance de las inspecciones" width="294" />
+<img src="images-1/08/submateriasSH.png" alt="Definición conceptual del alcance de las inspecciones"  />
 <p class="caption">
-Recuadro 8.9: Definición conceptual del alcance de las inspecciones
+Recuadro 7.9: Definición conceptual del alcance de las inspecciones
 </p>
 </div>
 <p>A cada submateria le corresponden indicadores: preguntas o reactivos utilizadas por los inspectores para determinar violaciones o faltas. Un ejemplo de ello es el siguiente: en la materia “Condiciones Generales de Trabajo” encontramos una submateria que tienen que ver con el “Trabajo de menores”, que a su vez tiene un indicador que tiene que ver con si el patrón “Cuenta con trabajadores menores de 18 años que laboren en condiciones peligrosas o insalubres”.</p>
@@ -363,16 +379,16 @@ Recuadro 8.9: Definición conceptual del alcance de las inspecciones
 <p>Cabe enfatizar aquí que, derivado de la estructura ramificada (materias, submaterias, indicadores, incisos) en total se presentan 8,148 reactivos distintos que forman parte del universo de aspectos que un inspector podría vigilar en la visita a un centro de trabajo. Por supuesto, hay una delimitación ex ante de la inspección que acota el alcance.</p>
 <p>En el caso de las inspecciones del tipo ordinarias, la delimitación del alcance es a nivel materia y submateria, evaluando la totalidad de los indicadores e incisos que componen cada una de las submaterias.</p>
 <p>En el caso de las inspecciones extraordinarias, el alcance es más específico, derivado de la propia naturaleza de este tipo de programación. El caso de los operativos, por ejemplo, presenta un alcance específico que puede atender ciertas combinaciones y selección específica de diversas materias, submaterias, indicadores e incisos, sin que tenga que evaluarse la totalidad de los componentes al interior de cada uno de ellos.</p>
-<div id="criterios-de-selección-utilizados-antes-del-sidil." class="section level3 hasAnchor" number="8.2.1">
-<h3><span class="header-section-number">8.2.1</span> Criterios de selección utilizados antes del SIDIL.<a href="anexoHallazgos.html#criterios-de-selección-utilizados-antes-del-sidil." class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="criterios-de-selección-utilizados-antes-del-sidil." class="section level3 hasAnchor" number="7.2.1">
+<h3><span class="header-section-number">7.2.1</span> Criterios de selección utilizados antes del SIDIL.<a href="anexoHallazgos.html#criterios-de-selección-utilizados-antes-del-sidil." class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Dados los objetivos del SIDIL y más allá del ejemplo en particular, lo que conviene resaltar aquí es que actualmente la STPS ya cuenta con un conjunto de criterios que le permiten crear universos (subconjuntos) de empresas que reúnen ciertos atributos en común y sobre los cuales posteriormente se realiza una selección aleatoria para determinar qué centros de trabajo serán sujetos de inspección. Según el art. 27 fracción II del RGITAS (DOF 2014: p. 72) y la operación del sistema las inspecciones iniciales y las periódicas son las que se programan de manera aleatoria.</p>
 <p><strong>Dicha selección aleatoria se realiza sobre subconjuntos de empresas generados en el DNE a partir de la aplicación de filtros sobre los atributos de los CT en materia de rama industrial, clase de riesgo, tamaño de la empresa, la utilización de ciertas sustancias líquidas y pirofóricos, etc.</strong></p>
 <p>Para cada uno de dichos atributos se definen valores límite - pudiendo ser porcentajes, rangos, valores mínimos o máximos o una variable dicotómica (si/no). Estos parámetros serán utilizados como filtro para identificar los CT sobre los cuales se realizará la selección aleatoria de las empresas.</p>
-<p>Pongamos un ejemplo: todos los CT tienen una clase de riesgo (de I a V) en el sistema del IMSS, según la actividad económica, el historial de accidentes registrados y el Catálogo de Actividades del propio IMSS (ver <a href="anexoHallazgos.html#fig:tetrisprogramacion">8.10</a>. A menor clase, menor riesgo para la persona trabajadora. El criterio de clase de riesgo del IMSS está incluido, aunque no de manera consistente, en la generación de subconjuntos de CT a lo largo de la década analizada. En la ilustración 13 se observa que en el año 2012 sólamente se seleccionaron CT con clases de riesgo I y II. En 2013 ninguna clase y entre 2014 y 2018 se incluyeron los CT de cualquier clase de riesgo. En 2019 y 2020 (al igual que en 2013) no se incluyó este criterio, y en 2021 sólo se utilizó a efectos de las inspecciones aleatorias. No quedan claros los motivos de estos cambios en la utilización de estos criterios, pero lo que es evidente es que la clase de riesgo ha sido, en diferentes momentos, un criterio para la selección del universo de empresas a inspeccionar. Se observa la “activación” (“si”) versus la “desactivación” (“no”) de las diferentes clases de riesgo en el IMSS para los dos subtipos de inspección aleatoria, periódicas e iniciales.</p>
+<p>Pongamos un ejemplo: todos los CT tienen una clase de riesgo (de I a V) en el sistema del IMSS, según la actividad económica, el historial de accidentes registrados y el Catálogo de Actividades del propio IMSS (ver <a href="anexoHallazgos.html#fig:tetrisprogramacion">7.10</a>. A menor clase, menor riesgo para la persona trabajadora. El criterio de clase de riesgo del IMSS está incluido, aunque no de manera consistente, en la generación de subconjuntos de CT a lo largo de la década analizada. En la ilustración 13 se observa que en el año 2012 sólamente se seleccionaron CT con clases de riesgo I y II. En 2013 ninguna clase y entre 2014 y 2018 se incluyeron los CT de cualquier clase de riesgo. En 2019 y 2020 (al igual que en 2013) no se incluyó este criterio, y en 2021 sólo se utilizó a efectos de las inspecciones aleatorias. No quedan claros los motivos de estos cambios en la utilización de estos criterios, pero lo que es evidente es que la clase de riesgo ha sido, en diferentes momentos, un criterio para la selección del universo de empresas a inspeccionar. Se observa la “activación” (“si”) versus la “desactivación” (“no”) de las diferentes clases de riesgo en el IMSS para los dos subtipos de inspección aleatoria, periódicas e iniciales.</p>
 <div class="figure"><span style="display:block;" id="fig:tetrisprogramacion"></span>
-<img src="images-1/08/tetrisprogramacion.png" alt="Aplicación del  atributo *clase de riesgo en el IMSS* para la generación de subconjuntos de CT sobre los cuales se aleatorizan, 2012-2021" width="157" />
+<img src="images-1/08/tetrisprogramacion.png" alt="Aplicación del  atributo *clase de riesgo en el IMSS* para la generación de subconjuntos de CT sobre los cuales se aleatorizan, 2012-2021"  />
 <p class="caption">
-Recuadro 8.10: Aplicación del atributo <em>clase de riesgo en el IMSS</em> para la generación de subconjuntos de CT sobre los cuales se aleatorizan, 2012-2021
+Recuadro 7.10: Aplicación del atributo <em>clase de riesgo en el IMSS</em> para la generación de subconjuntos de CT sobre los cuales se aleatorizan, 2012-2021
 </p>
 </div>
 <p>Es importante resaltar que actualmente en la programación anual se utiliza la información preexistente de los CT a efectos de crear subconjuntos del universo total de los mismos sobre los cuales se seleccionará un porcentaje determinado para la realización de visitas de inspección.</p>
@@ -382,24 +398,24 @@ Recuadro 8.10: Aplicación del atributo <em>clase de riesgo en el IMSS</em> para
 <p>En este sentido, el principal valor agregado del SIDIL es que permite, a efectos de la selección de CT para una programación de operativos, generar una predicción de riesgo a nivel submateria que reúne el efecto que cada uno de los campos asociados a los CT (atributos e indicadores) tiene sobre la probabilidad de detectar violaciones que proceden en la determinada submateria.</p>
 </div>
 </div>
-<div id="aspectos-pendientes-y-posibles-extensiones-a-futuro" class="section level2 hasAnchor" number="8.3">
-<h2><span class="header-section-number">8.3</span> Aspectos pendientes y posibles extensiones a futuro<a href="anexoHallazgos.html#aspectos-pendientes-y-posibles-extensiones-a-futuro" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<div id="limitaciones-en-la-construcción-de-la-variable-dependiente" class="section level3 hasAnchor" number="8.3.1">
-<h3><span class="header-section-number">8.3.1</span> Limitaciones en la construcción de la variable dependiente<a href="anexoHallazgos.html#limitaciones-en-la-construcción-de-la-variable-dependiente" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="aspectos-pendientes-y-posibles-extensiones-a-futuro" class="section level2 hasAnchor" number="7.3">
+<h2><span class="header-section-number">7.3</span> Aspectos pendientes y posibles extensiones a futuro<a href="anexoHallazgos.html#aspectos-pendientes-y-posibles-extensiones-a-futuro" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="limitaciones-en-la-construcción-de-la-variable-dependiente" class="section level3 hasAnchor" number="7.3.1">
+<h3><span class="header-section-number">7.3.1</span> Limitaciones en la construcción de la variable dependiente<a href="anexoHallazgos.html#limitaciones-en-la-construcción-de-la-variable-dependiente" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 </div>
-<div id="posibles-alternativas-como-variable-dependiente" class="section level3 hasAnchor" number="8.3.2">
-<h3><span class="header-section-number">8.3.2</span> Posibles alternativas como variable dependiente<a href="anexoHallazgos.html#posibles-alternativas-como-variable-dependiente" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="posibles-alternativas-como-variable-dependiente" class="section level3 hasAnchor" number="7.3.2">
+<h3><span class="header-section-number">7.3.2</span> Posibles alternativas como variable dependiente<a href="anexoHallazgos.html#posibles-alternativas-como-variable-dependiente" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 </div>
-<div id="section" class="section level3" number="8.3.3">
-<h3><span class="header-section-number">8.3.3</span> </h3>
+<div id="section" class="section level3" number="7.3.3">
+<h3><span class="header-section-number">7.3.3</span> </h3>
 
 </div>
 </div>
 </div>
 <div class="footnotes">
 <hr />
-<ol start="15">
-<li id="fn15"><p>Como parte de su colaboración con STPS, AIR ha desarrollado un gestor de normativ<a href="anexoHallazgos.html#fnref15" class="footnote-back">↩︎</a></p></li>
+<ol start="5">
+<li id="fn5"><p>Como parte de su colaboración con STPS, AIR ha desarrollado un gestor de normativ<a href="anexoHallazgos.html#fnref5" class="footnote-back">↩︎</a></p></li>
 </ol>
 </div>
             </section>
@@ -456,27 +472,13 @@ gitbook.start({
 "options": null
 },
 "toc": {
-"collapse": "none",
+"collapse": "section",
 "scroll_highlight": true
 }
 });
 });
 </script>
 
-<!-- dynamically load mathjax for compatibility with self-contained -->
-<script>
-  (function () {
-    var script = document.createElement("script");
-    script.type = "text/javascript";
-    var src = "true";
-    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
-    if (location.protocol !== "file:")
-      if (/^https?:/.test(src))
-        src = src.replace(/^https?:/, '');
-    script.src = src;
-    document.getElementsByTagName("head")[0].appendChild(script);
-  })();
-</script>
 </body>
 
 </html>

@@ -16,11 +16,11 @@ pre code {
   max-width: 80%!important;
 }
 .book-summary a:hover{
-  color: #507C71!important;
+  color: #691c32!important;
   font-weight: bold;
 }
 .book-summary ul.summary li.active>a{
-  background-color: #507C71!important;
+  background-color: #691c32!important;
   color: #fff!important;
 }
 .rmdcomment {
@@ -41,7 +41,7 @@ pre code {
   margin: 0!important;
   padding:0!important;
   font-weight: bold;
-  color: #235B4E!important;
+  color: #691c32!important;
 }
 @media all and (min-width: 1500px){
   .page-inner{

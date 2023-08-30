@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Capítulo 6 R, RStudio y Python | SIDIL: Manual del procesamiento y explotación de la información</title>
+  <title>Capítulo 5 R, RStudio y Python | SIDIL: Manual del procesamiento y explotación de la información</title>
   <meta name="description" content="Breve descripcion pendiente" />
   <meta name="generator" content="bookdown 0.34 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Capítulo 6 R, RStudio y Python | SIDIL: Manual del procesamiento y explotación de la información" />
+  <meta property="og:title" content="Capítulo 5 R, RStudio y Python | SIDIL: Manual del procesamiento y explotación de la información" />
   <meta property="og:type" content="book" />
   
   <meta property="og:description" content="Breve descripcion pendiente" />
   <meta name="github-repo" content="anhdzol/testsidil/" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Capítulo 6 R, RStudio y Python | SIDIL: Manual del procesamiento y explotación de la información" />
+  <meta name="twitter:title" content="Capítulo 5 R, RStudio y Python | SIDIL: Manual del procesamiento y explotación de la información" />
   
   <meta name="twitter:description" content="Breve descripcion pendiente" />
   
@@ -51,17 +51,74 @@
 <link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
 <link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
 <script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
-<script src="libs/htmlwidgets-1.6.2/htmlwidgets.js"></script>
-<script src="libs/plotly-binding-4.10.2/plotly.js"></script>
-<script src="libs/typedarray-0.1/typedarray.min.js"></script>
-<link href="libs/crosstalk-1.2.0/css/crosstalk.min.css" rel="stylesheet" />
-<script src="libs/crosstalk-1.2.0/js/crosstalk.min.js"></script>
-<link href="libs/plotly-htmlwidgets-css-2.11.1/plotly-htmlwidgets.css" rel="stylesheet" />
-<script src="libs/plotly-main-2.11.1/plotly-latest.min.js"></script>
 <script src="libs/kePrint-0.0.1/kePrint.js"></script>
 <link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
 
 
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
 
 <style type="text/css">
   
@@ -123,78 +180,37 @@
 <li class="chapter" data-level="3.7" data-path="elementosgenerales.html"><a href="elementosgenerales.html#catalogos"><i class="fa fa-check"></i><b>3.7</b> Catálogos de información</a></li>
 <li class="chapter" data-level="3.8" data-path="elementosgenerales.html"><a href="elementosgenerales.html#la-matriz-de-predicción-de-riesgo"><i class="fa fa-check"></i><b>3.8</b> La Matriz de Predicción de Riesgo</a></li>
 </ul></li>
-<li class="chapter" data-level="4" data-path="procesamiento.html"><a href="procesamiento.html"><i class="fa fa-check"></i><b>4</b> Procesamiento de las fuentes de información y generación de la MPR</a>
+<li class="chapter" data-level="4" data-path="presentación-sintética-de-todos-los-scripts.html"><a href="presentación-sintética-de-todos-los-scripts.html"><i class="fa fa-check"></i><b>4</b> Presentación sintética de todos los scripts</a></li>
+<li class="chapter" data-level="5" data-path="r-rstudio-y-python.html"><a href="r-rstudio-y-python.html"><i class="fa fa-check"></i><b>5</b> R, RStudio y Python</a>
 <ul>
-<li class="chapter" data-level="4.1" data-path="procesamiento.html"><a href="procesamiento.html#procesamientoModI"><i class="fa fa-check"></i><b>4.1</b> Módulo I: actualización de indicadores</a>
-<ul>
-<li class="chapter" data-level="4.1.1" data-path="procesamiento.html"><a href="procesamiento.html#procesamientoModIdesafios"><i class="fa fa-check"></i><b>4.1.1</b> Desafíos al tratamiento de bases de datos externas</a></li>
-<li class="chapter" data-level="4.1.2" data-path="procesamiento.html"><a href="procesamiento.html#procesamientoModInivelesagregacion"><i class="fa fa-check"></i><b>4.1.2</b> Sobre niveles de agregación</a></li>
-<li class="chapter" data-level="4.1.3" data-path="procesamiento.html"><a href="procesamiento.html#procesamientoModInominativo"><i class="fa fa-check"></i><b>4.1.3</b> Sobre estimaciones puntuales nominativas</a></li>
-<li class="chapter" data-level="4.1.4" data-path="procesamiento.html"><a href="procesamiento.html#procesamientoModEspecificaciones"><i class="fa fa-check"></i><b>4.1.4</b> Especificaciones por fuente de información</a></li>
-<li class="chapter" data-level="4.1.5" data-path="procesamiento.html"><a href="procesamiento.html#procesamientoModIcoyvshist"><i class="fa fa-check"></i><b>4.1.5</b> Estimaciones puntuales e históricas de indicadores</a></li>
+<li class="chapter" data-level="5.1" data-path="r-rstudio-y-python.html"><a href="r-rstudio-y-python.html#r-y-rstudio"><i class="fa fa-check"></i><b>5.1</b> R y RStudio</a></li>
+<li class="chapter" data-level="5.2" data-path="r-rstudio-y-python.html"><a href="r-rstudio-y-python.html#el-entorno-de-rstudio"><i class="fa fa-check"></i><b>5.2</b> El entorno de RStudio</a></li>
+<li class="chapter" data-level="5.3" data-path="r-rstudio-y-python.html"><a href="r-rstudio-y-python.html#procedimiento-para-ejecutar-proyectos-y-scripts-en-rstudio"><i class="fa fa-check"></i><b>5.3</b> Procedimiento para ejecutar proyectos y scripts en RStudio</a></li>
+<li class="chapter" data-level="5.4" data-path="r-rstudio-y-python.html"><a href="r-rstudio-y-python.html#tipos-de-errores-que-se-pudieran-presentar"><i class="fa fa-check"></i><b>5.4</b> Tipos de errores que se pudieran presentar</a></li>
+<li class="chapter" data-level="5.5" data-path="r-rstudio-y-python.html"><a href="r-rstudio-y-python.html#python"><i class="fa fa-check"></i><b>5.5</b> Python</a></li>
 </ul></li>
-<li class="chapter" data-level="4.2" data-path="procesamiento.html"><a href="procesamiento.html#moduloii"><i class="fa fa-check"></i><b>4.2</b> Módulo II: imputación de indicadores y generación de la MPR</a>
+<li class="chapter" data-level="6" data-path="especificaciones-del-servidor.html"><a href="especificaciones-del-servidor.html"><i class="fa fa-check"></i><b>6</b> Especificaciones del servidor</a></li>
+<li class="chapter" data-level="7" data-path="anexoHallazgos.html"><a href="anexoHallazgos.html"><i class="fa fa-check"></i><b>7</b> Conceptos y hallazgos clave en la exploración del SIAPI-SIPAS</a>
 <ul>
-<li class="chapter" data-level="4.2.1" data-path="procesamiento.html"><a href="procesamiento.html#propositomoduloii"><i class="fa fa-check"></i><b>4.2.1</b> Propósito principal</a></li>
-<li class="chapter" data-level="4.2.2" data-path="procesamiento.html"><a href="procesamiento.html#requisitosmoduloii"><i class="fa fa-check"></i><b>4.2.2</b> Requisitos para la ejecución de este módulo</a></li>
-<li class="chapter" data-level="4.2.3" data-path="procesamiento.html"><a href="procesamiento.html#procesamientoModIIimputacion"><i class="fa fa-check"></i><b>4.2.3</b> Imputación de indicadores laborales al universo de CT</a></li>
-<li class="chapter" data-level="4.2.4" data-path="procesamiento.html"><a href="procesamiento.html#procesamientoModIIprediccion"><i class="fa fa-check"></i><b>4.2.4</b> Predicción de riesgo</a></li>
+<li class="chapter" data-level="7.1" data-path="anexoHallazgos.html"><a href="anexoHallazgos.html#conceptos-y-clasificaciones-relevantes."><i class="fa fa-check"></i><b>7.1</b> Conceptos y clasificaciones relevantes.</a>
+<ul>
+<li class="chapter" data-level="7.1.1" data-path="anexoHallazgos.html"><a href="anexoHallazgos.html#planeación-de-la-inspección"><i class="fa fa-check"></i><b>7.1.1</b> Planeación de la inspección</a></li>
+<li class="chapter" data-level="7.1.2" data-path="anexoHallazgos.html"><a href="anexoHallazgos.html#meta-y-realización-de-inspecciones-a-realizar-por-tipo-estado-y-por-oficina"><i class="fa fa-check"></i><b>7.1.2</b> Meta y realización de inspecciones a realizar por tipo, estado y por oficina</a></li>
 </ul></li>
-<li class="chapter" data-level="4.3" data-path="procesamiento.html"><a href="procesamiento.html#procesamientoModIyIIinterfazAuto"><i class="fa fa-check"></i><b>4.3</b> Interfaz de automatización: Módulos I y II</a>
+<li class="chapter" data-level="7.2" data-path="anexoHallazgos.html"><a href="anexoHallazgos.html#alcance-de-la-inspección"><i class="fa fa-check"></i><b>7.2</b> Alcance de la inspección</a>
 <ul>
-<li class="chapter" data-level="4.3.1" data-path="procesamiento.html"><a href="procesamiento.html#propositointerfaz1"><i class="fa fa-check"></i><b>4.3.1</b> Propósito de la interfaz</a></li>
-<li class="chapter" data-level="4.3.2" data-path="procesamiento.html"><a href="procesamiento.html#accesointerfaz1"><i class="fa fa-check"></i><b>4.3.2</b> Acceso a la interfaz</a></li>
-<li class="chapter" data-level="4.3.3" data-path="procesamiento.html"><a href="procesamiento.html#organizacioninterfaz1"><i class="fa fa-check"></i><b>4.3.3</b> Organización de la interfaz</a></li>
-<li class="chapter" data-level="" data-path="procesamiento.html"><a href="procesamiento.html#interfaz1-8"><i class="fa fa-check"></i>Procesamiento de información</a></li>
+<li class="chapter" data-level="7.2.1" data-path="anexoHallazgos.html"><a href="anexoHallazgos.html#criterios-de-selección-utilizados-antes-del-sidil."><i class="fa fa-check"></i><b>7.2.1</b> Criterios de selección utilizados antes del SIDIL.</a></li>
 </ul></li>
-<li class="chapter" data-level="4.4" data-path="procesamiento.html"><a href="procesamiento.html#procesamientoModIIIinterfazConsulta"><i class="fa fa-check"></i><b>4.4</b> Módulo III: Priorización de los centros de trabajo</a>
+<li class="chapter" data-level="7.3" data-path="anexoHallazgos.html"><a href="anexoHallazgos.html#aspectos-pendientes-y-posibles-extensiones-a-futuro"><i class="fa fa-check"></i><b>7.3</b> Aspectos pendientes y posibles extensiones a futuro</a>
 <ul>
-<li class="chapter" data-level="4.4.1" data-path="procesamiento.html"><a href="procesamiento.html#propositointerfaz2"><i class="fa fa-check"></i><b>4.4.1</b> Propósito de la interfaz</a></li>
-<li class="chapter" data-level="4.4.2" data-path="procesamiento.html"><a href="procesamiento.html#accesointerfaz2"><i class="fa fa-check"></i><b>4.4.2</b> Acceso a la interfaz</a></li>
-<li class="chapter" data-level="" data-path="procesamiento.html"><a href="procesamiento.html#interfaz2-1"><i class="fa fa-check"></i>Primera prestaña: Filtrado</a></li>
-<li class="chapter" data-level="" data-path="procesamiento.html"><a href="procesamiento.html#interfaz2-3"><i class="fa fa-check"></i>Segunda pestaña: Analisis</a></li>
-<li class="chapter" data-level="" data-path="procesamiento.html"><a href="procesamiento.html#interfaz2-4"><i class="fa fa-check"></i>Tabla final de resultados con sus pestañas</a></li>
-</ul></li>
-<li class="chapter" data-level="4.5" data-path="procesamiento.html"><a href="procesamiento.html#procesamientoModIV"><i class="fa fa-check"></i><b>4.5</b> Módulo IV: Entrenamiento del modelo</a>
-<ul>
-<li class="chapter" data-level="4.5.1" data-path="procesamiento.html"><a href="procesamiento.html#propositoModIV"><i class="fa fa-check"></i><b>4.5.1</b> Propósito principal</a></li>
-<li class="chapter" data-level="4.5.2" data-path="procesamiento.html"><a href="procesamiento.html#procesamientoModIVSIAPI"><i class="fa fa-check"></i><b>4.5.2</b> Construcción de la serie histórica de inspecciones laborales (2012-2022)</a></li>
-<li class="chapter" data-level="4.5.3" data-path="procesamiento.html"><a href="procesamiento.html#procesamientoModIVindicadores"><i class="fa fa-check"></i><b>4.5.3</b> Construcción de la serie histórica de indicadores laborales</a></li>
-<li class="chapter" data-level="4.5.4" data-path="procesamiento.html"><a href="procesamiento.html#procesamientoModIVmatching"><i class="fa fa-check"></i><b>4.5.4</b> Matching de las series históricas</a></li>
-<li class="chapter" data-level="4.5.5" data-path="procesamiento.html"><a href="procesamiento.html#procesamientoModIVEntrenamiento"><i class="fa fa-check"></i><b>4.5.5</b> Entrenamiento y evaluación del modelo de predicción</a></li>
+<li class="chapter" data-level="7.3.1" data-path="anexoHallazgos.html"><a href="anexoHallazgos.html#limitaciones-en-la-construcción-de-la-variable-dependiente"><i class="fa fa-check"></i><b>7.3.1</b> Limitaciones en la construcción de la variable dependiente</a></li>
+<li class="chapter" data-level="7.3.2" data-path="anexoHallazgos.html"><a href="anexoHallazgos.html#posibles-alternativas-como-variable-dependiente"><i class="fa fa-check"></i><b>7.3.2</b> Posibles alternativas como variable dependiente</a></li>
+<li class="chapter" data-level="7.3.3" data-path="anexoHallazgos.html"><a href="anexoHallazgos.html#section"><i class="fa fa-check"></i><b>7.3.3</b> </a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="5" data-path="presentación-sintética-de-todos-los-scripts.html"><a href="presentación-sintética-de-todos-los-scripts.html"><i class="fa fa-check"></i><b>5</b> Presentación sintética de todos los scripts</a></li>
-<li class="chapter" data-level="6" data-path="r-rstudio-y-python.html"><a href="r-rstudio-y-python.html"><i class="fa fa-check"></i><b>6</b> R, RStudio y Python</a>
+<li class="chapter" data-level="8" data-path="box-and-tables.html"><a href="box-and-tables.html"><i class="fa fa-check"></i><b>8</b> Box and tables</a>
 <ul>
-<li class="chapter" data-level="6.1" data-path="r-rstudio-y-python.html"><a href="r-rstudio-y-python.html#r-y-rstudio"><i class="fa fa-check"></i><b>6.1</b> R y RStudio</a></li>
-<li class="chapter" data-level="6.2" data-path="r-rstudio-y-python.html"><a href="r-rstudio-y-python.html#el-entorno-de-rstudio"><i class="fa fa-check"></i><b>6.2</b> El entorno de RStudio</a></li>
-<li class="chapter" data-level="6.3" data-path="r-rstudio-y-python.html"><a href="r-rstudio-y-python.html#procedimiento-para-ejecutar-proyectos-y-scripts-en-rstudio"><i class="fa fa-check"></i><b>6.3</b> Procedimiento para ejecutar proyectos y scripts en RStudio</a></li>
-<li class="chapter" data-level="6.4" data-path="r-rstudio-y-python.html"><a href="r-rstudio-y-python.html#tipos-de-errores-que-se-pudieran-presentar"><i class="fa fa-check"></i><b>6.4</b> Tipos de errores que se pudieran presentar</a></li>
-<li class="chapter" data-level="6.5" data-path="r-rstudio-y-python.html"><a href="r-rstudio-y-python.html#python"><i class="fa fa-check"></i><b>6.5</b> Python</a></li>
-</ul></li>
-<li class="chapter" data-level="7" data-path="especificaciones-del-servidor.html"><a href="especificaciones-del-servidor.html"><i class="fa fa-check"></i><b>7</b> Especificaciones del servidor</a></li>
-<li class="chapter" data-level="8" data-path="anexoHallazgos.html"><a href="anexoHallazgos.html"><i class="fa fa-check"></i><b>8</b> Conceptos y hallazgos clave en la exploración del SIAPI-SIPAS</a>
-<ul>
-<li class="chapter" data-level="8.1" data-path="anexoHallazgos.html"><a href="anexoHallazgos.html#conceptos-y-clasificaciones-relevantes."><i class="fa fa-check"></i><b>8.1</b> Conceptos y clasificaciones relevantes.</a>
-<ul>
-<li class="chapter" data-level="8.1.1" data-path="anexoHallazgos.html"><a href="anexoHallazgos.html#planeación-de-la-inspección"><i class="fa fa-check"></i><b>8.1.1</b> Planeación de la inspección</a></li>
-<li class="chapter" data-level="8.1.2" data-path="anexoHallazgos.html"><a href="anexoHallazgos.html#meta-y-realización-de-inspecciones-a-realizar-por-tipo-estado-y-por-oficina"><i class="fa fa-check"></i><b>8.1.2</b> Meta y realización de inspecciones a realizar por tipo, estado y por oficina</a></li>
-</ul></li>
-<li class="chapter" data-level="8.2" data-path="anexoHallazgos.html"><a href="anexoHallazgos.html#alcance-de-la-inspección"><i class="fa fa-check"></i><b>8.2</b> Alcance de la inspección</a>
-<ul>
-<li class="chapter" data-level="8.2.1" data-path="anexoHallazgos.html"><a href="anexoHallazgos.html#criterios-de-selección-utilizados-antes-del-sidil."><i class="fa fa-check"></i><b>8.2.1</b> Criterios de selección utilizados antes del SIDIL.</a></li>
-</ul></li>
-<li class="chapter" data-level="8.3" data-path="anexoHallazgos.html"><a href="anexoHallazgos.html#aspectos-pendientes-y-posibles-extensiones-a-futuro"><i class="fa fa-check"></i><b>8.3</b> Aspectos pendientes y posibles extensiones a futuro</a>
-<ul>
-<li class="chapter" data-level="8.3.1" data-path="anexoHallazgos.html"><a href="anexoHallazgos.html#limitaciones-en-la-construcción-de-la-variable-dependiente"><i class="fa fa-check"></i><b>8.3.1</b> Limitaciones en la construcción de la variable dependiente</a></li>
-<li class="chapter" data-level="8.3.2" data-path="anexoHallazgos.html"><a href="anexoHallazgos.html#posibles-alternativas-como-variable-dependiente"><i class="fa fa-check"></i><b>8.3.2</b> Posibles alternativas como variable dependiente</a></li>
-<li class="chapter" data-level="8.3.3" data-path="anexoHallazgos.html"><a href="anexoHallazgos.html#section"><i class="fa fa-check"></i><b>8.3.3</b> </a></li>
-</ul></li>
-</ul></li>
-<li class="chapter" data-level="9" data-path="box-and-tables.html"><a href="box-and-tables.html"><i class="fa fa-check"></i><b>9</b> Box and tables</a>
-<ul>
-<li class="chapter" data-level="9.0.1" data-path="box-and-tables.html"><a href="box-and-tables.html#tablas"><i class="fa fa-check"></i><b>9.0.1</b> Tablas</a></li>
+<li class="chapter" data-level="8.0.1" data-path="box-and-tables.html"><a href="box-and-tables.html#tablas"><i class="fa fa-check"></i><b>8.0.1</b> Tablas</a></li>
 </ul></li>
 </ul>
 
@@ -213,16 +229,16 @@
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="r-rstudio-y-python" class="section level1 hasAnchor" number="6">
-<h1><span class="header-section-number">Capítulo 6</span> R, RStudio y Python<a href="r-rstudio-y-python.html#r-rstudio-y-python" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="r-rstudio-y-python" class="section level1 hasAnchor" number="5">
+<h1><span class="header-section-number">Capítulo 5</span> R, RStudio y Python<a href="r-rstudio-y-python.html#r-rstudio-y-python" class="anchor-section" aria-label="Anchor link to header"></a></h1>
 <p>En este anexo se presentan, fundamentalmente, los conceptos y prácticas básicas en la utilización de la interfaz de RStudio. También se presentan algunos aspectos relevantes de Python, pero que si bien requiere tenerse instalado, desde la perspectiva de SIDIL, no requiere ser ejecutado en una interfaz distinta a Rstudio</p>
-<div id="r-y-rstudio" class="section level2 hasAnchor" number="6.1">
-<h2><span class="header-section-number">6.1</span> R y RStudio<a href="r-rstudio-y-python.html#r-y-rstudio" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>La gran mayoría de los algoritmos que constituyen el SIDIL se desarrollaron y mantendrán en el lenguaje R.<a href="#fn13" class="footnote-ref" id="fnref13"><sup>13</sup></a> Esto es independiente de que a través de una interfaz “paraguas” se pudieran automatizar hasta cierto punto la secuencia de los scripts. R es el lenguaje de programación de uso libre desarrollado para el análisis estadístico y gráfico. Afortunadamente existe un ambiente integrado de desarrollo que se llama RStudio (que recientemente cambió su nombre a Posit<a href="#fn14" class="footnote-ref" id="fnref14"><sup>14</sup></a>) y que facilita la programación, compilación y visualización de desarrollos en el lenguaje R. SIDIL prevé que el usuario procese la información con R Studio, y para que este último funcione se requiere tener R instalado. A continuación, se ofrecen detalles sobre las principales características de R y RStudio.</p>
+<div id="r-y-rstudio" class="section level2 hasAnchor" number="5.1">
+<h2><span class="header-section-number">5.1</span> R y RStudio<a href="r-rstudio-y-python.html#r-y-rstudio" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>La gran mayoría de los algoritmos que constituyen el SIDIL se desarrollaron y mantendrán en el lenguaje R.<a href="#fn3" class="footnote-ref" id="fnref3"><sup>3</sup></a> Esto es independiente de que a través de una interfaz “paraguas” se pudieran automatizar hasta cierto punto la secuencia de los scripts. R es el lenguaje de programación de uso libre desarrollado para el análisis estadístico y gráfico. Afortunadamente existe un ambiente integrado de desarrollo que se llama RStudio (que recientemente cambió su nombre a Posit<a href="#fn4" class="footnote-ref" id="fnref4"><sup>4</sup></a>) y que facilita la programación, compilación y visualización de desarrollos en el lenguaje R. SIDIL prevé que el usuario procese la información con R Studio, y para que este último funcione se requiere tener R instalado. A continuación, se ofrecen detalles sobre las principales características de R y RStudio.</p>
 </div>
-<div id="el-entorno-de-rstudio" class="section level2 hasAnchor" number="6.2">
-<h2><span class="header-section-number">6.2</span> El entorno de RStudio<a href="r-rstudio-y-python.html#el-entorno-de-rstudio" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>El entorno de RStudio está conformado por cuatro partes (ver ilustración <a href="r-rstudio-y-python.html#fig:entornoRStudio">6.1</a>):</p>
+<div id="el-entorno-de-rstudio" class="section level2 hasAnchor" number="5.2">
+<h2><span class="header-section-number">5.2</span> El entorno de RStudio<a href="r-rstudio-y-python.html#el-entorno-de-rstudio" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>El entorno de RStudio está conformado por cuatro partes (ver ilustración <a href="r-rstudio-y-python.html#fig:entornoRStudio">5.1</a>):</p>
 <ol style="list-style-type: decimal">
 <li><p>Scripts: En esta parte se generan o cargan los scripts o archivos de código que se van a ejecutar. Se pueden abrir varios scripts a la vez. Todos los scripts, independientemente de que estén en pestañas separadas, utilizan y cargan objetos del mismo ambiente (a menos que se configure distinto, cosa que no sucede en SIDIL). Para correr una línea de un script se debe poner el cursor sobre la línea que se desee correr y presionar la tecla Control (Ctrl) + Intro o se puede presionar el botón “Run” en la parte izquierda superior de esta sección. Para ejecutar el script completo se debe presionar Ctrl + Shift + Intro. Se pueden seleccionar con el cursor las líneas que se deseen correr y presionar Ctrl+Intro o la tecla Run. Para aquellas/os lectores más familiarizados con Stata, el equivalente a un script en dicho software es el “do file”.</p></li>
 <li><p>Ambiente (Environment): En el ambiente se muestran todos los objetos generados por los códigos. Es importante mencionar que los objetos que se alojan en el ambiente no están guardados en el disco rígido del equipo de cómputo, únicamente están disponibles en esta sección mientras se ejecutan los scripts. Para el guardado de los elementos se debe generar el comando correspondiente en el script o consola, determinando el cómo se quiere guardar el objeto generado. Para eliminar un objeto del ambiente se utiliza el comando rm(). Por ejemplo, rm(resultados_analisis). Si se quiere remover todo tipo de objeto en el ambiente, el comando es: “rm(list = ls())”. En el ambiente se encuentran diferentes tipos de objetos:</p></li>
@@ -239,231 +255,379 @@
 <li><p>Ubicación de archivos, gráficas, paqueterías, ayuda y visualizador: Esta sección que cuenta con varias pestañas sirve para visualizar distintas herramientas. La primera y la cual es de mayor utilidad para este proyecto es la de ubicación de archivos, en esta se pueden observar las carpetas y archivos que se encuentran en la ruta en la que está alojado el proyecto, es de gran utilidad para monitorear los archivos guardados y generados de ser necesario. Las otras pestañas sirven para visualizar gráficas que generen los scripts, paqueterías cargas, ayuda (online) y otros elementos.</p></li>
 </ol>
 <div class="figure"><span style="display:block;" id="fig:entornoRStudio"></span>
-<img src="images-1/06/RStudio.png" alt="Entorno de RStudio" width="636" />
+<img src="images-1/06/Rstudio.png" alt="Entorno de RStudio"  />
 <p class="caption">
-Recuadro 6.1: Entorno de RStudio
+Recuadro 5.1: Entorno de RStudio
 </p>
 </div>
 </div>
-<div id="procedimiento-para-ejecutar-proyectos-y-scripts-en-rstudio" class="section level2 hasAnchor" number="6.3">
-<h2><span class="header-section-number">6.3</span> Procedimiento para ejecutar proyectos y scripts en RStudio<a href="r-rstudio-y-python.html#procedimiento-para-ejecutar-proyectos-y-scripts-en-rstudio" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="procedimiento-para-ejecutar-proyectos-y-scripts-en-rstudio" class="section level2 hasAnchor" number="5.3">
+<h2><span class="header-section-number">5.3</span> Procedimiento para ejecutar proyectos y scripts en RStudio<a href="r-rstudio-y-python.html#procedimiento-para-ejecutar-proyectos-y-scripts-en-rstudio" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Abrir el proyecto SIDIL: Esto es fundamental, porque los proyectos en R Studio mantienen de manera ordenada en una misma ruta todos los elementos necesarios para que los códigos se ejecuten de manera correcta, de igual manera albergan los resultados que se producen de dichos códigos.</p>
 <p>Lo importante es primero abrir el proyecto SIDIL, sea desde el Explorador de Windows o desde RStudio.</p>
 <ul>
 <li><p>Si se abre desde el explorador de archivos, se podrá identificar el proyecto por el logo de R y por el tipo de archivo .Rproj. Si se ha abierto con anterioridad el proyecto, este podría desplegar los scripts que se hayan utilizado con anteriormente, si no, será necesario abrir los scripts que se deseen ejecutar o editar en la primera sección de la pantalla (I. Scripts) o seleccionándolos directamente en la sección IV de ubicación de archivos.</p></li>
-<li><p>Si se abre desde el programa RStudio, primero se debe asegurar que no esté ningún proyecto cargado. En la parte superior derecha (sección II de la pantalla), se puede identificar el proyecto en el que se está trabajando. En la ilustración <a href="r-rstudio-y-python.html#fig:RStudioProyectoVacio">6.2</a> se observa que en el ambiente no se muestra ningún proyecto. Al hacer clic sobre la flecha señalando hacia abajo se despliega el menú que permite seleccionar “Open Project…” (ilustración <a href="r-rstudio-y-python.html#fig:RStudioOpenProject">6.3</a>) , navegar hasta la ubicación del proyecto <em>SIDIL.Rproj</em> seleccionarlo y abrirlo para.</p></li>
+<li><p>Si se abre desde el programa RStudio, primero se debe asegurar que no esté ningún proyecto cargado. En la parte superior derecha (sección II de la pantalla), se puede identificar el proyecto en el que se está trabajando. En la ilustración <a href="r-rstudio-y-python.html#fig:RStudioProyectoVacio">5.2</a> se observa que en el ambiente no se muestra ningún proyecto. Al hacer clic sobre la flecha señalando hacia abajo se despliega el menú que permite seleccionar “Open Project…” (ilustración <a href="r-rstudio-y-python.html#fig:RStudioOpenProject">5.3</a>) , navegar hasta la ubicación del proyecto <em>SIDIL.Rproj</em> seleccionarlo y abrirlo para.</p></li>
 </ul>
 <div class="figure"><span style="display:block;" id="fig:RStudioProyectoVacio"></span>
-<img src="images-1/06/proyectoVacio.png" alt="Vista del ambiente sin proyecto" width="240" />
+<img src="images-1/06/proyectoVacio.png" alt="Vista del ambiente sin proyecto"  />
 <p class="caption">
-Recuadro 6.2: Vista del ambiente sin proyecto
+Recuadro 5.2: Vista del ambiente sin proyecto
 </p>
 </div>
 <div class="figure"><span style="display:block;" id="fig:RStudioOpenProject"></span>
-<img src="images-1/06/openproject.png" alt="Vista del ambiente sin proyecto" width="234" />
+<img src="images-1/06/openproject.png" alt="Vista del ambiente sin proyecto"  />
 <p class="caption">
-Recuadro 6.3: Vista del ambiente sin proyecto
+Recuadro 5.3: Vista del ambiente sin proyecto
 </p>
 </div>
-<p>Si hubiera algún proyecto previamente cargado, se debe cerrar desplegando el menú del proyecto y seleccionando “Close Project” (tercera opción en la ilustración <a href="r-rstudio-y-python.html#fig:RStudioOpenProject">6.3</a>).</p>
+<p>Si hubiera algún proyecto previamente cargado, se debe cerrar desplegando el menú del proyecto y seleccionando “Close Project” (tercera opción en la ilustración <a href="r-rstudio-y-python.html#fig:RStudioOpenProject">5.3</a>).</p>
 <p>El siguiente paso es abrir el script que se desea correr o editar, o bien, generar un nuevo script: Los archivos de códigos que utiliza el proyecto SIDIL en el ambiente RStudio puede ser de dos tipos: R Script (tipo. R) o R Markdown (tipo .Rmd). Para abrir un archivo ya existente o generar uno nuevo se puede realizar desde la primera sección de la pantalla (I. Scripts), donde el primer ícono despliega las opciones de nuevos documentos que se quieren creen, y el tercero abre el explorador de archivos para seleccionar alguno de los documentos ya existentes. Un script ya existente también se puede abrir desde la sección IV del programa RStudio, únicamente hace clic sobre el archivo. R o .Rmd que se desee abrir.</p>
 <p>Una parte primordial para la ejecución de los scripts es la instalación y el llamado de las paqueterías que se utilizarán, ya que estas albergan los comandos que se utilizan en los archivos de códigos. Si bien R Studio cuenta con algunos comandos básicos, la versatilidad del programa permite importar y utilizar cientos de paqueterías que facilitan la generación de códigos con sus comandos. A continuación, se presentan las paqueterías que utiliza el proyecto SIDIL junto con algunos de los principales comandos de cada una. Esta lista de principales comandos no es exhaustiva y muchas paqueterías pueden contener cientos de comandos.</p>
-<table style="width:100%;">
-<caption>Tabla XXX: Principales paquetes usados en R.</caption>
-<colgroup>
-<col width="4%" />
-<col width="35%" />
-<col width="58%" />
-</colgroup>
+<div style="border: 1px solid #ddd; padding: 0px; overflow-y: scroll; height:600px; overflow-x: scroll; width:100%; ">
+<table class="table table-striped table-hover" style="font-size: 14px; margin-left: auto; margin-right: auto;">
+<caption style="font-size: initial !important;">
+<span id="tab:unnamed-chunk-10">Tabla 5.1: </span>Principales paqueterías de R utilizadas en el SIDIL
+</caption>
 <thead>
-<tr class="header">
-<th>Paquete</th>
-<th>Principal función</th>
-<th>Principales comandos</th>
+<tr>
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
+Paquetería
+</th>
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
+Principal función
+</th>
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
+Principales comandos
+</th>
 </tr>
 </thead>
 <tbody>
-<tr class="odd">
-<td>pacman</td>
-<td>Instalar y llamar paqueterías</td>
-<td>p_load()</td>
+<tr>
+<td style="text-align:left;">
+pacman
+</td>
+<td style="text-align:left;">
+Instalar y llamar paqueterías
+</td>
+<td style="text-align:left;">
+p_load()
+</td>
 </tr>
-<tr class="even">
-<td>here</td>
-<td>Establecer el directorio en el que se trabaja</td>
-<td>here ()</td>
+<tr>
+<td style="text-align:left;">
+here
+</td>
+<td style="text-align:left;">
+Establecer el directorio en el que se trabaja
+</td>
+<td style="text-align:left;">
+here ()
+</td>
 </tr>
-<tr class="odd">
-<td>tidyverse</td>
-<td>Colección de paqueterías de gramática, estructura de datos, gráficas, entre otras.</td>
-<td>operador pipe “%&gt;%” , read_csv(), filter(), group_by(), mutate(), rename(), summarise(), str_detect() (y otros str_), as_tibble (), pivo()t, gather()</td>
+<tr>
+<td style="text-align:left;">
+tidyverse
+</td>
+<td style="text-align:left;">
+Colección de paqueterías de gramática, estructura de datos, gráficas, entre otras.
+</td>
+<td style="text-align:left;">
+operador pipe “%&gt;%” , read_csv(), filter(), group_by(), mutate(), rename(), summarise(), str_detect() (y otros str_), as_tibble (), pivo()t, gather()
+</td>
 </tr>
-<tr class="even">
-<td>haven</td>
-<td>Lee archivos sav, dta, entre otros</td>
-<td>read_sav(), read_dta()</td>
+<tr>
+<td style="text-align:left;">
+haven
+</td>
+<td style="text-align:left;">
+Lee archivos sav, dta, entre otros
+</td>
+<td style="text-align:left;">
+read_sav(), read_dta()
+</td>
 </tr>
-<tr class="odd">
-<td>dbplyr</td>
-<td>Permite trabajar con bases de datos de distinto tipo</td>
-<td>show_query(), collect()</td>
+<tr>
+<td style="text-align:left;">
+dbplyr
+</td>
+<td style="text-align:left;">
+Permite trabajar con bases de datos de distinto tipo
+</td>
+<td style="text-align:left;">
+show_query(), collect()
+</td>
 </tr>
-<tr class="even">
-<td>foreign</td>
-<td>Permite leer y guardar archivos de distinto tipo</td>
-<td>read.dbf ()</td>
+<tr>
+<td style="text-align:left;">
+foreign
+</td>
+<td style="text-align:left;">
+Permite leer y guardar archivos de distinto tipo
+</td>
+<td style="text-align:left;">
+read.dbf ()
+</td>
 </tr>
-<tr class="odd">
-<td>janitor</td>
-<td>Paquetería de gramática y estructura de datos</td>
-<td>clean_names(), tabyl()</td>
+<tr>
+<td style="text-align:left;">
+janitor
+</td>
+<td style="text-align:left;">
+Paquetería de gramática y estructura de datos
+</td>
+<td style="text-align:left;">
+clean_names(), tabyl()
+</td>
 </tr>
-<tr class="even">
-<td>readxl</td>
-<td>Lee archivos de Excel</td>
-<td>read_excel()</td>
+<tr>
+<td style="text-align:left;">
+readxl
+</td>
+<td style="text-align:left;">
+Lee archivos de Excel
+</td>
+<td style="text-align:left;">
+read_excel()
+</td>
 </tr>
-<tr class="odd">
-<td>survey</td>
-<td>Paquetería para encuestas complejas</td>
-<td>svymean(), svyby()</td>
+<tr>
+<td style="text-align:left;">
+survey
+</td>
+<td style="text-align:left;">
+Paquetería para encuestas complejas
+</td>
+<td style="text-align:left;">
+svymean(), svyby()
+</td>
 </tr>
-<tr class="even">
-<td>srvyr</td>
-<td>Paquetería para encuestas complejas, agrega la sintaxis de tidyverse a la paquetería survey</td>
-<td>as_survey_design(), survey_mean(), survey_total()</td>
+<tr>
+<td style="text-align:left;">
+srvyr
+</td>
+<td style="text-align:left;">
+Paquetería para encuestas complejas, agrega la sintaxis de tidyverse a la paquetería survey
+</td>
+<td style="text-align:left;">
+as_survey_design(), survey_mean(), survey_total()
+</td>
 </tr>
-<tr class="odd">
-<td>surveycv</td>
-<td>Paquetería para encuestas complejas, permite cálculo de coeficiente de variación</td>
-<td>cv.svy()</td>
+<tr>
+<td style="text-align:left;">
+surveycv
+</td>
+<td style="text-align:left;">
+Paquetería para encuestas complejas, permite cálculo de coeficiente de variación
+</td>
+<td style="text-align:left;">
+cv.svy()
+</td>
 </tr>
-<tr class="even">
-<td>tidymodels</td>
-<td>Colección de paqueterías para modelaje y machine learning utilizando el lenguaje tidyverse</td>
-<td>Rsample (),training(), prep()</td>
+<tr>
+<td style="text-align:left;">
+tidymodels
+</td>
+<td style="text-align:left;">
+Colección de paqueterías para modelaje y machine learning utilizando el lenguaje tidyverse
+</td>
+<td style="text-align:left;">
+Rsample (),training(), prep()
+</td>
 </tr>
-<tr class="odd">
-<td>crayon</td>
-<td>Cambia el color de los mensajes de la consola</td>
-<td>styles(), crayon()</td>
+<tr>
+<td style="text-align:left;">
+crayon
+</td>
+<td style="text-align:left;">
+Cambia el color de los mensajes de la consola
+</td>
+<td style="text-align:left;">
+styles(), crayon()
+</td>
 </tr>
-<tr class="even">
-<td>data.table</td>
-<td>Herramientas para el manejo de objetos de bases de datos</td>
-<td>fread(), file.exists()</td>
+<tr>
+<td style="text-align:left;">
+data.table
+</td>
+<td style="text-align:left;">
+Herramientas para el manejo de objetos de bases de datos
+</td>
+<td style="text-align:left;">
+fread(), file.exists()
+</td>
 </tr>
-<tr class="odd">
-<td>stats</td>
-<td>Paquetería para cálculos y herramientas estadísticas</td>
-<td>gl(), glm(),</td>
+<tr>
+<td style="text-align:left;">
+stats
+</td>
+<td style="text-align:left;">
+Paquetería para cálculos y herramientas estadísticas
+</td>
+<td style="text-align:left;">
+gl(), glm(),
+</td>
 </tr>
-<tr class="even">
-<td>scriptName</td>
-<td>Recupera nombres y ubicación de scripts</td>
-<td>current_filename()</td>
+<tr>
+<td style="text-align:left;">
+scriptName
+</td>
+<td style="text-align:left;">
+Recupera nombres y ubicación de scripts
+</td>
+<td style="text-align:left;">
+current_filename()
+</td>
 </tr>
-<tr class="odd">
-<td>rstudioapi</td>
-<td>Accede a Rstudio API si está disponible</td>
-<td>isavailable()</td>
+<tr>
+<td style="text-align:left;">
+rstudioapi
+</td>
+<td style="text-align:left;">
+Accede a Rstudio API si está disponible
+</td>
+<td style="text-align:left;">
+isavailable()
+</td>
 </tr>
-<tr class="even">
-<td>stringi</td>
-<td>Paquetería para procesamiento de lenguaje natural</td>
-<td><p>stri_extract_all(),</p>
-<p>str_detect(),</p></td>
+<tr>
+<td style="text-align:left;">
+stringi
+</td>
+<td style="text-align:left;">
+Paquetería para procesamiento de lenguaje natural
+</td>
+<td style="text-align:left;">
+stri_extract_all(), str_detect(),
+</td>
 </tr>
-<tr class="odd">
-<td>beepr</td>
-<td>Genera sonidos de notificación</td>
-<td>beep()</td>
+<tr>
+<td style="text-align:left;">
+beepr
+</td>
+<td style="text-align:left;">
+Genera sonidos de notificación
+</td>
+<td style="text-align:left;">
+beep()
+</td>
 </tr>
-<tr class="even">
-<td>rlang</td>
-<td>Funciones esenciales para el funcionamiento de Rstudio</td>
-<td>Diversos elementos de funcionamiento interno.</td>
+<tr>
+<td style="text-align:left;">
+rlang
+</td>
+<td style="text-align:left;">
+Funciones esenciales para el funcionamiento de Rstudio
+</td>
+<td style="text-align:left;">
+Diversos elementos de funcionamiento interno.
+</td>
 </tr>
-<tr class="odd">
-<td>tools</td>
-<td>Funciones esenciales para el funcionamiento de Rstudio</td>
-<td>Diversos elementos de funcionamiento interno.</td>
+<tr>
+<td style="text-align:left;">
+tools
+</td>
+<td style="text-align:left;">
+Funciones esenciales para el funcionamiento de Rstudio
+</td>
+<td style="text-align:left;">
+Diversos elementos de funcionamiento interno.
+</td>
 </tr>
 </tbody>
 </table>
+</div>
 <p>Existen algunos comandos que se usan con más frecuencia y que resultan muy importantes para la lectura y procesamiento de la información. Algunos de estos son:</p>
 <ul>
 <li>Comandos read_excel() y read_csv(): Estos comandos permite leer y cargar archivos de formato .xlsx y .csv al ambiente de RStudio. Ejemplo:</li>
 </ul>
-<p><em>correspondencia_cat_scianHOGARES&lt;-read_excel(“I:/CALLE/Data/SIDIL/1_insumos/catálogos/clasificacion_industrialcat_scianHOGARES.xlsx”)</em></p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="r-rstudio-y-python.html#cb1-1" tabindex="-1"></a>correspondencia_cat_scianHOGARES <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(<span class="st">&quot;I:/CALLE/Data/SIDIL/1_insumos/catálogos/clasificacion_industrialcat_scianHOGARES.xlsx&quot;</span>)</span></code></pre></div>
 <p>Notar que en Rstudio los separadores diagonales o slash deben estar inclinados a la derecha (/).</p>
 <ul>
 <li>El comando here(): permite establecer la ruta donde se ejecutarán los archivos, suele ser la misma donde se localiza el proyecto R. Es muy útil para cargar y guardar archivos, ya que únicamente se tendrá que utilizar el comando here() para reemplazar toda la ruta, que de otra manera tendría que ser escrita en su totalidad. Ejemplo:</li>
 </ul>
-<blockquote>
-<p><em>correspondencia_cat_scianHOGARES&lt;-read_excel(here(), “1_insumos”,“catálogos”,“clasificacion_industrial”,“cat_scianHOGARES.xlsx”)</em></p>
-</blockquote>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="r-rstudio-y-python.html#cb2-1" tabindex="-1"></a>correspondencia_cat_scianHOGARES <span class="ot">&lt;-</span><span class="fu">read_excel</span>(<span class="fu">here</span>(), <span class="st">&quot;1_insumos&quot;</span>,<span class="st">&quot;catálogos&quot;</span>,<span class="st">&quot;clasificacion_industrial&quot;</span>,<span class="st">&quot;cat_scianHOGARES.xlsx&quot;</span>)</span></code></pre></div>
 <ul>
 <li>Los comandos paste() y paste0(): Estos comandos funcionan para concatenar elementos. El primero permite determinar un separador entre los elementos. Ejemplo:</li>
 </ul>
-<p><em>bitacora &lt;- read_csv(paste(here(),“4_reportes”,“bitacoras”,“bitacora.csv”,sep = “/”)</em></p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="r-rstudio-y-python.html#cb3-1" tabindex="-1"></a>bitacora <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="fu">paste</span>(<span class="fu">here</span>(),<span class="st">&quot;4_reportes&quot;</span>,<span class="st">&quot;bitacoras&quot;</span>,<span class="st">&quot;bitacora.csv&quot;</span>,<span class="at">sep =</span> <span class="st">&quot;/&quot;</span>))</span></code></pre></div>
 <ul>
 <li>El comando source(): Este comando permite llamar y correr otros archivos script .R y .Rmd desde otro script. En otras palabras, el comando facilita la ejecución de múltiples scripts desde uno solo. Ejemplo:</li>
 </ul>
-<p><em>source(here(“2_codigos”,“cod_config_inicial”,“0_config_inicial.R”))</em></p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="r-rstudio-y-python.html#cb4-1" tabindex="-1"></a><span class="fu">source</span>(<span class="fu">here</span>(<span class="st">&quot;2_codigos&quot;</span>,<span class="st">&quot;cod_config_inicial&quot;</span>,<span class="st">&quot;0_config_inicial.R&quot;</span>))</span></code></pre></div>
 <ul>
 <li>El operador pipe ” %&gt;% “: este operador permite concatenar diversas líneas de código sobre un mismo objeto, sin necesidad de volverlo a”llamar” o nombrar. Ejemplo:</li>
 </ul>
-<p><em>enoe &lt;- ENOEN_sdemycoes %&gt;% mutate(contrato_escrito=ifelse(contrato_escrito==1,1,0))</em></p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="r-rstudio-y-python.html#cb5-1" tabindex="-1"></a>enoe <span class="ot">&lt;-</span> ENOEN_sdemycoes <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">contrato_escrito=</span><span class="fu">ifelse</span>(contrato_escrito<span class="sc">==</span><span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">0</span>))</span></code></pre></div>
 <ul>
 <li>Los comandos _join: comprende left_join(), right_join(), full_join(), semi_join(), inner_join() y anti_join(). Este grupo de comandos se utiliza para unir dos data frames o tablas. Ejemplo:</li>
 </ul>
-<p><em>ENOEN_sdemycoes &lt;-left_join(ENOEN_sdemycoes, correspondencia_cat_scianHOGARES, by=c(“p4a_tres”=“scian_hogares_2018”)</em></p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="r-rstudio-y-python.html#cb6-1" tabindex="-1"></a>ENOEN_sdemycoes <span class="ot">&lt;-</span><span class="fu">left_join</span>(ENOEN_sdemycoes, correspondencia_cat_scianHOGARES, <span class="at">by=</span><span class="fu">c</span>(<span class="st">&quot;p4a_tres&quot;</span><span class="ot">=</span><span class="st">&quot;scian_hogares_2018&quot;</span>)</span></code></pre></div>
 <ul>
 <li>El comando mutate(): sirve para crear nuevas variables o campos dentro de un data frame o tabla, es muy importante para la transformación de la información. Ejemplo:</li>
 </ul>
-<p><em>enoe &lt;- ENOEN_sdemycoes %&gt;% mutate(ing_min=ifelse(ing7c==1,1,0))</em></p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="r-rstudio-y-python.html#cb7-1" tabindex="-1"></a>enoe <span class="ot">&lt;-</span> ENOEN_sdemycoes <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">ing_min=</span><span class="fu">ifelse</span>(ing7c<span class="sc">==</span><span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">0</span>))</span></code></pre></div>
 <ul>
 <li>El comando filter(): permite filtrar información de una variable o campo excluyendo una o muchas de sus categorías o rangos. Ejemplo:</li>
 </ul>
-<p><em>ENOEN_sdemycoes &lt;- ENOEN_sdemycoes %&gt;% filter(p3h==1)</em></p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="r-rstudio-y-python.html#cb8-1" tabindex="-1"></a>ENOEN_sdemycoes <span class="ot">&lt;-</span> ENOEN_sdemycoes <span class="sc">%&gt;%</span> <span class="fu">filter</span>(p3h<span class="sc">==</span><span class="dv">1</span>)</span></code></pre></div>
 <ul>
 <li>El comando select(): selecciona una o más variables o campos de un data frame o tabla. Ejemplo:</li>
 </ul>
-<p><em>ENOEN_sdemycoes &lt;- ENOEN_sdemycoes %&gt;% filter(p3h==1)</em></p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="r-rstudio-y-python.html#cb9-1" tabindex="-1"></a>ENOEN_sdemycoes <span class="ot">&lt;-</span> ENOEN_sdemycoes <span class="sc">%&gt;%</span> <span class="fu">filter</span>(p3h<span class="sc">==</span><span class="dv">1</span>)</span></code></pre></div>
 <ul>
 <li>El comando select(): selecciona una o más variables o campos de un data frame o tabla. Ejemplo:</li>
 </ul>
-<p><em>ENOEN_sdemycoes &lt;- ENOEN_sdemycoes %&gt;% filter(p3h==1)</em></p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="r-rstudio-y-python.html#cb10-1" tabindex="-1"></a>ENOEN_sdemycoes <span class="ot">&lt;-</span> ENOEN_sdemycoes <span class="sc">%&gt;%</span> <span class="fu">filter</span>(p3h<span class="sc">==</span><span class="dv">1</span>)</span></code></pre></div>
 <ul>
 <li>El comando case_when(): funciona para clasificar o reclasificar categorías de una variable o campo (cuando a, entonces b; cuando c, entonces (simbolizado por ” ~ “) d; etc.). Este comando permite hacer comparaciones entre categorías de la misma variable o entre diferentes variables utilizando símbolos de igualdad y desigualdad como”=“,”&gt;“,”&lt;“,”!=” (diferente) para crear las nuevas categorías. Ejemplo:</li>
 </ul>
-<p><em>ENOEN_sdemycoes&lt;-ENOEN_sdemycoes %&gt;% mutate(cat_tamanio= as.factor(case_when(</em></p>
-<p><em>cat_tamanio&lt;=3~‘1’, cat_tamanio==4~‘2’, cat_tamanio&gt;=5 &amp; cat_tamanio&lt;=7~‘3’, cat_tamanio==8~‘4’, cat_tamanio==9~‘5’, cat_tamanio&gt;=10~‘6’)))</em></p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="r-rstudio-y-python.html#cb11-1" tabindex="-1"></a>ENOEN_sdemycoes <span class="ot">&lt;-</span> ENOEN_sdemycoes <span class="sc">%&gt;%</span> </span>
+<span id="cb11-2"><a href="r-rstudio-y-python.html#cb11-2" tabindex="-1"></a><span class="fu">mutate</span>(<span class="at">cat_tamanio=</span> <span class="fu">as.factor</span>(<span class="fu">case_when</span>(</span>
+<span id="cb11-3"><a href="r-rstudio-y-python.html#cb11-3" tabindex="-1"></a>  cat_tamanio<span class="sc">&lt;=</span> <span class="dv">3</span><span class="sc">~</span><span class="st">&#39;1&#39;</span>, </span>
+<span id="cb11-4"><a href="r-rstudio-y-python.html#cb11-4" tabindex="-1"></a>  cat_tamanio<span class="sc">==</span><span class="dv">4</span><span class="sc">~</span><span class="st">&#39;2&#39;</span>, </span>
+<span id="cb11-5"><a href="r-rstudio-y-python.html#cb11-5" tabindex="-1"></a>  cat_tamanio<span class="sc">&gt;=</span><span class="dv">5</span> <span class="sc">&amp;</span> cat_tamanio<span class="sc">&lt;=</span><span class="dv">7</span><span class="sc">~</span><span class="st">&#39;3&#39;</span>, </span>
+<span id="cb11-6"><a href="r-rstudio-y-python.html#cb11-6" tabindex="-1"></a>  cat_tamanio<span class="sc">==</span><span class="dv">8</span><span class="sc">~</span><span class="st">&#39;4&#39;</span>, </span>
+<span id="cb11-7"><a href="r-rstudio-y-python.html#cb11-7" tabindex="-1"></a>  cat_tamanio<span class="sc">==</span><span class="dv">9</span><span class="sc">~</span><span class="st">&#39;5&#39;</span>, </span>
+<span id="cb11-8"><a href="r-rstudio-y-python.html#cb11-8" tabindex="-1"></a>  cat_tamanio<span class="sc">&gt;=</span><span class="dv">10</span><span class="sc">~</span><span class="st">&#39;6&#39;</span>)))</span></code></pre></div>
 <p>Notar que el case_when clasifica las situaciones con la jerarquía con la que sucede la ocurrencia: Es decir, si una observación cumple con dos “casos” entonces al evaluarse el primer caso y cumplirse, ya no se evalúa el segundo caso.</p>
 <ul>
-<li><p>El comando if_else() o ifelse(): Al igual que el comando anterior, funciona para reclasificar categorías de variables o campos, aunque esta función permite solo dos opciones de clasificación (si sucede x, entonces y). Ejemplo:<br />
-<em>enoe &lt;- ENOEN_sdemycoes %&gt;% mutate(presta_soc=ifelse(pre_asa==1,1,0))</em></p></li>
-<li><p>El comando for(): Este comando permite hacer iteraciones de uno o más comandos sobre los elementos declarados, estos elementos pueden ser pertenecientes a un vector o lista. Ejemplo:<br />
-<em>for (i in lista_indicadores_enoe){</em><br />
-<em>dir.create(paste0(here(“3_resultados/coyuntura/res_coy_ENOE”, i)))</em><br />
-<em>ENOE”)) }</em></p></li>
-<li><p>Comandos sub(), gsub(), y aquellos que inician con stri_() o str_(): Estos comandos sirven para transformar e identificar patrones en cadenas de texto (o procesamiento de lenguaje natural) utilizando diversos códigos. Ejemplo:<br />
-<em>filter(str_detect(nombre_archivo,“SDEM”))</em></p></li>
-<li><p>Comando as_survey_design(): este comando se utiliza para declarar una base de datos como encuesta a partir de sus variables muestrales. Ejemplo:<br />
-<em>enoesvyset &lt;- enoe %&gt;% as_survey_design(strata = estrato, weights = peso, id = upm, nest=TRUE)</em></p></li>
-<li><p>Comandos que empiezan con svy_() o survey_(): Estos comandos toman en cuenta la encuesta declarada para hacer cálculos sobre la misma considerando su diseño muestral. Entre estos podemos encontrar: survey_mean() y survey_ratio(). Estos comandos brindan la opción de obtener el error estándar (se), los intervalos de confianza (ci), la varianza (var), y los coeficientes de variación (vi) de las estimaciones calculadas. Ejemplo:<br />
-<em>valor=survey_mean(ing_min, vartype = c(“cv”), na.rm=T)</em></p></li>
-<li><p>Comando try_catch(): Este comando permite poner condiciones a la ejecución de otros comandos en R. Suele utilizarse para mostrar errores y warnigs que se deben tener en cuenta, por ejemplo, si no se encontró algún archivo o script. Usualmente el comando impide que se detenga la ejecución del código ante posibles errores, aunque se debe prestar especial atención a los mensajes de error y warnings que se produzcan en la consola. Ejemplo:<br />
-<em>municipios_frontera_norte &lt;-tryCatch(suppressMessages(read_csv(</em> <em>paste(path_a_marco_geo,“municipios_fn”,“municipiosFronteraNorte.csv”,sep=“/”),error= function(e) {cat(crayon::red(“\n”,“\n”,paste(“*** ERROR *** No se ha cargado: Catalogo de municipios en la frontera norte.”)),“\n”,“\n”)})</em></p></li>
-<li><p>Comando saveRDS(): este comando permite guardar data frames en formato .Rds. Ejemplo: <em>saveRDS(enoe_temp,paste0(here(),“/”, “3_resultados/coyuntura/res_coy_ENOE”,“/” ,nombre,“/enoe_”,nombre,“_”,periodo,anio,“_”,v,“.Rds”))</em><br />
-<br />
-Existen otros comandos para guardar las bases de datos en otros formatos: write.csv(), write.dta(), entre otros.</p></li>
+<li>El comando if_else() o ifelse(): Al igual que el comando anterior, funciona para reclasificar categorías de variables o campos, aunque esta función permite solo dos opciones de clasificación (si sucede x, entonces y). Ejemplo:</li>
 </ul>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="r-rstudio-y-python.html#cb12-1" tabindex="-1"></a>enoe <span class="ot">&lt;-</span> ENOEN_sdemycoes <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">presta_soc=</span><span class="fu">ifelse</span>(pre_asa<span class="sc">==</span><span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">0</span>))</span></code></pre></div>
+<ul>
+<li>El comando for(): Este comando permite hacer iteraciones de uno o más comandos sobre los elementos declarados, estos elementos pueden ser pertenecientes a un vector o lista. Ejemplo:</li>
+</ul>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="r-rstudio-y-python.html#cb13-1" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> lista_indicadores_enoe){</span>
+<span id="cb13-2"><a href="r-rstudio-y-python.html#cb13-2" tabindex="-1"></a><span class="fu">dir.create</span>(<span class="fu">paste0</span>(<span class="fu">here</span>(<span class="st">&quot;3_resultados/coyuntura/res_coy_ENOE&quot;</span>, i))), ENOE<span class="st">&quot;))}</span></span></code></pre></div>
+<ul>
+<li>Comandos sub(), gsub(), y aquellos que inician con stri_() o str_(): Estos comandos sirven para transformar e identificar patrones en cadenas de texto (o procesamiento de lenguaje natural) utilizando diversos códigos. Ejemplo:</li>
+</ul>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="r-rstudio-y-python.html#cb14-1" tabindex="-1"></a><span class="fu">filter</span>(<span class="fu">str_detect</span>(nombre_archivo,<span class="st">&quot;SDEM&quot;</span>))</span></code></pre></div>
+<ul>
+<li>Comando as_survey_design(): este comando se utiliza para declarar una base de datos como encuesta a partir de sus variables muestrales. Ejemplo:</li>
+</ul>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="r-rstudio-y-python.html#cb15-1" tabindex="-1"></a>enoesvyset <span class="ot">&lt;-</span> enoe <span class="sc">%&gt;%</span> <span class="fu">as_survey_design</span>(<span class="at">strata =</span> estrato, <span class="at">weights =</span> peso, <span class="at">id =</span> upm, <span class="at">nest=</span><span class="cn">TRUE</span>)</span></code></pre></div>
+<ul>
+<li>Comandos que empiezan con svy_() o survey_(): Estos comandos toman en cuenta la encuesta declarada para hacer cálculos sobre la misma considerando su diseño muestral. Entre estos podemos encontrar: survey_mean() y survey_ratio(). Estos comandos brindan la opción de obtener el error estándar (se), los intervalos de confianza (ci), la varianza (var), y los coeficientes de variación (vi) de las estimaciones calculadas. Ejemplo:</li>
+</ul>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="r-rstudio-y-python.html#cb16-1" tabindex="-1"></a>valor<span class="ot">=</span><span class="fu">survey_mean</span>(ing_min, <span class="at">vartype =</span> <span class="fu">c</span>(<span class="st">&quot;cv&quot;</span>), <span class="at">na.rm=</span>T)</span></code></pre></div>
+<ul>
+<li>Comando try_catch(): Este comando permite poner condiciones a la ejecución de otros comandos en R. Suele utilizarse para mostrar errores y warnigs que se deben tener en cuenta, por ejemplo, si no se encontró algún archivo o script. Usualmente el comando impide que se detenga la ejecución del código ante posibles errores, aunque se debe prestar especial atención a los mensajes de error y warnings que se produzcan en la consola. Ejemplo:</li>
+</ul>
+<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="r-rstudio-y-python.html#cb17-1" tabindex="-1"></a>municipios_frontera_norte <span class="ot">&lt;-</span></span>
+<span id="cb17-2"><a href="r-rstudio-y-python.html#cb17-2" tabindex="-1"></a><span class="fu">tryCatch</span>(</span>
+<span id="cb17-3"><a href="r-rstudio-y-python.html#cb17-3" tabindex="-1"></a><span class="fu">suppressMessages</span>(<span class="fu">read_csv</span>(<span class="fu">paste</span>(path_a_marco_geo,<span class="st">&quot;municipios_fn&quot;</span>,<span class="st">&quot;municipiosFronteraNorte.csv&quot;</span>,<span class="at">sep=</span><span class="st">&quot;/&quot;</span>),</span>
+<span id="cb17-4"><a href="r-rstudio-y-python.html#cb17-4" tabindex="-1"></a><span class="at">error=</span> <span class="cf">function</span>(e) {<span class="fu">cat</span>(crayon<span class="sc">::</span><span class="fu">red</span>(<span class="st">&quot;</span><span class="sc">\n</span><span class="st">&quot;</span>,<span class="st">&quot;</span><span class="sc">\n</span><span class="st">&quot;</span>,<span class="fu">paste</span>(<span class="st">&quot;*** ERROR *** No se ha cargado: Catalogo de municipios en la frontera norte.&quot;</span>)),<span class="st">&quot;</span><span class="sc">\n</span><span class="st">&quot;</span>,<span class="st">&quot;</span><span class="sc">\n</span><span class="st">&quot;</span>)})))</span></code></pre></div>
+<ul>
+<li>Comando saveRDS(): este comando permite guardar data frames en formato .Rds. Ejemplo:</li>
+</ul>
+<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="r-rstudio-y-python.html#cb18-1" tabindex="-1"></a><span class="fu">saveRDS</span>(enoe_temp,<span class="fu">paste0</span>(<span class="fu">here</span>(),<span class="st">&quot;/&quot;</span>, <span class="st">&quot;3_resultados/coyuntura/res_coy_ENOE&quot;</span>,<span class="st">&quot;/&quot;</span> ,nombre,<span class="st">&quot;/enoe\_&quot;</span>,nombre,<span class="st">&quot;\_&quot;</span>,periodo,anio,<span class="st">&quot;\_&quot;</span>,v,<span class="st">&quot;.Rds&quot;</span>))</span></code></pre></div>
+<p>Existen otros comandos para guardar las bases de datos en otros formatos: write.csv(), write.dta(), entre otros.</p>
 <p>Además de estos, se utilizan muchos otros comandos de las paqueterías cargadas, no obstante, estos son los que se utilizan con más frecuencia ya que son los básicos para la carga, transformación y guardado de la información que utiliza el SIDIL. Si surge alguna duda, o si se requiere profundizar en estos u otros comandos, existe amplia información en internet que incluye explicaciones y ejemplos sobre el uso de los diversos comandos en el ambiente de RStudio, dos de las principales fuentes de consulta son: www. cran.r-project.org y <a href="http://www.stackoverflow.com">www.stackoverflow.com</a>, o bien con el comando help(package=“__”), poniendo entre las comillas el nombre de la paquetería que se desea buscar. De igual manera, si se desea buscar información sobre algún comando, se puede utilizar la línea de código help(__, package=“__”), poniendo en el primer argumento el comando en cuestión y en el segundo la paquetería al que pertenece.</p>
 </div>
-<div id="tipos-de-errores-que-se-pudieran-presentar" class="section level2 hasAnchor" number="6.4">
-<h2><span class="header-section-number">6.4</span> Tipos de errores que se pudieran presentar<a href="r-rstudio-y-python.html#tipos-de-errores-que-se-pudieran-presentar" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="tipos-de-errores-que-se-pudieran-presentar" class="section level2 hasAnchor" number="5.4">
+<h2><span class="header-section-number">5.4</span> Tipos de errores que se pudieran presentar<a href="r-rstudio-y-python.html#tipos-de-errores-que-se-pudieran-presentar" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Típicamente se pueden presentar los siguientes errores al trabajar en RStudio.</p>
 <ol style="list-style-type: decimal">
 <li><p>Errores de lectura de información</p>
@@ -484,16 +648,16 @@ Existen otros comandos para guardar las bases de datos en otros formatos: write.
 <ol style="list-style-type: decimal">
 <li><p>Hay dos posibles causas:</p>
 <ol style="list-style-type: lower-alpha">
-<li>Que en efecto el procesamiento de la información sea el adecuado, pero quizá, incluso por otros procesos en curso, la computadora no cuenta con la memoria suficiente. Para esto se deben finalizar en el administrador de tareas los programas que no estén en uso, y desde la consola de RStudio, desplegar el menú de memoria en uso del ambiente, y liberal memoria que no esté en uso, como muesta la ilustración <a href="r-rstudio-y-python.html#fig:memoriaRstudio">6.4</a>.</li>
+<li>Que en efecto el procesamiento de la información sea el adecuado, pero quizá, incluso por otros procesos en curso, la computadora no cuenta con la memoria suficiente. Para esto se deben finalizar en el administrador de tareas los programas que no estén en uso, y desde la consola de RStudio, desplegar el menú de memoria en uso del ambiente, y liberal memoria que no esté en uso, como muesta la ilustración <a href="r-rstudio-y-python.html#fig:memoriaRstudio">5.4</a>.</li>
 </ol></li>
 </ol></li>
 </ol></li>
 </ol></li>
 </ol>
 <div class="figure"><span style="display:block;" id="fig:memoriaRstudio"></span>
-<img src="images-1/06/memoriaR.png" alt="Liberación de memoria en RStudio" width="228" />
+<img src="images-1/06/memoriaR.png" alt="Liberación de memoria en RStudio"  />
 <p class="caption">
-Recuadro 6.4: Liberación de memoria en RStudio
+Recuadro 5.4: Liberación de memoria en RStudio
 </p>
 </div>
 <ol start="2" style="list-style-type: lower-alpha">
@@ -515,8 +679,8 @@ Recuadro 6.4: Liberación de memoria en RStudio
 </ol>
 <p>La consola de RStudio siempre mostrará el error y alguna información extra, esta debe ser tenida en cuenta ya que muestra la naturaleza del error y, algunas veces, la solución, de no ser así, se puede rastrear el error y solucionarlo con ayuda de internet.</p>
 </div>
-<div id="python" class="section level2 hasAnchor" number="6.5">
-<h2><span class="header-section-number">6.5</span> Python<a href="r-rstudio-y-python.html#python" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="python" class="section level2 hasAnchor" number="5.5">
+<h2><span class="header-section-number">5.5</span> Python<a href="r-rstudio-y-python.html#python" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>A continuación, se dará una breve descripción de las principales librerías de Python usadas para el SIDIL. Entre paréntesis se indica el número de versión que se utiliza de cada librería.</p>
 <ul>
 <li><p>Numpy (1.23.4) proporciona soporte para el cálculo numérico y la manipulación de datos en forma de arrays y matrices. Es muy útil para realizar cálculos matemáticos y estadísticos de forma eficiente, y es una de las librerías más utilizadas en el área de la ciencia de datos.</p></li>
@@ -535,9 +699,9 @@ Recuadro 6.4: Liberación de memoria en RStudio
 </div>
 <div class="footnotes">
 <hr />
-<ol start="13">
-<li id="fn13"><p><a href="https://www.r-project.org/about.html" class="uri">https://www.r-project.org/about.html</a><a href="r-rstudio-y-python.html#fnref13" class="footnote-back">↩︎</a></p></li>
-<li id="fn14"><p><a href="https://posit.co/" class="uri">https://posit.co/</a><a href="r-rstudio-y-python.html#fnref14" class="footnote-back">↩︎</a></p></li>
+<ol start="3">
+<li id="fn3"><p><a href="https://www.r-project.org/about.html" class="uri">https://www.r-project.org/about.html</a><a href="r-rstudio-y-python.html#fnref3" class="footnote-back">↩︎</a></p></li>
+<li id="fn4"><p><a href="https://posit.co/" class="uri">https://posit.co/</a><a href="r-rstudio-y-python.html#fnref4" class="footnote-back">↩︎</a></p></li>
 </ol>
 </div>
             </section>
@@ -594,27 +758,13 @@ gitbook.start({
 "options": null
 },
 "toc": {
-"collapse": "none",
+"collapse": "section",
 "scroll_highlight": true
 }
 });
 });
 </script>
 
-<!-- dynamically load mathjax for compatibility with self-contained -->
-<script>
-  (function () {
-    var script = document.createElement("script");
-    script.type = "text/javascript";
-    var src = "true";
-    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
-    if (location.protocol !== "file:")
-      if (/^https?:/.test(src))
-        src = src.replace(/^https?:/, '');
-    script.src = src;
-    document.getElementsByTagName("head")[0].appendChild(script);
-  })();
-</script>
 </body>
 
 </html>
