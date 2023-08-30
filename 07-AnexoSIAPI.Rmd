@@ -37,7 +37,7 @@ knitr::include_graphics("images-1/08/volumeninspecciones.png")
 ```
  
 
-```{r indiceinspecciones, class.source='myClass', echo=FALSE, out.width="50px", fig.cap="Conformación del *índice* de inspecciones", out.extra='style="float:left; background-color: #f5f5f5; padding-right:1em"'}
+```{r indiceinspecciones, class.source='myClass', echo=FALSE, out.width="50px", fig.cap="Conformación del *índice* de inspecciones", out.extra='style="float:left; background-color: #fff; padding-right:1em"'}
 
 knitr::include_graphics("images-1/important-icon.svg")
 

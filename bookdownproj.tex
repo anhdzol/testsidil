@@ -328,7 +328,7 @@ El SIDIL tiene cuatro módulos, tal como se muestra en el recuadro \ref{fig:modu
 Así, la interfaz de automatización abarca el desarrollo de los procesos que están en color azul en esta ilustración. Luego, el tercer módulo es el de la \protect\hyperlink{interfazConsultaexplicaciongeneral}{interfaz de consulta}, que explota el principal resultado del módulo anterior (la Matriz de Predicción de Riesgos, MPR). Esta consulta está esquematizada en el área verde de la figura, y da como resultado un \emph{listado de centros de trabajo priorizados}, listos para ser incorporados a la programación de inspecciones. Por último, el cuarto módulo, de entrenamiento, es el que permite reentrenar el modelo para actualizar la forma en la que se realizará la predicción. El módulo cuarto arroja un modelo predictivo entrenado (llamémoslo ``parámetros del modelo'') que el módulo II consulta para la predicción del modelo sobre el universo de CT enriquecido con los indicadores. A continuación, se ofrecen las principales características de estos módulos.
 
 \begin{figure}
-\includegraphics[width=50px,style="float:left; background-color: #f5f5f5; padding-right:1em"]{images-1/important-icon} \caption{Modularización del SIDIL}\label{fig:modularizacionSIDIL}
+\includegraphics[width=50px,style="float:left; background-color: #fff; padding-right:1em"]{images-1/important-icon} \caption{Modularización del SIDIL}\label{fig:modularizacionSIDIL}
 \end{figure}
 
 \begin{rmdcomment}
@@ -368,7 +368,7 @@ En este módulo se explotan las diversas fuentes de información que sirven como
 Todas las estimaciones puntuales (valores) de los indicadores se calculan para diferentes ``niveles de agregación'': \emph{\textbf{entiéndase por nivel de agregación aquella combinación de campos de tamaño del centro de trabajo, clasificación industrial y ubicación geográfica que caracterizan a cada centro de trabajo.} Hay 18 niveles de agregación según se incorporen estos campos. A mayor combinación de campos y/o especificidad en la utilización de los mismos, mayor es el nivel de agregación y más específica es la estimación puntual. Para más información consultar la sección 4.1.3.1 de este documento.}
 
 \begin{figure}
-\includegraphics[width=50px,style="float:left; background-color: #f5f5f5; padding-right:1em"]{images-1/important-icon} \caption{El aprovechamiento de los niveles de agregación en el cálculo de indicadores.}\label{fig:utilidadestimacionespuntuales}
+\includegraphics[width=50px,style="float:left; background-color: #fff; padding-right:1em"]{images-1/important-icon} \caption{El aprovechamiento de los niveles de agregación en el cálculo de indicadores.}\label{fig:utilidadestimacionespuntuales}
 \end{figure}
 
 \begin{rmdcomment}
@@ -404,7 +404,7 @@ El cálculo de un determinado indicador se realiza para cada uno de los diferent
 Esto significa que, si la estructura de información del input lo permite, la información se explota al máximo nivel de granularidad y cobertura posible. En concreto, y para poner un ejemplo: de la ENOE se calcula la tasa de sindicalización (con el cuestionario ampliado del primer trimestre de cada año) para todas las posibles combinaciones de entidad federativa, clasificación industrial a dos y tres dígitos del SCIAN y categorías de tamaño, independientemente de que para ciertas combinaciones de estos tres campos no hubiera CT que ``requieran'' dicha caracterización. Es decir, podría ser el caso de que se calcule para la categoría industrial 111 en la entidad federativa 1 y categoría de tamaño 1 dicho indicador, incluso aunque, por diferentes motivos, el DNE no tenga a ningún CT con dichas características.\^{}{[}De manera análoga, dado que el SIDIL explota registros administrativos del IMSS y calcula ciertos indicadores a nivel \emph{registro} patronal, cabe observar que los indicadores se calculan para todos los registros patronales, independientemente de que éstos sean ``encontrados'' en el DNE.{]} De esta manera, dada la posibilidad de que en cualquier momento se incorporen nuevos CT al DNE con esta o cualquier otra combinación de información, se tiene a disposición la información en todos los niveles de agregación para su eventual aprovech
 
 \begin{figure}
-\includegraphics[width=50px,style="float:left; background-color: #f5f5f5; padding-right:1em"]{images-1/important-icon} \caption{El aprovechamiento de los niveles de agregación en el cálculo de indicadores (segunda parte)}\label{fig:aprovechamientonivelesagregacion}
+\includegraphics[width=50px,style="float:left; background-color: #fff; padding-right:1em"]{images-1/important-icon} \caption{El aprovechamiento de los niveles de agregación en el cálculo de indicadores (segunda parte)}\label{fig:aprovechamientonivelesagregacion}
 \end{figure}
 
 \begin{rmdcomment}
@@ -432,7 +432,7 @@ Además de que todas las estimaciones puntuales se calculan por niveles de agreg
 \textbf{En la construcción de la MPR (siguiente módulo), y a efectos de darle el mismo sentido que la predicción de la probabilidad de incumplimiento con la normativa laboral, el sentido de los indicadores se invierte.} Es decir, los indicadores que hasta ese momento expresan ``más es mejor'' se invierten para reflejar que ``más es peor''. Esto facilita la interpretación y el uso de los mismos como variables de selección y filtrado a la hora de explotar la MPR en la interfaz de priorización. De esta manera, al filtrar, tanto los predictores de riesgo generados a partir del modelo entrenado, como los indicadores calculados a partir de las fuentes de datos tienen la lógica de que un valor más cercano a 1 representa un mayor riesgo de violaciones.
 
 \begin{figure}
-\includegraphics[width=50px,style="float:left; background-color: #f5f5f5; padding-right:1em"]{images-1/important-icon} \caption{El sentido de los indicadores}\label{fig:sentidoindicadores}
+\includegraphics[width=50px,style="float:left; background-color: #fff; padding-right:1em"]{images-1/important-icon} \caption{El sentido de los indicadores}\label{fig:sentidoindicadores}
 \end{figure}
 
 \begin{rmdcomment}
@@ -472,7 +472,7 @@ Además, el SIDIL prevé una consulta al SIAPI y al SIPAS en caso de que la info
 \hl{AQU POSIBLEMENTE CONVIENE INCORPORAR UNA ILUSTRACION SOBRE RELACION SIAPI SIPAS, DNE Y SIDIL}
 
 \begin{figure}
-\includegraphics[width=50px,style="float:left; background-color: #f5f5f5; padding-right:1em"]{images-1/important-icon} \caption{Relación DNE-SNILE-SIAPI-SIPAS con el matching nominativo del IMSS}\label{fig:relacionDNESNILESIAPISIPAS}
+\includegraphics[width=50px,style="float:left; background-color: #fff; padding-right:1em"]{images-1/important-icon} \caption{Relación DNE-SNILE-SIAPI-SIPAS con el matching nominativo del IMSS}\label{fig:relacionDNESNILESIAPISIPAS}
 \end{figure}
 
 \begin{rmdcomment}
@@ -522,7 +522,7 @@ El resultado final de este módulo es la \textbf{Matriz de Predicción de Riesgo
 \textbf{En contraste con la interfaz de consulta (ver más adelante), esta interfaz, si bien facilita la ejecución de los módulos I y II, sí requiere de cierto conocimiento técnico} -- estadístico en cuanto a que algunos de los mensajes que se reportan en su consola, si bien sólo se reportan a título informativo y no se espera una aprobación explícita del usuario, permiten a un usuario informado determinar que los resultados obtenidos guardan sentido. Por ejemplo, en un momento determinado la actualización de los indicadores del IMSS reporta el porcentaje que las mujeres representan en el total de personas aseguradas. Un usuario informado sabe que aproximadamente este porcentaje se ubica alrededor del 40\% y que cualquier desviación sustantiva de dicho porcentaje pudiera implicar que la identificación del sexo a partir de la CURP de las personas aseguradas no resultó satisfactoria o que hubo algún problema en el procesamiento realizado. De manera análoga, un usuario experimentado conoce el total de personas ocupadas que se estiman a partir de la ENOE (y sabe cómo validar esta estimación en el portal del INEGI), por lo que cualquier desviación sustantiva de una estimación normal tendría que llamarle la atención, ameritar la interrupción del proceso e iniciar una revisión exhaustiva a nivel código para encontrar la solución a dicho error de cálculo.
 
 \begin{figure}
-\includegraphics[width=50px,style="float:left; background-color: #f5f5f5; padding-right:1em"]{images-1/important-icon} \caption{La utilización de la interfaz de automatización}\label{fig:utilizacioninterfazauto}
+\includegraphics[width=50px,style="float:left; background-color: #fff; padding-right:1em"]{images-1/important-icon} \caption{La utilización de la interfaz de automatización}\label{fig:utilizacioninterfazauto}
 \end{figure}
 
 \begin{rmdcomment}
@@ -846,7 +846,7 @@ El SIDIL, a lo largo de los diferentes módulos, está configurado para procesar
 En cambio, el formato de la referencia al periodo temporal es específico para cada fuente de información, toda vez que la frecuencia de actualización y representatividad es específica a cada fuente. Así por ejemplo la tabla con la información sociodemográfica de las personas encuestadas en la ENOE contiene en su nombre ``1t2022'' haciendo referencia al primer trimestre de 2022. En cambio, para el IMSS; cuya información original es de frecuencia mensual, la referencia es 2022131 (que representa la fecha de corte al 31 de enero de 2022).
 
 \begin{figure}
-\includegraphics[width=50px,style="float:left; background-color: #f5f5f5; padding-right:1em"]{images-1/important-icon} \caption{Versionado de elementos}\label{fig:versionadoelementos}
+\includegraphics[width=50px,style="float:left; background-color: #fff; padding-right:1em"]{images-1/important-icon} \caption{Versionado de elementos}\label{fig:versionadoelementos}
 \end{figure}
 
 \begin{rmdcomment}
@@ -1064,7 +1064,7 @@ El resto de los catálogos están organizados en subcarpetas según el tipo de i
 \end{enumerate}
 
 \begin{figure}
-\includegraphics[width=50px,style="float:left; background-color: #f5f5f5; padding-right:1em"]{images-1/important-icon} \caption{Versiones de archivos de catálogos.}\label{fig:cambioscatalogos}
+\includegraphics[width=50px,style="float:left; background-color: #fff; padding-right:1em"]{images-1/important-icon} \caption{Versiones de archivos de catálogos.}\label{fig:cambioscatalogos}
 \end{figure}
 
 \begin{rmdcomment}
@@ -1823,7 +1823,7 @@ In hac habitasse platea dictumst. In ac dolor at tellus cursus vehicula nec non 
 Maecenas ut condimentum orci, ac volutpat est. Phasellus pretium, urna sit amet scelerisque congue, ipsum mauris vulputate nunc, rutrum commodo velit enim ac lectus. Morbi eget urna eu diam tempus posuere. Proin non eros sit amet quam scelerisque imperdiet. Praesent hendrerit et purus eu mattis. Praesent rhoncus diam quis nisl dignissim, vel consequat metus dapibus. Quisque eu tincidunt urna. In hac habitasse platea dictumst. Donec euismod tristique dui vel dapibus. Curabitur nec egestas dui, vitae sagittis magna. Maecenas rhoncus massa vitae elit ultrices pellentesque. Phasellus consequat nisl nec turpis ornare dictum. Mauris scelerisque hendrerit commodo. Etiam placerat urna id nisl volutpat congue. Suspendisse vitae sapien sagittis, sagittis elit in, feugiat nunc.
 
 \begin{figure}
-\includegraphics[width=50px,style="float:left; background-color: #f5f5f5; padding-right:1em"]{images-1/important-icon} \caption{Titulo dado en fig.cap donde va icono}\label{fig:testBox}
+\includegraphics[width=50px,style="float:left; background-color: #fff; padding-right:1em"]{images-1/important-icon} \caption{Titulo dado en fig.cap donde va icono}\label{fig:testBox}
 \end{figure}
 
 \begin{rmdcomment}

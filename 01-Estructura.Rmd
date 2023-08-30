@@ -30,10 +30,10 @@ La principal audiencia de este documento es el personal de la STPS, particularme
 
 La estructura de este apartado sigue en buena medida el diseño modularizado del SIDIL. Se presentan las cuestiones generales del sistema, haciéndolo en dos diferentes niveles: por un lado para una audiencia menos técnica se detallan algunos aspectos sustantivos comunes a los diferentes elementos del sistema; por otro lado se presentan aquellas especificaciones que, si bien más técnicas, tienen implicaciones para los diferentes módulos del sistema y que se enuncian sólo una vez en esta sección para evitar su repetición en los capítulos restantes del documento. Del mismo modo se presentan los módulos en los que suceden todos los procesos para mantener actualizada la predicción de riesgos en diferentes submaterias a un universo de naturaleza dinámica de centros de trabajo consultados del Directorio Nacional de Empresas (DNE). También se ofrecen detalles del diseño y operación de la interfaz de consulta, que constituye el módulo III y que, tomando la Matriz de predicción de Riesgos (MPR), resultado del proesamiento, permite a un usuario de la UTD, seleccionar a los CT con base en la predicción de riesgo por submaterias, atributos observados e indicadores imputados a todos los CT que se encuentran en el DNE. Finalmente se presenta el modelo predictivo utilizado, mismo que emana de combinar los hallazgos de todas las inspecciones laborales realizadas por la UTD con todos los indicadores laborales calculados de manera histórica, según la disponibilidad temporal de las fuentes de información.
 
-```{r pipelsimplaaificado2, echo=FALSE, out.width="50%", fig.cap ="Pipeline simplificado del SIDIL  (versión simplificada)"}
+```{r pipelsimplaaificado2, echo=FALSE, out.width="100%", fig.cap ="Pipeline simplificado del SIDIL  (versión simplificada)"}
 #Nota, los nombre de referencia no pueden tener guion bajo
 
-knitr::include_graphics("images-1/02/image2_alternativaTD.jpg")
+knitr::include_graphics("images-1/02/pipeline-simplificado.jpg")
 
 
 ```
@@ -46,7 +46,7 @@ Para dicho objetivo, el SIDIL explota diferentes fuentes de información de una 
 
 ```{r scriptinputoutput,echo=FALSE, out.width="50%", fig.cap = 'Relación input-script-output'}
 
-knitr::include_graphics("images-1/02/script_input_output.png")
+knitr::include_graphics("images-1/02/relacion-input-script-output.jpg")
 
 ```
 
@@ -76,9 +76,9 @@ A su vez, la modularización se observa, cuando es posible, al interior mismo de
 
 Así mismo, la modularización abona a la facilidad de dar mantenimiento a los diferentes componentes del SIDIL. La ejecución de los módulos por separado (en contraste con una ejecución única de todos los módulos) hace que, de presentarse problemas o de ser necesarias una revisión, ésta pueda concentrarse en los módulos en donde fuera de interés sin afectar a los demás módulos. La modularización permite aprovechar posibles ventajas comparativas, áreas de especialización e incluso atribuciones heterogéneas al interior de la STPS, permitiendo limitar el acceso a ciertas carpetas o subcarpetas en las que se alojan los inputs o scripts de ciertos módulos.
 
-```{r modulosSIDIL, echo=FALSE ,out.width="50%", fig.cap ="Módulos que componen el SIDIL"}
+```{r modulosSIDIL, echo=FALSE ,out.width="100%", fig.cap ="Módulos que componen el SIDIL"}
 #Nota, los nombre de referencia no pueden tener guion bajo
-knitr::include_graphics("images-1/02/pipeline_elaborado.png")
+knitr::include_graphics("images-1/02/modulos-SIDIL.jpg")
 # print("aqui PIPELINE")
 
 ```
@@ -88,7 +88,7 @@ El SIDIL tiene cuatro módulos, tal como se muestra en el recuadro \@ref(fig:mod
 Así, la interfaz de automatización abarca el desarrollo de los procesos que están en color azul en esta ilustración. Luego, el tercer módulo es el de la [interfaz de consulta](#interfazConsultaexplicaciongeneral), que explota el principal resultado del módulo anterior (la Matriz de Predicción de Riesgos, MPR). Esta consulta está esquematizada en el área verde de la figura, y da como resultado un *listado de centros de trabajo priorizados*, listos para ser incorporados a la programación de inspecciones. Por último, el cuarto módulo, de entrenamiento, es el que permite reentrenar el modelo para actualizar la forma en la que se realizará la predicción. El módulo cuarto arroja un modelo predictivo entrenado (llamémoslo "parámetros del modelo") que el módulo II consulta para la predicción del modelo sobre el universo de CT enriquecido con los indicadores. A continuación, se ofrecen las principales características de estos módulos.
 
 
-```{r modularizacionSIDIL, class.source='myClass', echo=FALSE, out.width="50px", fig.cap="Modularización del SIDIL", out.extra='style="float:left; background-color: #f5f5f5; padding-right:1em"'}
+```{r modularizacionSIDIL, class.source='myClass', echo=FALSE, out.width="50px", fig.cap="Modularización del SIDIL", out.extra='style="float:left; background-color: #fff; padding-right:1em"'}
 knitr::include_graphics("images-1/important-icon.svg")
 # htmltools::HTML(fn('Modularización del SIDIL'))
 ```
@@ -114,7 +114,7 @@ Todas las estimaciones puntuales (valores) de los indicadores se calculan para d
 
 breve tour por el catalogo de indicadores, mostrando como de lo más básico (promedio nacional) llegas a lo más granular: 3_geo5_act3_tam ]{.mark}
 
-```{r utilidadestimacionespuntuales, class.source='myClass', echo=FALSE, out.width="50px", fig.cap="El aprovechamiento de los niveles de agregación en el cálculo de indicadores.", out.extra='style="float:left; background-color: #f5f5f5; padding-right:1em"'}
+```{r utilidadestimacionespuntuales, class.source='myClass', echo=FALSE, out.width="50px", fig.cap="El aprovechamiento de los niveles de agregación en el cálculo de indicadores.", out.extra='style="float:left; background-color: #fff; padding-right:1em"'}
 knitr::include_graphics("images-1/important-icon.svg")
 # htmltools::HTML(fn('Nombre del recuadro desde DIV...'))
 ```
@@ -124,13 +124,23 @@ knitr::include_graphics("images-1/important-icon.svg")
  Sirve dar un ejemplo de la utilidad de calcular las estimaciones puntuales de los indicadores a diferentes niveles de agregación: Para el cálculo de la media de la tasa de prevalencia de asalariados percibiendo hasta 105% del salario mínimo (uno de los indicadores desarrollados) a nivel nacional, el promedio asciende a 12.8% de los puestos asegurados. Esto significa que casi 13% de los asegurados en el IMSS perciben hasta 105% del salario mínimo. Este es el promedio nacional y es el menor nivel de agregación de o especificidad. Pero detrás de este promedio hay una elevada heterogeneidad: tan solo observando el siguiente nivel de agregación que distingue por categoría de tamaño se percibe que los centros de trabajo (CT) de hasta 10 personas aseguradas tienen una prevalencia del 21.7%, mientras que las de 251 o más asegurados se reduce a 0.77%. Si además a los CT de menor tamaño se les distingue por la clasificación industrial a dos dígitos, se estima que aquellas en la categoría industrial SCIAN: 11 (Agricultura, cría y explotación de animales) tienen un promedio de 21.3% pero las SCIAN 21 (minería) un promedio de 16.9%. Este último nivel de agregación ya recupera la información de dos campos (tamaño y clasificación industrial a dos dígitos), pero puede profundizarse aún más incorporando la dimensión geográfica (entidad federativa y municipio) y además llevar a 3 dígitos la clasificación industrial. De esta manera, a mayor incorporación de dimensiones, o mientras más específicas sean éstas más preciso es el dato. A mayor precisión, mayor la posible heterogeneidad en la caracterización de los CT y mayor poder predictivo de los indicadores (sobre este punto se ofrecen más detalles en la sección 6).
 ```
 
- 
+```{r MPRcomplementaria, echo=FALSE, fig.cap ="Matriz de predicción de riesgos (ilustración complementaria)"}
+#Nota, los nombre de referencia no pueden tener guion bajo
+
+knitr::include_graphics("images-1/02/MPR_complementaria.jpg")
+
+
+```
+
+```{r aprovechamientoNivelesAgregacion,echo=FALSE, out.width="100%", fig.cap="El aprovechamiento de los niveles de agregación en el cálculo de indicadores"}
+knitr::include_graphics("images-1/01/aprovechamientoNivelesagregacion.jpg")
+```
 
 El cálculo de un determinado indicador se realiza para cada uno de los diferentes niveles de agregación. Esto para permitir que a un CT se le pueda imputar una mejor estimación de riesgo si se conoce con mayor detalle sus características de tamaño, industria y geografía, pero que, en caso de ausencia de alguna de ellas se le atribuya una medida de una agrupación más general. Esto permite aprovechar al máximo la información disponible.
 
 Esto significa que, si la estructura de información del input lo permite, la información se explota al máximo nivel de granularidad y cobertura posible. En concreto, y para poner un ejemplo: de la ENOE se calcula la tasa de sindicalización (con el cuestionario ampliado del primer trimestre de cada año) para todas las posibles combinaciones de entidad federativa, clasificación industrial a dos y tres dígitos del SCIAN y categorías de tamaño, independientemente de que para ciertas combinaciones de estos tres campos no hubiera CT que "requieran" dicha caracterización. Es decir, podría ser el caso de que se calcule para la categoría industrial 111 en la entidad federativa 1 y categoría de tamaño 1 dicho indicador, incluso aunque, por diferentes motivos, el DNE no tenga a ningún CT con dichas características.^[De manera análoga, dado que el SIDIL explota registros administrativos del IMSS y calcula ciertos indicadores a nivel *registro* patronal, cabe observar que los indicadores se calculan para todos los registros patronales, independientemente de que éstos sean "encontrados" en el DNE.] De esta manera, dada la posibilidad de que en cualquier momento se incorporen nuevos CT al DNE con esta o cualquier otra combinación de información, se tiene a disposición la información en todos los niveles de agregación para su eventual aprovechamiento.
 
-```{r aprovechamientonivelesagregacion, class.source='myClass', echo=FALSE, out.width="50px", fig.cap="El aprovechamiento de los niveles de agregación en el cálculo de indicadores (segunda parte)", out.extra='style="float:left; background-color: #f5f5f5; padding-right:1em"'}
+```{r aprovechamientonivelesagregacion, class.source='myClass', echo=FALSE, out.width="50px", fig.cap="El aprovechamiento de los niveles de agregación en el cálculo de indicadores (segunda parte)", out.extra='style="float:left; background-color: #fff; padding-right:1em"'}
 knitr::include_graphics("images-1/important-icon.svg")
 # htmltools::HTML(fn('Nombre del recuadro desde DIV...'))
 ```
@@ -147,7 +157,7 @@ Además de que todas las estimaciones puntuales se calculan por niveles de agreg
 **En la construcción de la MPR (siguiente módulo), y a efectos de darle el mismo sentido que la predicción de la probabilidad de incumplimiento con la normativa laboral, el sentido de los indicadores se invierte.** Es decir, los indicadores que hasta ese momento expresan "más es mejor" se invierten para reflejar que "más es peor". Esto facilita la interpretación y el uso de los mismos como variables de selección y filtrado a la hora de explotar la MPR en la interfaz de priorización. De esta manera, al filtrar, tanto los predictores de riesgo generados a partir del modelo entrenado, como los indicadores calculados a partir de las fuentes de datos tienen la lógica de que un valor más cercano a 1 representa un mayor riesgo de violaciones.
 
 
-```{r sentidoindicadores, class.source='myClass', echo=FALSE, out.width="50px", fig.cap="El sentido de los indicadores", out.extra='style="float:left; background-color: #f5f5f5; padding-right:1em"'}
+```{r sentidoindicadores, class.source='myClass', echo=FALSE, out.width="50px", fig.cap="El sentido de los indicadores", out.extra='style="float:left; background-color: #fff; padding-right:1em"'}
 knitr::include_graphics("images-1/important-icon.svg")
 # htmltools::HTML(fn('Nombre del recuadro desde DIV...'))
 ```
@@ -174,15 +184,23 @@ Como se menciona en la sección anterior, en aquellos campos de las tres dimensi
 
 Además, el SIDIL prevé una consulta al SIAPI y al SIPAS en caso de que la información contenida en el DNE no estuviera completa o estuviera actualizada. Dado que el SIAPI y SIPAS están en un proceso de desarrollo, por ahora este aspecto no se enfatiza en el manual. Pero un ejemplo de esta información podría ser el cálculo del porcentaje de inspecciones a un CT que terminaron en negativas patronales, en caso de que esto fuera de interés para la STPS para explotar en la interfaz.
 
+```{r resumenModII, echo=FALSE, out.width="100%", fig.cap="Explicación general Módulo II"}
+knitr::include_graphics("images-1/02/resumenModII.jpg")
+```
+
 [AQU POSIBLEMENTE CONVIENE INCORPORAR UNA ILUSTRACION SOBRE RELACION SIAPI SIPAS, DNE Y SIDIL]{.mark}
 
-```{r relacionDNESNILESIAPISIPAS, class.source='myClass', echo=FALSE, out.width="50px", fig.cap="Relación DNE-SNILE-SIAPI-SIPAS con el matching nominativo del IMSS", out.extra='style="float:left; background-color: #f5f5f5; padding-right:1em"'}
+```{r relacionDNESNILESIAPISIPAS, class.source='myClass', echo=FALSE, out.width="50px", fig.cap="Relación DNE-SNILE-SIAPI-SIPAS con el matching nominativo del IMSS", out.extra='style="float:left; background-color: #fff; padding-right:1em"'}
 knitr::include_graphics("images-1/important-icon.svg")
 # htmltools::HTML(fn('Nombre del recuadro desde DIV...'))
 ```
 
 ```{block, type='rmdcomment', fig.cap="test numeracion block"}
 Actualmente el SIDIL consulta al DNE y al SIAPI/SIPAS. Al realizarlo, se encuentra que en el DNE el campo número de trabajadores tiene aproximadamente un 80% de observaciones nulas (sin valor válido). Este campo es enriquecido con el campo que se completa durante en las inspecciones registradas en SIAPI SIPAS. Si es posible enriquecerlo entonces ese campo ya se considera completo y no se realiza la imputación de enriquecimiento con base en el IMSS patronal. Si en cambio no hay un dato derivado de las inspecciones, entonces sí se busca el enriquecimiento con los datos del IMSS. Por supuesto, se reconocen obvias limitaciones derivadas de que en el IMSS se registra únicamente el empleo formal mientras que en las inspecciones se registra todo tipo de trabajadores, estén o no registrados ante el IMSS.
+```
+
+```{r matchingnominativoagregacion, echo=FALSE, out.width="100%", fig.cap="matchingnominativoagregacion"}
+knitr::include_graphics("images-1/02/matchingnominativoagregacion.jpg")
 ```
 
 En resumen, el proceso de imputación o "matching" tiene tres etapas, en dos scripts diferentes:
@@ -202,7 +220,7 @@ El resultado final de este módulo es la **Matriz de Predicción de Riesgos** (M
 ```{r MPRsimplificada, echo=FALSE, fig.cap ="Matriz de predicción de riesgos (ilustración simplificada)"}
 #Nota, los nombre de referencia no pueden tener guion bajo
 
-knitr::include_graphics("images-1/02/MPR_simplificada.png")
+knitr::include_graphics("images-1/02/MPR_simplificada.jpg")
 
 
 ```
@@ -217,7 +235,7 @@ knitr::include_graphics("images-1/02/MPR_simplificada.png")
 
 
 
-```{r utilizacioninterfazauto, class.source='myClass', echo=FALSE, out.width="50px", fig.cap="La utilización de la interfaz de automatización", out.extra='style="float:left; background-color: #f5f5f5; padding-right:1em"'}
+```{r utilizacioninterfazauto, class.source='myClass', echo=FALSE, out.width="50px", fig.cap="La utilización de la interfaz de automatización", out.extra='style="float:left; background-color: #fff; padding-right:1em"'}
 knitr::include_graphics("images-1/important-icon.svg")
 # htmltools::HTML(fn('Nombre del recuadro desde DIV...'))
 ```
@@ -256,6 +274,10 @@ La interfaz permite al usuario:
 ### Módulo IV: Entrenamiento del modelo  {#moduloIVEntrenamientoModelo .unnumbered}
 
 Este módulo tiene como propósito entrenar el modelo predictivo para actualizar sus valores y posteriormente aplicarlos a la predicción que se realiza sobre el universo de CT enriquecido con indicadores coyunturales. A tal fin, en este módulo se realiza la explotación histórica de todas las fuentes de información.
+
+```{r entrenamientoModelo, echo=FALSE, out.width="100%", fig.cap="Entrenamiento del modelo"}
+knitr::include_graphics("images-1/02/entrenamientoModelo.jpg")
+```
 
 **A diferencia del módulo de actualización de indicadores que explota el último periodo de referencia disponible para cada fuente de información, en este módulo se explotan todos los periodos de referencia disponibles para todas las mismas fuentes de información, incorporando, además, los resultados de todas las inspecciones realizadas a la fecha.** El SIDIL contempla que la explotación histórica de todos los indicadores laborales se realice desde 2012 en adelante, siempre que esté disponible la fuente de información. En concreto, dada la información disponible, estos son los periodos temporales cubiertos por fuente de información:
 

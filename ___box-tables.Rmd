@@ -38,7 +38,7 @@ In hac habitasse platea dictumst. In ac dolor at tellus cursus vehicula nec non 
 
 Maecenas ut condimentum orci, ac volutpat est. Phasellus pretium, urna sit amet scelerisque congue, ipsum mauris vulputate nunc, rutrum commodo velit enim ac lectus. Morbi eget urna eu diam tempus posuere. Proin non eros sit amet quam scelerisque imperdiet. Praesent hendrerit et purus eu mattis. Praesent rhoncus diam quis nisl dignissim, vel consequat metus dapibus. Quisque eu tincidunt urna. In hac habitasse platea dictumst. Donec euismod tristique dui vel dapibus. Curabitur nec egestas dui, vitae sagittis magna. Maecenas rhoncus massa vitae elit ultrices pellentesque. Phasellus consequat nisl nec turpis ornare dictum. Mauris scelerisque hendrerit commodo. Etiam placerat urna id nisl volutpat congue. Suspendisse vitae sapien sagittis, sagittis elit in, feugiat nunc.
 
-```{r testBox, class.source='myClass', echo=FALSE, out.width="50px", fig.cap="Titulo dado en fig.cap donde va icono", out.extra='style="float:left; background-color: #f5f5f5; padding-right:1em"'}
+```{r testBox, class.source='myClass', echo=FALSE, out.width="50px", fig.cap="Titulo dado en fig.cap donde va icono", out.extra='style="float:left; background-color: #fff; padding-right:1em"'}
 knitr::include_graphics("images-1/important-icon.svg")
 # htmltools::HTML(fn('Nombre del recuadro desde DIV...'))
 ```

@@ -109,8 +109,8 @@ Para abordar el reto de seleccionar empresas de alto riesgo mediante el uso de l
 Como muestra la ilustración \@ref(fig:esquemaPPTSalafranca), el SIDIL parte del acceso y explotación de diferentes fuentes de información, propiedad de la STPS pero también de otras instituciones de relevancia en materia laboral. A través de un proceso de minería de datos, se genera una matriz de predicción de riesgos. Ésta es explotada por una interfaz de consulta que reduce el universo de CT a un subconjunto de CT que cumplen con ciertos criterios de filtrado y análisis. Así, SIDIL permite la realización de operativos inteligentes que reflejan las prioridades de inspección.
 
 
-```{r esquemaPPTSalafranca,echo=FALSE, out.width="50%", fig.cap="Presentación esquematizada de la solución"}
-knitr::include_graphics("images-1/01/esquemaPPTSalafranca.jpg")
+```{r esquemaPPTSalafranca,echo=FALSE, out.width="100%", fig.cap="Presentación esquematizada de la solución"}
+knitr::include_graphics("images-1/01/esquema-solucion.jpg")
 ```
 
 [**LA IMAGEN ANTERIOR REEMPLAZARÍA ESTA OTRA** ][.mark]

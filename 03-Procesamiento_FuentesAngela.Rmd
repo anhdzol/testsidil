@@ -70,7 +70,7 @@ Hay diversos desafíos que se pudieran presentar para la inclusión de bases de 
 
 5)  Ajustes al cálculo de indicadores: Hay que distinguir la necesidad de la inclusión de *nuevos* indicadores que se especificó en el punto y recuadro anterior. Un cambio en la metodología de cálculo de un indicador no requiere mayor modificación que resguardar el script del cálculo del indicador con una fecha de versión posterior a la más reciente hasta entonces. Así el secuenciador de la explotación de la fuente de información detectará que esta es la nueva versión que se debe tomar. Por supuesto, el cálculo debe ser replicado hacia atrás en el tiempo para asegurar la consistencia temporal de la medición de indicadores.
 
-```{r IndicadoresNuevos1, class.source='myClass', echo=FALSE, out.width="50px", fig.cap="Procedimiento para la inclusión de nuevos indicadores", out.extra='style="float:left; background-color: #f5f5f5; padding-right:1em"'}
+```{r IndicadoresNuevos1, class.source='myClass', echo=FALSE, out.width="50px", fig.cap="Procedimiento para la inclusión de nuevos indicadores", out.extra='style="float:left; background-color: #fff; padding-right:1em"'}
 knitr::include_graphics("images-1/important-icon.svg")
 ```
 
@@ -96,7 +96,7 @@ Para calcular un nuevo indicador es necesario seguir el siguiente procedimiento,
 ```
 
 
-```{r nuevosypreexistentes1, class.source='myClass', echo=FALSE, out.width="50px", fig.cap="Distinción entre incorporación de nuevos indicadores y actualización de método de cálculo de indicadores preexistentes", out.extra='style="float:left; background-color: #f5f5f5; padding-right:1em"'}
+```{r nuevosypreexistentes1, class.source='myClass', echo=FALSE, out.width="50px", fig.cap="Distinción entre incorporación de nuevos indicadores y actualización de método de cálculo de indicadores preexistentes", out.extra='style="float:left; background-color: #fff; padding-right:1em"'}
 knitr::include_graphics("images-1/important-icon.svg")
 ```
 
@@ -177,7 +177,7 @@ ggplotly(p, tooltip="text") # from ggplot to plotly
 
 ```
 
-```{r modificacionagregacion1, class.source='myClass', echo=FALSE, out.width="50px", fig.cap="Modificaciones a los niveles de agregación", out.extra='style="float:left; background-color: #f5f5f5; padding-right:1em"'}
+```{r modificacionagregacion1, class.source='myClass', echo=FALSE, out.width="50px", fig.cap="Modificaciones a los niveles de agregación", out.extra='style="float:left; background-color: #fff; padding-right:1em"'}
 knitr::include_graphics("images-1/important-icon.svg")
 ```
 
@@ -209,7 +209,7 @@ Conforme se profundice la aplicación del SIDIL y se realicen las mejoras planea
 
 Como se observa en la sección de [Estructura y flujos de trabajo](#estructuracarpetas), la estructura de carpetas prevé una carpeta para cada indicador. A su interior, a su vez se incluye una subcarpeta llamada anteriores misma que permite almacenar los outputs de procesos anteriores.
 
-```{r estimacionespuntuales1, class.source='myClass', echo=FALSE, out.width="50px", fig.cap="Organización de las estimaciones puntuales por indicador", out.extra='style="float:left; background-color: #f5f5f5; padding-right:1em"'}
+```{r estimacionespuntuales1, class.source='myClass', echo=FALSE, out.width="50px", fig.cap="Organización de las estimaciones puntuales por indicador", out.extra='style="float:left; background-color: #fff; padding-right:1em"'}
 knitr::include_graphics("images-1/important-icon.svg")
 ```
 
@@ -247,7 +247,7 @@ Esta sección reúne información relevante en dos niveles. Por un lado, se ofre
 
 Todas estas fuentes de información se incorp oran y deberán seguir incorporándose conforme surjan actualizaciones futuras, en un determinado formato, estructura de nombre, ubicación especifica y frecuencia de actualización. Estas características fundamentales serán especificadas en cada una de las subsecciones siguientes.
 
-```{r resguardobases1, class.source='myClass', echo=FALSE, out.width="50px", fig.cap=" Resguardo de las bases originales", out.extra='style="float:left; background-color: #f5f5f5; padding-right:1em"'}
+```{r resguardobases1, class.source='myClass', echo=FALSE, out.width="50px", fig.cap=" Resguardo de las bases originales", out.extra='style="float:left; background-color: #fff; padding-right:1em"'}
 knitr::include_graphics("images-1/important-icon.svg")
 ```
 
@@ -376,6 +376,10 @@ La incorporación de las tablas de registros administrativos que el IMSS compart
 
 Por lo anterior, en ciertos procedimientos específicos, como, por ejemplo, el completado del campo de Clave Única de Registro Poblacional (CURP) a partir de un número de seguridad social (NSS), o el cálculo de ciertos indicadores como el de rotación laboral que requiere la construcción de un panel de mes contra mes, se procesa la información total en un conjunto de fracciones (que toman en consideración la memoria RAM disponible en la computadora). Estas fracciones se escriben temporalmente a disco rígido, se vuelven a leer para conformar una única tabla y luego se eliminan.
 
+```{r detallescriptsENOE, echo=FALSE, out.width="100%", fig.cap="detallescriptsENOE"}
+knitr::include_graphics("images-1/04/detallescriptsENOE.jpg")
+```
+
 ##### Indicadores que se calculan {#indicadoresimss .unnumbered}
 
 A continuación, se detallan los indicadores que se calculan a partir de los inputs que se reflejan en la siguiente subsección. Notar que todos los indicadores, incluidos los que se obtienen con datos del IMSS, antes del entrenamiento del modelo predictivo (Ver [Módulo IV](#procesamientoModIV) ) y de la predicción del mismo (Ver [Módulo II](#moduloii) ) se estandarizan entre 0 y 1 e invierten para expresar que "más es peor", es decir, un mayor percentil de un indicador se asocia a peores condiciones laborales.
@@ -441,7 +445,7 @@ Los tres insumos que se utilizan son los siguientes:
 
         -   El formato original del periodo de referencia que se incluye por parte del IMSS no es compatible con el algoritmo de lectura del SIDIL por lo que es necesario guardarlo con el formato de fecha adecuado, mismo que sigue exactamente el formato que se estipula para los otros dos insumos.
 
-```{r formatoperiodos1, class.source='myClass', echo=FALSE, out.width="50px", fig.cap=" Formato de periodo de referencia de los insumos del IMSS", out.extra='style="float:left; background-color: #f5f5f5; padding-right:1em"'}
+```{r formatoperiodos1, class.source='myClass', echo=FALSE, out.width="50px", fig.cap=" Formato de periodo de referencia de los insumos del IMSS", out.extra='style="float:left; background-color: #fff; padding-right:1em"'}
 knitr::include_graphics("images-1/important-icon.svg")
 ```
 
@@ -486,7 +490,7 @@ Para la generación de los seis indicadores provenientes del IMSS se cuenta con 
 
 -   El parámetro *val_referencia*, así como se describe en la sección anterior de la ENOE\*
 
-```{r parametrosimss1, class.source='myClass', echo=FALSE, out.width="50px", fig.cap="Configuración de parámetros del script secuenciador del IMSS", out.extra='style="float:left; background-color: #f5f5f5; padding-right:1em"'}
+```{r parametrosimss1, class.source='myClass', echo=FALSE, out.width="50px", fig.cap="Configuración de parámetros del script secuenciador del IMSS", out.extra='style="float:left; background-color: #fff; padding-right:1em"'}
 knitr::include_graphics("images-1/important-icon.svg")
 ```
 
@@ -712,6 +716,10 @@ Esta nueva tabla fue nombrada "TABLA_C3_CENSO2019.csv", cuenta con 30 campos y 3
 #     scroll_box(width = "100%", height = "600px")
 ```
 
+```{r detallescriptsIMSS, echo=FALSE, out.width="100%", fig.cap="detallescriptsIMSS"}
+knitr::include_graphics("images-1/04/detallescriptsIMSS.jpg")
+```
+
 ##### Aplicación de scripts {#aplicacioncenso .unnumbered}
 
 El cálculo de los indicadores del censo solo requiere un script "1_secuenciador_CENSO_v.R". Este script carga la tabla de datos transformada como único insumo.
@@ -735,6 +743,10 @@ La siguiente tabla muestra el detalle de este script:
 # kable(tabla1, caption = "Procesos para la actualización de indicadores con base en el censo económico") %>%
 #   kable_styling(bootstrap_options = c("striped", "hover"), full_width = T, font_size = 14) %>% 
 #       scroll_box(width = "100%", height = "500px")
+```
+
+```{r detallescriptsCENSO, echo=FALSE, out.width="100%", fig.cap="detallescriptsCENSO"}
+knitr::include_graphics("images-1/04/detallescriptsCENSO.jpg")
 ```
 
 ##### Posibles problemas específicos en la aplicación de scripts {#problemascenso .unnumbered}
@@ -1516,7 +1528,7 @@ Para la generación de los seis indicadores provenientes del IMSS aquí nuevamen
 
 -   *El parámetro val_referencia:* queda sin efecto si coyuntural es FALSE
 
-```{r parametrosimsshist, class.source='myClass', echo=FALSE, out.width="50px", fig.cap="Configuración de parámetros del script secuenciador del IMSS para el cálculo histórico", out.extra='style="float:left; background-color: #f5f5f5; padding-right:1em"'}
+```{r parametrosimsshist, class.source='myClass', echo=FALSE, out.width="50px", fig.cap="Configuración de parámetros del script secuenciador del IMSS para el cálculo histórico", out.extra='style="float:left; background-color: #fff; padding-right:1em"'}
 knitr::include_graphics("images-1/important-icon.svg")
 ```
 
@@ -1637,7 +1649,7 @@ Es resultado o output principal es una tabla en formato .Rds con tantas número 
 
 **Una vez realizado el matching histórico se puede generar el entrenamiento del modelo predictivo y su respectiva evaluación**. El modelo genera una probabilidad de cometer violaciones laborales en cada una de las submaterias seleccionadas, así como una predicción conjunta de riesgo de cometer alguna violación en cualquier submateria, esto para cada uno de los centros de trabajo. Las probabilidades van de 0 a 1 para ser interpretadas en términos porcentuales. El modelo predeterminado que se entrena es un modelo Random Forest, aunque también se deja configurada la opción de que se entrene un modelo Tabnet.
 
-```{r modelos, class.source='myClass', echo=FALSE, out.width="50px", fig.cap="Modelos Random Forest y Tabnet", out.extra='style="float:left; background-color: #f5f5f5; padding-right:1em"'}
+```{r modelos, class.source='myClass', echo=FALSE, out.width="50px", fig.cap="Modelos Random Forest y Tabnet", out.extra='style="float:left; background-color: #fff; padding-right:1em"'}
 knitr::include_graphics("images-1/important-icon.svg")
 ```
 
@@ -1752,7 +1764,7 @@ La Parte 4 está dividida en dos scripts: el script de entrenamiento y el script
 
 Los posibles problemas con la aplicación del script son los relacionados con los insumos. Debe estar disponible el insumo resultado del matching histórico, los catálogos y el complemento "GraphViz" para la generación del reporte Shapley en HTML. Asimismo, deben estar instaladas todas las librerías de Python necesarias para el funcionamiento del script (las cuales se encuentran en el archivo *requirements.txt*).
 
-```{r nuevassubmaterias, class.source='myClass', echo=FALSE, out.width="50px", fig.cap="Inclusión de submaterias para la predicción", out.extra='style="float:left; background-color: #f5f5f5; padding-right:1em"'}
+```{r nuevassubmaterias, class.source='myClass', echo=FALSE, out.width="50px", fig.cap="Inclusión de submaterias para la predicción", out.extra='style="float:left; background-color: #fff; padding-right:1em"'}
 knitr::include_graphics("images-1/important-icon.svg")
 ```
 
@@ -1793,7 +1805,7 @@ Adicionalmente, el script de evaluación genera los siguientes outputs:
 
 -   Si se entrenan los dos modelos, tablas comparativas entre los resultados de modelo Random Forest y de modelo Tabnet.
 
-```{r shap, class.source='myClass', echo=FALSE, out.width="50px", fig.cap="Reporte Shapley", out.extra='style="float:left; background-color: #f5f5f5; padding-right:1em"'}
+```{r shap, class.source='myClass', echo=FALSE, out.width="50px", fig.cap="Reporte Shapley", out.extra='style="float:left; background-color: #fff; padding-right:1em"'}
 knitr::include_graphics("images-1/important-icon.svg")
 ```
 

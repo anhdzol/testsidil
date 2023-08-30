@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Capítulo 6 R, RStudio y Python | SIDIL: Manual del procesamiento y explotación de la información</title>
   <meta name="description" content="Breve descripcion pendiente" />
-  <meta name="generator" content="bookdown 0.34 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.35 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Capítulo 6 R, RStudio y Python | SIDIL: Manual del procesamiento y explotación de la información" />
   <meta property="og:type" content="book" />
@@ -29,7 +29,7 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="presentación-sintética-de-todos-los-scripts.html"/>
+<link rel="prev" href="anexotablascripts.html"/>
 <link rel="next" href="especificaciones-del-servidor.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
@@ -58,10 +58,10 @@
 <script src="libs/crosstalk-1.2.0/js/crosstalk.min.js"></script>
 <link href="libs/plotly-htmlwidgets-css-2.11.1/plotly-htmlwidgets.css" rel="stylesheet" />
 <script src="libs/plotly-main-2.11.1/plotly-latest.min.js"></script>
-<script src="libs/kePrint-0.0.1/kePrint.js"></script>
-<link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
 <link href="libs/tabwid-1.1.3/tabwid.css" rel="stylesheet" />
 <script src="libs/tabwid-1.1.3/tabwid.js"></script>
+<script src="libs/kePrint-0.0.1/kePrint.js"></script>
+<link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
 
 
 <style type="text/css">
@@ -165,8 +165,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="" data-path="estructura-y-flujos-de-trabajo-del-sidil.html"><a href="estructura-y-flujos-de-trabajo-del-sidil.html#moduloIexplicaciongeneral"><i class="fa fa-check"></i>Módulo I: actualización de indicadores</a></li>
 <li class="chapter" data-level="" data-path="estructura-y-flujos-de-trabajo-del-sidil.html"><a href="estructura-y-flujos-de-trabajo-del-sidil.html#moduloIIexplicaciongeneral"><i class="fa fa-check"></i>Módulo II: Consulta al universo de CT, imputación de indicadores y predicción de riesgo</a></li>
-<li class="chapter" data-level="" data-path="estructura-y-flujos-de-trabajo-del-sidil.html"><a href="estructura-y-flujos-de-trabajo-del-sidil.html#moduloIyIIexplicaciongeneral"><i class="fa fa-check"></i>Módulos I y II: operables desde la interfaz de automatización</a></li>
-<li class="chapter" data-level="" data-path="estructura-y-flujos-de-trabajo-del-sidil.html"><a href="estructura-y-flujos-de-trabajo-del-sidil.html#moduloIIIIConsultaMPR"><i class="fa fa-check"></i>Módulo III: Consulta de la MPR para priorización de CT a inspeccionar</a></li>
+<li class="chapter" data-level="" data-path="estructura-y-flujos-de-trabajo-del-sidil.html"><a href="estructura-y-flujos-de-trabajo-del-sidil.html#moduloIIIConsultaMPR"><i class="fa fa-check"></i>Módulo III: Consulta de la MPR para priorización de CT a inspeccionar</a></li>
+<li class="chapter" data-level="" data-path="estructura-y-flujos-de-trabajo-del-sidil.html"><a href="estructura-y-flujos-de-trabajo-del-sidil.html#moduloIVEntrenamientoModelo"><i class="fa fa-check"></i>Módulo IV: Entrenamiento del modelo</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="elementosgenerales.html"><a href="elementosgenerales.html"><i class="fa fa-check"></i><b>3</b> Elementos generales del procesamiento de datos</a>
@@ -230,7 +230,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="4.5.5" data-path="procesamiento.html"><a href="procesamiento.html#procesamientoModIVEntrenamiento"><i class="fa fa-check"></i><b>4.5.5</b> Entrenamiento y evaluación del modelo de predicción</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="5" data-path="presentación-sintética-de-todos-los-scripts.html"><a href="presentación-sintética-de-todos-los-scripts.html"><i class="fa fa-check"></i><b>5</b> Presentación sintética de todos los scripts</a></li>
+<li class="chapter" data-level="5" data-path="anexotablascripts.html"><a href="anexotablascripts.html"><i class="fa fa-check"></i><b>5</b> Presentación sintética de todos los scripts</a></li>
 <li class="chapter" data-level="6" data-path="r-rstudio-y-python.html"><a href="r-rstudio-y-python.html"><i class="fa fa-check"></i><b>6</b> R, RStudio y Python</a>
 <ul>
 <li class="chapter" data-level="6.1" data-path="r-rstudio-y-python.html"><a href="r-rstudio-y-python.html#r-y-rstudio"><i class="fa fa-check"></i><b>6.1</b> R y RStudio</a></li>
@@ -280,7 +280,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>En este anexo se presentan, fundamentalmente, los conceptos y prácticas básicas en la utilización de la interfaz de RStudio. También se presentan algunos aspectos relevantes de Python, pero que si bien requiere tenerse instalado, desde la perspectiva de SIDIL, no requiere ser ejecutado en una interfaz distinta a Rstudio</p>
 <div id="r-y-rstudio" class="section level2 hasAnchor" number="6.1">
 <h2><span class="header-section-number">6.1</span> R y RStudio<a href="r-rstudio-y-python.html#r-y-rstudio" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>La gran mayoría de los algoritmos que constituyen el SIDIL se desarrollaron y mantendrán en el lenguaje R.<a href="#fn13" class="footnote-ref" id="fnref13"><sup>13</sup></a> Esto es independiente de que a través de una interfaz “paraguas” se pudieran automatizar hasta cierto punto la secuencia de los scripts. R es el lenguaje de programación de uso libre desarrollado para el análisis estadístico y gráfico. Afortunadamente existe un ambiente integrado de desarrollo que se llama RStudio (que recientemente cambió su nombre a Posit<a href="#fn14" class="footnote-ref" id="fnref14"><sup>14</sup></a>) y que facilita la programación, compilación y visualización de desarrollos en el lenguaje R. SIDIL prevé que el usuario procese la información con R Studio, y para que este último funcione se requiere tener R instalado. A continuación, se ofrecen detalles sobre las principales características de R y RStudio.</p>
+<p>La gran mayoría de los algoritmos que constituyen el SIDIL se desarrollaron y mantendrán en el lenguaje R.<a href="#fn16" class="footnote-ref" id="fnref16"><sup>16</sup></a> Esto es independiente de que a través de una interfaz “paraguas” se pudieran automatizar hasta cierto punto la secuencia de los scripts. R es el lenguaje de programación de uso libre desarrollado para el análisis estadístico y gráfico. Afortunadamente existe un ambiente integrado de desarrollo que se llama RStudio (que recientemente cambió su nombre a Posit<a href="#fn17" class="footnote-ref" id="fnref17"><sup>17</sup></a>) y que facilita la programación, compilación y visualización de desarrollos en el lenguaje R. SIDIL prevé que el usuario procese la información con R Studio, y para que este último funcione se requiere tener R instalado. A continuación, se ofrecen detalles sobre las principales características de R y RStudio.</p>
 </div>
 <div id="el-entorno-de-rstudio" class="section level2 hasAnchor" number="6.2">
 <h2><span class="header-section-number">6.2</span> El entorno de RStudio<a href="r-rstudio-y-python.html#el-entorno-de-rstudio" class="anchor-section" aria-label="Anchor link to header"></a></h2>
@@ -301,7 +301,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><p>Ubicación de archivos, gráficas, paqueterías, ayuda y visualizador: Esta sección que cuenta con varias pestañas sirve para visualizar distintas herramientas. La primera y la cual es de mayor utilidad para este proyecto es la de ubicación de archivos, en esta se pueden observar las carpetas y archivos que se encuentran en la ruta en la que está alojado el proyecto, es de gran utilidad para monitorear los archivos guardados y generados de ser necesario. Las otras pestañas sirven para visualizar gráficas que generen los scripts, paqueterías cargas, ayuda (online) y otros elementos.</p></li>
 </ol>
 <div class="figure"><span style="display:block;" id="fig:entornoRStudio"></span>
-<img src="images-1/06/RStudio.png" alt="Entorno de RStudio" width="636" />
+<img src="images-1/06/Rstudio.png" alt="Entorno de RStudio"  />
 <p class="caption">
 Recuadro 6.1: Entorno de RStudio
 </p>
@@ -316,13 +316,13 @@ Recuadro 6.1: Entorno de RStudio
 <li><p>Si se abre desde el programa RStudio, primero se debe asegurar que no esté ningún proyecto cargado. En la parte superior derecha (sección II de la pantalla), se puede identificar el proyecto en el que se está trabajando. En la ilustración <a href="r-rstudio-y-python.html#fig:RStudioProyectoVacio">6.2</a> se observa que en el ambiente no se muestra ningún proyecto. Al hacer clic sobre la flecha señalando hacia abajo se despliega el menú que permite seleccionar “Open Project…” (ilustración <a href="r-rstudio-y-python.html#fig:RStudioOpenProject">6.3</a>) , navegar hasta la ubicación del proyecto <em>SIDIL.Rproj</em> seleccionarlo y abrirlo para.</p></li>
 </ul>
 <div class="figure"><span style="display:block;" id="fig:RStudioProyectoVacio"></span>
-<img src="images-1/06/proyectoVacio.png" alt="Vista del ambiente sin proyecto" width="240" />
+<img src="images-1/06/proyectoVacio.png" alt="Vista del ambiente sin proyecto"  />
 <p class="caption">
 Recuadro 6.2: Vista del ambiente sin proyecto
 </p>
 </div>
 <div class="figure"><span style="display:block;" id="fig:RStudioOpenProject"></span>
-<img src="images-1/06/openproject.png" alt="Vista del ambiente sin proyecto" width="234" />
+<img src="images-1/06/openproject.png" alt="Vista del ambiente sin proyecto"  />
 <p class="caption">
 Recuadro 6.3: Vista del ambiente sin proyecto
 </p>
@@ -333,7 +333,7 @@ Recuadro 6.3: Vista del ambiente sin proyecto
 <div style="border: 1px solid #ddd; padding: 0px; overflow-y: scroll; height:600px; overflow-x: scroll; width:100%; ">
 <table class="table table-striped table-hover" style="font-size: 14px; margin-left: auto; margin-right: auto;">
 <caption style="font-size: initial !important;">
-<span id="tab:unnamed-chunk-35">Tabla 6.1: </span>Principales paqueterías de R utilizadas en el SIDIL
+<span id="tab:unnamed-chunk-36">Tabla 6.1: </span>Principales paqueterías de R utilizadas en el SIDIL
 </caption>
 <thead>
 <tr>
@@ -701,7 +701,7 @@ Diversos elementos de funcionamiento interno.
 </ol></li>
 </ol>
 <div class="figure"><span style="display:block;" id="fig:memoriaRstudio"></span>
-<img src="images-1/06/memoriaR.png" alt="Liberación de memoria en RStudio" width="228" />
+<img src="images-1/06/memoriaR.png" alt="Liberación de memoria en RStudio"  />
 <p class="caption">
 Recuadro 6.4: Liberación de memoria en RStudio
 </p>
@@ -745,9 +745,9 @@ Recuadro 6.4: Liberación de memoria en RStudio
 </div>
 <div class="footnotes">
 <hr />
-<ol start="13">
-<li id="fn13"><p><a href="https://www.r-project.org/about.html" class="uri">https://www.r-project.org/about.html</a><a href="r-rstudio-y-python.html#fnref13" class="footnote-back">↩︎</a></p></li>
-<li id="fn14"><p><a href="https://posit.co/" class="uri">https://posit.co/</a><a href="r-rstudio-y-python.html#fnref14" class="footnote-back">↩︎</a></p></li>
+<ol start="16">
+<li id="fn16"><p><a href="https://www.r-project.org/about.html" class="uri">https://www.r-project.org/about.html</a><a href="r-rstudio-y-python.html#fnref16" class="footnote-back">↩︎</a></p></li>
+<li id="fn17"><p><a href="https://posit.co/" class="uri">https://posit.co/</a><a href="r-rstudio-y-python.html#fnref17" class="footnote-back">↩︎</a></p></li>
 </ol>
 </div>
             </section>
@@ -755,7 +755,7 @@ Recuadro 6.4: Liberación de memoria en RStudio
           </div>
         </div>
       </div>
-<a href="presentación-sintética-de-todos-los-scripts.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="anexotablascripts.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
 <a href="especificaciones-del-servidor.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
