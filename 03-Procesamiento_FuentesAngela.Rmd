@@ -237,11 +237,12 @@ Esta sección reúne información relevante en dos niveles. Por un lado, se ofre
 
 ```{r echo = FALSE, results = 'asis'}
 
-tabla1 <- read_excel("./data/tablas03.xlsx", sheet = "tabla1")
-kable(tabla1, caption = "Resumen de las fuentes de información utilizadas en el SIDIL") %>%
-  kable_styling(bootstrap_options = c("striped", "hover"), full_width = T, font_size = 14) %>%
-    scroll_box(width = "100%", height = "600px") #%>%
-footnote(general = "Los detalles de las fuentes de informacion se presentan en el Modulo II")
+# tabla1 <- read_excel("./data/tablas03.xlsx", sheet = "tabla1")
+# kable(tabla1, caption = "Resumen de las fuentes de información utilizadas en el SIDIL") %>%
+#   kable_styling(bootstrap_options = c("striped", "hover"), full_width = T, font_size = 14) %>%
+#     scroll_box(width = 
+#                  "100%", height = "600px") #%>%
+# footnote(general = "Los detalles de las fuentes de informacion se presentan en el Modulo II")
 ```
 
 Todas estas fuentes de información se incorp oran y deberán seguir incorporándose conforme surjan actualizaciones futuras, en un determinado formato, estructura de nombre, ubicación especifica y frecuencia de actualización. Estas características fundamentales serán especificadas en cada una de las subsecciones siguientes.
@@ -281,10 +282,10 @@ Se sugiere que la actualización de los indicadores de la ENOE se realice con ca
 Con la ENOE se calculan once indicadores, de los cuales para diez la información se encuentra disponible de manera trimestral y uno con frecuencia anual. En la siguiente tabla se muestra el detalle de los indicadores. Notar que todos los indicadores, incluidos los de la ENOE, antes del entrenamiento del modelo predictivo (módulo IV) y de la predicción del mismo (módulo II) se estandarizan entre 0 y 1 e invierten para expresar que "más es peor", es decir, un mayor percentil de un indicador se asocia a peores condiciones laborales:
 
 ```{r echo = FALSE, results = 'asis'}
-tabla1 <- read_excel("./data/tablas03.xlsx", sheet = "tabla2")
-kable(tabla1, caption = "Indicadores calculados con base en la ENOE") %>%
-  kable_styling(bootstrap_options = c("striped", "hover"), full_width = T, font_size = 14) %>%
-    scroll_box(width = "100%", height = "600px")
+# tabla1 <- read_excel("./data/tablas03.xlsx", sheet = "tabla2")
+# kable(tabla1, caption = "Indicadores calculados con base en la ENOE") %>%
+#   kable_styling(bootstrap_options = c("striped", "hover"), full_width = T, font_size = 14) %>%
+#     scroll_box(width = "100%", height = "600px")
 ```
 
 El cálculo de los indicadores se realizará en las 11 agregaciones, las cuales consideran todas las combinaciones de los siguientes niveles: nivel nacional (*geo0*), entidad federativa (*geo2*), tamaño del centro de trabajo (*cat_tamanio*), clasificación industrial SCIAN a dos y tres dígitos (*scian2018_2* y *scian2018_3*, respectivamente).
@@ -337,13 +338,15 @@ En la siguiente tabla se detalla el proceso de ejecución de cada script, incluy
 
 ```{r echo = FALSE, results = 'asis', eval=TRUE}
 
+# 
+# tabla1 <- read_excel("./data/tablas03.xlsx", sheet = "tabla3")
+# 
+# 
+# kable(tabla1, caption = "Procesos para la actualización de indicadores con base en la ENOE") %>% collapse_rows(c(1,2,3),latex_hline = "major", valign = "middle") %>% 
+#   kable_styling(bootstrap_options = c("striped", "hover"), full_width = T, font_size = 14) %>% 
+#      scroll_box(width = "100%", height = "600px") 
 
-tabla1 <- read_excel("./data/tablas03.xlsx", sheet = "tabla3")
-
-
-kable(tabla1, caption = "Procesos para la actualización de indicadores con base en la ENOE") %>% collapse_rows(c(1,2,3),latex_hline = "major", valign = "middle") %>% 
-  kable_styling(bootstrap_options = c("striped", "hover"), full_width = T, font_size = 14) %>% 
-     scroll_box(width = "100%", height = "600px") #%>% 
+#%>% 
   # footnote(number = c("Los mensajes confirmatorios y de error o advertencia se muestran en la consola del RStudio al momento de ejecutar el script secuenciador y quedan registrados en la bitácora al momento de finalizar su ejecució.
   #                     " ,"El mensaje de confirmación referente a la población subordinada y remunerada de la ENOE permite cotejar la información producida por el script con la información oficial del INEGI, para corroborar que se haya generado de manera correcta la base de datos y que se esté utilizando el último insumo de la encuesta.
   #                     ", "El error referente a la no disponibilidad de indicadores surgirá del segundo al cuarto trimestre del año en el indicador “Sindicato” de la ENOE, ya que se calcula de manera anual con el cuestionario ampliado del primer trimestre del año."), threeparttable = TRUE)
@@ -378,10 +381,10 @@ Por lo anterior, en ciertos procedimientos específicos, como, por ejemplo, el c
 A continuación, se detallan los indicadores que se calculan a partir de los inputs que se reflejan en la siguiente subsección. Notar que todos los indicadores, incluidos los que se obtienen con datos del IMSS, antes del entrenamiento del modelo predictivo (Ver [Módulo IV](#procesamientoModIV) ) y de la predicción del mismo (Ver [Módulo II](#moduloii) ) se estandarizan entre 0 y 1 e invierten para expresar que "más es peor", es decir, un mayor percentil de un indicador se asocia a peores condiciones laborales.
 
 ```{r echo = FALSE, results = 'asis'}
-tabla1 <- read_excel("./data/tablas03.xlsx", sheet = "tabla4")
-kable(tabla1, caption = "Indicadores que se calculan con base en los datos del IMSS") %>%
-  kable_styling(bootstrap_options = c("striped", "hover"), full_width = T, font_size = 14) %>%
-    scroll_box(width = "100%", height = "600px")
+# tabla1 <- read_excel("./data/tablas03.xlsx", sheet = "tabla4")
+# kable(tabla1, caption = "Indicadores que se calculan con base en los datos del IMSS") %>%
+#   kable_styling(bootstrap_options = c("striped", "hover"), full_width = T, font_size = 14) %>%
+#     scroll_box(width = "100%", height = "600px")
 ```
 
 Hay algunas diferencias importantes respecto a la ENOE en cuanto a la generación de indicadores:
@@ -691,9 +694,9 @@ No obstante, es importante notar que no siempre se calculan las estimaciones pun
 En la siguiente tabla se muestra el detalle del cálculo de indicadores.
 
 ```{r echo = FALSE, results = 'asis'}
-tabla1 <- read_excel("./data/tablas03.xlsx", sheet = "tabla6")
-kable(tabla1, caption = "Indicadores que se calculan con base en el Censo Económico") %>%
-  kable_styling(bootstrap_options = c("striped", "hover"), full_width = T, font_size = 14)
+# tabla1 <- read_excel("./data/tablas03.xlsx", sheet = "tabla6")
+# kable(tabla1, caption = "Indicadores que se calculan con base en el Censo Económico") %>%
+#   kable_styling(bootstrap_options = c("striped", "hover"), full_width = T, font_size = 14)
 ```
 
 ##### Entradas - Inputs {#inputcenso .unnumbered}
@@ -703,10 +706,10 @@ Para la construcción de los indicadores es necesaria la Tabla 1, Incisos C, D, 
 Esta nueva tabla fue nombrada "TABLA_C3_CENSO2019.csv", cuenta con 30 campos y 31,399 observaciones, cada una de las cuales corresponde a los datos de las tres empresas más grandes por municipio y actividad económica. A continuación, se muestra el detalle de la construcción de este insumo a partir de los documentos originales:
 
 ```{r echo = FALSE, results = 'asis'}
-tabla1 <- read_excel("./data/tablas03.xlsx", sheet = "tabla7")
-kable(tabla1, caption = "Campos que se utilizan para el cálculo de indicadores con base en el Censo Económico") %>%
-  kable_styling(bootstrap_options = c("striped", "hover"), full_width = T, font_size = 14) %>%
-    scroll_box(width = "100%", height = "600px")
+# tabla1 <- read_excel("./data/tablas03.xlsx", sheet = "tabla7")
+# kable(tabla1, caption = "Campos que se utilizan para el cálculo de indicadores con base en el Censo Económico") %>%
+#   kable_styling(bootstrap_options = c("striped", "hover"), full_width = T, font_size = 14) %>%
+#     scroll_box(width = "100%", height = "600px")
 ```
 
 ##### Aplicación de scripts {#aplicacioncenso .unnumbered}
@@ -728,10 +731,10 @@ Finalmente se generan los indicadores subcontratación y concentración de merca
 La siguiente tabla muestra el detalle de este script:
 
 ```{r echo = FALSE, results = 'asis'}
-tabla1 <- read_excel("./data/tablas03.xlsx", sheet = "tabla8")
-kable(tabla1, caption = "Procesos para la actualización de indicadores con base en el censo económico") %>%
-  kable_styling(bootstrap_options = c("striped", "hover"), full_width = T, font_size = 14) %>% 
-      scroll_box(width = "100%", height = "500px")
+# tabla1 <- read_excel("./data/tablas03.xlsx", sheet = "tabla8")
+# kable(tabla1, caption = "Procesos para la actualización de indicadores con base en el censo económico") %>%
+#   kable_styling(bootstrap_options = c("striped", "hover"), full_width = T, font_size = 14) %>% 
+#       scroll_box(width = "100%", height = "500px")
 ```
 
 ##### Posibles problemas específicos en la aplicación de scripts {#problemascenso .unnumbered}
@@ -745,10 +748,10 @@ Todos los outputs del cálculo coyuntural de los indicadores laborales a partir 
 Para cada combinación posible de indicador, periodo de información y fuente de información se genera una sola tabla con el output. Estas tablas se almacenan por separado, e incluyen siempre las dos alusiones temporales: i) el periodo de referencia, y ii) la fecha de cálculo (v). Los outputs se almacenan en formato *.Rds*. Estos outputs tienen, por lo general los campos que se muestran en la siguiente tabla.
 
 ```{r echo = FALSE, results = 'asis'}
-tabla1 <- read_excel("./data/tablas03.xlsx", sheet = "tabla9")
-kable(tabla1, caption = "Campos comunes en los resultados coyunturales del cálculo de indicadores") %>%
-  kable_styling(bootstrap_options = c("striped", "hover"), full_width = T, font_size = 14) %>%
-    scroll_box(width = "100%", height = "600px")
+# tabla1 <- read_excel("./data/tablas03.xlsx", sheet = "tabla9")
+# kable(tabla1, caption = "Campos comunes en los resultados coyunturales del cálculo de indicadores") %>%
+#   kable_styling(bootstrap_options = c("striped", "hover"), full_width = T, font_size = 14) %>%
+#     scroll_box(width = "100%", height = "600px")
 ```
 
 ### Estimaciones puntuales e históricas de indicadores {#procesamientoModIcoyvshist}
@@ -779,11 +782,11 @@ Antes de profundizar en el objeto de esta sección, conviene aprovechar este eje
 
 ```{r echo = FALSE, results = 'asis', eval=TRUE}
 
-tabla1 <- read_excel("./data/tablas03.xlsx", sheet = "tabla10")
-kable(tabla1, caption = "Presentación esquematizada de los indicadores coyunturales en sus diferentes niveles de agregación") %>%
-collapse_rows(c(1,2,3),latex_hline = "major", valign = "middle") %>% 
-  kable_styling(bootstrap_options = c("striped", "hover"), full_width = T, font_size = 14) %>%
-    scroll_box(width = "100%", height = "600px")
+# tabla1 <- read_excel("./data/tablas03.xlsx", sheet = "tabla10")
+# kable(tabla1, caption = "Presentación esquematizada de los indicadores coyunturales en sus diferentes niveles de agregación") %>%
+# collapse_rows(c(1,2,3),latex_hline = "major", valign = "middle") %>% 
+#   kable_styling(bootstrap_options = c("striped", "hover"), full_width = T, font_size = 14) %>%
+#     scroll_box(width = "100%", height = "600px")
 ```
 
 **A partir del análisis de las tablas resultado de los indicadores coyunturales de cada indicador, se pone en evidencia la facilidad con la que podría construirse un compendio histórico de indicadores**. Esto, en realidad, forma parte del módulo IV; pero conviene presentarlo aquí por completitud. Si a la tabla anterior uno la extendiera en el tiempo para incorporar todas las estimaciones realizadas a lo largo de todos los periodos de referencia previos al último, obtendría un resultado como el de la Ilustración 5 -- a continuación -- es decir, el compendio de indicadores calculados de manera consistente a lo largo del tiempo para las diferentes posibles combinaciones de categorías en los diversos niveles de agregación.
@@ -854,12 +857,12 @@ Para actualizar el universo de CT que están disponibles en el DNE, independient
 
 
 ## 20230822 ya no modificar estilo 
-tabla1 <- read_excel("./data/tablas03.xlsx", sheet = "tabla11")
-kable(tabla1, caption = "Procesos para la actualización del universo de CT con base en el DNE") %>%
-  collapse_rows(c(1,2),latex_hline = "major", valign = "middle") %>% 
-  kable_styling(bootstrap_options = c("striped", "hover"), full_width = T, font_size = 14) %>%
-    # scroll_box(width = "100%", height = "600px") %>% 
-   footnote(number = c("Estos mensajes se muestran en la consola del RStudio al momento de ejecutar el script secuenciador y quedan registrados en la bitácora al momento de finalizar su ejecución."), threeparttable = TRUE)
+# tabla1 <- read_excel("./data/tablas03.xlsx", sheet = "tabla11")
+# kable(tabla1, caption = "Procesos para la actualización del universo de CT con base en el DNE") %>%
+#   collapse_rows(c(1,2),latex_hline = "major", valign = "middle") %>% 
+#   kable_styling(bootstrap_options = c("striped", "hover"), full_width = T, font_size = 14) %>%
+#     # scroll_box(width = "100%", height = "600px") %>% 
+#    footnote(number = c("Estos mensajes se muestran en la consola del RStudio al momento de ejecutar el script secuenciador y quedan registrados en la bitácora al momento de finalizar su ejecución."), threeparttable = TRUE)
 ```
 
 ##### Posibles problemas específicos en la aplicación de scripts {#problemasdne .unnumbered}
