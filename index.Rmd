@@ -113,15 +113,9 @@ Como muestra la ilustración \@ref(fig:esquemaPPTSalafranca), el SIDIL parte del
 knitr::include_graphics("images-1/01/esquema-solucion.jpg")
 ```
 
-[**LA IMAGEN ANTERIOR REEMPLAZARÍA ESTA OTRA** ][.mark]
-
-
-![Ilustración BORRABLE: ](images-1/01/Ilustracion1.png){ out.width="50%"}
-
 
 En el esquema anterior se puede observar los componentes básicos de la solución planteada, que tienen que ver con:
 
-* SUGIERO QUITAR: [ ~~La concentración y procesamiento de la información estadística y los estudios especializados que permiten el análisis de las redes y cadenas productivas, del contexto laboral y su caracterización en materia de actividad económica, ocupación, empleo, evolución de los sueldos y salarios, etc.~~]{.mark}
 * La limpieza, enriquecimiento y relacionamiento de información que se pudo integrar en bases de datos para su análisis. Esta información, como ya se mencionó, proviene tanto de fuentes internas como externas, a través de convenios de colaboración.
 * La determinación de los criterios de análisis que buscaron identificar las principales violaciones y que reflejen las prioridades en materia de política pública que deben guiar la inspección del trabajo.
 * El desarrollo de las herramientas que, a partir del establecimiento de los criterios mencionados y su descomposición en indicadores, permitieron llevar a cabo análisis basados en algoritmos de analítica, minería de datos y aprendizaje de máquina.

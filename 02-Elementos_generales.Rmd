@@ -52,13 +52,7 @@ El motivo por el cual el script que lee catálogos y define funciones no está d
 
 **Hay once scripts secuenciadores a lo largo del SIDIL, pues su alcance es específico para un proceso determinado dentro de cada módulo.** El propósito es centralizar la ejecución de diversos scripts, asegurando el procesamiento de la información en el orden adecuado, en pro de la coherencia de la información. El script secuenciador llama al procesamiento de otros scripts sin la necesidad de ejecutar cada uno de ellos individualmente.
 
-**Las ventajas de tener un script secuenciador se encuentran en que reducen la atención de una persona a un menor número de scripts para la actualización de ciertas partes de un módulo.** Además, permite que el "aislamiento" de ciertos procesos en scripts muy específicos mantenga una coherencia, toda vez que estos scripts específicos son ejecutados desde el secuenciador, entre otros. Como se observa en la siguiente ilustración, el script secuenciador puede realizar diferentes procesamientos de manera secuencial, por ejemplo, "llamar y ejecutar" el script de configuración inicial, luego realizar lo mismo para otros scripts propios de la fuente de información, a la vez que va generando procesos con la información generada por estos (este tipo de códigos se identifican en la siguiente imagen con los tres puntos (...)).
-
-Ilustración 4 Presentación genérica de un script secuenciador
-
-```{r scriptsecuenciador,echo=FALSE, fig.cap="Presentación esquematizada del funcionamiento de un script secuenciador"}
-knitr::include_graphics("images-1/02/scriptsecuenciador.png")
-```
+**Las ventajas de tener un script secuenciador se encuentran en que reducen la atención de una persona a un menor número de scripts para la actualización de ciertas partes de un módulo.** Además, permite que el "aislamiento" de ciertos procesos en scripts muy específicos mantenga una coherencia, toda vez que estos scripts específicos son ejecutados desde el secuenciador, entre otros. El script secuenciador puede realizar diferentes procesamientos de manera secuencial, por ejemplo, "llamar y ejecutar" el script de configuración inicial, luego realizar lo mismo para otros scripts propios de la fuente de información, a la vez que va generando procesos con la información generada por estos.
 
 ¿Cuántos scripts secuenciadores existen? El número total asciende a once porque actualmente hay un script secuenciador para la actualización de indicadores de la ENOE, otro para indicadores del IMSS, otro para indicadores del Censo Económico y otro tres para el módulo II, concretamente para consulta al DNE, SIAPI y el matching:
 
@@ -97,7 +91,7 @@ En sentido estricto, un análisis más minucioso de los contenidos de este scrip
 Así, uniendo los conceptos descritos en este y el anterior apartado, se puede presentar la ilustración \@ref(fig:secConfigInicial) en la que se observa cómo un script secuenciador llama al script de configuración inicial, éste a su vez llama al *0_funciones_catalogos* para luego a partir de un script de extracción se lamen los inputs para su transformación, y luego, cuando aplique, los scripts del cálculo de los indicadores, para dar con el output final.
 
 ```{r secConfigInicial,echo=FALSE, fig.cap="Presentación esquematizada de la relación "}
-knitr::include_graphics("images-1/02/sec_config_inicial.png")
+knitr::include_graphics("images-1/02/detallescriptgenerico.png")
 ```
 
 ## Estructura de carpetas y sintaxis de archivos {#estructuracarpetas}

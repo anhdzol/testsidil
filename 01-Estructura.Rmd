@@ -110,9 +110,12 @@ En este módulo se explotan las diversas fuentes de información que sirven como
 Todas las estimaciones puntuales (valores) de los indicadores se calculan para diferentes "niveles de agregación": ***entiéndase por nivel de agregación aquella combinación de campos de tamaño del centro de trabajo, clasificación industrial y ubicación geográfica que caracterizan a cada centro de trabajo.** Hay 18 niveles de agregación según se incorporen estos campos. A mayor combinación de campos y/o especificidad en la utilización de los mismos, mayor es el nivel de agregación y más específica es la estimación puntual. Para más información consultar la sección 4.1.3.1 de este documento.*
 
 
-[@@ idea videocapsula:
+[@@ idea videocapsula: breve tour por el catalogo de indicadores, mostrando como de lo más básico (promedio nacional) llegas a lo más granular: 3_geo5_act3_tam ]{.mark}
 
-breve tour por el catalogo de indicadores, mostrando como de lo más básico (promedio nacional) llegas a lo más granular: 3_geo5_act3_tam ]{.mark}
+
+```{r aprovechamientoNivelesAgregacion,echo=FALSE, out.width="100%", fig.cap="El aprovechamiento de los niveles de agregación en el cálculo de indicadores"}
+knitr::include_graphics("images-1/01/aprovechamientoNivelesagregacion.jpg")
+```
 
 ```{r utilidadestimacionespuntuales, class.source='myClass', echo=FALSE, out.width="50px", fig.cap="El aprovechamiento de los niveles de agregación en el cálculo de indicadores.", out.extra='style="float:left; background-color: #fff; padding-right:1em"'}
 knitr::include_graphics("images-1/important-icon.svg")
@@ -121,20 +124,14 @@ knitr::include_graphics("images-1/important-icon.svg")
 
 
 ```{block, type='rmdcomment', fig.cap="test numeracion block"}
- Sirve dar un ejemplo de la utilidad de calcular las estimaciones puntuales de los indicadores a diferentes niveles de agregación: Para el cálculo de la media de la tasa de prevalencia de asalariados percibiendo hasta 105% del salario mínimo (uno de los indicadores desarrollados) a nivel nacional, el promedio asciende a 12.8% de los puestos asegurados. Esto significa que casi 13% de los asegurados en el IMSS perciben hasta 105% del salario mínimo. Este es el promedio nacional y es el menor nivel de agregación de o especificidad. Pero detrás de este promedio hay una elevada heterogeneidad: tan solo observando el siguiente nivel de agregación que distingue por categoría de tamaño se percibe que los centros de trabajo (CT) de hasta 10 personas aseguradas tienen una prevalencia del 21.7%, mientras que las de 251 o más asegurados se reduce a 0.77%. Si además a los CT de menor tamaño se les distingue por la clasificación industrial a dos dígitos, se estima que aquellas en la categoría industrial SCIAN: 11 (Agricultura, cría y explotación de animales) tienen un promedio de 21.3% pero las SCIAN 21 (minería) un promedio de 16.9%. Este último nivel de agregación ya recupera la información de dos campos (tamaño y clasificación industrial a dos dígitos), pero puede profundizarse aún más incorporando la dimensión geográfica (entidad federativa y municipio) y además llevar a 3 dígitos la clasificación industrial. De esta manera, a mayor incorporación de dimensiones, o mientras más específicas sean éstas más preciso es el dato. A mayor precisión, mayor la posible heterogeneidad en la caracterización de los CT y mayor poder predictivo de los indicadores (sobre este punto se ofrecen más detalles en la sección 6).
+ Sirve dar un ejemplo de la utilidad de calcular las estimaciones puntuales de los indicadores a diferentes niveles de agregación: 
+ 
+ Para el cálculo de la media de la tasa de prevalencia de asalariados percibiendo hasta 105% del salario mínimo (uno de los indicadores desarrollados) a nivel nacional, el promedio asciende a 12.8% de los puestos asegurados. 
+ Esto significa que casi 13% de los asegurados en el IMSS perciben hasta 105% del salario mínimo. Este es el promedio nacional y es el menor nivel de agregación de o especificidad. Pero detrás de este promedio hay una elevada heterogeneidad: tan solo observando el siguiente nivel de agregación que distingue por categoría de tamaño se percibe que los centros de trabajo (CT) de hasta 10 personas aseguradas tienen una prevalencia del 21.7%, mientras que las de 251 o más asegurados se reduce a 0.77%. 
+ Si además a los CT de menor tamaño se les distingue por la clasificación industrial a dos dígitos, se estima que aquellas en la categoría industrial SCIAN: 11 (Agricultura, cría y explotación de animales) tienen un promedio de 21.3% pero las SCIAN 21 (minería) un promedio de 16.9%. Este último nivel de agregación ya recupera la información de dos campos (tamaño y clasificación industrial a dos dígitos), pero puede profundizarse aún más incorporando la dimensión geográfica (entidad federativa y municipio) y además llevar a 3 dígitos la clasificación industrial. 
+ De esta manera, a mayor incorporación de dimensiones, o mientras más específicas sean éstas más preciso es el dato. **A mayor precisión, mayor la posible heterogeneidad en la caracterización de los CT y mayor poder predictivo de los indicadores**.
 ```
 
-```{r MPRcomplementaria, echo=FALSE, fig.cap ="Matriz de predicción de riesgos (ilustración complementaria)"}
-#Nota, los nombre de referencia no pueden tener guion bajo
-
-knitr::include_graphics("images-1/02/MPR_complementaria.jpg")
-
-
-```
-
-```{r aprovechamientoNivelesAgregacion,echo=FALSE, out.width="100%", fig.cap="El aprovechamiento de los niveles de agregación en el cálculo de indicadores"}
-knitr::include_graphics("images-1/01/aprovechamientoNivelesagregacion.jpg")
-```
 
 El cálculo de un determinado indicador se realiza para cada uno de los diferentes niveles de agregación. Esto para permitir que a un CT se le pueda imputar una mejor estimación de riesgo si se conoce con mayor detalle sus características de tamaño, industria y geografía, pero que, en caso de ausencia de alguna de ellas se le atribuya una medida de una agrupación más general. Esto permite aprovechar al máximo la información disponible.
 
@@ -146,7 +143,8 @@ knitr::include_graphics("images-1/important-icon.svg")
 ```
 
 ```{block, type='rmdcomment', fig.cap="test numeracion block"}
-Con lo mencionado sobre el módulo de actualización de indicadores se permite anticipar los elementos más importantes en la estrategia y operacionalización del "matching" o imputación de indicadores laborales al universo de centros de trabajo (que se informa a mayor detalle en el capítulo 4.2.5): el acervo de estimaciones puntuales (por ejemplo la media de acceso a la seguridad social) calculada para toda la combinación posible de tamaño, clasificación industrial y ubicación geográfica, es imputado a los CT a partir de un algoritmo que identifica el nivel de especificación a lo largo de estos tres campos. Es decir, el algoritmo detecta el nivel de agregación de cada uno de los CT y le imputa la estimación puntual más granular o específica posible de acuerdo con la información disponible de cada CT. ¿Cuál es la "más granular o especifica posible"? Es aquella estimación puntual que incorpora la mayor cantidad de campos de tamaño, clasificación industrial y geografía posible. 
+Con lo mencionado sobre el módulo de actualización de indicadores se permite anticipar los elementos más importantes en la estrategia y operacionalización del "matching" o imputación de indicadores laborales al universo de centros de trabajo (que se informa a mayor detalle en el capítulo 4.2.5): 
+  El acervo de estimaciones puntuales (por ejemplo la media de acceso a la seguridad social) calculada para toda la combinación posible de tamaño, clasificación industrial y ubicación geográfica, es imputado a los CT a partir de un algoritmo que identifica el nivel de especificación a lo largo de estos tres campos. Es decir, el algoritmo detecta el nivel de agregación de cada uno de los CT y le imputa la estimación puntual más granular o específica posible de acuerdo con la información disponible de cada CT. ¿Cuál es la "más granular o especifica posible"? Es aquella estimación puntual que incorpora la mayor cantidad de campos de tamaño, clasificación industrial y geografía posible. 
 ```
  
 
@@ -174,6 +172,17 @@ En acuerdo con la DGIET, **se propone que este módulo se actualice cada tres me
 
 **Así, el módulo I constituye la [oferta]{.underline} de estimaciones puntuales de los indicadores del SIDIL**, que posteriormente serán imputados (de manera nominativa o por nivel de agregación, según sea al caso) a los centros de trabajo disponibles en el DNE.
 
+El resultado del mósulo I son diversas tablas en formato .Rds que contienen las estimaciones puntuales de todos los indicadores de todas las fuentes de información, así como la información sobre los niveles de agregación e información complementaria del cálculo. 
+
+```{r MPRcomplementaria, echo=FALSE, fig.cap ="TInformación en las tablas de indicadores calculados en el Módulo I"}
+#Nota, los nombre de referencia no pueden tener guion bajo
+
+knitr::include_graphics("images-1/02/MPR_complementaria.jpg")
+
+
+```
+
+
 ### Módulo II: Consulta al universo de CT, imputación de indicadores y predicción de riesgo {#moduloIIexplicaciongeneral .unnumbered}
 
 En este módulo se consulta el Directorio Nacional de Empresas (DNE) para obtener el universo actualizado de centros de trabajo susceptibles de ser inspeccionados. En esta consulta los campos más importantes (además del identificador único del CT) son el tamaño, la clasificación industrial, el municipio y la entidad federativa del CT, a efectos de posteriormente poder imputarle los indicadores obtenidos del módulo anterior. Del mismo modo se obtienen campos adicionales considerados atributos y que pueden servir para, a través de la interfaz de consulta filtrar el universo de centros de trabajo. Un ejemplo de ello es el campo que indica que el CT forma parte de un mecanismo de autorregulación, como por ejemplo el Programa de Autogestión en Seguridad y Salud en el Trabajo -- un aspecto que se toma como dato del DNE.
@@ -199,10 +208,6 @@ knitr::include_graphics("images-1/important-icon.svg")
 Actualmente el SIDIL consulta al DNE y al SIAPI/SIPAS. Al realizarlo, se encuentra que en el DNE el campo número de trabajadores tiene aproximadamente un 80% de observaciones nulas (sin valor válido). Este campo es enriquecido con el campo que se completa durante en las inspecciones registradas en SIAPI SIPAS. Si es posible enriquecerlo entonces ese campo ya se considera completo y no se realiza la imputación de enriquecimiento con base en el IMSS patronal. Si en cambio no hay un dato derivado de las inspecciones, entonces sí se busca el enriquecimiento con los datos del IMSS. Por supuesto, se reconocen obvias limitaciones derivadas de que en el IMSS se registra únicamente el empleo formal mientras que en las inspecciones se registra todo tipo de trabajadores, estén o no registrados ante el IMSS.
 ```
 
-```{r matchingnominativoagregacion, echo=FALSE, out.width="100%", fig.cap="matchingnominativoagregacion"}
-knitr::include_graphics("images-1/02/matchingnominativoagregacion.jpg")
-```
-
 En resumen, el proceso de imputación o "matching" tiene tres etapas, en dos scripts diferentes:
 
 -   Primero, se busca enriquecer aquellos campos que definen el nivel de agregación al que se le imputarán los indicadores. Esto es, que se complemente un campo vacío del DNE respecto al tamaño, geografía y/o clasificación industrial con la información disponible en las bases del IMSS (siempre y cuando se logre identificar al mismo CT en el DNE y en el IMSS). Esta primera etapa sucede inmediatamente posterior a la consulta del DNE, como parte de dicho script; mientras las siguientes dos etapas suceden en el script de matching coyuntural.
@@ -210,6 +215,10 @@ En resumen, el proceso de imputación o "matching" tiene tres etapas, en dos scr
 -   Segundo, se le imputan indicadores de manera nominativa, cuando aplique y siempre que fuera posible, a través del campo registro patronal, identificar a un CT del DNE en las bases del IMSS. A esto se le llama *imputación nominativa*.
 
 -   Tercero, para todos los CT y todos los indicadores a los que no fue posible realizarle una imputación nominativa, se le imputa un valor de todos los indicadores por nivel de *agregación* según la información disponible de cada CT.
+
+```{r matchingnominativoagregacion, echo=FALSE, out.width="100%", fig.cap="matchingnominativoagregacion"}
+knitr::include_graphics("images-1/02/matchingnominativoagregacion.jpg")
+```
 
 Hasta aquí se obtiene el universo de los CT extraído del DNE y enriquecido con las estimaciones puntuales de todos los indicadores disponibles.
 

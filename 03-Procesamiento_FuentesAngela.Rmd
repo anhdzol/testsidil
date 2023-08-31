@@ -123,23 +123,13 @@ Estas características o dimensiones son:
 
 1.  Su ubicación geográfica, pudiendo especificarse en dos diferentes niveles:
 
-    -   
-
-        i)  a nivel entidad (campo *geo2) y*
-
-    -   
-
-        ii) a nivel municipio/alcaldía (campo *geo5*)
+    i)  a nivel entidad (campo *geo2) y*
+    ii) a nivel municipio/alcaldía (campo *geo5*)
 
 2.  Su actividad principal, siguiendo el Sistema de Clasificación Industrial de América del Norte (SCIAN), y pudiendo especificarse en dos diferentes niveles:
 
-    -   
-
-        i)  SCIAN a dos dígitos (campo *scian2018_2*) y
-
-    -   
-
-        ii) SCIAN a tres dígitos (campo *scian2018_3*)
+    i)  SCIAN a dos dígitos (campo *scian2018_2*) y
+    ii) SCIAN a tres dígitos (campo *scian2018_3*)
 
 3.  El tamaño del centro de trabajo. [^procesamiento_fuentes-1]
 
@@ -189,7 +179,7 @@ La inclusión de nuevas fuentes de información, o cambios sustantivos a las exi
 
 2)  En el script de configuración inicial, ajustar la lectura y definición de los niveles de agregación.
 
-     -   Los niveles de agregación van numerados: agregacion_01, agregacion_02, etc. mismos que se generan como parámetros individuales y luego se agrupan en una lista. Se sugiere no modificar la numeración para que no sea necesario ajustar los scripts de los indicadores que recorren dichos niveles para agrupar las observaciones que cumplan con las categorías incluidas en ellos.
+     -   Los niveles de agregación van numerados: *agregacion_01*, *agregacion_02*, etc. mismos que se generan como parámetros individuales y luego se agrupan en una lista. Se sugiere no modificar la numeración para que no sea necesario ajustar los scripts de los indicadores que recorren dichos niveles para agrupar las observaciones que cumplan con las categorías incluidas en ellos.
 
 3)  Revisar los scripts de matching, tanto el coyuntural como el histórico, toda vez que potencialmente habría más variables.
 
@@ -227,7 +217,7 @@ Pero, en sentido estricto, cuando un usuario final quiere obtener el valor de un
 
 1)  Previo a la estimación puntual de un indicador, el campo scian2018_2 se uniforma a 31 si el campo scian2018_3 comienza con 32 o 33.
 
-2)  Cuando el nivel de agregación que se calcula excluye el scian2018_3 pero incluye el scian2018_2 (por ejemplo, un nivel de agregación "2_geo2_act2") entonces el cálculo de los sectores 31 y 48 en realidad están también incluyendo las observaciones que se clasifican como 32 y 33 ó 49, respectivamente.
+2)  Cuando el nivel de agregación que se calcula excluye el scian2018_3 pero incluye el scian2018_2 (por ejemplo, un nivel de agregación *"2_geo2_act2"*) entonces el cálculo de los sectores 31 y 48 en realidad están también incluyendo las observaciones que se clasifican como 32 y 33 ó 49, respectivamente.
 
 3)  Finalizado el cálculo de los indicadores, se replican los resultados obtenidos para las categorías 31 y 48 para incluir nuevas observaciones (sólo para los niveles de agregación que incluyen scian2018_2 pero no scian2018_3) con los número 32, 33 y 49, respectivamente.
 
@@ -235,14 +225,23 @@ Pero, en sentido estricto, cuando un usuario final quiere obtener el valor de un
 
 Esta sección reúne información relevante en dos niveles. Por un lado, se ofrecen detalles de los indicadores que se calculan para cada una de las fuentes de información. Por otro lado, se informan los procedimientos de cálculo de dichos indicadores y aspectos que requieren mayor cautela. A continuación, primero se presenta el resumen de las otras subsecciones que siguen. Se observa que la gran mayoría de las fuentes información son de carácter administrativo. Las excepciones vienen de la ENOE y del CENSO gestionadas por INEGI.
 
-```{r echo = FALSE, results = 'asis'}
+```{r  echo = FALSE, message=FALSE,warnings=FALSE, results = 'asis'}
 
-# tabla1 <- read_excel("./data/tablas03.xlsx", sheet = "tabla1")
-# kable(tabla1, caption = "Resumen de las fuentes de información utilizadas en el SIDIL") %>%
-#   kable_styling(bootstrap_options = c("striped", "hover"), full_width = T, font_size = 14) %>%
-#     scroll_box(width = 
-#                  "100%", height = "600px") #%>%
-# footnote(general = "Los detalles de las fuentes de informacion se presentan en el Modulo II")
+tabla1 <- read_excel("./data/tablas03.xlsx", sheet = "tabla1")
+
+flextable::flextable(tabla1) %>%
+   flextable::set_caption( caption = "Resumen de las fuentes de informacin utilizadas en el SIDIL", 
+                           style = "Table Caption") %>% 
+  flextable::footnote( i = 1, j = 4,  ref_symbols = "a",
+  value = flextable::as_paragraph("Los detalles de las fuentes de informacion se presentan en el Modulo II")
+) %>% 
+  theme_zebra(odd_body = "#EFEFEF", even_header = "transparent",even_body = "transparent") %>% 
+  color(color = "#666666", part = "all") %>% 
+  flextable::bg(i = 1, bg = "#FFFFFF", part = "header") %>% 
+  flextable::bold(bold = TRUE, part = "header") %>% 
+  flextable::fontsize(size=10,part="all") %>%
+  flextable::autofit()
+
 ```
 
 Todas estas fuentes de información se incorp oran y deberán seguir incorporándose conforme surjan actualizaciones futuras, en un determinado formato, estructura de nombre, ubicación especifica y frecuencia de actualización. Estas características fundamentales serán especificadas en cada una de las subsecciones siguientes.
@@ -265,11 +264,21 @@ El adecuado resguardo de la información original provista por las fuentes de in
 
 La Encuesta Nacional de Ocupación y Empleo (ENOE y ENOE Nueva Edición) brinda información de manera trimestral sobre el mercado laboral mexicano. Esta encuesta es representativa a nivel entidad federativa.
 
-La ENOE cuenta con cinco tablas, de las cuales se utilizan tres para generar 11 indicadores en 11 niveles de agregación. Las tablas son: 1) Tabla con los datos sociodemográficos (SDEM), 2) Tabla de cuestionario de ocupación y empleo I (COE1) y, 3) Tabla de cuestionario de ocupación y empleo II (COE2). El INEGI aplica un cuestionario básico en los trimestres dos, tres y cuatro de cada año, y un cuestionario ampliado en el primer trimestre. El cuestionario ampliado es el que permite a SIDIL estimar una tasa de sindicalización, mismo que no es posible hacer en los trimestres restantes.
+A partir de esta fuente de información se calculan diversos indicadores laborales que servirán para carcterizar a los centros de trabajo. En la siguiente ilustración se detalla el proceso de aplicación de scripts para la generación de indicadores coyunturales de la ENOE. El scrit secuenciador ejecuta los procesos de configuración incial, de limpieza y transformación de insumos originales, y de generación de estimaciones puntuales de cada indicador, para generar, finalmente, los outputs del cálculo de indicadores.
+
+En esta sección se brinda ingormación detallada sobre este proceso.
+
+
+```{r detallescriptsENOE, echo=FALSE, out.width="100%", fig.cap="Aplicación de scripts de la ENOE"}
+knitr::include_graphics("images-1/04/detallescriptsENOE.jpg")
+```
+
 
 ##### Frecuencia de actualización y propuesta de calendarización {#frecuenciaenoe .unnumbered}
 
-Las bases de datos de la encuesta se actualizan de manera trimestral, por lo cual esa será la frecuencia de actualización. Si bien la STPS recibe las bases de la ENOE por parte del INEGI de manera directa y con cierta anticipación de su publicación (y son las bases que utiliza el SIDIL), no es necesario ejecutar la actualización de inmediato, sino que se puede tomar como guía el calendario de publicaciones de INEGI[^procesamiento_fuentes-2], las próximas publicaciones de la ENOE desde la realización de este manual son: segundo trimestre 2023: 28 de agosto de 2023 y tercer trimestre 2023: 27 de noviembre de 2023.
+La ENOE cuenta con cinco tablas, de las cuales se utilizan tres para generar 11 indicadores en 11 niveles de agregación. Las tablas son: 1) Tabla con los datos sociodemográficos (SDEM), 2) Tabla de cuestionario de ocupación y empleo I (COE1) y, 3) Tabla de cuestionario de ocupación y empleo II (COE2). El INEGI aplica un cuestionario básico en los trimestres dos, tres y cuatro de cada año, y un cuestionario ampliado en el primer trimestre. El cuestionario ampliado es el que permite a SIDIL estimar una tasa de sindicalización, mismo que no es posible hacer en los trimestres restantes.
+
+Estas bases de datos de la encuesta se actualizan de manera trimestral, por lo cual esa será la frecuencia de actualización. Si bien la STPS recibe las bases de la ENOE por parte del INEGI de manera directa y con cierta anticipación de su publicación (y son las bases que utiliza el SIDIL), no es necesario ejecutar la actualización de inmediato, sino que se puede tomar como guía el calendario de publicaciones de INEGI[^procesamiento_fuentes-2], las próximas publicaciones de la ENOE desde la realización de este manual son: segundo trimestre 2023: 28 de agosto de 2023 y tercer trimestre 2023: 27 de noviembre de 2023.
 
 [^procesamiento_fuentes-2]: En internet: <https://www.inegi.org.mx/contenidos/saladeprensa/doc/cal_2023.pdf>
 
@@ -281,11 +290,26 @@ Se sugiere que la actualización de los indicadores de la ENOE se realice con ca
 
 Con la ENOE se calculan once indicadores, de los cuales para diez la información se encuentra disponible de manera trimestral y uno con frecuencia anual. En la siguiente tabla se muestra el detalle de los indicadores. Notar que todos los indicadores, incluidos los de la ENOE, antes del entrenamiento del modelo predictivo (módulo IV) y de la predicción del mismo (módulo II) se estandarizan entre 0 y 1 e invierten para expresar que "más es peor", es decir, un mayor percentil de un indicador se asocia a peores condiciones laborales:
 
-```{r echo = FALSE, results = 'asis'}
-# tabla1 <- read_excel("./data/tablas03.xlsx", sheet = "tabla2")
-# kable(tabla1, caption = "Indicadores calculados con base en la ENOE") %>%
-#   kable_styling(bootstrap_options = c("striped", "hover"), full_width = T, font_size = 14) %>%
-#     scroll_box(width = "100%", height = "600px")
+```{r  echo = FALSE, message=FALSE,warnings=FALSE, results = 'asis'}
+
+tabla1 <- read_excel("./data/tablas03.xlsx", sheet = "tabla2")
+
+flextable::flextable(tabla1) %>%
+   flextable::set_caption( caption = "Indicadores calculados con base en la ENOE", 
+                           style = "Table Caption") %>% 
+    flextable::set_table_properties(opts_html = list(
+    scroll = list(
+      height = "900px",
+      freeze_first_column = FALSE
+    )
+  )) %>% 
+  theme_zebra(odd_body = "#EFEFEF", even_header = "transparent",even_body = "transparent") %>% 
+  color(color = "#666666", part = "all") %>% 
+  flextable::bg(i = 1, bg = "#FFFFFF", part = "header") %>% 
+  flextable::bold(bold = TRUE, part = "header") %>% 
+  flextable::fontsize(size=10,part="all") %>%
+  flextable::autofit()
+
 ```
 
 El cálculo de los indicadores se realizará en las 11 agregaciones, las cuales consideran todas las combinaciones de los siguientes niveles: nivel nacional (*geo0*), entidad federativa (*geo2*), tamaño del centro de trabajo (*cat_tamanio*), clasificación industrial SCIAN a dos y tres dígitos (*scian2018_2* y *scian2018_3*, respectivamente).
@@ -296,21 +320,23 @@ Los insumos principales para la generación de los 11 indicadores son las bases 
 
 La estructura del nombre de los archivos puede presentarse de la siguiente manera;
 
--   ENOEN_COE1(trimestre del 1 al 4) T(últimos dos números del año) \_2x.dbf
+-   ENOEN_COE1(trimestre del 1 al 4) T(últimos dos números del año)\_2x.dbf
 
     -   Ejemplo: ENOEN_COE1T222_2x.dbf
+    
 
--   ENOEN_COE2(trimestre del 1 al 4) T(últimos dos números del año) \_2x.dbf
+-   ENOEN_COE2(trimestre del 1 al 4) T(últimos dos números del año)\_2x.dbf
 
     -   Ejemplo: ENOEN_COE2T222_2x.dbf
+    
 
--   ENOEN_SDEM (trimestre del 1 al 4) T(últimos dos números del año) \_2x.dbf
+-   ENOEN_SDEM (trimestre del 1 al 4) T(últimos dos números del año)\_2x.dbf
 
     -   ENOEN_SDEMT222_2x.dbf
 
 (Notar que todas las bases de datos de datos deben estar en formato .dbf)
 
-Aunque la estructura del nombre puede variar, es importante que el nombre contega los siguientes elementos para que sean detectados por el script extractor: nombre del cuestionario (COE1, COE2 o SDEM), un dígito para el trimestre, seguido por una T, seguido por dos dígitos para el año, y finalizar con el forma
+Aunque la estructura del nombre puede variar, es importante que el nombre contega los siguientes elementos para que sean detectados por el script extractor: nombre del cuestionario (COE1, COE2 o SDEM), un dígito para el trimestre, seguido por una T, seguido por dos dígitos para el año, y finalizar con el formato .dbF.
 
 Se utilizan estas bases para seguir los principios de uso mínimo de memoria de las computadoras y de aprovechamiento de los recursos ya disponibles por la Secretaría, por lo que esta estructura se establece siguiendo la estructura real de los archivos al momento de ser entregado este manual. Si esta estructura cambia, es imprescindible que los archivos se guarden con nombres que sigan la estructura anteriormente expuesta en orden de que se puedan leer los archivos y generar los indicadores.
 
@@ -334,23 +360,6 @@ Para la generación de los 11 indicadores de la ENOE se cuenta con tres tipos de
 
 [^procesamiento_fuentes-3]: Se homologan los nombres de las variables a las que utiliza el SIDIL dado que los nombres cambian según si se trata de un cuestionario ampliado (primeros trimestres del año) o no (el resto de trimestres del año
 
-En la siguiente tabla se detalla el proceso de ejecución de cada script, incluyendo el tipo de ejecución (manual por un usuario o automatizada), outputs (resultados que generan cada uno de los scripts), mensajes confirmatorios esperados, los cuales indican que el proceso se ejecutó de manera correcta y los outputs o resultados son los esperados, y posibles mensajes de error.
-
-```{r echo = FALSE, results = 'asis', eval=TRUE}
-
-# 
-# tabla1 <- read_excel("./data/tablas03.xlsx", sheet = "tabla3")
-# 
-# 
-# kable(tabla1, caption = "Procesos para la actualización de indicadores con base en la ENOE") %>% collapse_rows(c(1,2,3),latex_hline = "major", valign = "middle") %>% 
-#   kable_styling(bootstrap_options = c("striped", "hover"), full_width = T, font_size = 14) %>% 
-#      scroll_box(width = "100%", height = "600px") 
-
-#%>% 
-  # footnote(number = c("Los mensajes confirmatorios y de error o advertencia se muestran en la consola del RStudio al momento de ejecutar el script secuenciador y quedan registrados en la bitácora al momento de finalizar su ejecució.
-  #                     " ,"El mensaje de confirmación referente a la población subordinada y remunerada de la ENOE permite cotejar la información producida por el script con la información oficial del INEGI, para corroborar que se haya generado de manera correcta la base de datos y que se esté utilizando el último insumo de la encuesta.
-  #                     ", "El error referente a la no disponibilidad de indicadores surgirá del segundo al cuarto trimestre del año en el indicador “Sindicato” de la ENOE, ya que se calcula de manera anual con el cuestionario ampliado del primer trimestre del año."), threeparttable = TRUE)
-```
 
 ##### Salidas - Outputs {#outputenoe .unnumbered}
 
@@ -376,19 +385,31 @@ La incorporación de las tablas de registros administrativos que el IMSS compart
 
 Por lo anterior, en ciertos procedimientos específicos, como, por ejemplo, el completado del campo de Clave Única de Registro Poblacional (CURP) a partir de un número de seguridad social (NSS), o el cálculo de ciertos indicadores como el de rotación laboral que requiere la construcción de un panel de mes contra mes, se procesa la información total en un conjunto de fracciones (que toman en consideración la memoria RAM disponible en la computadora). Estas fracciones se escriben temporalmente a disco rígido, se vuelven a leer para conformar una única tabla y luego se eliminan.
 
-```{r detallescriptsENOE, echo=FALSE, out.width="100%", fig.cap="detallescriptsENOE"}
-knitr::include_graphics("images-1/04/detallescriptsENOE.jpg")
+Estos y otros procesos relativos a la fuente de información del IMSS del módulo I se generan como lo muestra la siguiente ilustración. Desde el script secuenciador, pasando por los parámetros de configuración, la extracción y transformación de los insumos origanles, la generación de estimaciones puntuales nominativas y por nivel de agregación, hasta llegar a la generación de las tablas finales que resguardan los indicadores calculados. 
+
+```{r detallescriptsIMSS, echo=FALSE, out.width="100%", fig.cap="Aplicación de scripts del IMSS"}
+knitr::include_graphics("images-1/04/detallescriptsIMSS.jpg")
 ```
+
 
 ##### Indicadores que se calculan {#indicadoresimss .unnumbered}
 
 A continuación, se detallan los indicadores que se calculan a partir de los inputs que se reflejan en la siguiente subsección. Notar que todos los indicadores, incluidos los que se obtienen con datos del IMSS, antes del entrenamiento del modelo predictivo (Ver [Módulo IV](#procesamientoModIV) ) y de la predicción del mismo (Ver [Módulo II](#moduloii) ) se estandarizan entre 0 y 1 e invierten para expresar que "más es peor", es decir, un mayor percentil de un indicador se asocia a peores condiciones laborales.
 
-```{r echo = FALSE, results = 'asis'}
-# tabla1 <- read_excel("./data/tablas03.xlsx", sheet = "tabla4")
-# kable(tabla1, caption = "Indicadores que se calculan con base en los datos del IMSS") %>%
-#   kable_styling(bootstrap_options = c("striped", "hover"), full_width = T, font_size = 14) %>%
-#     scroll_box(width = "100%", height = "600px")
+```{r  echo = FALSE, message=FALSE,warnings=FALSE, results = 'asis'}
+tabla1 <- read_excel("./data/tablas03.xlsx", sheet = "tabla4") 
+
+flextable::flextable(tabla1) %>%
+   flextable::set_caption( caption = "Indicadores que se calculan con base en los datos del IMSS", 
+                  style = "Table Caption")%>% 
+  theme_zebra(odd_body = "#EFEFEF", even_header = "transparent",even_body = "transparent") %>% 
+  color(color = "#666666", part = "all") %>% 
+  flextable::bg(i = 1, bg = "#FFFFFF", part = "header") %>% 
+  flextable::bold(bold = TRUE, part = "header") %>% 
+  flextable::fontsize(size=10,part="all") %>%
+  flextable::autofit()
+
+
 ```
 
 Hay algunas diferencias importantes respecto a la ENOE en cuanto a la generación de indicadores:
@@ -589,7 +610,7 @@ knitr::include_graphics("images-1/important-icon.svg")
 
 -   "Limpia" la información en cuanto a
 
-    -   Completar los campos de CURP dado un mismo número de seguridad \> social.
+    -   Completar los campos de CURP dado un mismo número de seguridad social.
 
 -   Genera campos de interés:
 
@@ -621,57 +642,6 @@ knitr::include_graphics("images-1/important-icon.svg")
 
 Los tres tipos de scripts tienen en común que lidian con importantes volúmenes de datos, incluso a pesar de que, por definición, el script EST procura reducir las dimensiones cuando fuera oportuno. Para evitar que el usuario perciba que el sistema dejó de funcionar o quedó sin operar, el número de mensajes que se despliegan en consola es relativamente mayor al que se presenta en los scripts de la ENOE. En particular, en el script EST se reporta un porcentaje de avance conforme se avanza en el procesamiento por fracciones de los insumos de más de un millón de registros patronales y más de veinte millones de registros de empleos asegurados.
 
-En la siguiente tabla se detalla el proceso de ejecución de cada script, incluyendo el tipo de ejecución (manual por un usuario o automatizada), outputs (resultados que generan cada uno de los scripts), mensajes confirmatorios esperados, los cuales indican que el proceso se ejecutó de manera correcta y los outputs o resultados son los esperados, y posibles mensajes de error.
-
-
-```{r  echo = FALSE, message=FALSE,warnings=FALSE, results = 'asis'}
-
-
-merge_custom <- function(ft, x, columns){
-  z <- rle(x)
-  rows_at <- cumsum(z$lengths) - z$lengths + 1
-
-  for(i in seq_along(rows_at)){
-    for(j in columns)
-      ft <- flextable::merge_at(x = ft, i = seq( rows_at[i], rows_at[i] + z$lengths[i] - 1), j = j)
-  }
-
-  ft
-}
-
-tabla1 <- read_excel("./data/tablas03.xlsx", sheet = "tabla5") %>% janitor::clean_names()
-flextable::flextable(tabla1) %>%
-  merge_custom(x = tabla1$ejecucion_del_usuario, columns=1:3) %>%
-  flextable::theme_box() %>% 
-   flextable::set_caption( caption = "yyyyyy Procesos para la actualización de indicadores con base en los datos del IMSS", 
-                  style = "Table Caption")%>% 
-  flextable::footnote( i = 1, j = 4,  ref_symbols = "a",
-  value = flextable::as_paragraph("Estos mensajes se muestran en la consola del RStudio al momento de ejecutar el script secuenciador y quedan registrados en la bitácora al momento de finalizar su ejecución.")
-) %>% 
-  flextable::bg(i = 1, bg = "#FFFFFF", part = "header") %>% 
-  flextable::set_table_properties(opts_html = list(
-    scroll = list(
-      height = "500px",
-      freeze_first_column = FALSE
-    )
-  )) %>%
-  flextable::fontsize(size=10,part="all") %>% 
-  flextable::autofit() 
-
-```
-
-
-
-```{r echo = FALSE, results = 'asis', eval=FALSE}
-## ESTA TABLA FUE REEMPLAZADA
-
-# tabla1 <- read_excel("./data/tablas03.xlsx", sheet = "tabla5")
-# kable(tabla1, caption = "yyyyyy Procesos para la actualización de indicadores con base en los datos del IMSS") %>% 
-#   kable_styling(bootstrap_options = c("striped", "hover"), full_width = T, font_size = 14) %>%
-#     scroll_box(width = "100%", height = "600px") %>%
-#   footnote(number = c("Estos mensajes se muestran en la consola del RStudio al momento de ejecutar el script secuenciador y quedan registrados en la bitácora al momento de finalizar su ejecución."), threeparttable = TRUE)%>%
-#   kableExtra::collapse_rows(c(1,2,3))#,latex_hline = "major", valign = "middle") 
-```
 
 ##### Salidas - Outputs {#outputimss .unnumbered}
 
@@ -679,9 +649,18 @@ Los outputs o resultados esperados finales de la aplicación de los scripts del 
 
 Estas estimaciones puntuales coyunturales serán el insumo del *matching* coyuntural, y serán imputadas a los centros de trabajo según el nivel de agregación correspondiente a la información disponible de cada centro de trabajo.
 
+
 #### El Censo económico {#procesamientoModICenso}
 
 El Censo Económico brinda información sobre los establecimientos productores de bienes, comercializadores y prestadores de servicios de manera quinquenal. Dado que se trata de un censo, la información de las unidades económicas cuenta con gran especificidad geográfica, sectorial y temática.
+
+En la ilustración a continuación se refleja elproceso de aplicación del script del Censo Económico 2019 para la generación de indicadores coyunturales. A diferencia de otras fuentes de información, este script secuenciador contiene en sí el cálculo de indicadores, por lo que únicamente llama a los scripts de configuración, generando así, finalmente, las tablas resultado con los indicadores calculados. 
+
+
+```{r detallescenso, echo=FALSE, out.width="100%", fig.cap="Aplicación de scripts del Censo Económico 2019"}
+knitr::include_graphics("images-1/04/detallescriptsCENSO.jpg")
+```
+
 
 ##### Frecuencia de actualización y propuesta de calendarización {#frecuenciacenso .unnumbered}
 
@@ -697,10 +676,20 @@ No obstante, es importante notar que no siempre se calculan las estimaciones pun
 
 En la siguiente tabla se muestra el detalle del cálculo de indicadores.
 
-```{r echo = FALSE, results = 'asis'}
-# tabla1 <- read_excel("./data/tablas03.xlsx", sheet = "tabla6")
-# kable(tabla1, caption = "Indicadores que se calculan con base en el Censo Económico") %>%
-#   kable_styling(bootstrap_options = c("striped", "hover"), full_width = T, font_size = 14)
+```{r  echo = FALSE, message=FALSE,warnings=FALSE, results = 'asis'}
+
+tabla1 <- read_excel("./data/tablas03.xlsx", sheet = "tabla6") 
+
+flextable::flextable(tabla1) %>%
+   flextable::set_caption( caption = "Indicadores que se calculan con base en el Censo Economico", style = "Table Caption")%>% 
+  theme_zebra(odd_body = "#EFEFEF", even_header = "transparent",even_body = "transparent") %>% 
+  color(color = "#666666", part = "all") %>% 
+  flextable::bg(i = 1, bg = "#FFFFFF", part = "header") %>% 
+  flextable::bold(bold = TRUE, part = "header") %>% 
+  flextable::fontsize(size=10,part="all") %>%
+  flextable::autofit()
+
+
 ```
 
 ##### Entradas - Inputs {#inputcenso .unnumbered}
@@ -709,15 +698,19 @@ Para la construcción de los indicadores es necesaria la Tabla 1, Incisos C, D, 
 
 Esta nueva tabla fue nombrada "TABLA_C3_CENSO2019.csv", cuenta con 30 campos y 31,399 observaciones, cada una de las cuales corresponde a los datos de las tres empresas más grandes por municipio y actividad económica. A continuación, se muestra el detalle de la construcción de este insumo a partir de los documentos originales:
 
-```{r echo = FALSE, results = 'asis'}
-# tabla1 <- read_excel("./data/tablas03.xlsx", sheet = "tabla7")
-# kable(tabla1, caption = "Campos que se utilizan para el cálculo de indicadores con base en el Censo Económico") %>%
-#   kable_styling(bootstrap_options = c("striped", "hover"), full_width = T, font_size = 14) %>%
-#     scroll_box(width = "100%", height = "600px")
-```
+```{r  echo = FALSE, message=FALSE,warnings=FALSE, results = 'asis'}
 
-```{r detallescriptsIMSS, echo=FALSE, out.width="100%", fig.cap="detallescriptsIMSS"}
-knitr::include_graphics("images-1/04/detallescriptsIMSS.jpg")
+tabla1 <- read_excel("./data/tablas03.xlsx", sheet = "tabla7") 
+
+flextable::flextable(tabla1) %>%
+   flextable::set_caption( caption = "Campos que se utilizan para el calculo de indicadores con base en el Censo Economico", style = "Table Caption")%>% 
+  theme_zebra(odd_body = "#EFEFEF", even_header = "transparent",even_body = "transparent") %>% 
+  color(color = "#666666", part = "all") %>% 
+  flextable::bg(i = 1, bg = "#FFFFFF", part = "header") %>% 
+  flextable::bold(bold = TRUE, part = "header") %>% 
+  flextable::fontsize(size=10,part="all") %>%
+  flextable::autofit()
+
 ```
 
 ##### Aplicación de scripts {#aplicacioncenso .unnumbered}
@@ -736,39 +729,32 @@ $\frac{\left( \frac{ct3_{po} \times totalocupados}{100} \right)}{3}$
 
 Finalmente se generan los indicadores subcontratación y concentración de mercado tomando las variables que vienen de la fuente de información original en términos porcentuales. Para homologar los indicadores a la escala de 0 a 1 de otros indicadores generados en el SIDIL, se divide la variable original entre 100.
 
-La siguiente tabla muestra el detalle de este script:
+Es importante resaltar que si se desean actualizar los indicadores con una versión posterior al Censo Económico 2019 se debe crear esta misma tabla con un insumo igual al proporcionado por el INEGI a la STPS, de otra manera el script secuenciador no identificará los insumos para la construcción de indicadores.
 
-```{r echo = FALSE, results = 'asis'}
-# tabla1 <- read_excel("./data/tablas03.xlsx", sheet = "tabla8")
-# kable(tabla1, caption = "Procesos para la actualización de indicadores con base en el censo económico") %>%
-#   kable_styling(bootstrap_options = c("striped", "hover"), full_width = T, font_size = 14) %>% 
-#       scroll_box(width = "100%", height = "500px")
-```
 
-```{r detallescriptsCENSO, echo=FALSE, out.width="100%", fig.cap="detallescriptsCENSO"}
-knitr::include_graphics("images-1/04/detallescriptsCENSO.jpg")
-```
+### Productos resultado de la ejecución de actividades del Módulo I: Las tablas de estimaciones puntuales de los indicadores {#outputtodos .unnumbered}
 
-##### Posibles problemas específicos en la aplicación de scripts {#problemascenso .unnumbered}
-
-El principal problema que puede surgir para la generación de los indicadores del Censo Económico es que no se cuenta con la tabla transformada que sirve de insumo principal para el cálculo correspondiente. Como se mencionó en secciones anteriores, si se desean actualizar los indicadores con una versión posterior al Censo Económico 2019 se debe crear esta misma tabla con un insumo igual al proporcionado por el INEGI a la STPS.
-
-##### Salidas - Outputs productos resultado de la ejecución de actividades {#outputcenso .unnumbered}
+El resultado de realizar las estimaciones puntuales de los diversos indicadores a partir de las diferentes fuentes de información es en realidad un *conjunto de tablas* que se almacenan en la carpeta *3_resultados/coyuntura/...* en las respectivas subcarpetas de cada fuente de información e indicador correspondiente.
 
 Todos los outputs del cálculo coyuntural de los indicadores laborales a partir de las fuentes de información mencionadas hasta aquí, guarda prácticamente la misma estructura de información. La única gran diferencia es el campo *n_registro* que aplica únicamente para el caso del IMSS.
 
 Para cada combinación posible de indicador, periodo de información y fuente de información se genera una sola tabla con el output. Estas tablas se almacenan por separado, e incluyen siempre las dos alusiones temporales: i) el periodo de referencia, y ii) la fecha de cálculo (v). Los outputs se almacenan en formato *.Rds*. Estos outputs tienen, por lo general los campos que se muestran en la siguiente tabla.
 
-```{r echo = FALSE, results = 'asis'}
-# tabla1 <- read_excel("./data/tablas03.xlsx", sheet = "tabla9")
-# kable(tabla1, caption = "Campos comunes en los resultados coyunturales del cálculo de indicadores") %>%
-#   kable_styling(bootstrap_options = c("striped", "hover"), full_width = T, font_size = 14) %>%
-#     scroll_box(width = "100%", height = "600px")
+
+```{r  echo = FALSE, message=FALSE,warnings=FALSE, results = 'asis'}
+
+tabla1 <- read_excel("./data/tablas03.xlsx", sheet = "tabla9") 
+
+flextable::flextable(tabla1) %>%
+   flextable::set_caption( caption = "Campos comunes en los resultados coyunturales del calculo de indicadores", style = "Table Caption")%>% 
+  theme_zebra(odd_body = "#EFEFEF", even_header = "transparent",even_body = "transparent") %>% 
+  color(color = "#666666", part = "all") %>% 
+  flextable::bg(i = 1, bg = "#FFFFFF", part = "header") %>% 
+  flextable::bold(bold = TRUE, part = "header") %>% 
+  flextable::fontsize(size=10,part="all") %>%
+  flextable::autofit()
+
 ```
-
-### Estimaciones puntuales e históricas de indicadores {#procesamientoModIcoyvshist}
-
-El resultado de realizar las estimaciones puntuales de los diversos indicadores a partir de las diferentes fuentes de información es en realidad un *conjunto de tablas* que se almacenan en la carpeta *3_resultados/coyuntura/...* en las respectivas subcarpetas de cada fuente de información e indicador correspondiente.
 
 Sin embargo, sólo a modo ilustrativo, la tabla a continuación presenta de manera sintética y sobre-simplificada cómo sería si todas estas estimaciones puntuales de la coyuntura fueran reunidas en una sola tabla[^procesamiento_fuentes-6]. Reunir todas estas estimaciones se traduce en cientos de miles de filas para el periodo de referencia más reciente solamente.
 
@@ -792,16 +778,30 @@ Antes de profundizar en el objeto de esta sección, conviene aprovechar este eje
 
 \-**Recordar que las estimaciones puntuales del IMSS se basan en la observación en un centro de trabajo, y luego se agrega por centros de trabajo** que compongan las diferentes categorías de los niveles de agregación, motivo por el cual no necesariamente coincidirán con estimaciones realizadas por trabajador.
 
-```{r echo = FALSE, results = 'asis', eval=TRUE}
+```{r  echo = FALSE, message=FALSE,warnings=FALSE, results = 'asis'}
 
-# tabla1 <- read_excel("./data/tablas03.xlsx", sheet = "tabla10")
-# kable(tabla1, caption = "Presentación esquematizada de los indicadores coyunturales en sus diferentes niveles de agregación") %>%
-# collapse_rows(c(1,2,3),latex_hline = "major", valign = "middle") %>% 
-#   kable_styling(bootstrap_options = c("striped", "hover"), full_width = T, font_size = 14) %>%
-#     scroll_box(width = "100%", height = "600px")
+tabla1 <- read_excel("./data/tablas03.xlsx", sheet = "tabla10") 
+
+flextable::flextable(tabla1) %>%
+   flextable::set_caption( caption = "Presentacion esquematizada de los indicadores coyunturales en sus diferentes niveles de agregacion", style = "Table Caption")%>%
+    flextable::set_table_properties(opts_html = list(
+    scroll = list(
+      height = "900px",
+      freeze_first_column = FALSE
+    )
+  )) %>%
+  theme_zebra(odd_body = "#EFEFEF", even_header = "transparent",even_body = "transparent") %>% 
+  color(color = "#666666", part = "all") %>% 
+  flextable::bg(i = 1, bg = "#FFFFFF", part = "header") %>% 
+  flextable::bold(bold = TRUE, part = "header") %>% 
+  flextable::fontsize(size=10,part="all") %>%
+  flextable::autofit()
+
 ```
 
-**A partir del análisis de las tablas resultado de los indicadores coyunturales de cada indicador, se pone en evidencia la facilidad con la que podría construirse un compendio histórico de indicadores**. Esto, en realidad, forma parte del módulo IV; pero conviene presentarlo aquí por completitud. Si a la tabla anterior uno la extendiera en el tiempo para incorporar todas las estimaciones realizadas a lo largo de todos los periodos de referencia previos al último, obtendría un resultado como el de la Ilustración 5 -- a continuación -- es decir, el compendio de indicadores calculados de manera consistente a lo largo del tiempo para las diferentes posibles combinaciones de categorías en los diversos niveles de agregación.
+#### De las estimaciones puntuales coyunturales a las construcción de las series históricas {#comparacióncoyunurahist .unnumbered}
+
+**A partir del análisis de las tablas resultado de los indicadores coyunturales de cada indicador, se pone en evidencia la facilidad con la que podría construirse un compendio histórico de indicadores**. Esto, en realidad, forma parte del [Módulo IV](#procesamientoModIV); pero conviene presentarlo aquí por completitud. Si a la tabla anterior uno la extendiera en el tiempo para incorporar todas las estimaciones realizadas a lo largo de todos los periodos de referencia previos al último, obtendría como resultado el compendio de indicadores calculados de manera consistente a lo largo del tiempo para las diferentes posibles combinaciones de categorías en los diversos niveles de agregación.
 
 **Esto es lo que constituye, ahora sí, la oferta "histórica" de indicadores laborales calculados.** Esto, insistimos, es el histórico de indicadores calculados de manera consistente a partir del SIDIL y permite a un costo muy bajo, acceder a su serie histórica para caracterizar la evolución de ciertos fenómenos laborales.
 
@@ -815,11 +815,10 @@ Observando que sigue siendo una simplificación ilustrativa[^procesamiento_fuent
 
     -   Si se tratase de toda la tabla, se permite un corte longitudinal: un análisis de la evolución temporal de un indicador (o un conjunto de ellos) en los diferentes niveles de agregación, a lo largo de todos los periodos disponibles.
 
-```{r tabla1,echo=FALSE, out.width="80%", fig.cap = 'Presentación esquematizada del resultado del cálculo de indicadores de manera histórica.'}
+```{r imagen1, echo=FALSE, out.width="100%", fig.cap="tabla1"}
 knitr::include_graphics("images-1/04/tabla1.png")
 ```
 
-Nota: \* El recuadro rojo representa el resultado del módulo I.
 
 ## Módulo II: imputación de indicadores y generación de la MPR {#moduloii}
 
@@ -865,19 +864,23 @@ Para actualizar el universo de CT que están disponibles en el DNE, independient
 
 -   El script de consulta identifica la versión de DNE_inicial más reciente (lo define como un parámetro llamado *ultimo_DNE_orig* mismo que lee a la RAM para la posterior refinación de ciertos campos. En concreto se definen las clases de los campos y se depura información sobre la entidad federativa y el municipios, para conformar una base de los CT con la variable geográfica "limpia". Luego se le asocia la información de los catálogos de actividades del SCIAN y rama industrial y se limpia la variaba *ct_imss_registro* que permite el match de enriquecimiento y nominativo con los registros del IMSS. También aquí se realiza el primero de estos matches, utilizando como insumo el último de los *procesados* bajo en la carpeta *1_insumos/procesados/coy_IMSS_pat*. El propósito es tener los CT del DNE enriquecidos con la última información disponible de los patrones en el IMSS, en particular, en cuanto al tamaño del CT. El resultado de este procedimiento es la tabla llamada *DNE_plus_v.Rds*
 
-```{r echo = FALSE, results = 'asis', eval=TRUE}
 
+FALTA REEMPLAZAR ESTA TABLA POR IMAGEN
+
+```{r  echo = FALSE, message=FALSE,warnings=FALSE, results = 'asis'}
 
 ## 20230822 ya no modificar estilo 
-# tabla1 <- read_excel("./data/tablas03.xlsx", sheet = "tabla11")
+ tabla1 <- read_excel("./data/tablas03.xlsx", sheet = "tabla11")
 # kable(tabla1, caption = "Procesos para la actualización del universo de CT con base en el DNE") %>%
 #   collapse_rows(c(1,2),latex_hline = "major", valign = "middle") %>% 
 #   kable_styling(bootstrap_options = c("striped", "hover"), full_width = T, font_size = 14) %>%
 #     # scroll_box(width = "100%", height = "600px") %>% 
 #    footnote(number = c("Estos mensajes se muestran en la consola del RStudio al momento de ejecutar el script secuenciador y quedan registrados en la bitácora al momento de finalizar su ejecución."), threeparttable = TRUE)
+
+
 ```
 
-##### Posibles problemas específicos en la aplicación de scripts {#problemasdne .unnumbered}
+###### Posibles problemas específicos en la aplicación de scripts {#problemasdne .unnumbered}
 
 **Hay dos principales problemas que podrían ocurrir**[. Primero, que no se pueda acceder al universo de CT registrados en el DNE. Esto dependerá del mecanismo de conexión a dicha base.]{.mark} Segundo, que no se pueda acceder a la base de registros patronales obtenida del IMSS, mismo que impediría la imputación o match de enriquecimiento. El primer problema deriva en que no se incluirían en la MPR aquellos CT de más reciente incorporación, esto es, los CT de reciente incorporación no serían incluidos en la estrategia de priorización (módulo III). El segundo problema, si bien a junio 2023 abona el enriquecimiento de información sobre la categoría de tamaño de aproximadamente 170 mil CT, afectaría la calidad de la imputación por nivel de agregación (al no haber enriquecido la variable *cat_tamanio*).
 
@@ -917,7 +920,11 @@ Este algoritmo requiere insumos o inputs que son el resultado (outputs) de los p
 
 -   **Las tablas de indicadores del IMSS (calculados de manera nominativa y por nivel de agregación), ENOE y Censo** Económico. El script de matching coyuntural recupera la versión más reciente de los indicadores calculados (según la *v* sufijo de cada tabla de indicadores). Dichos indicadores tienen la siguiente convención en el nombre: nombre de la base de datos en minúscula seguido del nombre del indicador, seguida del periodo de referencia (trimestre en la ENOE o trimestre móvil del IMSS) y el versionado (fecha y hora). El formato de estos archivos es *.Rds*. Por poner un ejemplo para el caso de la ENOE, "*enoe_dias_trab_2t_2022_11_03_0213*". (Ver las subsecciones de 4.1.4: Detalle de ENOE, Detalle de IMSS, Detalle de Censo económico )
 
-#### Salidas - Outputs - Productos resultado de la ejecución de actividades {#outputmatch .unnumbered}
+##### Posibles problemas específicos en la aplicación de scripts {#problemasmatch .unnumbered}
+
+Los principales problemas que pueden surgir al ejecutar el script son los relacionados con problemas en los insumos. De no encontrarse alguno de los insumos con los nombres estipulados en las secciones anteriores o con estructuras diferentes de las estipuladas en el presente documento, será imposible que el script se ejecute de manera correcta.
+
+#### Salidas - Outputs - Productos resultado de la ejecución de actividades {#outputmatch}
 
 **El matching coyuntural es el último paso previo a la generación de la MPR.** Se define el nombre de la tabla resultante de este proceso como el Universo de CT con indicadores, abreviado a *UniversoCTconIndicadores_v*.
 
@@ -942,40 +949,6 @@ Este algoritmo requiere insumos o inputs que son el resultado (outputs) de los p
 -   Atributos: Campos de atributos de los centros de trabajo, que vienen desde el DNE, o bien, fueron enriquecidas por el IMSS Patrones.
 
 -   Indicadores: Campos de indicadores de la ENOE, IMSS y Censo Económico.
-
-#### Posibles problemas específicos en la aplicación de scripts {#problemasmatch .unnumbered}
-
-Los principales problemas que pueden surgir al ejecutar el script son los relacionados con problemas en los insumos. De no encontrarse alguno de los insumos con los nombres estipulados en las secciones anteriores o con estructuras diferentes de las estipuladas en el presente documento, será imposible que el script se ejecute de manera correcta.
-
-#### Mensajes generados {#mensajesmath .unnumbered}
-
-La ejecución del script mencionado en la subsección anterior puede detonar en alguno(s) de los siguientes mensajes:
-
-Mensajes de error:
-
--   \*\*\*ERROR\*\*\* No se ha encontrado ningún archivo en el directorio
-
--   \*\*\*ERROR\*\*\* No se ha generado el producto final
-
-Mensajes de confirmación:
-
--   INFO: La fecha de hoy es ...
-
--   INFO: El directorio de trabajo es...
-
--   INFO: Lista de insumos generada
-
--   INFO: Inicio de lectura de insumos
-
--   INFO: Lectura de insumos completada
-
--   INFO: Inicio del matching nominativo
-
--   INFO: Inicio matching por agregación
-
--   INFO: Fin del script de matching coyuntural. Tardó ... segundos
-
--   INFO: Producto Final -\> UniversoCTconIndicadores_v.Rds
 
 #### Frecuencia de actualización y propuesta de calendarización {#frecuenciamatch .unnumbered}
 
@@ -1425,7 +1398,7 @@ Hay un único script que se ejecuta; se llama *query_violaciones_inspecciones_v.
 
 -   El resultado de este procedimiento de almacena como *historico_inspecciones_v*.Rds
 
-Posibles problemas específicos en la aplicación de scripts
+##### Posibles problemas específicos en la aplicación de scripts {#problemasscript .unnumbered}
 
 El principal problema es el acceso a las bases de datos en SQL Server del SIAPI-SIPAS, a la vez que se presenta un riesgo menor de que se realicen cambios sustantivos en la estructura de las bases de datos.
 
@@ -1474,7 +1447,7 @@ Después de definir si se va a actualizar el último insumo o si se hará todo e
 
 *Scripts de generación de indicadores (10 scripts):* Estos scripts toman la base transformada para generar cada uno de los indicadores (un script por indicador) con sus respectivas estimaciones puntuales para los diferentes niveles de agregación por año. Estos scripts generan un archivo .Rds cada uno, los cuales posteriormente serán almacenados en la memoria de la computadora o el servidor con el nombre del indicador y la fecha de generación. Estos archivos posteriormente serán apilados en una sola tabla .Rds. Este paso no se realiza si se encuentra que los indicadores fueron calculados anteriormente de manera coyuntural.
 
-##### Posibles problemas específicos en la aplicación de script {#problemasenoe .unnumbered}
+###### Posibles problemas específicos en la aplicación de script {#problemasenoe .unnumbered}
 
 Los posibles problemas que pueden surgir al ejecutar los scripts están principalmente relacionados con los insumos y con la definición del objeto ""actualizar_insumo". Si se deja la opción predeterminada, es decir, actualizar_insumo==TRUE se debe tener la tabla de indicadores históricos con el nombre y la ubicación correcta, además, se deben tener las tablas originales de la ENOE con los años que se deseen actualizar en los insumos originales en formato .dbf; o bien, se deben tener las tablas de indicadores calculados de manera coyuntural completas.
 
@@ -1631,7 +1604,7 @@ Este proceso genera una tabla .Rds cuyas observaciones son el total de inspeccio
 
 -   Campos de indicadores (IMSS y ENOE)
 
-#### Posibles problemas específicos en la aplicación de scripts {#problemasmatchhist .unnumbered}
+##### Posibles problemas específicos en la aplicación de scripts {#problemasmatchhist .unnumbered}
 
 Al igual que en las otras partes del módulo, los principales problemas que se puedan presentar están relacionados con los insumos que utiliza el código. Es importante mantener la misma estructura de las tablas, el nombre y el lugar de guardado correctamente. También se enfatiza en que, si se realiza algún cambio en los datos, no olvidar reflejarlo en los catálogos correspondientes, ya que todos los códigos a lo largo de los módulos lo utilizan.
 
@@ -1694,13 +1667,13 @@ La Parte 4 está dividida en dos scripts: el script de entrenamiento y el script
 
         a\. Random Forest: Primero se generan los archivos .txt y .pkl que albergarán los resultados del modelo, los cuales serán utilizados en la predicción. Estos son:
 
-        -   sub_test_rf\\_(fecha).txt: Contiene las submaterias sobre las cuales se harán las predicciones
+        -   sub_test_rf\_(fecha).txt: Contiene las submaterias sobre las cuales se harán las predicciones
 
-        -   score_test_rf\\_(fecha).txt: Contiene una medida de confianza de las predicciones para cada submateria
+        -   score_test_rf\_(fecha).txt: Contiene una medida de confianza de las predicciones para cada submateria
 
-        -   rf_clf\\_(fecha).pkl: Contiene los elementos del modelo entrenado de clasificación (predicción por submaterias)
+        -   rf_clf\_(fecha).pkl: Contiene los elementos del modelo entrenado de clasificación (predicción por submaterias)
 
-        -   rd_regr\\_(fecha).pkl: Contiene los elementos del modelo entrenado de regresión (predicción general).
+        -   rd_regr\_(fecha).pkl: Contiene los elementos del modelo entrenado de regresión (predicción general).
 
             Posteriormente, se entrenan los dos modelos:
 
@@ -1714,13 +1687,13 @@ La Parte 4 está dividida en dos scripts: el script de entrenamiento y el script
 
     b.  TabNet: Primero se generan los archivos .txt y .pkl que albergarán los resultados del modelo, los cuales será utilizados en la predicción. Estos son:
 
-        -   sub_test_tn\\_(fecha).txt: Contiene las submaterias sobre las cuales se harán las predicciones
+        -   sub_test_tn\_(fecha).txt: Contiene las submaterias sobre las cuales se harán las predicciones
 
-        -   score_test_tn\\_(fecha).txt: Contiene una medida de confianza de las predicciones para cada submateria
+        -   score_test_tn\_(fecha).txt: Contiene una medida de confianza de las predicciones para cada submateria
 
-        -   tabnet_model_1\\_(fecha).pkl: Contiene los elementos del modelo entrenado de clasificación (predicción por submaterias)
+        -   tabnet_model_1\_(fecha).pkl: Contiene los elementos del modelo entrenado de clasificación (predicción por submaterias)
 
-        -   tabnet_model_1\\_(fecha).pkl: Contiene los elementos del modelo entrenado de regresión (predicción general).
+        -   tabnet_model_1\_(fecha).pkl: Contiene los elementos del modelo entrenado de regresión (predicción general).
 
             Posteriormente, se entrenan los dos modelos:
 
@@ -1738,29 +1711,29 @@ La Parte 4 está dividida en dos scripts: el script de entrenamiento y el script
 -   El script de entrenamiento del modelo tiene las siguientes partes:
 
     1.  Generación de métricas de *performance* del modelo predictivo entrenado para los dos modelos, ya sea Random Forest o TabNet. En esta parte se generan dos tablas que se imprimirán en el log reportando las métricas de rendimiento del modelo, estas son^[En el caso del modelo Random Forest MultiOutput, se muestran estas mismas medidas para cada una de las predicciones, además de un promedio general. Para el caso de TabNet se muestran otras medidas propias de los modelos de regresión, como R2, mínimos cuadraros (MCO) y error cuadrático medio (RMSE).]:
-        -   Exactitud (accuracy): La exactitud es una medida de qué tan bien el modelo predictor coincide con los datos reales, en otras palabras mide cuánto se aproximan los resultados obtenidos a los valores verdaderos, tanto positivos como negativos.  
-         $\Accuracy = VP + VN / VP + VN + FP + FN$ ^[VP:verdadero positivo; VN: verdadero negativo; FP: falso positivo; FN: falso negativo]
+    
+    - Exactitud (accuracy): La exactitud es una medida de qué tan bien el modelo predictor coincide con los datos reales, en otras palabras mide cuánto se aproximan los resultados obtenidos a los valores verdaderos, tanto positivos como negativos.  
+      $Accuracy = \frac{VP + VN}{VP + VN + FP + FN}$ ^[VP:verdadero positivo; VN: verdadero negativo; FP: falso positivo; FN: falso negativo]
 
-        -   Puntaje de precisión (precision score): Es una métrica que mide la proporción de predicciones positivas correctas (verdaderos positivos) con respecto a todas las predicciones positivas realizadas por el modelo, es decir,  proporciona información sobre su rendimiento con respecto a los falsos positivos.
-          $\Precision = VP / VP + FP$
+    -   Puntaje de precisión (precision score): Es una métrica que mide la proporción de predicciones positivas correctas (verdaderos positivos) con respecto a todas las predicciones positivas realizadas por el modelo, es decir,  proporciona información sobre su rendimiento con respecto a los falsos positivos.
+      $Precision = \frac{VP}{VP + FP}$ 
 
-        -   Sensibilidad o tasa de verdaderos positivos (recall): Es una medida que evalúa la capacidad de un modelo de clasificación para identificar correctamente las muestras positivas. El recall se centra en el rendimiento de un clasificador con respecto a falsos negativos (cuántos fallaron)
-          $\Recall = VP / VP + FN
+    -   Sensibilidad o tasa de verdaderos positivos (recall): Es una medida que evalúa la capacidad de un modelo de clasificación para identificar correctamente las muestras positivas. El recall se centra en el rendimiento de un clasificador con respecto a falsos negativos (cuántos fallaron).
+      $Recall = \frac{VP}{VP + FN}$ 
 
-        -   Puntaje F1 (*F1 Score*): Es una métrica que combina la precisión (precision) y el recall en una sola medida para evaluar el rendimiento de un modelo de clasificación. El F1 Score es una medida que oscila entre 0 y 1, donde 1 representa la mejor puntuación posible, indicando un equilibrio entre precisión y recall.
-          $\F1-score = 2 * (precision * recall) / (precision + recall)
+    -   Puntaje F1 (*F1 Score*): Es una métrica que combina la precisión (precision) y el recall en una sola medida para evaluar el rendimiento de un modelo de clasificación. El F1 Score es una medida que oscila entre 0 y 1, donde 1 representa la mejor puntuación posible, indicando un equilibrio entre precisión y recall.
+      $F1-score = 2 * \frac{precision * recall}{precision + recall}$
 
-        -   Puntaje AUC (*Area Under the Curve Score*): Es una métrica utilizada para evaluar el rendimiento de un modelo de clasificación binaria en un problema de clasificación. AUC mide la capacidad del modelo para distinguir entre clases positivas y negativas. El AUC Score representa el área bajo la curva ROC y varía entre 0 y 1. Un AUC Score de 1 indica un modelo perfecto que puede distinguir perfectamente entre las clases positivas y negativas, mientras que un AUC Score de 0.5 indica un modelo que realiza predicciones al azar.
+    -   Puntaje AUC (*Area Under the Curve Score*): Es una métrica utilizada para evaluar el rendimiento de un modelo de clasificación binaria en un problema de clasificación. AUC mide la capacidad del modelo para distinguir entre clases positivas y negativas. El AUC Score representa el área bajo la curva ROC y varía entre 0 y 1. Un AUC Score de 1 indica un modelo perfecto que puede distinguir perfectamente entre las clases positivas y negativas, mientras que un AUC Score de 0.5 indica un modelo que realiza predicciones al azar.
 
-        -   Adicionalmente se presenta el nivel de confianza de toda la base.
+    -   Adicionalmente se presenta el nivel de confianza de toda la base.
 
-    <!-- -->
-
+  
     2.  Generación del análisis Shapley, el cual mide la contribución relativa de cada característica o atributo en la predicción del modelo. El análisis se guarda en un archivo HTML y las gráficas en archivos .png.
 
 [^procesamiento_fuentes-10]: Se define como chunk las partes en las que se divide la tabla de datos para realizar los procesos necesarios de manera iterativa, esto con el fin de lograr mayor eficiencia al ejecutar los procesos con grandes cantidades de datos. Así, chunksize es la definición del tamaño de cada parte.
 
-#### Posibles problemas específicos en la aplicación de scripts {#problemasentrenamiento .unnumbered}
+##### Posibles problemas específicos en la aplicación de scripts {#problemasentrenamiento .unnumbered}
 
 Los posibles problemas con la aplicación del script son los relacionados con los insumos. Debe estar disponible el insumo resultado del matching histórico, los catálogos y el complemento "GraphViz" para la generación del reporte Shapley en HTML. Asimismo, deben estar instaladas todas las librerías de Python necesarias para el funcionamiento del script (las cuales se encuentran en el archivo *requirements.txt*).
 
