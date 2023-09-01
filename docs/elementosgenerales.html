@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Capítulo 3 Elementos generales del procesamiento de datos | SIDIL: Manual del procesamiento y explotación de la información</title>
   <meta name="description" content="Breve descripcion pendiente" />
-  <meta name="generator" content="bookdown 0.34 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.35 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Capítulo 3 Elementos generales del procesamiento de datos | SIDIL: Manual del procesamiento y explotación de la información" />
   <meta property="og:type" content="book" />
@@ -62,6 +62,7 @@
 <script src="libs/tabwid-1.1.3/tabwid.js"></script>
 <script src="libs/kePrint-0.0.1/kePrint.js"></script>
 <link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
+<link href="libs/vembedr-0.1.5/css/vembedr.css" rel="stylesheet" />
 
 
 <style type="text/css">
@@ -260,6 +261,22 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="8.2.1" data-path="anexoHallazgos.html"><a href="anexoHallazgos.html#criterios-de-selección-utilizados-antes-del-sidil."><i class="fa fa-check"></i><b>8.2.1</b> Criterios de selección utilizados antes del SIDIL.</a></li>
 </ul></li>
 </ul></li>
+<li class="chapter" data-level="9" data-path="videos.html"><a href="videos.html"><i class="fa fa-check"></i><b>9</b> Anexo: Videos de transferencia de conocimiento</a>
+<ul>
+<li class="chapter" data-level="9.1" data-path="videos.html"><a href="videos.html#sesion1"><i class="fa fa-check"></i><b>9.1</b> Sesión 1</a></li>
+<li class="chapter" data-level="9.2" data-path="videos.html"><a href="videos.html#sesion2"><i class="fa fa-check"></i><b>9.2</b> Sesión 2</a></li>
+<li class="chapter" data-level="9.3" data-path="videos.html"><a href="videos.html#sesion3"><i class="fa fa-check"></i><b>9.3</b> Sesión 3</a></li>
+<li class="chapter" data-level="9.4" data-path="videos.html"><a href="videos.html#sesion4"><i class="fa fa-check"></i><b>9.4</b> Sesión 4</a></li>
+<li class="chapter" data-level="9.5" data-path="videos.html"><a href="videos.html#sesion5"><i class="fa fa-check"></i><b>9.5</b> Sesión 5</a></li>
+<li class="chapter" data-level="9.6" data-path="videos.html"><a href="videos.html#sesion6"><i class="fa fa-check"></i><b>9.6</b> Sesión 6</a></li>
+<li class="chapter" data-level="9.7" data-path="videos.html"><a href="videos.html#sesion7"><i class="fa fa-check"></i><b>9.7</b> Sesión 7</a></li>
+<li class="chapter" data-level="9.8" data-path="videos.html"><a href="videos.html#sesion8"><i class="fa fa-check"></i><b>9.8</b> Sesión 8</a></li>
+<li class="chapter" data-level="9.9" data-path="videos.html"><a href="videos.html#sesion9"><i class="fa fa-check"></i><b>9.9</b> Sesión 9</a></li>
+<li class="chapter" data-level="9.10" data-path="videos.html"><a href="videos.html#sesion10"><i class="fa fa-check"></i><b>9.10</b> Sesión 10</a></li>
+<li class="chapter" data-level="9.11" data-path="videos.html"><a href="videos.html#sesion11"><i class="fa fa-check"></i><b>9.11</b> Sesión 11</a></li>
+<li class="chapter" data-level="9.12" data-path="videos.html"><a href="videos.html#sesion12"><i class="fa fa-check"></i><b>9.12</b> Sesión 12</a></li>
+<li class="chapter" data-level="9.13" data-path="videos.html"><a href="videos.html#sesion13"><i class="fa fa-check"></i><b>9.13</b> Sesión 13</a></li>
+</ul></li>
 </ul>
 
       </nav>
@@ -336,7 +353,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>En sentido estricto, un análisis más minucioso de los contenidos de este script permitiría sostener que algunos de los scripts arriba definidos como secuenciadores (en el sentido de que organizan el procesamiento de la información recurriendo a otros scripts para la consecución sus objetivos) realmente no tienen esta característica específica de “llamar” a otros scripts, sin embargo, a fines de presentación se simplifica su sistematización llamándolos como tal.</p>
 <p>Así, uniendo los conceptos descritos en este y el anterior apartado, se puede presentar la ilustración <a href="elementosgenerales.html#fig:secConfigInicial">3.1</a> en la que se observa cómo un script secuenciador llama al script de configuración inicial, éste a su vez llama al <em>0_funciones_catalogos</em> para luego a partir de un script de extracción se lamen los inputs para su transformación, y luego, cuando aplique, los scripts del cálculo de los indicadores, para dar con el output final.</p>
 <div class="figure"><span style="display:block;" id="fig:secConfigInicial"></span>
-<img src="images-1/02/detallesscriptsgenerico.jpg" alt="Presentación esquematizada de la relación " width="3500" />
+<img src="images-1/02/detallesscriptsgenerico.jpg" alt="Presentación esquematizada de la relación "  />
 <p class="caption">
 Recuadro 3.1: Presentación esquematizada de la relación
 </p>
@@ -386,7 +403,7 @@ del módulo I.
 <p>Cuarto, hay un script que genera esta estructura de carpetas a partir del catálogo de carpetas, el cual crea las carpetas, de no existir alguna de estas.</p>
 <p>Hay cuatro grandes carpetas: <em>1_insumos</em>, <em>2_codigos</em>, <em>3_resultados</em>, <em>4_reportes</em>.</p>
 <div class="figure"><span style="display:block;" id="fig:organizacioncatalogos"></span>
-<img src="images-1/03/organizacion_catalogos2.jpg" alt="Organización básica de las principales carpetas" width="2384" />
+<img src="images-1/03/organizacion_catalogos2.jpg" alt="Organización básica de las principales carpetas"  />
 <p class="caption">
 Recuadro 3.3: Organización básica de las principales carpetas
 </p>
@@ -656,7 +673,7 @@ requiere tomar este archivo en consideración.
 <p>El segundo grupo de columnas son los indicadores, mismos que comienzan con el prefijo <strong>ind_</strong> y que no son otra cosa que todos los indicadores disponibles, en su actualización más reciente, a partir de los procesos generados en el módulo I. Notar que la inclusión de estos indicadores no depende de que hayan sido utilizados en el entrenamiento del modelo y la predicción de riesgo posterior. Es decir, uno podría encontrar un indicador entre estas columnas que no fue utilizado para la predicción de riesgo. Por definición, todas estas columnas no tienen un valor faltante, ya que en última instancia se imputa el promedio nacional del indicador mismo que siempre es posible calcular para todos los indicadores.</p>
 <p>Por último en las columnas de prefijo <strong>pred_</strong> y la columna <strong>riesgo</strong> se encuentran las predicciones por submateria o la de riesgo general, respectivamente. Recordemos que la predicción por submateria es independiente de las predicciones en las otras submaterias, lo cual permite utilizar cualquiera de estas columnas de predicción de manera independiente de las otras. Por definición, aqui también todos los CT tienen una predicción, es decir, no hay valores faltantes entre las predicciones.</p>
 <div class="figure"><span style="display:block;" id="fig:MPRsimplificada2"></span>
-<img src="images-1/02/MPR_simplificada.jpg" alt="Matriz de predicción de riesgos (ilustración simplificada)" width="4174" />
+<img src="images-1/02/MPR_simplificada.jpg" alt="Matriz de predicción de riesgos (ilustración simplificada)"  />
 <p class="caption">
 Recuadro 3.6: Matriz de predicción de riesgos (ilustración simplificada)
 </p>

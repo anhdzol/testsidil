@@ -1,0 +1,76 @@
+---
+output:
+  html_document: default
+---
+
+# Anexo: Videos de transferencia de conocimiento {#videos}
+
+```{r include=FALSE}
+library(vembedr)
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+## Sesión 1 {#sesion1}
+```{r  include = TRUE}
+embed_youtube("tal2hKmJkVM")
+```
+
+## Sesión 2 {#sesion2}
+```{r  include = TRUE}
+embed_youtube("M9fzzm7fOek")
+```
+
+## Sesión 3 {#sesion3}
+```{r  include = TRUE}
+embed_youtube("j52plkW97Gs")
+```
+
+## Sesión 4 {#sesion4}
+```{r  include = TRUE}
+embed_youtube("zZ1Fv323pk4")
+```
+
+## Sesión 5 {#sesion5}
+```{r  include = TRUE}
+embed_youtube("Puo7gqPLVH8")
+```
+
+## Sesión 6 {#sesion6}
+```{r  include = TRUE}
+embed_youtube("YPSpR8YzvVo")
+```
+
+## Sesión 7 {#sesion7}
+```{r  include = TRUE}
+embed_youtube("42nc-rB9710")
+```
+
+## Sesión 8 {#sesion8}
+```{r  include = TRUE}
+embed_youtube("Bn7duNDa_ek")
+```
+
+## Sesión 9 {#sesion9}
+```{r  include = TRUE}
+embed_youtube("yowvE4hR0Ok")
+```
+
+## Sesión 10 {#sesion10}
+```{r  include = TRUE}
+embed_youtube("Okvtac8eQA0")
+```
+
+## Sesión 11 {#sesion11}
+```{r  include = TRUE}
+embed_youtube("ZLBopJ1kwOY")
+```
+
+## Sesión 12 {#sesion12}
+```{r  include = TRUE}
+embed_youtube("CK9tJ5Wcpf0")
+```
+
+## Sesión 13 {#sesion13}
+```{r  include = TRUE}
+embed_youtube("EkSgrNZcaQo")
+```

@@ -164,3 +164,17 @@ planeación-de-la-inspección
 meta-y-realización-de-inspecciones-a-realizar-por-tipo-estado-y-por-oficina
 alcance-de-la-inspección
 criterios-de-selección-utilizados-antes-del-sidil.
+videos
+sesion1
+sesion2
+sesion3
+sesion4
+sesion5
+sesion6
+sesion7
+sesion8
+sesion9
+sesion10
+sesion11
+sesion12
+sesion13
