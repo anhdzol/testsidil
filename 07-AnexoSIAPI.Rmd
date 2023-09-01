@@ -3,14 +3,14 @@ output:
   html_document: default
 ---
 
-# Conceptos y hallazgos clave en la exploración del SIAPI-SIPAS {#anexoHallazgos}
+# Anexo: Conceptos y hallazgos clave en la exploración del SIAPI-SIPAS {#anexoHallazgos}
 
 
-[@@ nota interna para borrar: esto es un resumen muy selectivo del doc de hallazgos 
+<!-- [@@ nota interna para borrar: esto es un resumen muy selectivo del doc de hallazgos  -->
 
-[DOCUMENTO DE HALLAZGOS](https://msair.sharepoint.com/:w:/r/sites/Impaq_Projects/Mexico/CALLE/Ongoing%20Tasks/Data%20Intelligence/Data%20Analysis/2022-01%20An%C3%A1lisis%20SIAPI_SIPAS%20-%20Hallazgos.docx?d=wf74a0d86ad244c92a86c8a88e3af6f1e&csf=1&web=1&e=GcTmkv)
-]]
-]{.mark}
+<!-- [DOCUMENTO DE HALLAZGOS](https://msair.sharepoint.com/:w:/r/sites/Impaq_Projects/Mexico/CALLE/Ongoing%20Tasks/Data%20Intelligence/Data%20Analysis/2022-01%20An%C3%A1lisis%20SIAPI_SIPAS%20-%20Hallazgos.docx?d=wf74a0d86ad244c92a86c8a88e3af6f1e&csf=1&web=1&e=GcTmkv) -->
+<!-- ]] -->
+<!-- ]{.mark} -->
 
 Esta sección presenta el análisis que AIR hizo sobre los sistemas con los que cuenta la STPS para el apoyo a la inspección laboral (SIAPI) y al proceso sancionador (SIPAS), con dos principales propósitos. Primero, profundizar en algunos de los conceptos que resultan críticos en la explotación de los registros administrativos de la inspección. Esto para homologar un único vocabulario e interpretación del alcance del SIDIL en lo que refiere a la inspecciones; segundo, para dar cuenta del volumen de información y la calidad de la misma y que el SIDIL consume a efectos de realizar las predicciones.
 
@@ -224,10 +224,10 @@ Sin embargo, sí cabe señalar que aquellos campos que únicamente se encuentran
 
 En este sentido, el principal valor agregado del SIDIL es que permite, a efectos de la selección de CT para una programación de operativos, generar una predicción de riesgo a nivel submateria que reúne el efecto que cada uno de los campos asociados a los CT (atributos e indicadores) tiene sobre la probabilidad de detectar violaciones que proceden en la determinada submateria.
 
-## Aspectos pendientes y posibles extensiones a futuro
+<!-- ## Aspectos pendientes y posibles extensiones a futuro -->
 
-### Limitaciones en la construcción de la variable dependiente
+<!-- ### Limitaciones en la construcción de la variable dependiente -->
 
-### Posibles alternativas como variable dependiente
+<!-- ### Posibles alternativas como variable dependiente -->
 
-### 
+<!-- ###  -->

@@ -20,7 +20,7 @@ library(readxl)
 ```  
 
 
-# R, RStudio y Python
+# Anexo: R, RStudio y Python
 
 En este anexo se presentan, fundamentalmente, los conceptos y prácticas básicas en la utilización de la interfaz de RStudio. También se presentan algunos aspectos relevantes de Python, pero que si bien requiere tenerse instalado, desde la perspectiva de SIDIL, no requiere ser ejecutado en una interfaz distinta a Rstudio
 

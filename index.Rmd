@@ -16,6 +16,11 @@ always_allow_html: true
 # Introducción {#introapertura}
 <!-- # PRESENTACIÓN DEL SIDIL -->
 
+```{r lectura_paquetes,echo=FALSE, message=FALSE,warning=FALSE}
+
+pacman::p_load(tidyverse,plotly,readxl,janitor,kableExtra,flextable)
+```
+
 >*Aplicación de la analítica de datos para la generación de estrategias inteligentes de selección de empresas para la inspección laboral*
 
 
@@ -39,7 +44,7 @@ En cuanto a los temas técnicos, abordar el reto de seleccionar empresas de alto
 
 ## Alineación con la misión y programas de gobierno {#introalineacion}
 
-En el Programa Sectorial de Trabajo y Previsión Social, en el “Objetivo prioritario 4. Dignificar el trabajo y estimular la productividad mediante la vigilancia al cumplimiento de la normativa laboral”2 se menciona: “La nueva visión de la inspección pretende hacerla más efectiva y lograr mejores resultados reduciendo los procedimientos burocráticos, impulsando reformas integrales para mejorar el marco legal, coordinando y dirigiendo las inspecciones de trabajo con nuevos enfoques, estrategias e instrumentos con una visión de lucha frontal contra la corrupción (...) con el fin de coadyuvar a la mejora de las condiciones del mercado laboral mexicano con un especial interés en materia de Salud y Seguridad en el trabajo y combate a la subcontratación y al subregistro en el IMSS”. En particular, en el análisis del estado actual se menciona: “el uso de bases de datos anticuadas y la falta de mecanismos de coordinación institucional ocasionó que la inspección federal se llevará a cabo en un universo reducido de empresas que eran constantemente visitadas, en muchos casos en materias de escasa relevancia, generando actos de molestia que no resultaron en una mejora de las condiciones laborales del país”.
+En el Programa Sectorial de Trabajo y Previsión Social, en el “Objetivo prioritario 4. Dignificar el trabajo y estimular la productividad mediante la vigilancia al cumplimiento de la normativa laboral” se menciona: “La nueva visión de la inspección pretende hacerla más efectiva y lograr mejores resultados reduciendo los procedimientos burocráticos, impulsando reformas integrales para mejorar el marco legal, coordinando y dirigiendo las inspecciones de trabajo con nuevos enfoques, estrategias e instrumentos con una visión de lucha frontal contra la corrupción (...) con el fin de coadyuvar a la mejora de las condiciones del mercado laboral mexicano con un especial interés en materia de Salud y Seguridad en el trabajo y combate a la subcontratación y al subregistro en el IMSS”. En particular, en el análisis del estado actual se menciona: “el uso de bases de datos anticuadas y la falta de mecanismos de coordinación institucional ocasionó que la inspección federal se llevará a cabo en un universo reducido de empresas que eran constantemente visitadas, en muchos casos en materias de escasa relevancia, generando actos de molestia que no resultaron en una mejora de las condiciones laborales del país”.
 
 Así, en la Estrategia prioritaria “4.1.- Impulsar acciones para favorecer la protección social de las personas trabajadoras ante el futuro del trabajo con perspectiva de igualdad y no discriminación”, se menciona, entre otras acciones: Coordinar la elaboración de estudios, diagnósticos, encuestas y otros documentos de carácter analítico que permitan conocer el estado de segmentos específicos de las personas trabajadoras en materia de seguridad social, con especial énfasis en grupos históricamente discriminados.
 
@@ -65,8 +70,9 @@ Entre sus Líneas de acción figuran:
 
 En cuanto a la inspección laboral, según el marco normativo vigente la STPS tiene entre sus facultades la vigilancia y cumplimiento de la normatividad laboral como se marca en los artículos 540 al 550 de la Ley Federal del Trabajo (LFT), así como el artículo 40 fracción I de la Ley Orgánica de la Administración Pública Federal. Para ejercer estas funciones, la STPS ha implementado el procedimiento de “Inspección del Trabajo”, que lleva a cabo a través de la Dirección General de Inspección Federal del Trabajo supervisando a las Delegaciones Federales del Trabajo, como los responsables operativos. 
 Cabe señalar que el proceso de inspección incluye la vigilancia de las normas de trabajo constitucionales, las contenidas en la LFT, sus reglamentos, convenios internacionales, Normas Oficiales Mexicanas (NOMs), y las disposiciones dictadas por la STPS. Otra de las funciones que lleva a cabo la Secretaría, es el Procedimiento Administrativo Sancionador, que determina la existencia de elementos jurídicos para sancionar al centro de trabajo por actos violatorios a la legislación laboral.
-Es entonces en ese marco, tanto sustantivo en términos de la inspección laboral, como en materia de tecnologías y desarrollo de sistemas de información, que se enmarca este proyecto a las prioridades del Gobierno de México.
 
+
+Es entonces en ese marco, tanto sustantivo en términos de la inspección laboral, como en materia de tecnologías y desarrollo de sistemas de información, que se enmarca este proyecto a las prioridades del Gobierno de México: El SIDIL, con el propósito de hacer más efectiva y eficiente la inspección, permite aplicar estrategias en la lucha contra la irregularidad y falta de cumplimiento a la normativa laboral, en pos de la mejora de las condiciones del mercado laboral. Para ello, descansa sobre y abona a los mecanismos de coordinación institucional, al interior de la STPS pero también sentando las bases para hacerlo con otras dependencias, particularmente en cuanto al uso y generación de información estratégica para la inspección laboral. Esto provee evidencia, fundamentalmente de corte cuantitativo, estrechamente vinculada y apegada a la normativa laboral. Más aún, gracias a su diseño modularizado, la información que se explota como insumo para la predicción de riesgos, pueda ampliarse sin mayor esfuerzo que la correcta comprensión y preparación de dichos insumos. Esto a su vez se apega a la EDN ya que  el SIDIL se desarrolló con  algoritmos escritos en lenguajes de programación de acceso abierto y software libre, lo cual se adhiere a la visión de un país digitalizado con un gobierno con autonomía e independencia tecnológica.  
 
 
 ## Justificación de la viabilidad del proyecto {#introjustificacion}

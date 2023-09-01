@@ -3,6 +3,375 @@ output:
   html_document: default
 ---
 
-# Especificaciones del servidor
+# Anexo: Especificaciones técnicas y manual de instalación del servidor
 
-PENDIENTE PEGAR
+En este anexo se ofrecen especificaciones acercas de las características técnicas del servidor donde se instalará el SIDIL y el manual de instalación del mismo.
+
+## Especificaciones técnicas
+
+●        **Sistema operativo**: Debian 11 Bullseye (64-bit)
+
+●        **Perfil de usuario**: se requiere perfil sudo al requerir permisos de root. Es necesario utilizar un usuario distinto a root debido a que Shiny no permite algunas instrucciones desde root.
+
+●        **Versión R**: 4.2.0 o superior
+
+●        **Versión de Python**: 3.10.9 o superior
+
+●        **CPU**: 1 GHz o más
+
+●        **RAM**: 8 GB o más
+
+●        **Memoria**: 50 GB o más
+
+●        **ODBC**: pendiente definición de acceso a DNE y SIAPI y SIPAS
+
+
+## Manual de instalación
+
+
+### Preliminares de instalación 
+
+1.	Creación de usuarios. Se crearán 2 usuarios, el usuario debian para realizar el proceso de instalación con privilegios de root y que estará a cargo de la DGTIC y el usuario sidil que estará a cargo de la DGIET para la ejecución y gestión del SIDIL. Los usuarios se deberán crear acorde a las políticas de la STPS utilizando un usuario con privilegios de root.
+
+
+
+```{r, echo=TRUE, eval=FALSE, results='asis'}
+\#SSH
+sudo adduser debian
+sudo passwd debian
+
+sudo adduser sidil
+sudo passwd sidil
+```
+
+
+
+2. **Configuración de sudo.** Asignar al usuario  el perfil sudo.  Esta instrucción requiere de tener acceso a root para asignar permisos. Si ya se tiene instalado este comando, omitir este paso.
+
+
+
+```{r, echo=TRUE, eval=FALSE, results='asis'}
+\#SSH desde root (Ingreso: su root e ingresar contraseña de root)
+apt-get install sudo
+sudo usermod -a -G sudo debian
+
+\#Agregar usuario a sudoers 
+\#SSH
+nano /etc/sudoers
+
+\# Agregar debian ALL=(ALL:ALL) ALL debajo de %sudo ALL=(ALL:ALL) ALL y guardar. Salir de usuario root con exit
+
+Ingresar con el usuario debian
+
+```
+
+3.	Instalación de rsync. Este comando sirve para copiar archivos al servidor desde local. Si ya se tiene instalado este comando, omitir este paso.
+
+
+```{r, echo=TRUE, eval=FALSE, results='asis'}
+\# SSH
+sudo apt-get install rsync
+
+
+```
+4.	Verificar que el sistema operativo se encuentre actualizado:
+
+```{r, echo=TRUE, eval=FALSE, results='asis'}
+\# SSH
+sudo apt update
+sudo apt dist-upgrade
+```
+
+### Instalación de programas
+
+5.	Instalación de R. La instrucción descarga la última versión estable de R.
+
+
+```{r, echo=TRUE, eval=FALSE, results='asis'}
+\# SSH
+sudo apt install r-base r-base-dev
+```
+
+
+6.	Descarga de RStudio Server. La descarga de gdebi incluye la instalación de Python. Verificar la versión de Rstudio Server que se esté instalando en el sitio: https://posit.co/download/rstudio-server/ 
+
+
+
+
+```{r, echo=TRUE, eval=FALSE, results='asis'}
+\# SSH
+sudo apt-get install gdebi-core wget
+wget https://download2.rstudio.org/server/bionic/amd64/rstudio-server-2022.12.0-353-amd64.deb
+sudo gdebi rstudio-server-2022.12.0-353-amd64.deb
+
+```
+
+6.1.	Acceso a RStudio Server
+
+```{r, echo=TRUE, eval=FALSE, results='asis'}
+\# SSH
+sudo rstudio-server start
+```
+
+
+Para ingresar se debe colocar en un navegador http://<ip_server>:8787/ donde el puerto asignado por default es el 8787. 
+
+**Nota**: Esta conexión únicamente puede realizarse desde la misma red en la que está conectado el servidor.
+Para probar su funcionamiento, ingresamos a http://<ip_server>:8787/ donde ingresamos el usuario y contraseña del usuario (ejemplo: sidil) cuyo comportamiento apropiado es el acceso a la interfaz de Rstudio.
+
+
+7.	Instalación de Shiny Server. Previo a este paso, el paquete shiny debe ser instalado. Verificar la versión de Shiny Server que se esté instalando en el sitio: https://posit.co/download/shiny-server/
+
+
+
+
+```{r, echo=TRUE, eval=FALSE, results='asis'}
+\# SSH
+R
+
+\# R 
+install.packages('shiny')
+q()
+Save workspace image? [y/n/c]: n
+
+\# SSH
+wget https://download3.rstudio.org/ubuntu-18.04/x86_64/shiny-server-1.5.20.1002-amd64.deb
+sudo gdebi shiny-server-1.5.20.1002-amd64.deb
+
+```
+
+7.1.	Acceso a Shiny Server
+
+```{r, echo=TRUE, eval=FALSE, results='asis'}
+\# SSH
+sudo systemctl start shiny-server
+```
+
+Para ingresar se debe colocar en un navegador http://<ip_server>:3838/ donde el puerto asignado por default es el 3838. 
+
+**Nota**: Esta conexión únicamente puede realizarse desde la misma red en la que está conectado el servidor.
+
+Para probar su funcionamiento, ingresamos a *http://<ip_server>:3838/ * donde ingresamos el usuario y contraseña del usuario (ejemplo: *sidil*) cuyo comportamiento apropiado es el acceso a una app de prueba de Shiny. Es probable que algunos recuadros de esta app muestran errores. Para corregirlos es necesario editar el archivo */etc/shiny-server/shiny-server.conf* en donde en la primera línea se edita *run_as shiny*, sustituyendo *shiny* por el nombre del usuario *sidil* es decir:
+
+
+
+```{r, echo=TRUE, eval=FALSE, results='asis'}
+\# SSH
+sudo nano /etc/shiny-server/shiny-server.conf
+```
+
+Editar *run_as shiny*, sustituyendo *shiny* por el nombre del usuario *sidil*. 
+
+Reiniciamos el servidor de shiny
+
+
+```{r, echo=TRUE, eval=FALSE, results='asis'}
+\# SSH
+sudo systemctl restart shiny-server
+```
+
+8.	Instalación de paquetería de R. Primero instalamos dependencias externas a R. Posteriormente, abrimos R desde la consola e instalamos los paquetes requeridos. El paquete srvyr sólo puede ser instalado en su versión anterior.
+
+```{r, echo=TRUE, eval=FALSE, results='asis'}
+\# SSH
+sudo apt install libcurl4-openssl-dev libssl-dev libxml2-dev libfontconfig1-dev libfreetype6-dev libpng-dev libtiff5-dev libjpeg-dev libharfbuzz-dev libfribidi-dev libsodium-dev
+```
+
+
+**Ingresar con el usuario sidil**
+
+```{r, echo=TRUE, eval=FALSE, results='asis'}
+\# SSH
+R
+```
+
+
+```{r, echo=TRUE, eval=FALSE, results='asis'}
+\#  R 
+install.packages(c('devtools','tidyverse','shiny'))
+install.packages(c('crayon','jsonlite','data.table','scriptName','tidymodels', 'haven', 'readxl', 'dbplyr', 'here','rlang','janitor','foreign','rstudioapi','stringi', 'beepr','scriptName','reticulate','pacman','DBI','BSDA','plyr','reader','shinydashboard','shinyjs','DT'))
+install.packages(c('openxlsx','shinyWidgets','sodium','shinyauthr'))
+install.packages(c('survey', 'surveyCV', 'remotes'))
+require('remotes')
+install_version("srvyr", version = "1.1.2", repos = "http://cran.us.r-project.org")
+
+```
+
+9.	Verificamos en R que se hayan instalado correctamente los paquetes
+
+```{r, echo=TRUE, eval=FALSE, results='asis'}
+\# R
+sapply(c('devtools','tidyverse','shiny','crayon','jsonlite','data.table','scriptName','tidymodels', 'haven', 'readxl', 'dbplyr', 'here','rlang','janitor','foreign','rstudioapi','stringi', 'beepr','scriptName','reticulate','pacman','DBI','BSDA','plyr','reader','shinydashboard','shinyjs','openxlsx','shinyWidgets','sodium','shinyauthr','DT','survey', 'surveyCV', 'remotes','srvyr'),require, character.only = TRUE)
+```
+
+Verificar que la salida sea *TRUE* para todos los paquetes. Si existe algún paquete que arroje un valor *FALSE* implica falla en la instalación y carga de alguno de los paquetes.
+
+Al cargar las librerías, es probable que se impriman conflictos o advertencias, pero es una salida estándar.
+
+Salir de R
+
+
+```{r, echo=TRUE, eval=FALSE, results='asis'}
+\# R
+q()
+Save workspace image? [y/n/c]: n
+
+
+```
+
+10.	Instalación de librerías de Python. Primero verificamos que se haya instalado Python previamente (python3 -V). Procedemos a instalar pip3 para administrar librerías.
+
+**Ingresar con el usuario debian**
+
+```{r, echo=TRUE, eval=FALSE, results='asis'}
+\# SSH
+sudo apt install -y python3-pip
+sudo pip3 install matplotlib yellowbrick seaborn pydotplus pandas clean-text numpy scikit-learn ipython pytorch-tabnet pyreadr shap openpyxl 
+```
+
+11.	Deployment de prueba
+
+11.1.	Crear una app de prueba de Shiny a través de Rstudio.
+11.1.1.	Ingresar a Rstudio: http://<ip_server>:8787/
+11.1.2.	Crear un nuevo proyecto (lado derecho superior): 
+New Project > New Directory > Shiny Application
+Directory name: app_prueba
+Create project as subdirectory of: ~/ 
+11.1.3.	Guardar el proyecto y salimos de Rstudio
+
+11.2.	Copiar la app de Shiny en el folder default de Shiny: 
+
+
+```{r, echo=TRUE, eval=FALSE, results='asis'}
+\#SSH desde el folder default (~/)
+sudo cp -r app_prueba/ /srv/shiny-server/
+
+```
+Reiniciar el servidor de shiny
+
+```{r, echo=TRUE, eval=FALSE, results='asis'}
+\# SSH
+sudo systemctl restart shiny-server
+```
+11.3.	Ingresar a *http://<ip_server>:3838/app_prueba *
+
+
+### Instalación del SIDIL
+
+El funcionamiento del SIDIL descansa en un sistema de carpetas y subcarpetas, algoritmos de procesamiento en lenguaje R y Python, fuentes de información originales que luego se derivan en información procesada, catálogos con información sobre el qué y cómo explotar dichas fuentes de información originales, apps en RShiny y reportes. La estructura de las carpetas y sus contenidos se detalla en el manual operativo. A efectos del poblado inicial del SIDIL, que permitirá la ejecución de las interfaces y la actualización parcial o total de las fuentes de información, hay que seguir los siguientes pasos.
+
+Todos los comandos se ejecutan desde el usuario *debian*.
+
+1.	En caso de que no esté instalado el paquete unzip:
+
+```{r, echo=TRUE, eval=FALSE, results='asis'}
+\# SSH 
+sudo apt-get install unzip
+
+```
+
+2.	Generación de carpeta con archivos de instalación. En esta carpeta se resguardarán todos los archivos que se requieren para la instalación de SIDIL en una versión mínimamente operativa.
+
+
+```{r, echo=TRUE, eval=FALSE, results='asis'}
+\# SSH
+sudo mkdir /home/debian/instalacion
+sudo mkdir /srv/shiny-server/automatizacion 
+sudo mkdir /srv/shiny-server/consulta
+
+```
+
+PENDIENTE DEFINIR SI EL DEPÓSITO ORIGINAL DE ESTOS ARCHIVOS SE REALIZA VÍA USB/CD/One Drive (curl) etc. Por el momento se depositaron archivos comprimidos de instalación, mismos que, independientemente de cómo se depositen, quedarían resguardados como comprimidos en la carpeta /home/debian/instalacion.
+
+Estos son los siguientes, con su respectivo contenido:
+
+1)	instalacion1.zip: catálogos y códigos. Tamaño aprox. 94 MB
+2)	instalacion2_1.zip: fuente de información CENSO y ENOE: Tamaño aprox: 299MB
+3)	NO INCLUIDO EN LA VERSIÓN PARA EL MTRO ALVARO LOPEZ instalacion2_2.zip: fuente de información original (ficticia) IMSS accidentes (riesgos), asegurados y patrones: Tamaño aprox. 967 MB
+4)	NO INCLUIDO EN LA VERSIÓN PARA EL MTRO ALVARO LOPEZ instalacion2_3.zip: procesados del IMSS: Tamaño aprox. 1.4 GB
+5)	instalacion2_4.zip: fuentes de información original de SIAPI-SIPAS y DNE, resultados de MPR, MPR consultable y matching, y  app de interfaz de automatización: Tamaño aprox.: 671 MB 
+6)	Instalacion2_5.zip: bitácoras, logs, eval_modelo, parametros. Tamaño aprox: 162 MB
+7)	instalacion3.zip: app de interfaz de automatización.
+8)	instalacion4.zip: app de interfaz de consulta.
+
+
+
+3.	Los archivos de instalación se descomprimen a carpetas específicas:
+
+```{r, echo=TRUE, eval=FALSE, results='asis'}
+\# SSH
+sudo unzip -o /home/debian/instalacion/instalacion1.zip -d /srv/shiny-server/automatizacion
+
+sudo unzip -o /home/debian/instalacion/instalacion2_1.zip -d /srv/shiny-server/automatizacion
+
+sudo unzip -o /home/debian/instalacion/instalacion2_2.zip -d /srv/shiny-server/automatizacion
+
+sudo unzip -o /home/debian/instalacion/instalacion2_3.zip -d /srv/shiny-server/automatizacion
+
+sudo unzip -o /home/debian/instalacion/instalacion2_4.zip -d /srv/shiny-server/automatizacion
+
+sudo unzip -o /home/debian/instalacion/instalacion2_5.zip  -d /srv/shiny-server/automatizacion
+
+sudo unzip -o  /home/debian/instalacion/instalacion3.zip -d /srv/shiny-server/automatizacion
+
+Notar que la siguiente instrucción tiene una carpeta destino distinta a las anteriores.
+sudo unzip -o  /home/debian/instalacion/instalacion4.zip -d /srv/shiny-server/consulta/
+```
+
+
+Consideraciones temporales a los archivos de instalación
+```{r, echo=TRUE, eval=FALSE, results='asis'}
+\# SSH
+La conformación de los archivos de instalación tiene una lógica que permite identificar los actuales puntos pendientes por determinarse en cuanto al acceso regular a los datos:
+
+a)	IMSS: Insumo instalacion2_2.zip: actualmente son datos ficticios que replican la estructura de datos de los archivos originales a los cuales AIR no ha accedido.
+i)	Un primer punto pendiente es definir el mecanismo de cómo la DGIET-STPS depositará aprox. 75 GB de información para los cortes mensuales de 2019 a 2023.
+ii)	Una vez en operación el SIDIL, el depósito regular de los insumos originales del IMSS se realizará a través de la interfaz de automatización, en la pestaña de carga de insumos.
+b)	 DNE y SIAPI-SIPAS: Insumo instalacion2_4.zip: está pendiente identificar:
+i)	El mecanismo de conexión al DNE de manera regular. El SIDIL requiere acceso regular al universo de centros de trabajo con características básicas de los CT.
+1)	El mecanismo actual implica:
+(a)	Conexión vía vpn al servidor que STPS puso a disposición de AIR:
+(b)	Desde R, con ODBC/DBI establecer conexión al SQL
+(c)	Definición y envío / collect de query, basado en un catalogo de campos y entidades que se encuentra en el SIDIL.
+(d)	Postprocesamiento en R.
+ii)	El mecanismo de conexión al SIAPI-SIPAS, mismo que también requiere de acceso regular para enriquecer algunos campos obtenidos del DNE con base en los registros de inspección.
+(a)	El mecanismo de conexión es muy similar al del DNE
+2)	También es necesario una consulta más exhaustiva, de manera esporádica, para el entrenamiento del modelo. Esta consulta genera una base de datos más voluminosa. 
+```
+4.	Ejecución de config inicial 
+Entre los archivos descomprimidos se encontrará el algoritmo de configuración inicial que, entre diversos propósitos, generará la estructura de carpetas faltantes. Esto debe ejecutarse una sola vez, previo a la explotación de cualquier otro algoritmo, particularmente aquellos que están en Python. En todos los procesos que utilizan R, se ejecuta este algoritmo que entre otros propósitos, carga paqueterías, catálogos, define parámetros, etc.
+
+```{r, echo=TRUE, eval=FALSE, results='asis'}
+\#R
+source("/srv/shiny-server/automatizacion/2_codigos/cod_config_inicial/0_config_inicial.R")
+
+
+```
+
+
+5.	Modificar configuración de servidor. Realizar modificaciones en el archivo /etc/shiny-server/shiny-server.conf para quitar el timeout de la aplicación.
+
+```{r, echo=TRUE, eval=FALSE, results='asis'}
+\# SSH
+sudo nano /etc/shiny-server/shiny-server.conf
+
+```
+
+Para quitar el *timeout* de la app, se agrega *app_idle_timeout* *0*; al final del archivo.
+Guardamos y reiniciamos el servidor de shiny
+
+
+```{r, echo=TRUE, eval=FALSE, results='asis'}
+\# SSH
+sudo systemctl restart shiny-server
+```
+
+6.	Que el propietario de las aplicaciones de shiny sea SIDIL y que tenga permiso de acceso a las mismas
+
+```{r, echo=TRUE, eval=FALSE, results='asis'}
+\# SSH
+sudo chown -R sidil /srv/shiny-server/
+sudo chmod 755 -R /srv/shiny-server/
+```
+
+7.	Ingresar a http://<ip_server>:3838/automatizacion

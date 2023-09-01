@@ -3,7 +3,7 @@ output:
   html_document: default
 ---
 
-# Presentación sintética de todos los scripts {#anexotablascripts}
+# Anexo: Presentación sintética de todos los scripts {#anexotablascripts}
 
 A continuación se presentan de manera sintética todos los scripts que constituyen el SIDIL.
 

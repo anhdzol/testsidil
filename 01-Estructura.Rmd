@@ -76,16 +76,25 @@ A su vez, la modularización se observa, cuando es posible, al interior mismo de
 
 Así mismo, la modularización abona a la facilidad de dar mantenimiento a los diferentes componentes del SIDIL. La ejecución de los módulos por separado (en contraste con una ejecución única de todos los módulos) hace que, de presentarse problemas o de ser necesarias una revisión, ésta pueda concentrarse en los módulos en donde fuera de interés sin afectar a los demás módulos. La modularización permite aprovechar posibles ventajas comparativas, áreas de especialización e incluso atribuciones heterogéneas al interior de la STPS, permitiendo limitar el acceso a ciertas carpetas o subcarpetas en las que se alojan los inputs o scripts de ciertos módulos.
 
+El SIDIL tiene cuatro módulos, tal como se muestra en el recuadro \@ref(fig:modulosSIDIL): El [primer módulo](#moduloIexplicaciongeneral) es el de actualización de indicadores, mismo que explota las fuentes de información exógenas; el [segundo módulo](#moduloIIexplicaciongeneral) es el de consulta al universo de CT registrados en el DNE, la imputación de indicadores y de predicción de riesgo, que incorpora los resultados del módulo anterior. Estos dos módulos son operables a través de una [interfaz de automatización](#moduloIyIIexplicaciongeneral), misma que a su vez permite de una manera muy simple, asegurando coherencia y consistencia, la incorporación y actualización de catálogos y fuentes de información.
+
+Así, la interfaz de automatización abarca el desarrollo de los procesos que están en color amarillo en esta ilustración. Luego, el tercer módulo es el de la [interfaz de consulta](#interfazConsultaexplicaciongeneral), que explota el principal resultado del módulo anterior (la Matriz de Predicción de Riesgos, MPR). Esta consulta está esquematizada en el área de color rojo tinto de la figura, y da como resultado un *listado de centros de trabajo priorizados*, listos para ser incorporados a la programación de inspecciones. Por último, el cuarto módulo, de entrenamiento, es el que permite reentrenar el modelo para actualizar la forma en la que se realizará la predicción. El módulo cuarto arroja un modelo predictivo entrenado (llamémoslo "parámetros del modelo") que el módulo II consulta para la predicción del modelo sobre el universo de CT enriquecido con los indicadores.
+
+En resumen, cada uno de los módulos tiene un objetivo y alcance definido:
+
+* Módulo I: explotación de fuentes de información para la actualización de indicadores laborales. 
+* Módulo II: imputación de los indicadores calculados más recientemente en el módulo anterior al universo de los CT obtenidos del DNE, para con ello poder aplicar el modelo entrenado que permite la actualización de la MPR.
+* Interfaz de automatización de procesos: Es la interfaz que permite la actualización de insumos y catálogos y la ejecución de los procesos estipulados en los módulos I y II.
+* Módulo III: Es la interfaz que permite a la DGIFT la consulta a la MPR para la priorización de los CT con base en las predicciones de riesgo, indicadores imputados a los CT y sus atributos. Notar que en este módulo no hay scripts para la explotación de datos.
+* Módulo IV: Relaciona los antecedentes de inspección con la serie histórica de los indicadores laborales y atributos de los CT para entrenar un modelo de inteligencia artificial. Su producto es solamente el modelo entrenado, mismo que se aplica o implementa en el módulo II. 
+
+
 ```{r modulosSIDIL, echo=FALSE ,out.width="100%", fig.cap ="Módulos que componen el SIDIL"}
 #Nota, los nombre de referencia no pueden tener guion bajo
 knitr::include_graphics("images-1/02/modulos-SIDIL.jpg")
 # print("aqui PIPELINE")
 
 ```
-
-El SIDIL tiene cuatro módulos, tal como se muestra en el recuadro \@ref(fig:modulosSIDIL): El [primer módulo](#moduloIexplicaciongeneral) es el de actualización de indicadores, mismo que explota las fuentes de información exógenas; el [segundo módulo](#moduloIIexplicaciongeneral) es el de consulta al universo de CT registrados en el DNE, la imputación de indicadores y de predicción de riesgo, que incorpora los resultados del módulo anterior. Estos dos módulos son operables a través de una [interfaz de automatización](#moduloIyIIexplicaciongeneral), misma que a su vez permite de una manera muy simple, asegurando coherencia y consistencia, la incorporación y actualización de catálogos y fuentes de información.
-
-Así, la interfaz de automatización abarca el desarrollo de los procesos que están en color azul en esta ilustración. Luego, el tercer módulo es el de la [interfaz de consulta](#interfazConsultaexplicaciongeneral), que explota el principal resultado del módulo anterior (la Matriz de Predicción de Riesgos, MPR). Esta consulta está esquematizada en el área verde de la figura, y da como resultado un *listado de centros de trabajo priorizados*, listos para ser incorporados a la programación de inspecciones. Por último, el cuarto módulo, de entrenamiento, es el que permite reentrenar el modelo para actualizar la forma en la que se realizará la predicción. El módulo cuarto arroja un modelo predictivo entrenado (llamémoslo "parámetros del modelo") que el módulo II consulta para la predicción del modelo sobre el universo de CT enriquecido con los indicadores. A continuación, se ofrecen las principales características de estos módulos.
 
 
 ```{r modularizacionSIDIL, class.source='myClass', echo=FALSE, out.width="50px", fig.cap="Modularización del SIDIL", out.extra='style="float:left; background-color: #fff; padding-right:1em"'}
@@ -101,6 +110,7 @@ En ese sentido, una situación que podría ocurrir es la siguiente: el módulo I
 De la misma manera, la modularización permite aislar la tarea más compleja del SIDIL: la actualización del módulo IV de entrenamiento del modelo. Esta tarea es la más intensiva en tiempo, toma de decisiones y acceso a información a la vez que, de mantenerse el mismo modelo, no resultaría en sustantivas diferencias si la actualización se realizara con elevada frecuencia. 
 ```
 
+A continuación, se ofrecen las principales características de estos módulos.
 
 
 ### Módulo I: actualización de indicadores {#moduloIexplicaciongeneral .unnumbered}
@@ -110,7 +120,7 @@ En este módulo se explotan las diversas fuentes de información que sirven como
 Todas las estimaciones puntuales (valores) de los indicadores se calculan para diferentes "niveles de agregación": ***entiéndase por nivel de agregación aquella combinación de campos de tamaño del centro de trabajo, clasificación industrial y ubicación geográfica que caracterizan a cada centro de trabajo.** Hay 18 niveles de agregación según se incorporen estos campos. A mayor combinación de campos y/o especificidad en la utilización de los mismos, mayor es el nivel de agregación y más específica es la estimación puntual. Para más información consultar la sección 4.1.3.1 de este documento.*
 
 
-[@@ idea videocapsula: breve tour por el catalogo de indicadores, mostrando como de lo más básico (promedio nacional) llegas a lo más granular: 3_geo5_act3_tam ]{.mark}
+<!-- [@@ idea videocapsula: breve tour por el catalogo de indicadores, mostrando como de lo más básico (promedio nacional) llegas a lo más granular: 3_geo5_act3_tam ]{.mark} -->
 
 
 ```{r aprovechamientoNivelesAgregacion,echo=FALSE, out.width="100%", fig.cap="El aprovechamiento de los niveles de agregación en el cálculo de indicadores"}
@@ -172,7 +182,7 @@ En acuerdo con la DGIET, **se propone que este módulo se actualice cada tres me
 
 **Así, el módulo I constituye la [oferta]{.underline} de estimaciones puntuales de los indicadores del SIDIL**, que posteriormente serán imputados (de manera nominativa o por nivel de agregación, según sea al caso) a los centros de trabajo disponibles en el DNE.
 
-El resultado del mósulo I son diversas tablas en formato .Rds que contienen las estimaciones puntuales de todos los indicadores de todas las fuentes de información, así como la información sobre los niveles de agregación e información complementaria del cálculo. 
+El resultado del módulo I son diversas tablas en formato .Rds que contienen las estimaciones puntuales de todos los indicadores de todas las fuentes de información, así como la información sobre los niveles de agregación e información complementaria del cálculo. 
 
 ```{r MPRcomplementaria, echo=FALSE, fig.cap ="TInformación en las tablas de indicadores calculados en el Módulo I"}
 #Nota, los nombre de referencia no pueden tener guion bajo
@@ -197,7 +207,7 @@ Además, el SIDIL prevé una consulta al SIAPI y al SIPAS en caso de que la info
 knitr::include_graphics("images-1/02/resumenModII.jpg")
 ```
 
-[AQU POSIBLEMENTE CONVIENE INCORPORAR UNA ILUSTRACION SOBRE RELACION SIAPI SIPAS, DNE Y SIDIL]{.mark}
+<!-- [@@ PENDIENTE AQU POSIBLEMENTE CONVIENE INCORPORAR UNA ILUSTRACION SOBRE RELACION SIAPI SIPAS, DNE Y SIDIL]{.mark} -->
 
 ```{r relacionDNESNILESIAPISIPAS, class.source='myClass', echo=FALSE, out.width="50px", fig.cap="Relación DNE-SNILE-SIAPI-SIPAS con el matching nominativo del IMSS", out.extra='style="float:left; background-color: #fff; padding-right:1em"'}
 knitr::include_graphics("images-1/important-icon.svg")
@@ -234,6 +244,30 @@ knitr::include_graphics("images-1/02/MPR_simplificada.jpg")
 
 ```
 
+
+```{r motivosparaactualizarMPR, class.source='myClass', echo=FALSE, out.width="50px", fig.cap="La utilidad de los secuenciadores", out.extra='style="float:left; background-color: #fff; padding-right:1em"'}
+knitr::include_graphics("images-1/important-icon.svg")
+# htmltools::HTML(fn('Nombre del recuadro desde DIV...'))
+```
+
+ 
+
+```{block, type='rmdcomment', fig.cap="test numeracion block"}
+¿Bajo qué circunstancias es importante actualizar la MPR? Sin ignorar el hecho de que el universo de CT registrados en el DNE puede variar día a día (todos los días se podría estar incorporando un nuevo CT), pueden distinguirse tres circunstancias específicas en las cuales se vuelve realmente importante actualizar la MPR:
+
+1. Cuando existen variaciones sustantivas en los valores coyunturales de las estimaciones puntuales de los indicadores laborales calculados en el módulo I. Esto por ejemplo, se vuelve crítico cuando se presentan cambios abruptos en el mercado laboral (por ejemplo, en la reciente pandemia), pero también es importante reconocer cierta ciclicidad de algunos indicadores o algunos efectos de cambios en la política laboral. Un claro ejemplo de esto es el cálculo de la prevalencia de asalariados percibiendo cerca de un salario mínimo, lo cual, presenta un salto discreto al inicio de cada año. Por lo anterior, dada la frecuencia de publicación de las actualizaciones de la ENOE, se sugiere que, sólo desde esta perspectiva, la MPR se actualice cada tres meses.
+
+2. Cuando se ha realizado un nuevo entrenamiento del modelo en el módulo IV. Esto podría haber sido producto de una recalibración del mismo, la necesidad de predecir sobre nuevas submaterias, etc. mismo que, de no volver a predecir la MPR, no será reflejado en la misma.
+
+3. Cuando se presenten cambios sustantivos en el número y la composición de los CT registrados en el DNE. Esto pudiera ser por incorporaciones o depuraciones masivas en el mismo, cambios en la generación de algunos campos, o simplemente, el natural paso del tiempo y crecimiento en el número de registros allí encontrados.
+
+
+En cualquiera de estas tres circunstancias se vuelve importante sino imprescindible volver a correr todos los scripts que se relacionen con el origen de dichos cambios: a) si hay cambios o actualizaciones en la ENOE, correr el módulo I (script secuenciador de la ENOE) y todos los posteriores que se encuentran en el módulo II, b) si hay cambios en el módulo IV, volver a correr el módulo II (script de predicción de riesgos), c) si hay cambios en la composición del universo de CT, todos los scripts del módulo II.  
+
+```
+
+
+
 #### Módulos I y II: operables desde la interfaz de automatización {#moduloIyIIexplicaciongeneral .unnumbered}
 
 **La interfaz de automatización permite que, bajo circunstancias normales, es decir, sin la necesidad de corregir los algoritmos de cálculo, se puedan mantener actualizados los productos de los módulos I y II sin necesidad de ejecutar los algoritmos desde la consola del software de análisis R Studio**, sino desde una interfaz amigable y simplificada que ejecuta los mismos procesos que se correrían manualmente desde R Studio. A dicha interfaz también se le agregó la funcionalidad de incorporar actualizaciones a las fuentes de información (por ejemplo, un nuevo trimestre de la ENOE) o a los catálogos que permiten la adecuada explotación de los insumos a través de parámetros configurables. Esto permite que la interfaz mantenga actualizados los productos módulos I y II, y que esto se realice, en circunstancias normales, por personal que no requiere de acceso o conocimiento profundo de un software especializado. La interfaz permite actualizar los insumos del cálculo, modificar sus parámetros principales y seleccionar cuáles procesos se quieren ejecutar a fines de actualizar los productos, todo el tiempo reportando en una consola los principales avances de dichos procesos, para seguimiento del usuario que lo ejecuta.
@@ -250,7 +284,7 @@ knitr::include_graphics("images-1/important-icon.svg")
 ```
 
 ```{block, type='rmdcomment', fig.cap="test numeracion block"}
-La interfaz de automatización permite a un usuario mantener actualizados los productos de los módulos I y II sin necesidad de ejecutar los algoritmos desde la consola del software R. De hecho, no requiere tener instalado el software R ni R Studio localmente, toda vez que la operación de dicha interfaz se realiza desde una conexión WEB a un servidor. Algunas de las condiciones que deben darse para que la actualización de estos módulos desde la interfaz sea satisfactoria son:
+La interfaz de automatización permite a un usuario mantener actualizados los productos de los módulos I y II sin necesidad de ejecutar los algoritmos desde la consola del software R. De hecho, no requiere tener instalado el software R ni R Studio localmente, toda vez que la operación de dicha interfaz se realiza desde una conexión web a un servidor. Algunas de las condiciones que deben darse para que la actualización de estos módulos desde la interfaz sea satisfactoria son:
 
 1)  Que no haya cambios sustantivos en los insumos de las fuentes de información o que no pudieran ser atendibles con la actualización de catálogos. Por ejemplo, hay un catálogo de campos que permite asociar diferentes nombres de ciertas variables a un nombre único, para atender a cambios menores entre algunas versiones de la misma fuente de información. Este tipo de cambios se considera menor y es atendible desde el catálogo. 
 
@@ -306,9 +340,9 @@ Un **modelo Random Forest (RF) de aprendizaje automático utiliza múltiples ár
 
 **En el caso del modelo de RF que se utiliza, cada árbol de decisión en el modelo es una representación gráfica de las reglas que se utilizan para predecir la probabilidad de incumplimiento en una de las submaterias de inspección**. Cada árbol en el modelo toma como entrada los indicadores que se han calculado para el centro de trabajo que se está evaluando y, a través de una serie de preguntas, clasifica el centro de trabajo en una de las dos categorías: violación o no violación procedente en la submateria en cuestión.
 
-[Placeholder imagen pixelada pendiente mejora]{.mark}
+<!-- [Placeholder imagen pixelada pendiente mejora]{.mark} -->
 
-```{r arboldecision, echo=FALSE, fig.cap ="Ejemplo de un árbol de decisión"}
+```{r arboldecision, echo=FALSE, eval=FALSE, fig.cap ="Ejemplo de un árbol de decisión"}
 #Nota, los nombre de referencia no pueden tener guion bajo
 
 knitr::include_graphics("images-1/02/arbol_decision.png")
@@ -327,3 +361,23 @@ knitr::include_graphics("images-1/02/arbol_decision.png")
 De esa manera, a partir del entrenamiento del modelo Random Forest sobre el conjunto de datos históricos se guarda o exporta el **modelo entrenado para la predicción de riesgo** por submateria a partir de los indicadores y atributos imputados de manera histórica. Dicho modelo entrenado se utiliza luego para la predicción de riesgos sobre el universo de CT caracterizado con los indicadores coyunturales que se calculan en el módulo I y se imputan en el módulo II. Así, este modelo entrenado nos permitirá, para cada CT, calcular **predicciones de riesgo**, utilizando el modelo entrenado a partir del registro histórico de inspecciones y los atributos e indicadores observados al momento de dichas inspecciones.
 
 Para ilustrar la relación entre el entrenamiento del modelo con datos históricos y la predicción de riesgo con datos coyunturales, puede servir la siguiente analogía: imagine que el propósito es predecir a un paciente que se presenta a consulta médica la probabilidad de ocurrencia de cada una de las siguientes enfermedades cardiovasculares: insuficiencia cardíaca, hipertensión arterial, exceso de colesterol, infarto de miocardio, etc. Por otro lado, imagine que existen factores que explican, causan, o al menos se correlacionan con la ocurrencia de estas enfermedades cardiovasculares: edad, sexo, la mala alimentación, falta de actividad física, el consumo de alcohol, la diabetes. Estos factores son medibles o al menos averiguables, al momento en el que el paciente se presenta a consulta médica. Esta medición es "en tiempo real" al momento de la consulta. Conviene asociar los siguientes conceptos: los diferentes tipos de enfermedades cardiovasculares serían las diferentes submaterias del marco normativo de la inspección, mientras que los indicadores y atributos son los factores de salud (edad, sexo, alimentación), que son medibles en tiempo real, lo cual se asimila al cálculo coyuntural de indicadores, que ocurre en el módulo I. Pero también el historial médico de millones de pacientes que fueron estudiados por la medicina, y a los cuales se les detectó o no cada una de estas enfermedades, se analiza en el módulo IV: se identifica qué pacientes tuvieron enfermedades y se busca asociar dichas enfermedades con la presencia, ausencia o nivel de ciertos factores, que al momento de detectarse dicha enfermedad fueron medidos. Dicho análisis histórico de factores versus enfermedades, o de indicadores y atributos versus violaciones laborales a nivel submateria es el entrenamiento del modelo. Pero, muy importante, el modelo entrenado (o en este ejemplo la medicina) busca predecir cierta probabilidad sobre una población siempre cambiante, sobre la cual lo único que puede observar es lo que se puede medir: los indicadores laborales (o los factores de salud como edad, sexo, alimentación). Dicho de otra forma, la predicción se realiza sobre una "nueva" población que además por definición estará en un cambio constante.
+
+
+
+```{r frecuenciaModIV, class.source='myClass', echo=FALSE, out.width="50px", fig.cap="La utilidad de los secuenciadores", out.extra='style="float:left; background-color: #fff; padding-right:1em"'}
+knitr::include_graphics("images-1/important-icon.svg")
+# htmltools::HTML(fn('Nombre del recuadro desde DIV...'))
+```
+
+ 
+
+```{block, type='rmdcomment', fig.cap="test numeracion block"}
+¿Con qué frecuencia debe actualizarse el módulo IV? Esta pregunta podría tener diferentes respuestas, según diversos factores como la disponibilidad de tiempo del personal de la DGIET, la precisión con la que se quiera operar el SIDIL, el volumen y la distribución de las inspecciones que se realicen, etc. Poniendo en la balanza estos y otros factores, cabe sugerir que el módulo IV, el cual es el computacionalmente más intensivo dado el periodo temporal que cubre, no requiere ser actualizado con la misma frecuencia que los demás módulos (mismo que se propone sea cada tres meses). Esto porque, todo lo demás constante, no es sustantiva la aportación que realice al entrenamiento del modelo la incorporación de tres, seis o incluso nueve meses de inspección, claro está, salvo que éstas sean de un volumen considerable o representen un cambio sustantivo respecto a los antecedentes. Podría pensarse que el módulo IV puede actualizarse cada uno o dos años, a menos que se observe la ocurrencia de algunos eventos como los siguientes:
+
+1. Que se identifique que la predicción del modelo ha empeorado y que se requiere reentrenar el mismo probando otra configuración de hiperparámetros.
+2. Que se requiera predecir el riesgo de incumplimiento en ciertas submaterias sobre las cuales no hay predicciones actualmente.
+3. Que cambien los criterios y/o procedimientos para determinar las violaciones que proceden en los CT, o que se observe un cambio abrupto en los porcentajes de violaciones que procedene. 
+4. Que se incorporen nuevos indicadores laborales o atributos sobre los CT en el DNE, y se pretenda incluir estos como variables de entrada en el modelo predictivo.
+
+
+```

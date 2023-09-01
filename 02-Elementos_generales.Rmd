@@ -43,9 +43,9 @@ A su vez, es desde el script de configuración inicial que se ejecuta de manera 
 
 El motivo por el cual el script que lee catálogos y define funciones no está directamente contenido en el de configuración inicial reside en que para la ejecución de ciertos procesos en la interfaz de automatización se requiere únicamente la lectura de catálogos y funciones. Sin embargo, no afecta a la conclusión de que el script de configuración inicial es de menester importancia y se ejecuta en todos los procesos del SIDIL que se realizan con R.
 
-[@@Propuesta de capsula: tour rapido por config inicial y 0 funciones:
-@@ sobre todo importante porque habra cambios importantes para acomodar las apps de las interfaces.
-@@posiblemente mas o menos por aqui se incorpore todavía un parrafo al respecto]{.mark}
+<!-- [@@Propuesta de capsula: tour rapido por config inicial y 0 funciones: -->
+<!-- @@ sobre todo importante porque habra cambios importantes para acomodar las apps de las interfaces. -->
+<!-- @@posiblemente mas o menos por aqui se incorpore todavía un parrafo al respecto]{.mark} -->
 
 
 ### Scripts secuenciadores {#secuenciadores}
@@ -56,33 +56,33 @@ El motivo por el cual el script que lee catálogos y define funciones no está d
 
 ¿Cuántos scripts secuenciadores existen? El número total asciende a once porque actualmente hay un script secuenciador para la actualización de indicadores de la ENOE, otro para indicadores del IMSS, otro para indicadores del Censo Económico y otro tres para el módulo II, concretamente para consulta al DNE, SIAPI y el matching:
 
-Módulo I
+Módulo I: explotación de fuentes de información para la actualización de indicadores laborales.
 
-1)  Script secuenciador para ENOE
+1)  Script secuenciador para ENOE, mismo que explota la última publicación disponible de esta encuesta para actualizar los indicadores que se obtienen de esta fuente de información (1_secuenciador_ENOE)
 
-2)  Script secuenciador para IMSS
+2)  Script secuenciador para IMSS, mismo que explota los registros administrativos para actualizar los indicadores que se obtienen de esta fuente de información (1_secuenciador_IMSS)
 
-3)  Script secuenciador para Censo Económico
+3)  Script secuenciador para Censo Económico, mismo que explota la información generada entre DGIET e INEGI (1_secuenciador_CENSO)
 
-Módulo II
+Módulo II: consulta al DNE, imputación de  indicadores coyunturales y predicción de riesgo.
 
-4)  Script secuenciador de consulta al DNE
+4)  Script secuenciador de consulta al DNE, mismo que genera un universo de CT actualizados según los registros del DNE (2_consulta_DNE)
 
-5)  Script secuenciador de matching coyuntural
+5)  Script secuenciador de matching coyuntural: asocia los indicadores coyunturales a los CT consultados del DNE, fuera por registro patronal (nominativo) o por nivel de agregación (2_matching_coyuntural)
 
-6)  Script secuenciador de predicción de riesgo
+6)  Script secuenciador de predicción de riesgo, mismo que recupera el modelo entrenado y lo aplica sobre el universo de CT con sus indicadores coyunturales asociados (2_prediccion)
 
-Módulo IV
+Módulo IV: Entrenamiento del modelo a partir del registro histórico de inspecciones laborales y series históricas de indicadores.
 
-7)  Script secuenciador para ENOE
+7)  Script secuenciador para el cálculo histórico de indicadores obtenidos de la ENOE (4_secuenciador_ENOE)
 
-8)  Script secuenciador para IMSS[^02-elementos_generales-1]
+8)  Script secuenciador para el cálculo histórico de indicadores obtenidos de la IMSS (4_secuenciador_IMSS)[^02-elementos_generales-1]
 
-9)  Script secuenciador de consulta de histórico de inspecciones
+9)  Script secuenciador de consulta de histórico de inspecciones a nivel submateria  (4_secuenciador_inspecciones)
 
-10) Script secuenciador de matching histórico
+10) Script secuenciador de matching histórico, imputa indicadores históricos a las inspecciones por submateria (4_matching_historico)
 
-11) Script secuenciador de entrenamiento de modelo
+11) Script secuenciador de entrenamiento de modelo, mismo que deja el modelo entrenado para utilizarse en la predicción (4_entrenamiento)
 
 [^02-elementos_generales-1]: El lector percibirá que no hay un script secuenciador del censo económico histórico. Esto se debe a que dichos indicadores no entran al entrenamiento del modelo, como se describe en el módulo IV.
 
@@ -91,7 +91,22 @@ En sentido estricto, un análisis más minucioso de los contenidos de este scrip
 Así, uniendo los conceptos descritos en este y el anterior apartado, se puede presentar la ilustración \@ref(fig:secConfigInicial) en la que se observa cómo un script secuenciador llama al script de configuración inicial, éste a su vez llama al *0_funciones_catalogos* para luego a partir de un script de extracción se lamen los inputs para su transformación, y luego, cuando aplique, los scripts del cálculo de los indicadores, para dar con el output final.
 
 ```{r secConfigInicial,echo=FALSE, fig.cap="Presentación esquematizada de la relación "}
-knitr::include_graphics("images-1/02/detallescriptgenerico.png")
+knitr::include_graphics("images-1/02/detallesscriptsgenerico.jpg")
+```
+
+
+```{r secuenciadoresparaactualizar, class.source='myClass', echo=FALSE, out.width="50px", fig.cap="La utilidad de los secuenciadores", out.extra='style="float:left; background-color: #fff; padding-right:1em"'}
+knitr::include_graphics("images-1/important-icon.svg")
+# htmltools::HTML(fn('Nombre del recuadro desde DIV...'))
+```
+
+ 
+
+```{block, type='rmdcomment', fig.cap="test numeracion block"}
+La lógica de tener scripts secuenciadores es que son los únicos scripts que se requieren ejecutar para lograr una actualización del SIDIL, notando que además esto puede limitarse a ciertos módulos únicamente. Esto es, ante la pregunta ¿cómo se actualiza el SIDIL? la respuesta es breve: ejecutando los scripts secuenciadores en el orden en que se presentaron en esta sección. ¿Por qué importa el orden? Porque de no hacerlo se corre el riesgo de utilizar información desactualizada que sólo se actualizaría después de que fuera necesitada. Por ejemplo, para imputar la estimación de un indicador coyuntural a un CT, **primero** es importante actualizar el valor de dichas estimaciones (módulo I) para que al realizar la imputación (módulo II) se disponga de la última actualización disponible. 
+
+Esto se vuelve particularmente importante en el módulo II, ya que mientras que al interior del módulo I es indistinto el orden en el que se actualizan los indicadores (si primero IMSS o primero ENOE), en el caso del módulo II el orden se vuelve importante, porque primero se consulta al universo de CT, luego se le imputan las estimaciones puntuales de coyuntura (del módulo I) y por último se aplica el modelo preentrenado para la predicción de riesgo. Hacerlo en orden distinto podría, por ejemplo, llevar a realizar una predicción de riesgo con base en el valor de indicadores desactualizados, lo cual no es deseable y prácticamente desaprovecha todo trabajo de actualización de indicadores del módulo I. 
+
 ```
 
 ## Estructura de carpetas y sintaxis de archivos {#estructuracarpetas}
@@ -106,12 +121,12 @@ En algunas carpetas específicas, particularmente las de la subcarpeta de insumo
 
 Cuarto, hay un script que genera esta estructura de carpetas a partir del catálogo de carpetas, el cual crea las carpetas, de no existir alguna de estas.
 
-Hay cuatro grandes carpetas: 1_insumos, 2_codigos, 3_resultados, 4_reportes.
+Hay cuatro grandes carpetas: *1_insumos*, *2_codigos*, *3_resultados*, *4_reportes*.
 
 ```{r organizacioncatalogos, echo=FALSE, fig.cap ="Organización básica de las principales carpetas"}
 #Nota, los nombre de referencia no pueden tener guion bajo
 
-knitr::include_graphics("images-1/03/organizacion_catalogos.png")
+knitr::include_graphics("images-1/03/organizacion_catalogos2.jpg")
 
 
 ```
@@ -126,8 +141,8 @@ Al interior de 1_insumos se encuentran tres subcarpetas:
 
     -   Notar que en el caso de la ENOE, dado que su procesamiento no demanda mucha RAM, no se escribe a disco en esta carpeta. En contraste, para el procesamiento del IMSS se escriben tanto archivos temporales intermedios (que se borran luego de su utilización de manera automática) como también el guardado de los procesados "finales" (sin que estos sean resultados, sino que únicamente "preprocesados" que reducen las dimensiones y "limpian" algunos campos de los insumos).
     
-[@@ idea capsula
-breve tour por las carpetas dentro de 1_insumos]{.mark}
+<!-- [@@ idea capsula -->
+<!-- breve tour por las carpetas dentro de 1_insumos]{.mark} -->
 
 Al interior de *2_codigos*, existen tres principales subcarpetas:
 
@@ -156,11 +171,11 @@ En la carpeta *4_reportes* se albergan cuatro subcarpetas
 -   *parámetros: es la exportación de los parámetros que se definen en el script de configuración inicial.*
 
 
-[@@ idea video capsula:
-breve tour por las carpetas dentro de 4_resultados
-particularmente mostrar la diferencia entre las dos bitacoras.
-mostrar también cómo se lee el log 
-]{.mark}
+<!-- [@@ idea video capsula: -->
+<!-- breve tour por las carpetas dentro de 4_resultados -->
+<!-- particularmente mostrar la diferencia entre las dos bitacoras. -->
+<!-- mostrar también cómo se lee el log  -->
+<!-- ]{.mark} -->
 
 
 ## Sobre la temporalidad {#temporalidad}
@@ -302,7 +317,7 @@ El resto de los catálogos están organizados en subcarpetas según el tipo de i
 
     d.  Catálogo de categorías de tamaño (subcarpeta *tamanio*, archivo: *cat_tamanio)*: el catálogo contiene las seis categorías de tamaño de los CT estipulados en el SIDIL. La tabla cuenta con cinco columnas: *cat_tamanio* (enumeración del 1 al 6), *etiq_cat_tamanio* (la etiqueta del rango de tamaño para cada enumeración), *estrato_censo_economico* (la homologación entre el campo *estrato* del Censo Económico y el campo *cat_tamanio*), *p3q_en_enoe* (la homologación entre el campo *p3q* de la ENOE y el campo *cat_tamanio*) y *corte_numerico* (la homologación entre los datos del IMSS y el campo *cat_tamanio*). Si llegase a cambiar alguna de las categorías de alguna de las fuentes, los cambios correspondientes se deben hacer directamente en este catálogo.
 
-    e.  Catálogo de campos del DNE (subcarpeta *campor_DNE*, archivo: *cat_campos_DNE).* El catálogo contiene los campos que serán recuperados del DNE a lo largo de los diferentes scripts. Cuenta con cinco columnas: *fuente* (DNE en todos los casos), *indicador* (con el nombre del campo), *etiqueta* y *entra_al_modelo* (con opciones de si y no para entrar al modelo predictivo), *tabla* (la entidad dentro de la base de datos relacional). Con el campo *tipo* se escpecifica que tipo de filtro aplica al explotar estos campos (que luego en la MPR son atributos de los CT del DNE) a través de la interfaz de consulta.
+    e.  Catálogo de campos del DNE (subcarpeta *campor_DNE*, archivo: *cat_campos_DNE).* El catálogo contiene los campos que serán recuperados del DNE a lo largo de los diferentes scripts. Cuenta con cinco columnas: *fuente* (DNE en todos los casos), *indicador* (con el nombre del campo), *etiqueta* y *entra_al_modelo* (con opciones de si y no para entrar al modelo predictivo), *tabla* (la entidad dentro de la base de datos relacional). Con el campo *tipo* se especifica qué tipo de filtro aplica al explotar estos campos (que luego en la MPR son atributos de los CT del DNE) a través de la interfaz de consulta. Con un filtro tipo **combo** se refiere a que el campo permite únicamente la selección de una opción, mientras que, en oposición, el filtro tipo **sel_mul** indica la posibilida de realizar una selección múltiple. El filtro  de tipo **numérico** permite acotar la selección por valores de ese campo; y de manera análoga, el filtro tipo **fecha**. Por último **na** indica que dicho campo no entra como atributo para filtrar en interfaz de consulta. 
 
     f.  Catálogo de campos del SIAPI SIPAS (subcarpeta *campos_SIAPISIPAS*, archivo: *cat_campos_SIAPISIPAS*): Contiene los campos y ubicación de los mismos dentro del sistema SIAPI SIPAS.
 
@@ -349,18 +364,36 @@ Precisando esto último, la carga de los diferentes catálogos será a partir de
 
 ## La Matriz de Predicción de Riesgo
 
-La Matriz de Predicción de Riesgo (MPR) es un producto crítico del sistema. La MPR es la tabla que reúne el universo actualizado de centros de trabajo disponibles en el DNE (una fila de la matriz por cada centro de trabajo), junto con sus atributos más importantes, los indicadores atribuidos a ellos a partir de la explotación de diferentes fuentes de información, y por supuesto, la predicción de riesgo asociada a ciertas submaterias y una predicción de riesgo general (todo ello en las columnas de la matriz). Es, en esencia, el principal producto del SIDIL previo a la priorización de un subconjunto del universo de CT realizada por quien esté a cargo de la programación de inspecciones.
+La Matriz de Predicción de Riesgo (MPR) es quizá el producto más importante del SIDIL. En ella confluye el resultado de todos los procesos que se realizan a lo largo del SIDIL, sea de manera directa o indirecta, quizá solamente dejando de lado aquellos procesos que ocurren en el módulo III - la interfaz de consulta. 
 
-La MPR es un punto crítico porque:
+La MPR es tan importante porque es la tabla que:
 
-1)  Es el producto con el cual culmina el proceso a cargo de la DGIET, es decir, en donde concluye el procesamiento de información.
+1. Presenta a todos los centros de trabajo activos en el DNE, mismos que son susceptibles de ser inspeccionados. Esto es resultado de la ejecución del primer secuenciador del módulo II, 2_consulta_DNE, incluso reflejando ya el enriquecimiento del campo **cat_tamanio** cuando el CT es encontrado a través de su registro patronal en la base de patrones del IMSS. 
+2. Incorpora a cada uno de estos CT del punto anterior, todos los indicadores laborales coyunturales (resultado de correr todos los scripts del módulo I). Esto se realiza a través de la ejecución del script de matching coyuntural (2_matching_coyuntural), que identifica si al CT se le pueden imputar indicadores nominativos o agregados, según el caso.
+3. Presenta las predicciones de riesgo para cada una de las submaterias, además de una predicción de riesgo general. Esto se refleja a partir de correr el script de predicción o deploy del modelo (2_prediccion) que justamente recupera el modelo entrenado del módulo IV (mismo que refleja los resultados de todos los scripts del módulo IV).
+4. En consecuencia de los tres puntos anteriores, permite a la DGIFT explotar toda la riqueza del SIDIL concentrada en un solo lugar, toda vez que es el único insumo que se requiere para la ejecución de la interfaz de consulta. 
 
-2)  Contiene el resumen de toda la información extraída, generada o procesada a lo largo del ciclo del SIDIL para los centros de trabajo.
+Es, en esencia, el principal producto del SIDIL previo a la priorización de un subconjunto del universo de CT realizada por quien esté a cargo de la programación de inspecciones.
 
-3)  Junto con los metadatos asociados a la MPR, es el único insumo imprescindible para el funcionamiento de la interfaz de consulta.
+Aemás, la MPR es un punto crítico porque es el producto con el cual culmina el proceso a cargo de la DGIET, es decir, en donde concluye el procesamiento de información, conteniendo, insistimos, toda la información extraída, generada o procesada a lo largo del ciclo del SIDIL para los centros de trabajo.
 
-4)  Contiene toda la información que, a través de filtros y consultas, permitirá generar los universos susceptibles de ser inspeccionados, priorizados por riesgo de incumplimiento en las diferentes submaterias.
+En la ilustración a continuación se observa una estructura simplificada de la MPR: En primera instancia, una columna de identificador único de los CT en el DNE. Esto permite asociar dicha fila de la MPR a información como el nombre del CT, dirección, etc. del CT en el DNE. Le sigue un primer grupo de columnas que son los atributos del CT que se observan en el DNE o, en el caso de **cat_tamanio** fueron potencialmente enriquecidas por la consulta de enriquecimiento al DNE. No sobra mencionar que, mientras en la ilustración se presenta directamente la etiqueta del campo (por ejemplo "Aguascalientes"), en la MPR se incluye tanto el valor numérico del campo (en este caso **01**) como su etiqueta. Dadas algunas pequeñas diferencias en la clasificación de los municipios y los sectores industriales, cabe notar que en la MPR se utiliza el marco geoestadístico vigente del INEGI (no la clasificación de municipios del DNE), y el Sistema de Clasificación Industrial de América del Norte (SCIAN) en su versión 2018, respectivo. Todas las columnas que forman parte de este primer grupo comienzan con el prefijo **atrib_** para facilitar su detección. Aquí es importante agregar que es muy factible que algunas de estas columnas tengan un elevado porcentaje de valores faltantes, como, por ejemplo, **cat_tamanio**, pues así viene la información registrada en el DNE.
+
+El segundo grupo de columnas son los indicadores, mismos que comienzan con el prefijo **ind_** y que no son otra cosa que todos los indicadores disponibles, en su actualización más reciente, a partir de los procesos generados en el módulo I. Notar que la inclusión de estos indicadores no depende de que hayan sido utilizados en el entrenamiento del modelo y la predicción de riesgo posterior. Es decir, uno podría encontrar un indicador entre estas columnas que no fue utilizado para la predicción de riesgo. Por definición, todas estas columnas no tienen un valor faltante, ya que en última instancia se imputa el promedio nacional del indicador mismo que siempre es posible calcular para todos los indicadores. 
+
+Por último en las columnas de prefijo **pred_** y la columna **riesgo** se encuentran las predicciones por submateria o la de riesgo general, respectivamente. Recordemos que la predicción por submateria es independiente de las predicciones en las otras submaterias, lo cual permite utilizar cualquiera de estas columnas de predicción de manera independiente de las otras. Por definición, aqui también todos los CT tienen una predicción, es decir, no hay valores faltantes entre las predicciones.
 
 
-[@@idea capsula:
-breve tour por una MPR mostrando que el nro de filas depende del número de CT activos en MPR, y los diferentes tipos de columnas que hay y como se relacionan estos con los catalogos de campos_DNE  y cat_indicadores ]{.mark}
+```{r MPRsimplificada2, echo=FALSE, fig.cap ="Matriz de predicción de riesgos (ilustración simplificada)"}
+#Nota, los nombre de referencia no pueden tener guion bajo
+
+knitr::include_graphics("images-1/02/MPR_simplificada.jpg")
+```
+
+
+Cabe agregar que en la MPR se reflejará toda actualización que se realice en el SIDIL, provisto se corran los tres scripts secuenciadores del módulo II, mismos que, de manera secuencial van generando la MPR por partes: El primer script, 2_consulta_DNE, actualiza el número y atributos observables de los CT en el DNE. Esto directamente se traduce en el número de filas que se observarán en la MPR. Segundo, el script 2_matching_coyuntural, que **barre** las últimas estimaciones puntuales de todos los indicadores calculados en el módulo I para imputarlos de manera nominativa o por nivel de agregación, a los CT consultados del DNE. Y por último, el tercer script del módulo II que, utilizando el resultado de los dos scripts anteriores, aplica el modelo que genera la predicciones por submateria y la predicción de riesgo general. 
+
+
+
+<!-- [@@idea capsula: -->
+<!-- breve tour por una MPR mostrando que el nro de filas depende del número de CT activos en MPR, y los diferentes tipos de columnas que hay y como se relacionan estos con los catalogos de campos_DNE  y cat_indicadores ]{.mark} -->

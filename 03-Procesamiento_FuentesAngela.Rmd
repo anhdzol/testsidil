@@ -58,7 +58,30 @@ Para la ejecución de este módulo no es necesario tener instalado Python, porqu
 
 ### Desafíos al tratamiento de bases de datos externas {#procesamientoModIdesafios}
 
-Hay diversos desafíos que se pudieran presentar para la inclusión de bases de datos externas, o para la explotación de indicadores específicos de dichas bases. Aquí se mencionan los principales desafíos y posibles formas de atenderlos:
+Hay diversos desafíos que se pudieran presentar para la inclusión de bases de datos externas, o para la explotación de indicadores específicos de dichas bases. 
+
+
+
+```{r precauciones, class.source='myClass', echo=FALSE, out.width="50px", fig.cap="Aspectos a considerar al ejecutar los scripts en los módulos I", out.extra='style="float:left; background-color: #fff; padding-right:1em"'}
+knitr::include_graphics("images-1/important-icon.svg")
+# htmltools::HTML(fn('Nombre del recuadro desde DIV...'))
+```
+
+```{block, type='rmdcomment', fig.cap="test numeracion block"}
+El aprovechamiento de bases de datos externas, o para el caso, de cualquier base de datos no es libre de riesgos. El principal riesgo es no detectar si ocurren cambios en las mismas y que éstos se  afecten los resultados o incluso las conclusiones que se deriven de dicho análisis. Se requiere mucha cautela y análisis crítico para detectar estos cambios. Por fortuna, en muchos casos las fuentes de información, como por ejemplo el INEGI, documentan los cambios que le realizan a sus proyectos estadísticos. 
+
+A continuación se mencionan sólo algunos de los elementos que podrían formar parte de la rutina de cualquier área estadística en el procesamiento de datos:
+
+1. Revisar la documentación de cada publicación o actualización de la base de datos. Prestar atención a cambios en los nombres de las variables, metodologías de levantamiento o de postprocesamiento de los datos, recálculo o ajustes a los campos que caracterizan el muestreo complejo, etc. 
+2. Revisar si el número de observaciones y de población estimada presenta desviaciones sustantivas a las habitualmente obtenidas con esta misma base de datos.
+3. Revisar si proyectos auxiliares relacionados tuvieron actualizaciones importantes que pudieran afectar la base de datos que se pretende explotar. Por ejemplo, el censo demográfico que permite actualizar los factores de expansión de la ENOE.
+4. Revisar si las estimaciones de ciertas proporciones y poblaciones son similares a las obtenidas, a menos que haya motivo fundado para esperar cambios sustantivos, generalmente ciertos indicadores permanecen relativamente estables. En el caso del IMSS, por ejemplo, es la proporción de trabajadores en la frontera, o la participación de las mujeres en los puestos asegurados etc. 
+5. Identificar si los indicadores que se obtienen presentan un comportamiento anómalo respecto a la serie histórica o ciertos valores de referencia. 
+
+Para muchas circunstancias como, por ejemplo, el cambio de nombres de columnas, cambios en el marco geoestadístico, en la clasificación industrial, etc, el SIDIL contempla la posibilidad de atender estos cambios a través de los catálogos que para tal fin se incluyeron en el SIDIL. Ver  la sección [Catálogos de información](#catalogos) para más información. En otras circunstancias más específicas será necesario revisar con cautela la ejecución de los scripts, prestando atención a aquellos segmentos en los que aparecen los campos que sufrieron cambios que no se puedan atender con los catálogos. 
+```
+
+Aquí se mencionan los principales desafíos y posibles formas de atenderlos:
 
 1)  Cambios de nombres de variables y variables faltantes: a lo largo del tiempo, con o sin cierta ciclicidad, existen modificaciones en los nombres de los campos de interés en las bases que se explotan. En el caso del IMSS, por ejemplo, el campo registro solía llamarse *cve_registro* y antes *cve_patronal*. En el caso de la ENOE, el mismo nombre de variable representa dos conceptos distintos según se trate del primer trimestre o alguno de los restantes tres. A tal efecto, el SIDIL contempla un catálogo de campos que permitan asociar diferentes nombres al mismo concepto. Ver sección [Catálogos de información](#catalogos).
 
@@ -292,7 +315,7 @@ Con la ENOE se calculan once indicadores, de los cuales para diez la informació
 
 ```{r  echo = FALSE, message=FALSE,warnings=FALSE, results = 'asis'}
 
-tabla1 <- read_excel("./data/tablas03.xlsx", sheet = "tabla2")
+tabla1 <- read_excel("./data/tablas03.xlsx", sheet = "tabla2")%>% select(!(ends_with("lculo")&starts_with("C")))
 
 flextable::flextable(tabla1) %>%
    flextable::set_caption( caption = "Indicadores calculados con base en la ENOE", 
@@ -397,7 +420,7 @@ knitr::include_graphics("images-1/04/detallescriptsIMSS.jpg")
 A continuación, se detallan los indicadores que se calculan a partir de los inputs que se reflejan en la siguiente subsección. Notar que todos los indicadores, incluidos los que se obtienen con datos del IMSS, antes del entrenamiento del modelo predictivo (Ver [Módulo IV](#procesamientoModIV) ) y de la predicción del mismo (Ver [Módulo II](#moduloii) ) se estandarizan entre 0 y 1 e invierten para expresar que "más es peor", es decir, un mayor percentil de un indicador se asocia a peores condiciones laborales.
 
 ```{r  echo = FALSE, message=FALSE,warnings=FALSE, results = 'asis'}
-tabla1 <- read_excel("./data/tablas03.xlsx", sheet = "tabla4") 
+tabla1 <- read_excel("./data/tablas03.xlsx", sheet = "tabla4") %>% select(!(ends_with("lculo")&starts_with("C")))
 
 flextable::flextable(tabla1) %>%
    flextable::set_caption( caption = "Indicadores que se calculan con base en los datos del IMSS", 
@@ -426,7 +449,7 @@ Hay algunas diferencias importantes respecto a la ENOE en cuanto a la generació
 
 4.  Los indicadores de concentración de mercado, tasa de accidentes por trabajador asegurado y tasa de prevalencia de salario mínimos están expuestos a posibles pero mínimas inconsistencias entre la base de patrones y puestos en cuanto al número de trabajadores reportados entre ambas bases. A su vez, son indicadores que miden fenómenos "negativos" ("más es peor"). Combinados estos factores se opta por tomar el complemento, así estos indicadores quedan expresados en términos "positivos" ("más es mejor").
 
-5.  El insumo *accidentes* (*riesgos*) es acumulativo al interior de un año calendario, es decir, si típicamente la STPS recibe este insumo en marzo y septiembre de un año, las observaciones de marzo se vuelven a incluir en septiembre. El algoritmo detecta el último insumo disponible para cada año para únicamente explotar estas observaciones una sola vez. Al hacerlo, expresa la tasa de accidentes y tasa de días de incapacidad por trabajador asegurado, tomando en consideración el promedio de trabajadores asegurados registrados en los respectivos CT (tabla *patrones*) en los últimos 12 meses.
+5.  El insumo *accidentes* (*riesgos*) es acumulativo al interior de un año calendario, es decir, si típicamente la STPS recibe este insumo en marzo y septiembre de un año, las observaciones de marzo se vuelven a incluir en septiembre. El algoritmo detecta el último insumo disponible para cada año para únicamente explotar estas observaciones una sola vez. Al hacerlo, expresa la tasa de accidentes y tasa de días de incapacidad por trabajador asegurado, tomando en consideración el promedio de trabajadores asegurados registrados en los respectivos CT (tabla *patrones*) en los últimos 12 meses. Notar que en los casos aislados en los que indicadores  **tasa de días de incapacidad** o de **tasa de accidentes** por trabajador asegurado superen el 100% o estén por debajo del 0%, se acota la estimación a su respectivo extremo. Esto puede suceder cuando, por ejemplo, en un CT de 3 empleados hay uno de ellos que en el lapso de un año acude unas 6 veces al IMSS y esto se registra como 6 accidentes a pesar de tener sólo 3 trabajadores. Naturalmente supera el 100% pero se acota a 100%.  
 
 6.  Las estimaciones puntuales de los indicadores en cada nivel de agregación serán imputadas a cada centro de trabajo según sus características. Pero previo a esto, como se verá en el siguiente capítulo, ocurre una imputación de orden nominativo (por clave de *registro* patronal) y de enriquecimiento de las dimensiones clave que en el DNE estén como campos vacíos. La imputación de enriquecimiento precede a la imputación nominativa, a la vez que la imputación nominativa tiene prioridad por encima de la imputación por nivel de agregación.
 
@@ -678,7 +701,8 @@ En la siguiente tabla se muestra el detalle del cálculo de indicadores.
 
 ```{r  echo = FALSE, message=FALSE,warnings=FALSE, results = 'asis'}
 
-tabla1 <- read_excel("./data/tablas03.xlsx", sheet = "tabla6") 
+tabla1 <- read_excel("./data/tablas03.xlsx", sheet = "tabla6")
+
 
 flextable::flextable(tabla1) %>%
    flextable::set_caption( caption = "Indicadores que se calculan con base en el Censo Economico", style = "Table Caption")%>% 
@@ -732,7 +756,7 @@ Finalmente se generan los indicadores subcontratación y concentración de merca
 Es importante resaltar que si se desean actualizar los indicadores con una versión posterior al Censo Económico 2019 se debe crear esta misma tabla con un insumo igual al proporcionado por el INEGI a la STPS, de otra manera el script secuenciador no identificará los insumos para la construcción de indicadores.
 
 
-### Productos resultado de la ejecución de actividades del Módulo I: Las tablas de estimaciones puntuales de los indicadores {#outputtodos .unnumbered}
+#### Productos resultado de la ejecución de actividades del Módulo I: Las tablas de estimaciones puntuales de los indicadores {#outputtodos .unnumbered}
 
 El resultado de realizar las estimaciones puntuales de los diversos indicadores a partir de las diferentes fuentes de información es en realidad un *conjunto de tablas* que se almacenan en la carpeta *3_resultados/coyuntura/...* en las respectivas subcarpetas de cada fuente de información e indicador correspondiente.
 
@@ -768,7 +792,7 @@ Antes de profundizar en el objeto de esta sección, conviene aprovechar este eje
 
 [^procesamiento_fuentes-7]: Esto se relaciona al recuadro XXX en cuanto al método de cálculo de los valores representativos para las categorías SCIAN 2 32, 33 y 49.
 
-**- Que los valores de los indicadores *luego* de ser imputados a los CT (módulo II o IV) no son re-expresados (estandarizados) a valores entre 0 y 1 toda vez que dicho procedimiento se realiza sobre el universo de CT con sus respectivos indicadores imputados** [Ver recuadro XXXX_4\_XXX]{.mark}. Dicha estandarización es, además, realizada por indicador. Sin embargo el módulo I sí concluye expresando a todos los indicadores con el mismo sentido ordinal, es decir, que "más es mejor". Los coeficientes de variación ya se expresan en términos porcentuales.
+**- Que los valores de los indicadores *luego* de ser imputados a los CT (módulo II o IV) no son re-expresados (estandarizados) a valores entre 0 y 1 toda vez que dicho procedimiento se realiza sobre el universo de CT con sus respectivos indicadores imputados** Ver recuadro \@ref(fig:sentidoindicadores). Dicha estandarización es, además, realizada por indicador. Sin embargo el módulo I sí concluye expresando a todos los indicadores con el mismo sentido ordinal, es decir, que "más es mejor". Los coeficientes de variación ya se expresan en términos porcentuales.
 
 \- **Que la explotación de este tipo de tablas requiere de la cautela de que la misma unidad de observación se representa en diferentes niveles de agregación. Esto es importante a efectos de la explotación rápida de indicadores precalculados**. Es decir, que en la interpretación y explotación de esta información se debe evitar caer en la paradoja de Simpson, paradoja en la cual una tendencia que aparece en diferentes grupos de datos se invierte o desaparece cuando se combinan los grupos. De la misma manera, una explotación inadecuada puede arrojar categorías de columnas incompletas. Por ejemplo, si no se filtrara la información por "1_geo2" (entidades) entonces dicha columna tendrá observaciones vacías.
 
@@ -777,6 +801,12 @@ Antes de profundizar en el objeto de esta sección, conviene aprovechar este eje
 \- **"Oferta" de estimaciones: este acervo de estimaciones coyunturales sería suficiente para ofrecer de manera sistematizada reportes que caractericen al mercado laboral con diferentes niveles de especificación**. Es decir, dada la estructura estable de esta información, independientemente de la posible heterogeneidad del periodo de referencia, cabe pensar que a partir de estas diferentes tablas (aquí sólo reunidas a fines ilustrativos) podrían incorporarse rutinas que permitan dar un seguimiento más o menos pormenorizado de ciertos fenómenos laborales a diferentes niveles de agregación. Así, como fue visto durante las sesiones de acompañamiento, esto constituye la oferta de estimaciones puntuales para los diferentes indicadores.
 
 \-**Recordar que las estimaciones puntuales del IMSS se basan en la observación en un centro de trabajo, y luego se agrega por centros de trabajo** que compongan las diferentes categorías de los niveles de agregación, motivo por el cual no necesariamente coincidirán con estimaciones realizadas por trabajador.
+
+
+Observando que sigue siendo una simplificación ilustrativa[^procesamiento_fuentes-8], a continuación se presenta lo que podría ser el cálculo coyuntural (módulo I) al 10 de mayo de 2023, cuando teóricamente la DGIET ya accede a los microdatos del IMSS y aun no se publica el primer trimestre de 2023 de la ENOE. 
+
+[^procesamiento_fuentes-8]: Toda vez que en realidad esta tabla con todos los indicadores reunidos en un solo objeto no se genera por el SIDIL -- no hay necesidad de ello. Además, no se presentan el nombre de los campos tal como se utilizan en el sistema, ni todos los campos fueron incluidos en esta tabla.
+
 
 ```{r  echo = FALSE, message=FALSE,warnings=FALSE, results = 'asis'}
 
@@ -803,19 +833,13 @@ flextable::flextable(tabla1) %>%
 
 **A partir del análisis de las tablas resultado de los indicadores coyunturales de cada indicador, se pone en evidencia la facilidad con la que podría construirse un compendio histórico de indicadores**. Esto, en realidad, forma parte del [Módulo IV](#procesamientoModIV); pero conviene presentarlo aquí por completitud. Si a la tabla anterior uno la extendiera en el tiempo para incorporar todas las estimaciones realizadas a lo largo de todos los periodos de referencia previos al último, obtendría como resultado el compendio de indicadores calculados de manera consistente a lo largo del tiempo para las diferentes posibles combinaciones de categorías en los diversos niveles de agregación.
 
-**Esto es lo que constituye, ahora sí, la oferta "histórica" de indicadores laborales calculados.** Esto, insistimos, es el histórico de indicadores calculados de manera consistente a partir del SIDIL y permite a un costo muy bajo, acceder a su serie histórica para caracterizar la evolución de ciertos fenómenos laborales.
+**Esta agregación de estimaciones puntuales *coyunturales* es lo que constituye, ahora sí, la oferta "histórica" de indicadores laborales calculados.** Esto, insistimos, es el histórico de indicadores calculados de manera consistente a partir del SIDIL y permite a un costo muy bajo, acceder a su serie histórica para caracterizar la evolución de ciertos fenómenos laborales. El costo es muy bajo porque tan solo con una rutina de procesamiento adicional es posible identificar todos los outputs de los cálculos coyunturales de cada indicador, "apilarlos" para **reunir  todos los elementos para una rápida representación gráfica y/o geográfica de los fenómenos laborales medidos por SIDIL**. Observando que la construcción de este tipo de tablas no sólo es relativamente sencilla (aunque excede el alcance y necesidades del SIDIL) pero que permite la explotación de información con diferentes propósitos:
 
-Observando que sigue siendo una simplificación ilustrativa[^procesamiento_fuentes-8], en el recuadro rojo se presenta lo que podría ser el cálculo coyuntural (módulo I) al 10 de mayo de 2023, cuando teóricamente la DGIET ya accede a los microdatos del IMSS y aun no se publica el primer trimestre de 2023 de la ENOE. En cambio, el resto de los periodos temporales (resaltados en color de fuente roja, fuera del recuadro rojo) es la representación simplificada de los mismos indicadores para periodos de referencia previos. Se hace notar, adicionalmente a los puntos anteriores, que:
+    -   Si sólo se tratase de un periodo de tiempo  -- indicadores coyunturales- entonces permite un corte transversal en diferentes niveles de profundización (los niveles de agregación), representando la heterogeneidad en las estimaciones y su respectiva significancia estadística.
 
-[^procesamiento_fuentes-8]: Toda vez que en realidad esta tabla con todos los indicadores reunidos en un solo objeto no se genera por el SIDIL -- no hay necesidad de ello. Además, no se presentan el nombre de los campos tal como se utilizan en el sistema, ni todos los campos fueron incluidos en esta ilustración.
+    -   Si se tratase de todos o al menos varios periodos temporales, se permite un corte longitudinal: un análisis de la evolución temporal de un indicador (o un conjunto de ellos) en los diferentes niveles de agregación, a lo largo de todos los periodos disponibles.
 
--   **Se reúnen todos los elementos para una rápida representación gráfica y/o geográfica de los fenómenos laborales medidos por SIDIL**. Observando que la construcción de este tipo de tablas no sólo es relativamente sencilla (aunque excede el alcance y necesidades del SIDIL) pero que permite la explotación de información con diferentes propósitos:
-
-    -   Si sólo se tratase del recuadro rojo -- indicadores coyunturales- entonces permite un corte transversal en diferentes niveles de profundización (los niveles de agregación), representando la heterogeneidad en las estimaciones y su respectiva significancia estadística.
-
-    -   Si se tratase de toda la tabla, se permite un corte longitudinal: un análisis de la evolución temporal de un indicador (o un conjunto de ellos) en los diferentes niveles de agregación, a lo largo de todos los periodos disponibles.
-
-```{r imagen1, echo=FALSE, out.width="100%", fig.cap="tabla1"}
+```{r imagen1, echo=FALSE, out.width="100%", fig.cap="tabla1", eval=FALSE }
 knitr::include_graphics("images-1/04/tabla1.png")
 ```
 
@@ -882,7 +906,7 @@ FALTA REEMPLAZAR ESTA TABLA POR IMAGEN
 
 ###### Posibles problemas específicos en la aplicación de scripts {#problemasdne .unnumbered}
 
-**Hay dos principales problemas que podrían ocurrir**[. Primero, que no se pueda acceder al universo de CT registrados en el DNE. Esto dependerá del mecanismo de conexión a dicha base.]{.mark} Segundo, que no se pueda acceder a la base de registros patronales obtenida del IMSS, mismo que impediría la imputación o match de enriquecimiento. El primer problema deriva en que no se incluirían en la MPR aquellos CT de más reciente incorporación, esto es, los CT de reciente incorporación no serían incluidos en la estrategia de priorización (módulo III). El segundo problema, si bien a junio 2023 abona el enriquecimiento de información sobre la categoría de tamaño de aproximadamente 170 mil CT, afectaría la calidad de la imputación por nivel de agregación (al no haber enriquecido la variable *cat_tamanio*).
+**Hay dos principales problemas que podrían ocurrir**. Primero, que no se pueda acceder al universo de CT registrados en el DNE. Esto dependerá del mecanismo de conexión a dicha base. Segundo, que no se pueda acceder a la base de registros patronales obtenida del IMSS, mismo que impediría la imputación o match de enriquecimiento. El primer problema deriva en que no se incluirían en la MPR aquellos CT de más reciente incorporación, esto es, los CT de reciente incorporación no serían incluidos en la estrategia de priorización (módulo III). El segundo problema, si bien a junio 2023 abona el enriquecimiento de información sobre la categoría de tamaño de aproximadamente 170 mil CT, afectaría la calidad de la imputación por nivel de agregación (al no haber enriquecido la variable *cat_tamanio*).
 
 ##### Frecuencia de actualización y propuesta de calendarización {#frecuenciadne .unnumbered}
 
@@ -1180,7 +1204,7 @@ knitr::include_graphics("images-1/04/interfaz1-15.png")
 
 #### Descarga de la información {#interfaz1-9 .unnumbered}
 
-Cuando terminan de correr los procesos seleccionados ([siempre y cuando se haya seleccionado y ejecutado el proceso de Aplicación de modelo para MPR),]{.mark} se habilitan los botones de la sección de *Descarga de información*, los cuales permiten descargar la Matriz de Predicción de Riesgo (MPR) y el botón de *Enviar última versión de MPR a interfaz de consulta.* El primer botón de descarga permite al usuario visualizar la MPR generada para cerciorarse de que se hayan realizado todos los procesos correctamente (la matriz está poblada, cuenta con todas las columnas esperadas, etc.). Una vez revisada, la MPR puede ser enviada a la interfaz de consulta para su análisis y uso. Esto último despliega un mensaje confirmatorio emergente, mientras que en el *back* se deposita la MPR con ciertos metadatos en la carpeta *3_resultados/MPR/consulta* en un archivo de varios dataframes con la fecha de envío.
+Cuando terminan de correr los procesos seleccionados (siempre y cuando se haya seleccionado y ejecutado el proceso de Aplicación de modelo para MPR), se habilitan los botones de la sección de *Descarga de información*, los cuales permiten descargar la Matriz de Predicción de Riesgo (MPR) y el botón de *Enviar última versión de MPR a interfaz de consulta.* El primer botón de descarga permite al usuario visualizar la MPR generada para cerciorarse de que se hayan realizado todos los procesos correctamente (la matriz está poblada, cuenta con todas las columnas esperadas, etc.). Una vez revisada, la MPR puede ser enviada a la interfaz de consulta para su análisis y uso. Esto último despliega un mensaje confirmatorio emergente, mientras que en el *back* se deposita la MPR con ciertos metadatos en la carpeta *3_resultados/MPR/consulta* en un archivo de varios dataframes con la fecha de envío.
 
 ```{r interfaz1-16,echo=FALSE, out.width="80%", fig.cap = 'Sección Descarga de información. Pestaña de Estatus y ejecución de procesos.'}
 knitr::include_graphics("images-1/04/interfaz1-16.png")
@@ -1220,7 +1244,7 @@ De manera predeterminada la interfaz mostrará la selección en la barra de la m
 knitr::include_graphics("images-1/04/interfaz2-4.png")
 ```
 
-Si se requiere cambiar la selección realizada se puede hacer dando click al objeto de la lista (en azul en la imagen) y posteriormente dando click en el botón de "Quitar seleccionado". De esta manera se limpiará la sección y se podrá realizar otra selección. [Cabe destacar que en esta sección solo se podrá elegir un predictor o submateria en cada consulta.]{.mark}
+Si se requiere cambiar la selección realizada se puede hacer dando click al objeto de la lista (en azul en la imagen) y posteriormente dando click en el botón de "Quitar seleccionado". De esta manera se limpiará la sección y se podrá realizar otra selección. Cabe destacar que en esta sección solo se podrá elegir un predictor o submateria en cada consulta.
 
 ```{r interfaz2-5,echo=FALSE, out.width="80%", fig.cap = 'Opción de quitar selección. Sección Predictores. Pestaña Filtrado.'}
 knitr::include_graphics("images-1/04/interfaz2-5.png")

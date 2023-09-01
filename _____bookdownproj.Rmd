@@ -1,0 +1,249 @@
+--- 
+title: "SIDIL: Manual del procesamiento y explotación de la información"
+author: "American Institutes for Research"
+site: bookdown::bookdown_site
+output:
+  bookdown::markdown_document2:
+    number_sections: true
+    always_allow_html: true
+# output: word_document
+github-repo: anhdzol/testsidil/
+description: "Breve descripcion pendiente"
+always_allow_html: true
+
+
+---
+
+# output: word_document
+
+Placeholder
+
+
+## Alineación con la misión y programas de gobierno {#introalineacion}
+## Justificación de la viabilidad del proyecto {#introjustificacion}
+## Objetivos del SIDIL { #introobjetivos}
+## Propuesta de solución { #propuestasolucion}
+##  Alcance {#introalcance}
+
+<!--chapter:end:index.Rmd-->
+
+
+# Estructura y flujos de trabajo del SIDIL 
+
+Placeholder
+
+
+## Elementos básicos del SIDIL
+## Módulos que conforman el SIDIL {#modulosqueconformanSIDIL}
+### Módulo I: actualización de indicadores {#moduloIexplicaciongeneral .unnumbered}
+### Módulo II: Consulta al universo de CT, imputación de indicadores y predicción de riesgo {#moduloIIexplicaciongeneral .unnumbered}
+#### Módulos I y II: operables desde la interfaz de automatización {#moduloIyIIexplicaciongeneral .unnumbered}
+### Módulo III: Consulta de la MPR para priorización de CT a inspeccionar {#moduloIIIConsultaMPR .unnumbered}
+### Módulo IV: Entrenamiento del modelo  {#moduloIVEntrenamientoModelo .unnumbered}
+
+<!--chapter:end:01-Estructura.Rmd-->
+
+
+# Elementos generales del procesamiento de datos {#elementosgenerales}
+
+Placeholder
+
+
+## Estructura de Scripts {#estructurascripts}
+### Script de configuración inicial y script de funciones y catálogos {#configinicial}
+### Scripts secuenciadores {#secuenciadores}
+## Estructura de carpetas y sintaxis de archivos {#estructuracarpetas}
+## Sobre la temporalidad {#temporalidad}
+## Sobre trazabilidad: bitácora, log y parámetros {#trazabilidad}
+## Mensajes al usuario {#mensajesGeneral}
+### Mensajes de error {#mensajesError.unnumbered}
+### Mensajes de advertencia {#mensajesAdvertencia.unnumbered}
+### Mensajes de información o de confirmación {#mensajesConfirmacion.unnumbered}
+## Software para el procesamiento de datos
+## Catálogos de información {#catalogos}
+## La Matriz de Predicción de Riesgo
+
+<!--chapter:end:02-Elementos_generales.Rmd-->
+
+
+# Procesamiento de las fuentes de información y generación de la MPR {#procesamiento}
+
+Placeholder
+
+
+## Módulo I: actualización de indicadores {#procesamientoModI}
+### Desafíos al tratamiento de bases de datos externas {#procesamientoModIdesafios}
+### Sobre niveles de agregación {#procesamientoModInivelesagregacion}
+### Sobre estimaciones puntuales nominativas {#procesamientoModInominativo}
+#### Gestión de archivos de estimaciones puntuales por fuente de información {#gestionarchivosestimaciones .unnumbered}
+##### Tratamiento de industrias manufactureras, transportes, correo y almacenamiento {#tratamientoindustrias .unnumbered}
+### Especificaciones por fuente de información {#procesamientoModEspecificaciones}
+#### La ENOE {#procesamientoModIENOE}
+##### Frecuencia de actualización y propuesta de calendarización {#frecuenciaenoe .unnumbered}
+##### Indicadores que se calculan {#indicadoresenoe .unnumbered}
+##### Entradas - Inputs {#inputenoe .unnumbered}
+##### Aplicación de scripts {#aplicacionenoe .unnumbered}
+##### Salidas - Outputs {#outputenoe .unnumbered}
+#### Registros administrativos del IMSS {#procesamientoModIIMSS}
+##### Indicadores que se calculan {#indicadoresimss .unnumbered}
+##### Entradas - Inputs {#inputimss .unnumbered}
+##### Aplicación de scripts {#aplicacionimss .unnumbered}
+##### Salidas - Outputs {#outputimss .unnumbered}
+#### El Censo económico {#procesamientoModICenso}
+##### Frecuencia de actualización y propuesta de calendarización {#frecuenciacenso .unnumbered}
+##### Indicadores que se calculan {#indicadorescenso .unnumbered}
+##### Entradas - Inputs {#inputcenso .unnumbered}
+##### Aplicación de scripts {#aplicacioncenso .unnumbered}
+#### Productos resultado de la ejecución de actividades del Módulo I: Las tablas de estimaciones puntuales de los indicadores {#outputtodos .unnumbered}
+#### De las estimaciones puntuales coyunturales a las construcción de las series históricas {#comparacióncoyunurahist .unnumbered}
+## Módulo II: imputación de indicadores y generación de la MPR {#moduloii}
+### Propósito principal {#propositomoduloii}
+### Requisitos para la ejecución de este módulo {#requisitosmoduloii}
+#### Consulta al DNE {#procesamientoModuloIIConsultaDNE}
+##### Entradas - Inputs {#inputdne .unnumbered}
+##### Aplicación de scripts {#aplicaciondne .unnumbered}
+###### Posibles problemas específicos en la aplicación de scripts {#problemasdne .unnumbered}
+##### Frecuencia de actualización y propuesta de calendarización {#frecuenciadne .unnumbered}
+### Imputación de indicadores laborales al universo de CT {#procesamientoModIIimputacion}
+#### Matching nominativo {#matchnom .unnumbered}
+#### Matching por nivel de agregación {#matchnivel .unnumbered}
+#### Aplicación de script {#scriptmatch .unnumbered}
+#### Entradas - Inputs {#inputmatch .unnumbered}
+##### Posibles problemas específicos en la aplicación de scripts {#problemasmatch .unnumbered}
+#### Salidas - Outputs - Productos resultado de la ejecución de actividades {#outputmatch}
+#### Frecuencia de actualización y propuesta de calendarización {#frecuenciamatch .unnumbered}
+### Predicción de riesgo {#procesamientoModIIprediccion}
+#### Entradas - Inputs {#inputpred .unnumbered}
+#### Aplicación de scripts {#scriptpred .unnumbered}
+#### Frecuencia de actualización y propuesta de calendarización {#frecuenciapred .unnumbered}
+#### Salidas - Outputs - Productos resultado de la ejecución de actividades {#outputpred .unnumbered}
+## Interfaz de automatización: Módulos I y II {#procesamientoModIyIIinterfazAuto}
+### Propósito de la interfaz {#propositointerfaz1}
+### Acceso a la interfaz {#accesointerfaz1}
+### Organización de la interfaz {#organizacioninterfaz1}
+#### Primera pestaña: Carga de insumos originales {#interfaz1-1 .unnumbered}
+#### Segunda prestaña: Actualización de catálogos {#interfaz1-2 .unnumbered}
+##### Sección Descarga de catálogos {#interfaz1-3 .unnumbered}
+##### Sección Carga {#interfaz1-4 .unnumbered}
+#### Tercera pestaña: Ejecución de procesos {#interfaz1-5 .unnumbered}
+##### Estatus de fuentes y procesos {#interfaz1-6 .unnumbered}
+##### Procesos {#interfaz1-7 .unnumbered}
+### Procesamiento de información {#interfaz1-8 .unnumbered}
+#### Descarga de la información {#interfaz1-9 .unnumbered}
+## Módulo III: Priorización de los centros de trabajo {#procesamientoModIIIinterfazConsulta}
+### Propósito de la interfaz {#propositointerfaz2}
+### Acceso a la interfaz {#accesointerfaz2}
+### Primera prestaña: Filtrado {#interfaz2-1 .unnumbered}
+#### Aleatorizacion de la selección {#interfaz2-2 .unnumbered}
+### Segunda pestaña: Analisis {#interfaz2-3 .unnumbered}
+### Tabla final de resultados con sus pestañas {#interfaz2-4 .unnumbered}
+## Módulo IV: Entrenamiento del modelo {#procesamientoModIV}
+### Propósito principal {#propositoModIV}
+### Construcción de la serie histórica de inspecciones laborales (2012-2022) {#procesamientoModIVSIAPI}
+#### Entradas - Inputs {#inputsModIV .unnumbered}
+#### Aplicación de scripts {#aplicacionModIV .unnumbered}
+##### Posibles problemas específicos en la aplicación de scripts {#problemasscript .unnumbered}
+### Construcción de la serie histórica de indicadores laborales {#procesamientoModIVindicadores}
+#### Indicadores históricos de la ENOE {#procesamientoModIVENOE .unnumbered}
+##### Entradas - Inputs {#inputenoehist .unnumbered}
+##### Aplicación de script {#aplicacionenoehist .unnumbered}
+###### Posibles problemas específicos en la aplicación de script {#problemasenoe .unnumbered}
+##### Salidas - Outputs Productos resultado de la ejecución de actividades {#outputenoehist .unnumbered}
+#### Indicadores históricos del IMSS {#procesamientoModIVIMSS .unnumbered}
+##### Entradas - Inputs {#inputimsshist .unnumbered}
+##### Aplicación de scripts {#aplicacionimsshist .unnumbered}
+##### Frecuencia de actualización y propuesta de calendarización {#frecuenciaimsshist .unnumbered}
+##### Outputs Productos resultado de la ejecución de actividades {#outputimsshist .unnumbered}
+### Matching de las series históricas {#procesamientoModIVmatching}
+#### Entradas - Inputs {#inputmatchhist .unnumbered}
+#### Aplicación de script {#appmatchhist .unnumbered}
+##### Posibles problemas específicos en la aplicación de scripts {#problemasmatchhist .unnumbered}
+#### Outputs Productos resultado de la ejecución de actividades {#outputmatchhist .unnumbered}
+### Entrenamiento y evaluación del modelo de predicción {#procesamientoModIVEntrenamiento}
+#### Entradas - Inputs {#inputentrenamiento .unnumbered}
+#### Aplicación de scripts
+##### Posibles problemas específicos en la aplicación de scripts {#problemasentrenamiento .unnumbered}
+#### Outputs Productos resultado de la ejecución de actividades {#ouputentrenamiento .unnumbered}
+
+<!--chapter:end:03-Procesamiento_FuentesAngela.Rmd-->
+
+---
+output:
+  html_document: default
+---
+
+# Presentación sintética de todos los scripts {#anexotablascripts}
+
+A continuación se presentan de manera sintética todos los scripts que constituyen el SIDIL.
+
+```{r echo = FALSE, results = 'asis'}
+tabla1 <- read_excel("./data/tablas05.xlsx", sheet = "tabla1")
+kable(tabla1, caption = "Presentación sintética de todos los scripts") %>%
+  kable_styling(bootstrap_options = c("striped", "hover"), full_width = T, font_size = 14) %>%
+    scroll_box(width = "100%", height = "600px")
+```
+
+
+<!--chapter:end:04-AnexoScripts.Rmd-->
+
+
+# R, RStudio y Python
+
+Placeholder
+
+
+## R y RStudio
+## El entorno de RStudio
+## Procedimiento para ejecutar proyectos y scripts en RStudio
+## Tipos de errores que se pudieran presentar
+## Python
+
+<!--chapter:end:05-AnexoRStudio.Rmd-->
+
+---
+output:
+  html_document: default
+---
+
+# Especificaciones técnicas y manual de instalación del servidor
+
+En este anexo se ofrecen especificaciones acercas de las características técnicas del servidor donde se instalará el SIDIL y el manual de instalación del mismo.
+
+## **Especificaciones técnicas**
+
+●        **Sistema operativo**: Debian 11 Bullseye (64-bit)
+
+●        **Perfil de usuario**: se requiere perfil sudo al requerir permisos de root. Es necesario utilizar un usuario distinto a root debido a que Shiny no permite algunas instrucciones desde root.
+
+●        **Versión R**: 4.2.0 o superior
+
+●        **Versión de Python**: 3.10.9 o superior
+
+●        **CPU**: 1 GHz o más
+
+●        **RAM**: 8 GB o más
+
+●        **Memoria**: 50 GB o más
+
+●        **ODBC**: pendiente definición de acceso a DNE y SIAPI y SIPAS
+
+<!--chapter:end:06-AnexoEspecificacionesServidor.Rmd-->
+
+
+# Conceptos y hallazgos clave en la exploración del SIAPI-SIPAS {#anexoHallazgos}
+
+Placeholder
+
+
+## Conceptos y clasificaciones relevantes.
+### Planeación de la inspección
+### Meta y realización de inspecciones a realizar por tipo, estado y por oficina
+## Alcance de la inspección
+### Criterios de selección utilizados antes del SIDIL.
+## Aspectos pendientes y posibles extensiones a futuro
+### Limitaciones en la construcción de la variable dependiente
+### Posibles alternativas como variable dependiente
+### 
+
+<!--chapter:end:07-AnexoSIAPI.Rmd-->
+
