@@ -322,7 +322,7 @@ flextable::flextable(tabla1) %>%
                            style = "Table Caption") %>% 
     flextable::set_table_properties(opts_html = list(
     scroll = list(
-      height = "900px",
+      #height = "900px",
       freeze_first_column = FALSE
     )
   )) %>% 
@@ -816,7 +816,7 @@ flextable::flextable(tabla1) %>%
    flextable::set_caption( caption = "Presentacion esquematizada de los indicadores coyunturales en sus diferentes niveles de agregacion", style = "Table Caption")%>%
     flextable::set_table_properties(opts_html = list(
     scroll = list(
-      height = "900px",
+      #height = "900px",
       freeze_first_column = FALSE
     )
   )) %>%
@@ -835,9 +835,9 @@ flextable::flextable(tabla1) %>%
 
 **Esta agregación de estimaciones puntuales *coyunturales* es lo que constituye, ahora sí, la oferta "histórica" de indicadores laborales calculados.** Esto, insistimos, es el histórico de indicadores calculados de manera consistente a partir del SIDIL y permite a un costo muy bajo, acceder a su serie histórica para caracterizar la evolución de ciertos fenómenos laborales. El costo es muy bajo porque tan solo con una rutina de procesamiento adicional es posible identificar todos los outputs de los cálculos coyunturales de cada indicador, "apilarlos" para **reunir  todos los elementos para una rápida representación gráfica y/o geográfica de los fenómenos laborales medidos por SIDIL**. Observando que la construcción de este tipo de tablas no sólo es relativamente sencilla (aunque excede el alcance y necesidades del SIDIL) pero que permite la explotación de información con diferentes propósitos:
 
-    -   Si sólo se tratase de un periodo de tiempo  -- indicadores coyunturales- entonces permite un corte transversal en diferentes niveles de profundización (los niveles de agregación), representando la heterogeneidad en las estimaciones y su respectiva significancia estadística.
+- Si sólo se tratase de un periodo de tiempo  -- indicadores coyunturales- entonces permite un corte transversal en diferentes niveles de profundización (los niveles de agregación), representando la heterogeneidad en las estimaciones y su respectiva significancia estadística.
 
-    -   Si se tratase de todos o al menos varios periodos temporales, se permite un corte longitudinal: un análisis de la evolución temporal de un indicador (o un conjunto de ellos) en los diferentes niveles de agregación, a lo largo de todos los periodos disponibles.
+- Si se tratase de todos o al menos varios periodos temporales, se permite un corte longitudinal: un análisis de la evolución temporal de un indicador (o un conjunto de ellos) en los diferentes niveles de agregación, a lo largo de todos los periodos disponibles.
 
 ```{r imagen1, echo=FALSE, out.width="100%", fig.cap="tabla1", eval=FALSE }
 knitr::include_graphics("images-1/04/tabla1.png")
@@ -889,12 +889,10 @@ Para actualizar el universo de CT que están disponibles en el DNE, independient
 -   El script de consulta identifica la versión de DNE_inicial más reciente (lo define como un parámetro llamado *ultimo_DNE_orig* mismo que lee a la RAM para la posterior refinación de ciertos campos. En concreto se definen las clases de los campos y se depura información sobre la entidad federativa y el municipios, para conformar una base de los CT con la variable geográfica "limpia". Luego se le asocia la información de los catálogos de actividades del SCIAN y rama industrial y se limpia la variaba *ct_imss_registro* que permite el match de enriquecimiento y nominativo con los registros del IMSS. También aquí se realiza el primero de estos matches, utilizando como insumo el último de los *procesados* bajo en la carpeta *1_insumos/procesados/coy_IMSS_pat*. El propósito es tener los CT del DNE enriquecidos con la última información disponible de los patrones en el IMSS, en particular, en cuanto al tamaño del CT. El resultado de este procedimiento es la tabla llamada *DNE_plus_v.Rds*
 
 
-FALTA REEMPLAZAR ESTA TABLA POR IMAGEN
-
 ```{r  echo = FALSE, message=FALSE,warnings=FALSE, results = 'asis'}
 
 ## 20230822 ya no modificar estilo 
- tabla1 <- read_excel("./data/tablas03.xlsx", sheet = "tabla11")
+ #tabla1 <- read_excel("./data/tablas03.xlsx", sheet = "tabla11")
 # kable(tabla1, caption = "Procesos para la actualización del universo de CT con base en el DNE") %>%
 #   collapse_rows(c(1,2),latex_hline = "major", valign = "middle") %>% 
 #   kable_styling(bootstrap_options = c("striped", "hover"), full_width = T, font_size = 14) %>%

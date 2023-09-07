@@ -8,9 +8,18 @@ output:
 A continuación se presentan de manera sintética todos los scripts que constituyen el SIDIL.
 
 ```{r echo = FALSE, results = 'asis'}
-tabla1 <- read_excel("./data/tablas05.xlsx", sheet = "tabla1")
-kable(tabla1, caption = "Presentación sintética de todos los scripts") %>%
-  kable_styling(bootstrap_options = c("striped", "hover"), full_width = T, font_size = 14) %>%
-    scroll_box(width = "100%", height = "600px")
+
+tabla1 <- read_excel("./data/tablas04.xlsx", sheet = "tabla1")
+
+flextable::flextable(tabla1) %>%
+   flextable::set_caption( caption = "Presentacion sintética de todos los scripts", 
+                           style = "Table Caption") %>% 
+  theme_zebra(odd_body = "#EFEFEF", even_header = "transparent",even_body = "transparent") %>% 
+  color(color = "#666666", part = "all") %>% 
+  flextable::bg(i = 1, bg = "#FFFFFF", part = "header") %>% 
+  flextable::bold(bold = TRUE, part = "header") %>% 
+  flextable::fontsize(size=10,part="all") %>%
+  flextable::autofit()
+
 ```
 
